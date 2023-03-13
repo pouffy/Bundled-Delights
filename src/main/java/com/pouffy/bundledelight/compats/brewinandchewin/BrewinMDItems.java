@@ -10,19 +10,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.brewinandchewin.core.registry.BCItems.TANKARD;
+import static com.pouffy.bundledelight.compats.miners_delight.MinersCompat.steinFoodItem;
+import static com.pouffy.bundledelight.compats.miners_delight.MinersCompat.steinFoodItemNoEffect;
 import static com.pouffy.bundledelight.init.BDItems.basicItem;
-import static com.pouffy.bundledelight.init.BDItems.foodItem;
 
 public class BrewinMDItems {
     public static final DeferredRegister<Item> ITEMS;
 
-    public static Item.Properties steinFoodItem(FoodProperties food) {
-        return new Item.Properties().food(food).craftRemainder(COPPER_TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB);
-    }
-    public static Item.Properties steinFoodItemNoEffect() {
-        return new Item.Properties().craftRemainder(COPPER_TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB);
-    }
+
     public static final RegistryObject<Item> COPPER_TANKARD;
     public static final RegistryObject<Item> BEER_SWIG;
     public static final RegistryObject<Item> VODKA_SWIG;

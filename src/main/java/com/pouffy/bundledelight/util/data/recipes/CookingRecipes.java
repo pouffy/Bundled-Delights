@@ -33,10 +33,10 @@ public class CookingRecipes {
     }
     private static void cookMeals(Consumer<FinishedRecipe> consumer) {
         CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) BDItems.BORSCHT.get(), 1, 200, 1.0F).addIngredient(ForgeTags.RAW_BEEF).addIngredient(Items.BEETROOT).addIngredient(ForgeTags.CROPS_CABBAGE).addIngredient(ModItems.TOMATO_SAUCE.get()).unlockedByAnyIngredient(Items.BEEF, Items.BEETROOT, ModItems.CABBAGE.get(), ModItems.TOMATO_SAUCE.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
-        CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) MinersItems.BORSCHT_CUP.get(), 1, 200, 1.0F).addIngredient(ForgeTags.RAW_BEEF).addIngredient(Items.BEETROOT).addIngredient(MDItems.CAVE_CARROT.get()).addIngredient(ModItems.TOMATO_SAUCE.get()).unlockedByAnyIngredient(Items.BEEF, Items.BEETROOT, MDItems.CAVE_CARROT.get(), ModItems.TOMATO_SAUCE.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
+        //CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) MinersItems.BORSCHT_CUP.get(), 1, 200, 1.0F).addIngredient(ForgeTags.RAW_BEEF).addIngredient(Items.BEETROOT).addIngredient(MDItems.CAVE_CARROT.get()).addIngredient(ModItems.TOMATO_SAUCE.get()).unlockedByAnyIngredient(Items.BEEF, Items.BEETROOT, MDItems.CAVE_CARROT.get(), ModItems.TOMATO_SAUCE.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
 
         CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) BDItems.NETTLE_SOUP.get(), 1, 200, 1.0F).addIngredient(Items.WATER_BUCKET).addIngredient(Items.FERN).addIngredient(ForgeTags.VEGETABLES).addIngredient(ForgeTags.SEEDS).unlockedByAnyIngredient(Items.FERN).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
-        CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) MinersItems.NETTLE_SOUP_CUP.get(), 1, 200, 1.0F).addIngredient(MDItems.WATER_CUP.get()).addIngredient(Items.FERN).addIngredient(MDItems.CAVE_CARROT.get()).addIngredient(ForgeTags.SEEDS).unlockedByAnyIngredient(Items.FERN, MDItems.CAVE_CARROT.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
+        //CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) MinersItems.NETTLE_SOUP_CUP.get(), 1, 200, 1.0F).addIngredient(MDItems.WATER_CUP.get()).addIngredient(Items.FERN).addIngredient(MDItems.CAVE_CARROT.get()).addIngredient(ForgeTags.SEEDS).unlockedByAnyIngredient(Items.FERN, MDItems.CAVE_CARROT.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
 
     }
 

@@ -48,7 +48,7 @@ public class ItemTags extends ItemTagsProvider {
         this.tag(ModTags.RED_RUM).add(BCItems.RED_RUM.get(), BrewinMDItems.RED_RUM_SWIG.get());
         this.tag(ModTags.WITHERING_DROSS).add(BCItems.WITHERING_DROSS.get(), BrewinMDItems.WITHERING_DROSS_SWIG.get());
         this.tag(ModTags.KOMBUCHA).add(BCItems.KOMBUCHA.get(), BrewinMDItems.KOMBUCHA_SWIG.get());
-        this.tag(ModTags.RADIANT_BREW).add(BrewinItems.RADIANT_BREW.get(), BrewinMDItems.RADIANT_BREW_SWIG.get());
+        //this.tag(ModTags.RADIANT_BREW).add(BrewinItems.RADIANT_BREW.get(), BrewinMDItems.RADIANT_BREW_SWIG.get());
 
     }
 

@@ -19,6 +19,8 @@ import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
 
+import static com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems.CUP;
+
 public class CraftingRecipes {
 
     public CraftingRecipes() {
@@ -45,6 +47,7 @@ public class CraftingRecipes {
         ShapedRecipeBuilder.shaped((ItemLike) RespiteItems.COFFEE_CRATE.get(), 1).pattern("###").pattern("###").pattern("###").define('#', (ItemLike) FRItems.COFFEE_BEANS.get()).unlockedBy("has_coffee_beans", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) FRItems.COFFEE_BEANS.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped((ItemLike) BrewinMDItems.COPPER_TANKARD.get()).pattern("# #").pattern("- -").pattern("###").define('-', Tags.Items.NUGGETS_IRON).define('#', Tags.Items.INGOTS_COPPER).unlockedBy("has_copper", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[]{Items.COPPER_INGOT})).save(consumer);
+        ShapedRecipeBuilder.shaped((ItemLike) CUP.get()).pattern("# #").pattern(" #-").define('-', ModItems.CANVAS.get()).define('#', Tags.Items.INGOTS_COPPER).unlockedBy("has_copper", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[]{Items.COPPER_INGOT})).save(consumer);
 
     }
 

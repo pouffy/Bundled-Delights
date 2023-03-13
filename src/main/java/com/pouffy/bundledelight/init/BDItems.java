@@ -1,19 +1,14 @@
 package com.pouffy.bundledelight.init;
 
-import com.farmersrespite.core.utility.FRFoods;
 import com.pouffy.bundledelight.BundledDelights;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
-
-import static com.sammy.minersdelight.setup.MDItems.COPPER_CUP;
 
 public class BDItems {
     public static final DeferredRegister<Item> ITEMS;

@@ -1,25 +1,20 @@
 package com.pouffy.bundledelight.compats.farmersrespite;
 
 import com.farmersrespite.core.utility.FRFoods;
-import com.pouffy.bundledelight.BundledDelights;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
-import static com.sammy.minersdelight.setup.MDItems.COPPER_CUP;
+import static com.pouffy.bundledelight.compats.miners_delight.MinersCompat.cupFoodItem;
+import static com.pouffy.bundledelight.compats.miners_delight.MinersCompat.cupFoodItemHidden;
+import static com.pouffy.bundledelight.init.BDItems.basicItem;
 
 public class RespiteMDItems {
     public static final DeferredRegister<Item> ITEMS;
+    public static final RegistryObject<Item> CUP;
 
-    public static Item.Properties cupFoodItem(FoodProperties food) {
-        return new Item.Properties().food(food).craftRemainder(COPPER_CUP.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB);
-    }
-    public static Item.Properties cupFoodItemHidden(FoodProperties food) {
-        return new Item.Properties().food(food).craftRemainder(COPPER_CUP.get()).stacksTo(16);
-    }
     public static final RegistryObject<Item> GREEN_TEA_CUP;
     public static final RegistryObject<Item> LONG_GREEN_TEA_CUP;
     public static final RegistryObject<Item> STRONG_GREEN_TEA_CUP;
@@ -43,6 +38,9 @@ public class RespiteMDItems {
     static{
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "bundledelight");
 
+        CUP = ITEMS.register("cup", () -> {
+            return new Item(basicItem());
+        });
         GREEN_TEA_CUP = ITEMS.register("green_tea_cup", () -> {
             return new DrinkableItem(cupFoodItem(FRFoods.GREEN_TEA), true, false);
         });

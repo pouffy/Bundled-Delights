@@ -12,7 +12,7 @@
     "item": "bundledelight:strong_rose_hip_tea_cup"
   },
   "container": {
-    "item": "miners_delight:copper_cup"
+    "item": "bundledelight:cup"
   },
   "experience": 0.35,
   "brewingtime": 2400,
