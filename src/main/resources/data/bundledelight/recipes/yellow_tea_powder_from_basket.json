@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bundledelight:yellow_tea_powder_basket"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:powdered_yellow_tea_leaves",
+    "count": 9
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "itemGroup.bundledelight": "Bundled Delight",
+  "item.bundledelight.": "",
+  "block.bundledelight.": "",
+
+  "item.bundledelight.cheeseburger": "Cheeseburger",
+  "item.bundledelight.scarlet_cheeseburger": "Scarlet Cheeseburger",
+
+  "item.bundledelight.copper_tankard": "Copper Tankard",
+  "item.bundledelight.radiant_brew": "Radiant Brew",
+
+  "item.bundledelight.nettle_soup": "Nettle Soup",
+  "item.bundledelight.nettle_soup_cup": "Nettle Soup Cup",
+  "item.bundledelight.borscht": "Borscht",
+  "item.bundledelight.borscht_cup": "Cave Borscht Cup",
+
+  "_": "Farmer's Respite Stuff",
+  "item.bundledelight.green_tea_cup": "Green Tea Cup",
+  "item.bundledelight.long_green_tea_cup": "Green Tea Cup",
+  "item.bundledelight.strong_green_tea_cup": "Green Tea Cup",
+
+  "item.bundledelight.yellow_tea_cup": "Yellow Tea Cup",
+  "item.bundledelight.long_yellow_tea_cup": "Yellow Tea Cup",
+  "item.bundledelight.strong_yellow_tea_cup": "Yellow Tea Cup",
+
+  "item.bundledelight.black_tea_cup": "Black Tea Cup",
+  "item.bundledelight.long_black_tea_cup": "Black Tea Cup",
+  "item.bundledelight.strong_black_tea_cup": "Black Tea Cup",
+
+  "item.bundledelight.coffee_cup": "Coffee Cup",
+  "item.bundledelight.long_coffee_cup": "Coffee Cup",
+  "item.bundledelight.strong_coffee_cup": "Coffee Cup",
+
+  "item.bundledelight.purulent_tea_cup": "Purulent Tea Cup",
+  "item.bundledelight.strong_purulent_tea_cup": "Purulent Tea Cup",
+
+  "item.bundledelight.rose_hip_tea_cup": "Rose Hip Tea Cup",
+  "item.bundledelight.strong_rose_hip_tea_cup": "Rose Hip Tea Cup",
+
+  "item.bundledelight.dandelion_tea_cup": "Dandelion Tea Cup",
+  "item.bundledelight.long_dandelion_tea_cup": "Dandelion Tea Cup",
+
+  "item.bundledelight.powdered_green_tea_leaves": "Powdered Green Tea Leaves",
+  "item.bundledelight.powdered_yellow_tea_leaves": "Powdered Yellow Tea Leaves",
+  "item.bundledelight.powdered_black_tea_leaves": "Powdered Black Tea Leaves",
+  "item.bundledelight.powdered_coffee_beans": "Powdered Coffee Beans",
+
+  "block.bundledelight.green_tea_powder_basket": "Powdered Green Tea Leaf Basket",
+  "block.bundledelight.yellow_tea_powder_basket": "Powdered Yellow Tea Leaf Basket",
+  "block.bundledelight.black_tea_powder_basket": "Powdered Black Tea Leaf Basket",
+  "block.bundledelight.coffee_powder_basket": "Powdered Coffee Bean Basket",
+
+  "block.bundledelight.green_tea_leaf_crate": "Green Tea Leaf Crate",
+  "block.bundledelight.yellow_tea_leaf_crate": "Yellow Tea Leaf Crate",
+  "block.bundledelight.black_tea_leaf_crate": "Black Tea Leaf Crate",
+  "block.bundledelight.coffee_leaf_crate": "Coffee Bean Crate",
+
+  "brewinandchewin.tooltip.dread_nog_swig": "Bad Omen (10:00)",
+
+  "__": "Brewin' & Chewin' Stuff",
+  "item.bundledelight.beer_swig": "Beer Swig",
+  "item.bundledelight.vodka_swig": "Vodka Swig",
+  "item.bundledelight.mead_swig": "Mead Swig",
+  "item.bundledelight.rice_wine_swig": "Rice Wine Swig",
+  "item.bundledelight.egg_grog_swig": "Egg Grog Swig",
+  "item.bundledelight.strongroot_ale_swig": "Strongroot Ale Swig",
+  "item.bundledelight.saccharine_rum_swig": "Saccharine Rum Swig",
+  "item.bundledelight.pale_jane_swig": "Pale Jane Swig",
+  "item.bundledelight.dread_nog_swig": "Dread Nog Swig",
+  "item.bundledelight.salty_folly_swig": "Salty Folly Swig",
+  "item.bundledelight.steel_toe_stout_swig": "Steel Toe Stout Swig",
+  "item.bundledelight.glittering_grenadine_swig": "Glittering Grenadine Swig",
+  "item.bundledelight.bloody_mary_swig": "Bloody Mary Swig",
+  "item.bundledelight.red_rum_swig": "Red Rum Swig",
+  "item.bundledelight.withering_dross_swig": "Withering Dross Swig",
+  "item.bundledelight.kombucha_swig": "Kombucha Swig",
+  "item.bundledelight.radiant_brew_swig": "Radiant Brew Swig"
+}

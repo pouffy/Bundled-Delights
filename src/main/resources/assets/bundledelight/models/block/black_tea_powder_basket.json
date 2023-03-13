@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "bundledelight:block/black_tea_powder_basket_top",
+    "down": "bundledelight:block/basket_bottom",
+    "up": "bundledelight:block/black_tea_powder_basket_top",
+    "north": "bundledelight:block/basket_side_handle",
+    "south": "bundledelight:block/basket_side_handle",
+    "east": "bundledelight:block/basket_side",
+    "west": "bundledelight:block/basket_side"
+  }
+}

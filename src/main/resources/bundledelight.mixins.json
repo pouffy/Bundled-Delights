@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.pouffy.bundledelight.content.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "wanna_bet.refmap.json",
+  "mixins": [
+
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "bundledelight:radiant_brew",
+    "bundledelight:radiant_brew_swig"
+  ]
+}

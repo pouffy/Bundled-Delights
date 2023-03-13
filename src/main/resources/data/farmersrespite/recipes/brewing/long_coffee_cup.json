@@ -1,0 +1,20 @@
+{
+  "type": "farmersrespite:brewing",
+  "ingredients": [
+    {
+      "item": "bundledelight:coffee_cup"
+    },
+    {
+      "tag": "forge:milk"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:long_coffee_cup"
+  },
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": false
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:coffee_beans_from_crate"
+    ]
+  },
+  "criteria": {
+    "has_coffee_basket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:coffee_bean_crate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:coffee_beans_from_crate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coffee_basket",
+      "has_the_recipe"
+    ]
+  ]
+}

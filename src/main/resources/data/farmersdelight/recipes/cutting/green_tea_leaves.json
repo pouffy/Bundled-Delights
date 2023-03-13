@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "farmersrespite:green_tea_leaves"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  },
+  "result": [
+    {
+      "item": "bundledelight:powdered_green_tea_leaves",
+      "count": 2
+    },
+    {
+      "item": "bundledelight:powdered_green_tea_leaves",
+      "chance": 0.5
+    }
+  ]
+}

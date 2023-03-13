@@ -1,0 +1,29 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "bundledelight:powdered_black_tea_leaves"
+    },
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:kombucha_swig"
+  },
+  "container": {
+    "item": "bundledelight:copper_tankard"
+  },
+  "liquid": {
+    "item": "bundledelight:green_tea_cup"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 3
+}

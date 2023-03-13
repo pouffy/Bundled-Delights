@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "bundledelight:block/green_tea_leaf_crate_top",
+    "down": "bundledelight:block/basket_bottom",
+    "up": "bundledelight:block/green_tea_leaf_crate_top",
+    "north": "bundledelight:block/green_tea_leaf_crate_side",
+    "south": "bundledelight:block/green_tea_leaf_crate_side",
+    "east": "bundledelight:block/green_tea_leaf_crate_side",
+    "west": "bundledelight:block/green_tea_leaf_crate_side"
+  }
+}

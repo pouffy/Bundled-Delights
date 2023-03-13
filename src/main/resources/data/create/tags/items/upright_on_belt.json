@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "#farmersrespite:drinks/green_tea",
+    "#farmersrespite:drinks/yellow_tea",
+    "#farmersrespite:drinks/black_tea",
+    "#farmersrespite:drinks/purulent_tea",
+    "#farmersrespite:drinks/rose_hip_tea",
+    "#farmersrespite:drinks/dandelion_tea",
+    "#farmersrespite:drinks/coffee",
+    "#brewinandchewin:drinks/beer",
+    "#brewinandchewin:drinks/vodka",
+    "#brewinandchewin:drinks/mead",
+    "#brewinandchewin:drinks/rice_wine",
+    "#brewinandchewin:drinks/egg_grog",
+    "#brewinandchewin:drinks/strongroot_ale",
+    "#brewinandchewin:drinks/saccharine_rum",
+    "#brewinandchewin:drinks/pale_jane",
+    "#brewinandchewin:drinks/dread_nog",
+    "#brewinandchewin:drinks/salty_folly",
+    "#brewinandchewin:drinks/steel_toe_stout",
+    "#brewinandchewin:drinks/glittering_grenadine",
+    "#brewinandchewin:drinks/bloody_mary",
+    "#brewinandchewin:drinks/red_rum",
+    "#brewinandchewin:drinks/withering_dross",
+    "#brewinandchewin:drinks/kombucha",
+    "#brewinandchewin:drinks/radiant_brew"
+  ]
+}

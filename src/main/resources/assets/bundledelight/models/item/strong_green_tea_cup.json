@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bundledelight:item/strong_green_tea_cup"
+  }
+}
