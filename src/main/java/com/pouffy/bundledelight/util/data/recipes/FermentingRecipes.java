@@ -1,11 +1,9 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.brewinandchewin.core.registry.BCItems;
 import com.brewinandchewin.data.builder.BCKegRecipeBuilder;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
-import com.pouffy.bundledelight.init.BDItems;
 import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;

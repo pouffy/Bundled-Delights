@@ -1,15 +1,12 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.pouffy.bundledelight.compats.miners_delight.MinersItems;
 import com.pouffy.bundledelight.init.BDItems;
-import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
-import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 
 import java.util.function.Consumer;

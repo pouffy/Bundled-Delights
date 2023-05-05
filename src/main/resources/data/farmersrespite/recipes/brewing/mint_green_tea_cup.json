@@ -1,0 +1,17 @@
+{
+  "type": "farmersrespite:brewing",
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_green_tea_leaves"
+    },
+    {
+      "item": "bundledelight:powdered_mint_leaves"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:mint_green_tea_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": true
+}

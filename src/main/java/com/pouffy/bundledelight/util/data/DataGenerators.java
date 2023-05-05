@@ -5,7 +5,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
-import vectorwing.farmersdelight.data.*;
 
 @Mod.EventBusSubscriber(
         modid = "bundledelight",
@@ -25,7 +24,7 @@ public class DataGenerators {
             generator.addProvider(new ItemTags(generator, blockTags, "bundledelight", helper));
             //generator.addProvider(new EntityTags(generator, "bundledelight", helper));
             generator.addProvider(new Recipes(generator));
-            //generator.addProvider(new Advancements(generator));
+            generator.addProvider(new Advancements(generator));
         }
 
         if (event.includeClient()) {

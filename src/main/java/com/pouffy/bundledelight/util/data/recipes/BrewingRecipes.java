@@ -4,9 +4,11 @@ import com.farmersrespite.core.registry.FRItems;
 import com.farmersrespite.data.builder.KettleRecipeBuilder;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
+import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compats.respiteful.RespitefulMDCompat;
+import com.pouffy.bundledelight.compats.respiteful.RespitefulMDItems;
 import com.pouffy.bundledelight.content.tag.ModTags;
-import com.pouffy.bundledelight.init.BDItems;
-import com.sammy.minersdelight.setup.MDItems;
+import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -49,6 +51,6 @@ public class BrewingRecipes {
 
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDItems.PURULENT_TEA_CUP.get()).addIngredient((ItemLike)Items.SPIDER_EYE).addIngredient((ItemLike)Items.NETHER_WART).build(consumer);
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDItems.STRONG_PURULENT_TEA_CUP.get(), 1, 2400, 0.35F, false, CUP.get()).addIngredient((ItemLike) RespiteMDItems.PURULENT_TEA_CUP.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
-
+        KettleRecipeBuilder.kettleRecipe((ItemLike) RespitefulMDItems.MINT_GREEN_TEA_CUP.get()).addIngredient((ItemLike) RespiteItems.POWDERED_GREEN_TEA_LEAVES.get()).addIngredient((ItemLike) NeapolitanCompatItems.POWDERED_MINT_LEAVES.get()).build(consumer);
     }
 }

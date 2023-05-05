@@ -39,6 +39,9 @@ public class ModTags {
     public static final TagKey<Item> YELLOW_TEA_POWDER = modItemTag("powders/yellow_tea");
     public static final TagKey<Item> BLACK_TEA_POWDER = modItemTag("powders/black_tea");
     public static final TagKey<Item> COFFEE_POWDER = modItemTag("powders/coffee");
+    public static final TagKey<Item> ADZUKI_POWDER = modItemTag("powders/adzuki");
+    public static final TagKey<Item> VANILLA_POWDER = modItemTag("powders/vanilla");
+    public static final TagKey<Item> MINT_POWDER = modItemTag("powders/mint");
     public static final TagKey<Item> TEA_POWDER = modItemTag("tea_powders");
     public static final TagKey<Item> BEESECHURGER = modItemTag("cheeseburger");
 

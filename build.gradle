@@ -183,6 +183,11 @@ dependencies {
     implementation fg.deobf("curse.maven:${project.minersDelight}")
     implementation fg.deobf("curse.maven:${project.brewNChew}")
     implementation fg.deobf("curse.maven:${project.bundleOfJoy}")
+    implementation fg.deobf("curse.maven:${project.neapolitan}")
+    implementation fg.deobf("curse.maven:${project.blueprint}")
+    implementation fg.deobf("curse.maven:${project.respiteful}")
+    implementation fg.deobf("curse.maven:${project.abnormalsDelight}")
+
 
     // Examples using mod jars from ./libs
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")

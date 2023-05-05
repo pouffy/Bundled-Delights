@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:food/cheeseburger"
+    ]
+  },
+  "criteria": {
+    "has_cheeseburger_ingredients": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersdelight:beef_patty"
+            ]
+          },
+          {
+            "items": [
+              "brewinandchewin:flaxen_cheese_wedge"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:food/cheeseburger"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cheeseburger_ingredients",
+      "has_the_recipe"
+    ]
+  ]
+}

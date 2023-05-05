@@ -1,8 +1,5 @@
 package com.pouffy.bundledelight.compats.brewinandchewin;
 
-import com.brewinandchewin.common.item.BoozeItem;
-import com.brewinandchewin.core.registry.BCItems;
-import com.pouffy.bundledelight.BundledDelights;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;

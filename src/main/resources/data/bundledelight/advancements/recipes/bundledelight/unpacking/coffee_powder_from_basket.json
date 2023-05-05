@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:unpacking/coffee_powder_from_basket"
+    ]
+  },
+  "criteria": {
+    "has_coffee_powder_basket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:coffee_powder_basket"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:unpacking/coffee_powder_from_basket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coffee_powder_basket",
+      "has_the_recipe"
+    ]
+  ]
+}

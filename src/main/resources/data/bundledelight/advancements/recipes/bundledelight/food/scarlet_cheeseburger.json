@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:food/scarlet_cheeseburger"
+    ]
+  },
+  "criteria": {
+    "has_scarlet_cheeseburger_ingredients": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersdelight:beef_patty"
+            ]
+          },
+          {
+            "items": [
+              "brewinandchewin:scarlet_cheese_wedge"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:food/scarlet_cheeseburger"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_scarlet_cheeseburger_ingredients",
+      "has_the_recipe"
+    ]
+  ]
+}

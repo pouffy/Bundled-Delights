@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.content.food;
 
-import com.brewinandchewin.core.registry.BCEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -10,7 +9,7 @@ import vectorwing.farmersdelight.common.registry.ModEffects;
 public class FoodValues {
 
     public static final FoodProperties RADIANT_BREW = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).effect(() -> {
-        return new MobEffectInstance((MobEffect) MobEffects.LEVITATION, 1600, 0);
+        return new MobEffectInstance((MobEffect) MobEffects.LEVITATION, 200, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect) MobEffects.GLOWING, 6000, 0);
     }, 1.0F).effect(() -> {

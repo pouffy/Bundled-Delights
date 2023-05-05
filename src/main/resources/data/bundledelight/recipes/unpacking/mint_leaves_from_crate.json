@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bundledelight:mint_leaf_crate"
+    }
+  ],
+  "result": {
+    "item": "neapolitan:mint_leaves",
+    "count": 9
+  }
+}

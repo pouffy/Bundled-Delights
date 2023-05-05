@@ -14,6 +14,15 @@
   "item.bundledelight.borscht": "Borscht",
   "item.bundledelight.borscht_cup": "Cave Borscht Cup",
 
+  "bundledelight.advancement.root": "Bundled Delight",
+  "bundledelight.advancement.root.desc": "Connecting the world through food and drink.",
+  "bundledelight.advancement.copper_mug": "Copper Mug",
+  "bundledelight.advancement.copper_mug.desc": "Craft a copper mug for your underground tea parties.",
+  "bundledelight.advancement.copper_stein": "Copper Tankard",
+  "bundledelight.advancement.copper_stein.desc": "Craft a copper tankard for your cavern tavern.",
+  "bundledelight.advancement.copper_tea": "Would You Like A Copper Tea?",
+  "bundledelight.advancement.copper_tea.desc": "Brew a cup of tea in a copper mug.",
+
   "_": "Farmer's Respite Stuff",
   "item.bundledelight.cup": "Copper Mug",
 
@@ -59,6 +68,10 @@
 
   "brewinandchewin.tooltip.dread_nog_swig": "Bad Omen (10:00)",
 
+  "item.bundledelight.adzuki_milk_tea_cup": "Adzuki Milk Tea Mug",
+  "item.bundledelight.mint_green_tea_cup": "Mint Green Tea Mug",
+  "item.bundledelight.mocha_coffee_cup": "Mocha Coffee Mug",
+    "item.bundledelight.vanilla_milk_tea_cup": "Vanilla Milk Tea Mug",
   "__": "Brewin' & Chewin' Stuff",
   "item.bundledelight.beer_swig": "Beer Swig",
   "item.bundledelight.vodka_swig": "Vodka Swig",
@@ -76,5 +89,16 @@
   "item.bundledelight.red_rum_swig": "Red Rum Swig",
   "item.bundledelight.withering_dross_swig": "Withering Dross Swig",
   "item.bundledelight.kombucha_swig": "Kombucha Swig",
-  "item.bundledelight.radiant_brew_swig": "Radiant Brew Swig"
+  "item.bundledelight.radiant_brew_swig": "Radiant Brew Swig",
+
+  "_|_": "Neapolitan Stuff",
+  "item.bundledelight.powdered_vanilla_pods": "Vanilla Powder",
+  "item.bundledelight.powdered_mint_leaves": "Powdered Mint Leaves",
+  "item.bundledelight.powdered_adzuki_beans": "Powdered Adzuki Beans",
+  "block.bundledelight.adzuki_bean_crate": "Adzuki Bean Crate",
+  "block.bundledelight.mint_leaf_crate": "Mint Leaf Crate",
+  "block.bundledelight.dried_vanilla_pod_crate": "Dried Vanilla Pod Crate",
+  "block.bundledelight.adzuki_powder_basket": "Powdered Adzuki Bean Basket",
+  "block.bundledelight.mint_powder_basket": "Powdered Mint Leaf Basket",
+  "block.bundledelight.vanilla_powder_basket": "Vanilla Powder Basket"
 }

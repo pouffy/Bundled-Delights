@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:packing/green_tea_powder_basket"
+    ]
+  },
+  "criteria": {
+    "has_green_tea_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:powdered_green_tea_leaves"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:packing/green_tea_powder_basket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_green_tea_powder",
+      "has_the_recipe"
+    ]
+  ]
+}

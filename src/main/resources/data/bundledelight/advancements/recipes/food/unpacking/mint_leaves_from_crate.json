@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:unpacking/mint_leaves_from_crate"
+    ]
+  },
+  "criteria": {
+    "has_mint_crate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:mint_leaf_crate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:unpacking/mint_leaves_from_crate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mint_crate",
+      "has_the_recipe"
+    ]
+  ]
+}

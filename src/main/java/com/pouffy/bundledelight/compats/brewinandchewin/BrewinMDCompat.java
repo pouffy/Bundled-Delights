@@ -1,7 +1,6 @@
 package com.pouffy.bundledelight.compats.brewinandchewin;
 
 import com.pouffy.bundledelight.compats.CompatibleDoubleMod;
-import com.pouffy.bundledelight.compats.CompatibleMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

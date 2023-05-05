@@ -1,0 +1,20 @@
+{
+  "type": "farmersrespite:brewing",
+  "ingredients": [
+    {
+      "item": "neapolitan:chocolate_bar"
+    },
+    {
+      "item": "bundledelight:powdered_coffee_beans"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:mocha_coffee_cup"
+  },
+  "container": {
+    "item": "miners_delight:milk_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": false
+}

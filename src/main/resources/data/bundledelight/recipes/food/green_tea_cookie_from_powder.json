@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wgw"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:wheat"
+    },
+    "g": {
+      "item": "bundledelight:powdered_green_tea_leaves"
+    }
+  },
+  "result": {
+    "item": "farmersrespite:green_tea_cookie",
+    "count": 4
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "parent": "bundledelight:main/copper_mug",
+  "display": {
+    "icon": {
+      "item": "bundledelight:green_tea_cup"
+    },
+    "title": {
+      "translate": "bundledelight.advancement.copper_tea"
+    },
+    "description": {
+      "translate": "bundledelight.advancement.copper_tea.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "green_tea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:green_tea_cup"
+            ]
+          }
+        ]
+      }
+    },
+    "yellow_tea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:yellow_tea_cup"
+            ]
+          }
+        ]
+      }
+    },
+    "black_tea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:black_tea_cup"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "green_tea",
+      "yellow_tea",
+      "black_tea"
+    ]
+  ]
+}

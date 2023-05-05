@@ -1,0 +1,20 @@
+{
+  "type": "farmersrespite:brewing",
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_vanilla_pods"
+    },
+    {
+      "item": "bundledelight:powdered_yellow_tea_leaves"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:vanilla_milk_tea_cup"
+  },
+  "container": {
+    "item": "miners_delight:milk_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": false
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:unpacking/yellow_tea_powder_from_basket"
+    ]
+  },
+  "criteria": {
+    "has_yellow_tea_powder_basket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:yellow_tea_powder_basket"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:unpacking/yellow_tea_powder_from_basket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_yellow_tea_powder_basket",
+      "has_the_recipe"
+    ]
+  ]
+}

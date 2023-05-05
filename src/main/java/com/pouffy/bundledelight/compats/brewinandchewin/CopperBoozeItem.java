@@ -2,8 +2,6 @@ package com.pouffy.bundledelight.compats.brewinandchewin;
 
 import com.brewinandchewin.core.registry.BCEffects;
 import com.brewinandchewin.core.utility.BCTextUtils;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinItems;
-import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

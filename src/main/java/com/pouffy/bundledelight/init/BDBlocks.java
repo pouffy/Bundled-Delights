@@ -22,6 +22,12 @@ public class BDBlocks {
     public static final RegistryObject<Block> YELLOW_TEA_CRATE;
     public static final RegistryObject<Block> BLACK_TEA_CRATE;
     public static final RegistryObject<Block> COFFEE_CRATE;
+    public static final RegistryObject<Block> ADZUKI_CRATE;
+    public static final RegistryObject<Block> VANILLA_CRATE;
+    public static final RegistryObject<Block> MINT_CRATE;
+    public static final RegistryObject<Block> ADZUKI_POWDER_BASKET;
+    public static final RegistryObject<Block> VANILLA_POWDER_BASKET;
+    public static final RegistryObject<Block> MINT_POWDER_BASKET;
 
     public BDBlocks() {
     }
@@ -46,7 +52,6 @@ public class BDBlocks {
         COFFEE_POWDER_BASKET = BLOCKS.register("coffee_powder_basket", () -> {
             return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
         });
-
         GREEN_TEA_CRATE = BLOCKS.register("green_tea_leaf_crate", () -> {
             return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
         });
@@ -57,6 +62,25 @@ public class BDBlocks {
             return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
         });
         COFFEE_CRATE = BLOCKS.register("coffee_bean_crate", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+
+        ADZUKI_CRATE = BLOCKS.register("adzuki_bean_crate", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        VANILLA_CRATE = BLOCKS.register("dried_vanilla_pod_crate", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        MINT_CRATE = BLOCKS.register("mint_leaf_crate", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        ADZUKI_POWDER_BASKET = BLOCKS.register("adzuki_powder_basket", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        VANILLA_POWDER_BASKET = BLOCKS.register("vanilla_powder_basket", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        MINT_POWDER_BASKET = BLOCKS.register("mint_powder_basket", () -> {
             return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
         });
     }

@@ -10,7 +10,7 @@ public abstract class CompatibleDoubleMod {
     public abstract String getOtherModID();
 
     public void tryLoad() {
-        if (ModList.get().isLoaded(this.getModID()) ||(ModList.get().isLoaded(this.getOtherModID()))) {
+        if (ModList.get().isLoaded(this.getModID()) && (ModList.get().isLoaded(this.getOtherModID()))) {
             this.isLoaded = true;
 
             this.onLoad();

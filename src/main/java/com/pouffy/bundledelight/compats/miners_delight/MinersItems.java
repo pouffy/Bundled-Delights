@@ -1,15 +1,8 @@
 package com.pouffy.bundledelight.compats.miners_delight;
 
-import com.pouffy.bundledelight.content.food.FoodValues;
-import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
-
-import static com.pouffy.bundledelight.compats.miners_delight.MinersCompat.cupFoodItem;
 
 public class MinersItems {
 

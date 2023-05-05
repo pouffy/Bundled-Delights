@@ -6,8 +6,8 @@ import com.pouffy.bundledelight.compats.brewinandchewin.BrewinItems;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
+import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
 import com.pouffy.bundledelight.content.tag.ModTags;
-import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -71,6 +71,9 @@ public class ItemTags extends ItemTagsProvider {
         this.tag(ModTags.YELLOW_TEA_POWDER).add(RespiteItems.POWDERED_YELLOW_TEA_LEAVES.get());
         this.tag(ModTags.BLACK_TEA_POWDER).add(RespiteItems.POWDERED_BLACK_TEA_LEAVES.get());
         this.tag(ModTags.COFFEE_POWDER).add(RespiteItems.POWDERED_COFFEE_BEANS.get());
+        this.tag(ModTags.ADZUKI_POWDER).add(NeapolitanCompatItems.POWDERED_ADZUKI_BEANS.get());
+        this.tag(ModTags.VANILLA_POWDER).add(NeapolitanCompatItems.POWDERED_VANILLA_PODS.get());
+        this.tag(ModTags.MINT_POWDER).add(NeapolitanCompatItems.POWDERED_MINT_LEAVES.get());
         this.tag(ModTags.TEA_POWDER).add(RespiteItems.POWDERED_YELLOW_TEA_LEAVES.get(), RespiteItems.POWDERED_GREEN_TEA_LEAVES.get(), RespiteItems.POWDERED_BLACK_TEA_LEAVES.get());
 
     }

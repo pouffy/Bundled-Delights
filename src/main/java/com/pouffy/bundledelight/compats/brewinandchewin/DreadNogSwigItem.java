@@ -1,7 +1,6 @@
 package com.pouffy.bundledelight.compats.brewinandchewin;
 
 import com.brewinandchewin.core.registry.BCEffects;
-import com.pouffy.bundledelight.compats.brewinandchewin.CopperBoozeItem;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

@@ -1,0 +1,37 @@
+{
+  "parent": "bundledelight:main/root",
+  "display": {
+    "icon": {
+      "item": "bundledelight:cup"
+    },
+    "title": {
+      "translate": "bundledelight.advancement.copper_mug"
+    },
+    "description": {
+      "translate": "bundledelight.advancement.copper_mug.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "copper_mug": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:cup"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "copper_mug"
+    ]
+  ]
+}

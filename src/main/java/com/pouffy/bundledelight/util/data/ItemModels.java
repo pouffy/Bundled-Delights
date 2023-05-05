@@ -2,6 +2,9 @@ package com.pouffy.bundledelight.util.data;
 
 import com.google.common.collect.Sets;
 import com.pouffy.bundledelight.BundledDelights;
+import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDItems;
+import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
+import com.pouffy.bundledelight.compats.respiteful.RespitefulMDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -11,7 +14,6 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -20,8 +22,7 @@ import java.util.stream.Collectors;
 public class ItemModels extends ItemModelProvider {
     public static final String GENERATED = "item/generated";
     public static final String HANDHELD = "item/handheld";
-    public static final ResourceLocation MUG = new ResourceLocation("bundledelight", "item/mug");
-
+    public static final ResourceLocation MUG = new ResourceLocation(BundledDelights.MODID, "item/mug");
     public ItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, "bundledelight", existingFileHelper);
     }
@@ -42,6 +43,50 @@ public class ItemModels extends ItemModelProvider {
         items.forEach((item) -> {
             this.itemGeneratedModel(item, this.resourceItem(this.itemName(item)));
         });
+        Set<Item> mugItems = Sets.newHashSet(
+                RespiteMDItems.CUP.get(),
+                RespiteMDItems.GREEN_TEA_CUP.get(),
+                RespiteMDItems.LONG_GREEN_TEA_CUP.get(),
+                RespiteMDItems.STRONG_GREEN_TEA_CUP.get(),
+                RespiteMDItems.YELLOW_TEA_CUP.get(),
+                RespiteMDItems.LONG_YELLOW_TEA_CUP.get(),
+                RespiteMDItems.STRONG_YELLOW_TEA_CUP.get(),
+                RespiteMDItems.BLACK_TEA_CUP.get(),
+                RespiteMDItems.LONG_BLACK_TEA_CUP.get(),
+                RespiteMDItems.STRONG_BLACK_TEA_CUP.get(),
+                RespiteMDItems.ROSE_HIP_TEA_CUP.get(),
+                RespiteMDItems.STRONG_ROSE_HIP_TEA_CUP.get(),
+                RespiteMDItems.DANDELION_TEA_CUP.get(),
+                RespiteMDItems.LONG_DANDELION_TEA_CUP.get(),
+                RespiteMDItems.PURULENT_TEA_CUP.get(),
+                RespiteMDItems.STRONG_PURULENT_TEA_CUP.get(),
+                RespiteMDItems.COFFEE_CUP.get(),
+                RespiteMDItems.LONG_COFFEE_CUP.get(),
+                RespiteMDItems.STRONG_COFFEE_CUP.get(),
+                RespitefulMDItems.MINT_GREEN_TEA_CUP.get(),
+                RespitefulMDItems.ADZUKI_MILK_TEA_CUP.get(),
+                RespitefulMDItems.MOCHA_COFFEE_CUP.get(),
+                RespitefulMDItems.VANILLA_MILK_TEA_CUP.get(),
+                BrewinMDItems.COPPER_TANKARD.get(),
+                BrewinMDItems.BEER_SWIG.get(),
+                BrewinMDItems.BLOODY_MARY_SWIG.get(),
+                BrewinMDItems.DREAD_NOG_SWIG.get(),
+                BrewinMDItems.EGG_GROG_SWIG.get(),
+                BrewinMDItems.GLITTERING_GRENADINE_SWIG.get(),
+                BrewinMDItems.KOMBUCHA_SWIG.get(),
+                BrewinMDItems.PALE_JANE_SWIG.get(),
+                BrewinMDItems.RADIANT_BREW_SWIG.get(),
+                BrewinMDItems.RED_RUM_SWIG.get(),
+                BrewinMDItems.RICE_WINE_SWIG.get(),
+                BrewinMDItems.SACCHARINE_RUM_SWIG.get(),
+                BrewinMDItems.MEAD_SWIG.get(),
+                BrewinMDItems.WITHERING_DROSS_SWIG.get(),
+                BrewinMDItems.VODKA_SWIG.get(),
+                BrewinMDItems.SALTY_FOLLY_SWIG.get(),
+                BrewinMDItems.STEEL_TOE_STOUT_SWIG.get(),
+                BrewinMDItems.STRONGROOT_ALE_SWIG.get()
+                );
+        takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
     }
 
     public void blockBasedModel(Item item, String suffix) {
