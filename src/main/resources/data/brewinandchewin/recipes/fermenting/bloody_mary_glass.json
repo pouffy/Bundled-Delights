@@ -1,0 +1,29 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "ingredients": [
+    {
+      "item": "farmersdelight:tomato"
+    },
+    {
+      "item": "farmersdelight:tomato"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:bloody_mary_glass"
+  },
+  "container": {
+    "item": "bundledelight:glass_tankard"
+  },
+  "liquid": {
+    "item": "bundledelight:vodka_glass"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 4
+}

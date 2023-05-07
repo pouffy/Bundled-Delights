@@ -22,5 +22,14 @@ public class FoodValues {
     public static final FoodProperties NETTLE_SOUP = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.9F).effect(() -> {
         return new MobEffectInstance((MobEffect) ModEffects.COMFORT.get(), 3600, 0);
     }, 1.0F).build();
-
+    public static final FoodProperties NETTLE_SOUP_CUP = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.9F).effect(() -> {
+        return new MobEffectInstance((MobEffect) ModEffects.COMFORT.get(), 3600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect) MobEffects.DIG_SPEED, 1800, 0);
+    }, 1.0F).build();
+    public static final FoodProperties BORSCHT_CUP = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect) ModEffects.COMFORT.get(), 3600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect) MobEffects.DIG_SPEED, 1800, 0);
+    }, 1.0F).build();
 }

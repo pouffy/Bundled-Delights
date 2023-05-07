@@ -33,6 +33,7 @@ public class ModTags {
     public static final TagKey<Item> WITHERING_DROSS = brewinDrinkTag("withering_dross");
     public static final TagKey<Item> KOMBUCHA = brewinDrinkTag("kombucha");
     public static final TagKey<Item> RADIANT_BREW = brewinDrinkTag("radiant_brew");
+    public static final TagKey<Item> ROOT_BEER = brewinDrinkTag("root_beer");
 
 
     public static final TagKey<Item> GREEN_TEA_POWDER = modItemTag("powders/green_tea");
@@ -48,6 +49,7 @@ public class ModTags {
 
     public static final TagKey<Item> SEEDS = forgeItemTag("seeds");
     public static final TagKey<Item> SEEDS_TEA = forgeItemTag("seeds/tea");
+    public static final TagKey<Item> SEEDS_COFFEE = forgeItemTag("seeds/coffee");
 
     public static final TagKey<Item> BELT_UPRIGHT = createItemTag("upright_on_belt");
 

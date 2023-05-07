@@ -1,0 +1,63 @@
+{
+  "parent": "bundledelight:main/root",
+  "display": {
+    "icon": {
+      "item": "bundledelight:root_beer"
+    },
+    "title": {
+      "translate": "bundledelight.advancement.root_beer"
+    },
+    "description": {
+      "translate": "bundledelight.advancement.root_beer.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "root_beer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:root_beer"
+            ]
+          }
+        ]
+      }
+    },
+    "root_beer_swig": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:root_beer_swig"
+            ]
+          }
+        ]
+      }
+    },
+    "root_beer_glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:root_beer_glass"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "root_beer",
+      "root_beer_swig",
+      "root_beer_glass"
+    ]
+  ]
+}

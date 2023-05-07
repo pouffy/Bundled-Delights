@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "brewinandchewin:saccharine_rum",
-    "bundledelight:saccharine_rum_swig"
+    "bundledelight:saccharine_rum_swig",
+    "bundledelight:saccharine_rum_glass"
   ]
 }

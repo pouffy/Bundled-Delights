@@ -1,0 +1,29 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "bundledelight:powdered_black_tea_leaves"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:kombucha_glass"
+  },
+  "container": {
+    "item": "bundledelight:glass_tankard"
+  },
+  "liquid": {
+    "item": "farmersrespite:green_tea"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 3
+}

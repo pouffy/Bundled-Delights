@@ -1,6 +1,10 @@
 package com.pouffy.bundledelight.compats.neapolitan;
 
 import com.pouffy.bundledelight.init.BDBlocks;
+import com.teamabnormals.neapolitan.common.item.HealingSoupItem;
+import com.teamabnormals.neapolitan.common.item.MilkshakeItem;
+import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -8,8 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.pouffy.bundledelight.init.BDItems.basicItem;
-
+import static com.pouffy.bundledelight.util.ItemRegistryUtils.*;
 public class NeapolitanCompatItems {
     public static final DeferredRegister<Item> ITEMS;
     public static final RegistryObject<Item> POWDERED_VANILLA_PODS;
@@ -21,6 +24,9 @@ public class NeapolitanCompatItems {
     public static final RegistryObject<Item> ADZUKI_POWDER_CRATE;
     public static final RegistryObject<Item> MINT_POWDER_CRATE;
     public static final RegistryObject<Item> VANILLA_POWDER_CRATE;
+    public static final RegistryObject<Item> STRAWBERRY_CAKE;
+    public static final RegistryObject<Item> WHITE_STRAWBERRY_ICE_CREAM;
+    public static final RegistryObject<Item> WHITE_STRAWBERRY_MILKSHAKE;
     public NeapolitanCompatItems(){
     }
     static {
@@ -51,6 +57,15 @@ public class NeapolitanCompatItems {
         });
         VANILLA_POWDER_CRATE = ITEMS.register("vanilla_powder_basket", () -> {
             return new BlockItem((Block) BDBlocks.VANILLA_POWDER_BASKET.get(), basicItem());
+        });
+        STRAWBERRY_CAKE = ITEMS.register("white_strawberry_cake", () -> {
+            return new BlockItem((Block) NeapolitanCompatBlocks.STRAWBERRY_CAKE.get(), singleItem());
+        });
+        WHITE_STRAWBERRY_ICE_CREAM = ITEMS.register("white_strawberry_ice_cream", () -> {
+            return new HealingSoupItem(3.0F, bowlFoodItem(NeapolitanItems.NeapolitanFoods.STRAWBERRY_ICE_CREAM));
+        });
+        WHITE_STRAWBERRY_MILKSHAKE = ITEMS.register("white_strawberry_milkshake", () -> {
+            return new MilkshakeItem(MobEffectCategory.HARMFUL, bowlFoodItem(NeapolitanItems.NeapolitanFoods.MILKSHAKE));
         });
     }
 }

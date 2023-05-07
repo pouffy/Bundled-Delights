@@ -1,0 +1,10 @@
+{
+  "parent": "block/cake_slice3",
+  "textures": {
+    "particle": "bundledelight:block/white_strawberry_cake_side",
+    "bottom": "bundledelight:block/white_strawberry_cake_bottom",
+    "top": "bundledelight:block/white_strawberry_cake_top",
+    "side": "bundledelight:block/white_strawberry_cake_side",
+    "inside": "bundledelight:block/white_strawberry_cake_inner"
+  }
+}

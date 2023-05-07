@@ -1,5 +1,6 @@
 package com.pouffy.bundledelight.compats;
 
+import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsCompat;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompat;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompat;
 import com.pouffy.bundledelight.compats.miners_delight.MinersCompat;
@@ -16,6 +17,7 @@ public class CompatibleManager {
     public static final RespiteCompat FR;
     public static final MinersCompat MD;
     public static final NeapolitanCompat NP;
+    public static final AbnormalsCompat AB;
 
 
     static {
@@ -24,6 +26,7 @@ public class CompatibleManager {
         mods.add(FR = new RespiteCompat());
         mods.add(MD = new MinersCompat());
         mods.add(NP = new NeapolitanCompat());
+        mods.add(AB = new AbnormalsCompat());
 
         for (CompatibleMod mod : mods) {
             mod.tryLoad();

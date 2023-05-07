@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    },
+    {
+      "item": "bundledelight:white_strawberry_cake_slice"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:white_strawberry_cake"
+  }
+}

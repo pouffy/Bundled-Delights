@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "farmersrespite:tea_seeds"
+    "farmersrespite:tea_seeds",
+    "farmersrespite:coffee_beans"
   ]
 }

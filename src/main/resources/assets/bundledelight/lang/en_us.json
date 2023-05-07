@@ -7,7 +7,9 @@
   "item.bundledelight.scarlet_cheeseburger": "Scarlet Cheeseburger",
 
   "item.bundledelight.copper_tankard": "Copper Tankard",
+  "item.bundledelight.glass_tankard": "Glass Tankard",
   "item.bundledelight.radiant_brew": "Radiant Brew",
+  "item.bundledelight.root_beer": "Root Beer",
 
   "item.bundledelight.nettle_soup": "Nettle Soup",
   "item.bundledelight.nettle_soup_cup": "Nettle Soup Cup",
@@ -22,6 +24,8 @@
   "bundledelight.advancement.copper_stein.desc": "Craft a copper tankard for your cavern tavern.",
   "bundledelight.advancement.copper_tea": "Would You Like A Copper Tea?",
   "bundledelight.advancement.copper_tea.desc": "Brew a cup of tea in a copper mug.",
+  "bundledelight.advancement.root_beer": "ROOT BEER!",
+  "bundledelight.advancement.root_beer.desc": "Brew some root beer.",
 
   "_": "Farmer's Respite Stuff",
   "item.bundledelight.cup": "Copper Mug",
@@ -67,11 +71,16 @@
   "block.bundledelight.coffee_bean_crate": "Coffee Bean Crate",
 
   "brewinandchewin.tooltip.dread_nog_swig": "Bad Omen (10:00)",
+  "brewinandchewin.tooltip.dread_nog_glass": "Bad Omen (10:00)",
+  "farmersdelight.tooltip.adzuki_curry_cup": "Not yet implemented.",
 
   "item.bundledelight.adzuki_milk_tea_cup": "Adzuki Milk Tea Mug",
   "item.bundledelight.mint_green_tea_cup": "Mint Green Tea Mug",
   "item.bundledelight.mocha_coffee_cup": "Mocha Coffee Mug",
-    "item.bundledelight.vanilla_milk_tea_cup": "Vanilla Milk Tea Mug",
+  "item.bundledelight.vanilla_milk_tea_cup": "Vanilla Milk Tea Mug",
+
+  "item.bundledelight.adzuki_curry_cup": "Adzuki Curry Cup",
+
   "__": "Brewin' & Chewin' Stuff",
   "item.bundledelight.beer_swig": "Beer Swig",
   "item.bundledelight.vodka_swig": "Vodka Swig",
@@ -90,6 +99,26 @@
   "item.bundledelight.withering_dross_swig": "Withering Dross Swig",
   "item.bundledelight.kombucha_swig": "Kombucha Swig",
   "item.bundledelight.radiant_brew_swig": "Radiant Brew Swig",
+  "item.bundledelight.root_beer_swig": "Root Beer Swig",
+
+  "item.bundledelight.beer_glass": "Glass of Beer",
+  "item.bundledelight.vodka_glass": "Glass of Vodka",
+  "item.bundledelight.mead_glass": "Glass of Mead",
+  "item.bundledelight.rice_wine_glass": "Glass of Rice Wine",
+  "item.bundledelight.egg_grog_glass": "Glass of Egg Grog",
+  "item.bundledelight.strongroot_ale_glass": "Glass of Strongroot Ale",
+  "item.bundledelight.saccharine_rum_glass": "Glass of Saccharine Rum",
+  "item.bundledelight.pale_jane_glass": "Glass of Pale Jane",
+  "item.bundledelight.dread_nog_glass": "Glass of Dread Nog",
+  "item.bundledelight.salty_folly_glass": "Glass of Salty Folly",
+  "item.bundledelight.steel_toe_stout_glass": "Glass of Steel Toe Stout",
+  "item.bundledelight.glittering_grenadine_glass": "Glass of Glittering Grenadine",
+  "item.bundledelight.bloody_mary_glass": "Glass of Bloody Mary",
+  "item.bundledelight.red_rum_glass": "Glass of Red Rum",
+  "item.bundledelight.withering_dross_glass": "Glass of Withering Dross",
+  "item.bundledelight.kombucha_glass": "Glass of Kombucha",
+  "item.bundledelight.radiant_brew_glass": "Glass of Radiant Brew",
+  "item.bundledelight.root_beer_glass": "Glass of Root Beer",
 
   "_|_": "Neapolitan Stuff",
   "item.bundledelight.powdered_vanilla_pods": "Vanilla Powder",
@@ -100,5 +129,9 @@
   "block.bundledelight.dried_vanilla_pod_crate": "Dried Vanilla Pod Crate",
   "block.bundledelight.adzuki_powder_basket": "Powdered Adzuki Bean Basket",
   "block.bundledelight.mint_powder_basket": "Powdered Mint Leaf Basket",
-  "block.bundledelight.vanilla_powder_basket": "Vanilla Powder Basket"
+  "block.bundledelight.vanilla_powder_basket": "Vanilla Powder Basket",
+  "item.bundledelight.white_strawberry_milkshake": "White Strawberry Milkshake",
+  "item.bundledelight.white_strawberry_ice_cream": "White Strawberry Ice Cream",
+  "block.bundledelight.white_strawberry_cake": "White Strawberry Cake",
+  "item.bundledelight.white_strawberry_cake_slice": "Slice of White Strawberry Cake"
 }

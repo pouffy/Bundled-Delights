@@ -15,7 +15,7 @@ public class Configuration {
 
         COMMON_BUILDER.comment("Modded bonus features").push(CATEGORY_EXTRAS);
         NEAPOLITAN_TOOLTIPS = COMMON_BUILDER.comment("Should foods from Neapolitan have potion effect tooltips? Default TRUE")
-                .define("neapolitanEffectsTooltips", true);
+               .define("neapolitanEffectsTooltips", true);
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();

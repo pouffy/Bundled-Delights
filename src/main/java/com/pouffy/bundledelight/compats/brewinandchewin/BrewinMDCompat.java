@@ -24,6 +24,6 @@ public class BrewinMDCompat extends CompatibleDoubleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-         BrewinMDItems.ITEMS.register(bus);
+         BrewinMDCompatItems.ITEMS.register(bus);
     }
 }

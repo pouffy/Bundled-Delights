@@ -20,6 +20,6 @@ public class RespiteCompat extends CompatibleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-         RespiteItems.ITEMS.register(bus);
+         RespiteCompatItems.ITEMS.register(bus);
     }
 }

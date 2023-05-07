@@ -1,5 +1,6 @@
 package com.pouffy.bundledelight.util.data;
 
+import com.pouffy.bundledelight.init.BDBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -19,7 +20,22 @@ public class BlockTags extends BlockTagsProvider {
     }
 
     protected void registerBlockMineables() {
-
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(
+        BDBlocks.VANILLA_POWDER_BASKET.get(),
+        BDBlocks.MINT_POWDER_BASKET.get(),
+        BDBlocks.ADZUKI_POWDER_BASKET.get(),
+        BDBlocks.MINT_CRATE.get(),
+        BDBlocks.ADZUKI_CRATE.get(),
+        BDBlocks.VANILLA_CRATE.get(),
+        BDBlocks.BLACK_TEA_CRATE.get(),
+        BDBlocks.GREEN_TEA_CRATE.get(),
+        BDBlocks.YELLOW_TEA_CRATE.get(),
+        BDBlocks.BLACK_TEA_POWDER_BASKET.get(),
+        BDBlocks.GREEN_TEA_POWDER_BASKET.get(),
+        BDBlocks.YELLOW_TEA_POWDER_BASKET.get(),
+        BDBlocks.COFFEE_CRATE.get(),
+        BDBlocks.COFFEE_POWDER_BASKET.get()
+        );
     }
     protected void registerMinecraftTags() {
 

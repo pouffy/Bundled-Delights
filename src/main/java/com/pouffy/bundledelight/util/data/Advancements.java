@@ -2,9 +2,9 @@ package com.pouffy.bundledelight.util.data;
 
 import com.google.common.collect.Sets;
 import com.google.gson.GsonBuilder;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
-import com.pouffy.bundledelight.content.tag.ModTags;
+import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import com.pouffy.bundledelight.util.TextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -67,9 +67,10 @@ public class Advancements extends AdvancementProvider {
         }
         public void accept(Consumer<Advancement> consumer) {
             Advancement bundleDelight = Advancement.Builder.advancement().display((ItemLike) BDItems.BORSCHT.get(), TextUtils.getTranslation("advancement.root", new Object[0]), TextUtils.getTranslation("advancement.root.desc", new Object[0]), new ResourceLocation("minecraft:textures/block/spruce_log.png"), FrameType.TASK, false, false, false).addCriterion("seeds", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[0])).save(consumer, this.getNameId("main/root"));
-            Advancement copperStein = getAdvancement(bundleDelight, (ItemLike) BrewinMDItems.COPPER_TANKARD.get(), "copper_stein", FrameType.TASK, true, true, false).addCriterion("copper_stein", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike)BrewinMDItems.COPPER_TANKARD.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_stein"));
-            Advancement copperMug = getAdvancement(bundleDelight, (ItemLike) RespiteMDItems.CUP.get(), "copper_mug", FrameType.TASK, true, true, false).addCriterion("copper_mug", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDItems.CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_mug"));
-            Advancement copperTea = getAdvancement(copperMug, (ItemLike) RespiteMDItems.GREEN_TEA_CUP.get(), "copper_tea", FrameType.TASK, true, true, false).addCriterion("green_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDItems.GREEN_TEA_CUP.get())).addCriterion("yellow_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDItems.YELLOW_TEA_CUP.get())).addCriterion("black_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDItems.BLACK_TEA_CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_tea"));
+            Advancement copperStein = getAdvancement(bundleDelight, (ItemLike) BrewinMDCompatItems.COPPER_TANKARD.get(), "copper_stein", FrameType.TASK, true, true, false).addCriterion("copper_stein", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) BrewinMDCompatItems.COPPER_TANKARD.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_stein"));
+            Advancement copperMug = getAdvancement(bundleDelight, (ItemLike) RespiteMDCompatItems.CUP.get(), "copper_mug", FrameType.TASK, true, true, false).addCriterion("copper_mug", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_mug"));
+            Advancement copperTea = getAdvancement(copperMug, (ItemLike) RespiteMDCompatItems.GREEN_TEA_CUP.get(), "copper_tea", FrameType.TASK, true, true, false).addCriterion("green_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.GREEN_TEA_CUP.get())).addCriterion("yellow_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.YELLOW_TEA_CUP.get())).addCriterion("black_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.BLACK_TEA_CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_tea"));
+            Advancement rootBeer = getAdvancement(bundleDelight, (ItemLike) BrewinCompatItems.ROOT_BEER.get(), "root_beer", FrameType.TASK, true, true, false).addCriterion("root_beer", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) BrewinCompatItems.ROOT_BEER.get())).addCriterion("root_beer_swig", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) BrewinMDCompatItems.ROOT_BEER_SWIG.get())).addCriterion("root_beer_glass", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) BrewinCompatItems.ROOT_BEER_GLASS.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/root_beer"));
         }
 
         protected static Advancement.Builder getAdvancement(Advancement parent, ItemLike display, String name, FrameType frame, boolean showToast, boolean announceToChat, boolean hidden) {

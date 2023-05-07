@@ -2,7 +2,7 @@ package com.pouffy.bundledelight.compats.neapolitan;
 
 import com.mojang.datafixers.util.Pair;
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.FoodValues;
+import com.pouffy.bundledelight.compats.CompatFoodValues;
 import com.pouffy.bundledelight.util.Configuration;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -33,11 +33,11 @@ public class ToolTips {
         }
         Item food = event.getItemStack().getItem();
 
-        FoodProperties soupEffects = FoodValues.NEAPOLITAN_EFFECTS.get(food);
+        FoodProperties nEffects = CompatFoodValues.NEAPOLITAN_EFFECTS.get(food);
 
-        if (soupEffects != null) {
+        if (nEffects != null) {
             List<Component> tooltip = event.getToolTip();
-            for (Pair<MobEffectInstance, Float> pair : soupEffects.getEffects()) {
+            for (Pair<MobEffectInstance, Float> pair : nEffects.getEffects()) {
                 MobEffectInstance effect = pair.getFirst();
                 MutableComponent effectText = new TranslatableComponent(effect.getDescriptionId());
                 if (effect.getDuration() > 20) {

@@ -20,7 +20,7 @@ public class BrewinCompat extends CompatibleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-         BrewinItems.ITEMS.register(bus);
+         BrewinCompatItems.ITEMS.register(bus);
 
     }
 }

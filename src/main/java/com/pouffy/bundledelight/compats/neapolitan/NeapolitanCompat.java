@@ -1,7 +1,6 @@
 package com.pouffy.bundledelight.compats.neapolitan;
 
 import com.pouffy.bundledelight.compats.CompatibleMod;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -17,6 +16,7 @@ public class NeapolitanCompat extends CompatibleMod {
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         NeapolitanCompatItems.ITEMS.register(bus);
+        NeapolitanCompatBlocks.BLOCKS.register(bus);
     }
 
 }

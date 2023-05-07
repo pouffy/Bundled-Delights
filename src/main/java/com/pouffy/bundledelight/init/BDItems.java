@@ -15,6 +15,9 @@ public class BDItems {
     public static Item.Properties basicItem() {
         return new Item.Properties().tab(BundledDelights.CREATIVE_TAB);
     }
+    public static Item.Properties singleItem() {
+        return new Item.Properties().tab(BundledDelights.CREATIVE_TAB).stacksTo(1);
+    }
     public static Item.Properties foodItem(FoodProperties food) {
         return new Item.Properties().food(food).tab(BundledDelights.CREATIVE_TAB);
     }

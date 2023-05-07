@@ -1,5 +1,6 @@
 package com.pouffy.bundledelight.util.data;
 
+import com.pouffy.bundledelight.compats.neapolitan.CompatFlavoredCandleCakeBlock;
 import com.pouffy.bundledelight.init.BDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
@@ -35,7 +36,28 @@ public class BlockStates extends BlockStateProvider {
     public ResourceLocation resourceBlock(String path) {
         return new ResourceLocation("bundledelight", "block/" + path);
     }
-
+    public void candleCake(CompatFlavoredCandleCakeBlock block) {
+        Block candle = block.getCandle();
+        Block cake = block.getCake();
+        ModelFile candleCake = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block), "block/template_cake_with_candle")).texture("candle", this.blockTexture(candle))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top"))).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
+        ModelFile candleCakeLit = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block) + "_lit", "block/template_cake_with_candle")).texture("candle", this.suffix(this.blockTexture(candle), "_lit"))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top"))).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
+        this.candleCakeBlock(block, (state) -> {
+            return (Boolean)state.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake;
+        });
+    }
+    public void candleCakeBlock(Block block, Function<BlockState, ModelFile> modelFunc) {
+        this.getVariantBuilder(block).forAllStates((state) -> {
+            return ConfiguredModel.builder().modelFile((ModelFile)modelFunc.apply(state)).build();
+        });
+    }
+    private String name(Block block) {
+        return block.getRegistryName().getPath();
+    }
+    private ResourceLocation suffix(ResourceLocation rl, String suffix) {
+        String var10002 = rl.getNamespace();
+        String var10003 = rl.getPath();
+        return new ResourceLocation(var10002, var10003 + suffix);
+    }
     public ModelFile existingModel(Block block) {
         return new ModelFile.ExistingModelFile(this.resourceBlock(this.blockName(block)), this.models().existingFileHelper);
     }
@@ -45,6 +67,9 @@ public class BlockStates extends BlockStateProvider {
     }
 
     protected void registerStatesAndModels() {
+        CompatFlavoredCandleCakeBlock.getCandleCakes().forEach((block) -> {
+            this.candleCake((CompatFlavoredCandleCakeBlock)block);
+        });
         String greenTeaPdr = this.blockName((Block) BDBlocks.GREEN_TEA_POWDER_BASKET.get());
         String yellowTeaPdr = this.blockName((Block) BDBlocks.YELLOW_TEA_POWDER_BASKET.get());
         String blackTeaPdr = this.blockName((Block) BDBlocks.BLACK_TEA_POWDER_BASKET.get());

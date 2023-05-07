@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "brewinandchewin:rice_wine",
-    "bundledelight:rice_wine_swig"
+    "bundledelight:rice_wine_swig",
+    "bundledelight:rice_wine_glass"
   ]
 }

@@ -25,6 +25,6 @@ public class RespiteMDCompat extends CompatibleDoubleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-         RespiteMDItems.ITEMS.register(bus);
+         RespiteMDCompatItems.ITEMS.register(bus);
     }
 }

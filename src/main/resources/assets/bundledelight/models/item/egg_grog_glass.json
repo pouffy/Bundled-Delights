@@ -1,0 +1,6 @@
+{
+  "parent": "bundledelight:item/mug",
+  "textures": {
+    "layer0": "bundledelight:item/egg_grog_glass"
+  }
+}

@@ -2,9 +2,13 @@ package com.pouffy.bundledelight.util.data;
 
 import com.google.common.collect.Sets;
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDItems;
-import com.pouffy.bundledelight.compats.respiteful.RespitefulMDItems;
+import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compats.miners_delight.MinersCompatItems;
+import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compats.neapolitan.NeapolitanMDCompatItems;
+import com.pouffy.bundledelight.compats.respiteful.RespitefulMDCompatItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -13,7 +17,6 @@ import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import vectorwing.farmersdelight.FarmersDelight;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -44,49 +47,78 @@ public class ItemModels extends ItemModelProvider {
             this.itemGeneratedModel(item, this.resourceItem(this.itemName(item)));
         });
         Set<Item> mugItems = Sets.newHashSet(
-                RespiteMDItems.CUP.get(),
-                RespiteMDItems.GREEN_TEA_CUP.get(),
-                RespiteMDItems.LONG_GREEN_TEA_CUP.get(),
-                RespiteMDItems.STRONG_GREEN_TEA_CUP.get(),
-                RespiteMDItems.YELLOW_TEA_CUP.get(),
-                RespiteMDItems.LONG_YELLOW_TEA_CUP.get(),
-                RespiteMDItems.STRONG_YELLOW_TEA_CUP.get(),
-                RespiteMDItems.BLACK_TEA_CUP.get(),
-                RespiteMDItems.LONG_BLACK_TEA_CUP.get(),
-                RespiteMDItems.STRONG_BLACK_TEA_CUP.get(),
-                RespiteMDItems.ROSE_HIP_TEA_CUP.get(),
-                RespiteMDItems.STRONG_ROSE_HIP_TEA_CUP.get(),
-                RespiteMDItems.DANDELION_TEA_CUP.get(),
-                RespiteMDItems.LONG_DANDELION_TEA_CUP.get(),
-                RespiteMDItems.PURULENT_TEA_CUP.get(),
-                RespiteMDItems.STRONG_PURULENT_TEA_CUP.get(),
-                RespiteMDItems.COFFEE_CUP.get(),
-                RespiteMDItems.LONG_COFFEE_CUP.get(),
-                RespiteMDItems.STRONG_COFFEE_CUP.get(),
-                RespitefulMDItems.MINT_GREEN_TEA_CUP.get(),
-                RespitefulMDItems.ADZUKI_MILK_TEA_CUP.get(),
-                RespitefulMDItems.MOCHA_COFFEE_CUP.get(),
-                RespitefulMDItems.VANILLA_MILK_TEA_CUP.get(),
-                BrewinMDItems.COPPER_TANKARD.get(),
-                BrewinMDItems.BEER_SWIG.get(),
-                BrewinMDItems.BLOODY_MARY_SWIG.get(),
-                BrewinMDItems.DREAD_NOG_SWIG.get(),
-                BrewinMDItems.EGG_GROG_SWIG.get(),
-                BrewinMDItems.GLITTERING_GRENADINE_SWIG.get(),
-                BrewinMDItems.KOMBUCHA_SWIG.get(),
-                BrewinMDItems.PALE_JANE_SWIG.get(),
-                BrewinMDItems.RADIANT_BREW_SWIG.get(),
-                BrewinMDItems.RED_RUM_SWIG.get(),
-                BrewinMDItems.RICE_WINE_SWIG.get(),
-                BrewinMDItems.SACCHARINE_RUM_SWIG.get(),
-                BrewinMDItems.MEAD_SWIG.get(),
-                BrewinMDItems.WITHERING_DROSS_SWIG.get(),
-                BrewinMDItems.VODKA_SWIG.get(),
-                BrewinMDItems.SALTY_FOLLY_SWIG.get(),
-                BrewinMDItems.STEEL_TOE_STOUT_SWIG.get(),
-                BrewinMDItems.STRONGROOT_ALE_SWIG.get()
+                RespiteMDCompatItems.CUP.get(),
+                RespiteMDCompatItems.GREEN_TEA_CUP.get(),
+                RespiteMDCompatItems.LONG_GREEN_TEA_CUP.get(),
+                RespiteMDCompatItems.STRONG_GREEN_TEA_CUP.get(),
+                RespiteMDCompatItems.YELLOW_TEA_CUP.get(),
+                RespiteMDCompatItems.LONG_YELLOW_TEA_CUP.get(),
+                RespiteMDCompatItems.STRONG_YELLOW_TEA_CUP.get(),
+                RespiteMDCompatItems.BLACK_TEA_CUP.get(),
+                RespiteMDCompatItems.LONG_BLACK_TEA_CUP.get(),
+                RespiteMDCompatItems.STRONG_BLACK_TEA_CUP.get(),
+                RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get(),
+                RespiteMDCompatItems.STRONG_ROSE_HIP_TEA_CUP.get(),
+                RespiteMDCompatItems.DANDELION_TEA_CUP.get(),
+                RespiteMDCompatItems.LONG_DANDELION_TEA_CUP.get(),
+                RespiteMDCompatItems.PURULENT_TEA_CUP.get(),
+                RespiteMDCompatItems.STRONG_PURULENT_TEA_CUP.get(),
+                RespiteMDCompatItems.COFFEE_CUP.get(),
+                RespiteMDCompatItems.LONG_COFFEE_CUP.get(),
+                RespiteMDCompatItems.STRONG_COFFEE_CUP.get(),
+                RespitefulMDCompatItems.MINT_GREEN_TEA_CUP.get(),
+                RespitefulMDCompatItems.ADZUKI_MILK_TEA_CUP.get(),
+                RespitefulMDCompatItems.MOCHA_COFFEE_CUP.get(),
+                RespitefulMDCompatItems.VANILLA_MILK_TEA_CUP.get(),
+                BrewinMDCompatItems.COPPER_TANKARD.get(),
+                BrewinMDCompatItems.BEER_SWIG.get(),
+                BrewinMDCompatItems.BLOODY_MARY_SWIG.get(),
+                BrewinMDCompatItems.DREAD_NOG_SWIG.get(),
+                BrewinMDCompatItems.EGG_GROG_SWIG.get(),
+                BrewinMDCompatItems.GLITTERING_GRENADINE_SWIG.get(),
+                BrewinMDCompatItems.KOMBUCHA_SWIG.get(),
+                BrewinMDCompatItems.PALE_JANE_SWIG.get(),
+                BrewinMDCompatItems.RADIANT_BREW_SWIG.get(),
+                BrewinMDCompatItems.RED_RUM_SWIG.get(),
+                BrewinMDCompatItems.RICE_WINE_SWIG.get(),
+                BrewinMDCompatItems.SACCHARINE_RUM_SWIG.get(),
+                BrewinMDCompatItems.MEAD_SWIG.get(),
+                BrewinMDCompatItems.WITHERING_DROSS_SWIG.get(),
+                BrewinMDCompatItems.VODKA_SWIG.get(),
+                BrewinMDCompatItems.SALTY_FOLLY_SWIG.get(),
+                BrewinMDCompatItems.STEEL_TOE_STOUT_SWIG.get(),
+                BrewinMDCompatItems.STRONGROOT_ALE_SWIG.get(),
+                BrewinMDCompatItems.ROOT_BEER_SWIG.get(),
+                MinersCompatItems.BORSCHT_CUP.get(),
+                MinersCompatItems.NETTLE_SOUP_CUP.get(),
+                NeapolitanMDCompatItems.ADZUKI_CURRY_CUP.get(),
+                BrewinCompatItems.GLASS_TANKARD.get(),
+                BrewinCompatItems.BEER_GLASS.get(),
+                BrewinCompatItems.BLOODY_MARY_GLASS.get(),
+                BrewinCompatItems.DREAD_NOG_GLASS.get(),
+                BrewinCompatItems.EGG_GROG_GLASS.get(),
+                BrewinCompatItems.GLITTERING_GRENADINE_GLASS.get(),
+                BrewinCompatItems.KOMBUCHA_GLASS.get(),
+                BrewinCompatItems.PALE_JANE_GLASS.get(),
+                BrewinCompatItems.RADIANT_BREW_GLASS.get(),
+                BrewinCompatItems.RED_RUM_GLASS.get(),
+                BrewinCompatItems.RICE_WINE_GLASS.get(),
+                BrewinCompatItems.SACCHARINE_RUM_GLASS.get(),
+                BrewinCompatItems.MEAD_GLASS.get(),
+                BrewinCompatItems.WITHERING_DROSS_GLASS.get(),
+                BrewinCompatItems.VODKA_GLASS.get(),
+                BrewinCompatItems.SALTY_FOLLY_GLASS.get(),
+                BrewinCompatItems.STEEL_TOE_STOUT_GLASS.get(),
+                BrewinCompatItems.STRONGROOT_ALE_GLASS.get(),
+                BrewinCompatItems.RADIANT_BREW.get(),
+                BrewinCompatItems.ROOT_BEER.get(),
+                BrewinCompatItems.ROOT_BEER_GLASS.get()
                 );
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
+        Set<Item> generatedItems = Sets.newHashSet(
+                NeapolitanCompatItems.STRAWBERRY_CAKE.get()
+        );
+        takeAll(items, generatedItems.toArray(new Item[0])).forEach(item -> itemGeneratedModel(item, resourceItem(itemName(item))));
     }
 
     public void blockBasedModel(Item item, String suffix) {

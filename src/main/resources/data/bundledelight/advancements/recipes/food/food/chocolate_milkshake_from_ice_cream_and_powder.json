@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:food/chocolate_milkshake_from_ice_cream_and_powder"
+    ]
+  },
+  "criteria": {
+    "has_vanilla_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:powdered_vanilla_pods"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:food/chocolate_milkshake_from_ice_cream_and_powder"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_vanilla_powder",
+      "has_the_recipe"
+    ]
+  ]
+}
