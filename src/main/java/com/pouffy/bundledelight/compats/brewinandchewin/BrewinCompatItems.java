@@ -18,8 +18,8 @@ public class BrewinCompatItems {
     public static final DeferredRegister<Item> ITEMS;
     public static final RegistryObject<Item> CHEESEBURGER;
     public static final RegistryObject<Item> SCARLET_CHEESEBURGER;
-    public static final RegistryObject<Item> RADIANT_BREW;
-    public static final RegistryObject<Item> ROOT_BEER;
+    //public static final RegistryObject<Item> RADIANT_BREW;
+    //public static final RegistryObject<Item> ROOT_BEER;
     public static final RegistryObject<Item> GLASS_TANKARD;
     public static final RegistryObject<Item> BEER_GLASS;
     public static final RegistryObject<Item> VODKA_GLASS;
@@ -51,14 +51,14 @@ public class BrewinCompatItems {
         SCARLET_CHEESEBURGER = ITEMS.register("scarlet_cheeseburger", () -> {
             return new Item(foodItem(FoodValues.CHEESEBURGER));
         });
-        RADIANT_BREW = ITEMS.register("radiant_brew", () -> {
-            return new BoozeItem(1, 6, new Item.Properties().food(FoodValues.RADIANT_BREW).craftRemainder(BCItems.TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB));
-        });
-        ROOT_BEER = ITEMS.register("root_beer", () -> {
-            return new BoozeItem(2, 8, new Item.Properties().craftRemainder(BCItems.TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB));
-        });
+        //RADIANT_BREW = ITEMS.register("radiant_brew", () -> {
+        //    return new BoozeItem(1, 6, new Item.Properties().food(FoodValues.RADIANT_BREW).craftRemainder(BCItems.TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB));
+        //});
+        //ROOT_BEER = ITEMS.register("root_beer", () -> {
+        //    return new BoozeItem(2, 8, new Item.Properties().craftRemainder(BCItems.TANKARD.get()).stacksTo(16).tab(BundledDelights.CREATIVE_TAB));
+        //});
         GLASS_TANKARD = ITEMS.register("glass_tankard", () -> {
-            return new Item(singleItem());
+            return new Item(basicItem());
         });
         BEER_GLASS = ITEMS.register("beer_glass", () -> {
             return new BoozeItem(1, 8, glassTankardFoodItemNoEffect());

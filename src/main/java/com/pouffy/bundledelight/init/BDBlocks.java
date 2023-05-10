@@ -28,6 +28,8 @@ public class BDBlocks {
     public static final RegistryObject<Block> ADZUKI_POWDER_BASKET;
     public static final RegistryObject<Block> VANILLA_POWDER_BASKET;
     public static final RegistryObject<Block> MINT_POWDER_BASKET;
+    public static final RegistryObject<Block> WHITE_STRAWBERRY_ICE_CREAM_BLOCK;
+
 
     public BDBlocks() {
     }
@@ -82,6 +84,9 @@ public class BDBlocks {
         });
         MINT_POWDER_BASKET = BLOCKS.register("mint_powder_basket", () -> {
             return new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+        });
+        WHITE_STRAWBERRY_ICE_CREAM_BLOCK = BLOCKS.register("white_strawberry_ice_cream_block", () -> {
+            return new Block(BlockBehaviour.Properties.of(Material.SNOW).strength(0.2F, 0.2F).sound(SoundType.SNOW));
         });
     }
 }

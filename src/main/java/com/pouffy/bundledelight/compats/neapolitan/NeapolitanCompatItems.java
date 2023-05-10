@@ -27,6 +27,7 @@ public class NeapolitanCompatItems {
     public static final RegistryObject<Item> STRAWBERRY_CAKE;
     public static final RegistryObject<Item> WHITE_STRAWBERRY_ICE_CREAM;
     public static final RegistryObject<Item> WHITE_STRAWBERRY_MILKSHAKE;
+    public static final RegistryObject<Item> WHITE_STRAWBERRY_ICE_CREAM_BLOCK;
     public NeapolitanCompatItems(){
     }
     static {
@@ -66,6 +67,9 @@ public class NeapolitanCompatItems {
         });
         WHITE_STRAWBERRY_MILKSHAKE = ITEMS.register("white_strawberry_milkshake", () -> {
             return new MilkshakeItem(MobEffectCategory.HARMFUL, bowlFoodItem(NeapolitanItems.NeapolitanFoods.MILKSHAKE));
+        });
+        WHITE_STRAWBERRY_ICE_CREAM_BLOCK = ITEMS.register("white_strawberry_ice_cream_block", () -> {
+            return new BlockItem((Block) BDBlocks.WHITE_STRAWBERRY_ICE_CREAM_BLOCK.get(), basicItem());
         });
     }
 }

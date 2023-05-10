@@ -110,8 +110,8 @@ public class ItemModels extends ItemModelProvider {
                 BrewinCompatItems.SALTY_FOLLY_GLASS.get(),
                 BrewinCompatItems.STEEL_TOE_STOUT_GLASS.get(),
                 BrewinCompatItems.STRONGROOT_ALE_GLASS.get(),
-                BrewinCompatItems.RADIANT_BREW.get(),
-                BrewinCompatItems.ROOT_BEER.get(),
+                //BrewinCompatItems.RADIANT_BREW.get(),
+                //BrewinCompatItems.ROOT_BEER.get(),
                 BrewinCompatItems.ROOT_BEER_GLASS.get()
                 );
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));

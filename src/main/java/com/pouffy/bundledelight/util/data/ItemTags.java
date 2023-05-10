@@ -48,8 +48,8 @@ public class ItemTags extends ItemTagsProvider {
         this.tag(ModTags.RED_RUM).add(BCItems.RED_RUM.get(), BrewinMDCompatItems.RED_RUM_SWIG.get(), BrewinCompatItems.RED_RUM_GLASS.get());
         this.tag(ModTags.WITHERING_DROSS).add(BCItems.WITHERING_DROSS.get(), BrewinMDCompatItems.WITHERING_DROSS_SWIG.get(), BrewinCompatItems.WITHERING_DROSS_GLASS.get());
         this.tag(ModTags.KOMBUCHA).add(BCItems.KOMBUCHA.get(), BrewinMDCompatItems.KOMBUCHA_SWIG.get(), BrewinCompatItems.KOMBUCHA_GLASS.get());
-        this.tag(ModTags.RADIANT_BREW).add(BrewinCompatItems.RADIANT_BREW.get(), BrewinMDCompatItems.RADIANT_BREW_SWIG.get(), BrewinCompatItems.RADIANT_BREW_GLASS.get());
-        this.tag(ModTags.ROOT_BEER).add(BrewinCompatItems.ROOT_BEER.get(), BrewinMDCompatItems.ROOT_BEER_SWIG.get(), BrewinCompatItems.ROOT_BEER_GLASS.get());
+        this.tag(ModTags.RADIANT_BREW).add(BrewinMDCompatItems.RADIANT_BREW_SWIG.get(), BrewinCompatItems.RADIANT_BREW_GLASS.get());
+        this.tag(ModTags.ROOT_BEER).add(BrewinMDCompatItems.ROOT_BEER_SWIG.get(), BrewinCompatItems.ROOT_BEER_GLASS.get());
     }
 
     private void registerModTags() {

@@ -204,11 +204,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : "bundledelight",
-                "Specification-Vendor"    : "bundledelightsareus",
+                "Specification-Vendor"    : "PouffyDev",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "bundledelightsareus",
+                "Implementation-Version"  : mod_version,
+                "Implementation-Vendor"   : "PouffyDev",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

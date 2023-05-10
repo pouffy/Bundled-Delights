@@ -64,7 +64,7 @@ public class FermentingRecipes {
         BCKegRecipeBuilder.kegRecipe((ItemLike) BrewinCompatItems.ROOT_BEER_GLASS.get(), 1, 12000, 0.6F, (ItemLike) BrewinCompatItems.GLASS_TANKARD.get(), Items.WATER_BUCKET, 3).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
 
 
-        BCKegRecipeBuilder.kegRecipe((ItemLike) BrewinCompatItems.ROOT_BEER.get(), 1, 12000, 0.6F, (ItemLike) BCItems.TANKARD.get(), Items.WATER_BUCKET, 3).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
+        //BCKegRecipeBuilder.kegRecipe((ItemLike) BrewinCompatItems.ROOT_BEER.get(), 1, 12000, 0.6F, (ItemLike) BCItems.TANKARD.get(), Items.WATER_BUCKET, 3).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
 
         BCKegRecipeBuilder.kegRecipe((ItemLike) NeapolitanItems.VANILLA_FUDGE.get(), 4, 12000, 0.6F, Items.MILK_BUCKET, 5).addIngredient(Items.SUGAR).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).build(consumer);
 
