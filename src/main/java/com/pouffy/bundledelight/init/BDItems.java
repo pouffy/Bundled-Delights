@@ -3,6 +3,7 @@ package com.pouffy.bundledelight.init;
 import com.pouffy.bundledelight.BundledDelights;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.DeferredRegister;

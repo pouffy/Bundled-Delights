@@ -1,12 +1,5 @@
 {
 	"entries" : [
-		{
-			"bowl": "bundledelight:borscht",
-			"cup": "bundledelight:borscht_cup"
-		},
-		{
-			"bowl": "bundledelight:nettle_soup",
-			"cup": "bundledelight:nettle_soup_cup"
-		}
+
 	]
 }

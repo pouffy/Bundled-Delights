@@ -23,7 +23,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: "org.spongepowered.mixin"
 mixin {
-    add sourceSets.main, "wanna_bet.refmap.json"
+    add sourceSets.main, "bundledelight.refmap.json"
 }
 
 version = "${mc_version}-${mod_version}"
