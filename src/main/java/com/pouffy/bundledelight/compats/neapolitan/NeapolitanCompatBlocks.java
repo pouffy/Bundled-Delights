@@ -109,8 +109,8 @@ public class NeapolitanCompatBlocks {
         }
 
         static {
-            STRAWBERRY_CAKE = net.minecraft.world.level.block.state.BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL);
-            STRAWBERRY_CANDLE_CAKE = net.minecraft.world.level.block.state.BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
+            STRAWBERRY_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL);
+            STRAWBERRY_CANDLE_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
 
         }
     }

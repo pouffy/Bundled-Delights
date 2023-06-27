@@ -32,4 +32,12 @@ public class FoodValues {
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect) MobEffects.DIG_SPEED, 1800, 0);
     }, 1.0F).build();
+
+    public static final FoodProperties CARROT_CAKE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
+
+    public static final FoodProperties SWEET_BERRY_JUICE = (new FoodProperties.Builder()).effect(() -> {
+        return new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 1);
+    }, 1.0F).build();
+    public static final FoodProperties SYRUP_GLAZED_APPLE = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
+    public static final FoodProperties SYRUP_GLAZED_BERRIES = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).build();
 }

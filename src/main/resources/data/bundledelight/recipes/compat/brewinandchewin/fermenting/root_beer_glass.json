@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brewinandchewin"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:root_beer_glass"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:hanging_roots"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "farmersdelight:tree_bark"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:root_beer_glass"
+  },
+  "container": {
+    "item": "bundledelight:glass_tankard"
+  },
+  "liquid": {
+    "item": "minecraft:water_bucket"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 3
+}

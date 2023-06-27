@@ -2,7 +2,7 @@
   "parent": "bundledelight:main/root",
   "display": {
     "icon": {
-      "item": "bundledelight:root_beer"
+      "item": "bundledelight:root_beer_glass"
     },
     "title": {
       "translate": "bundledelight.advancement.root_beer"
@@ -16,18 +16,6 @@
     "hidden": false
   },
   "criteria": {
-    "root_beer": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "bundledelight:root_beer"
-            ]
-          }
-        ]
-      }
-    },
     "root_beer_swig": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
@@ -55,7 +43,6 @@
   },
   "requirements": [
     [
-      "root_beer",
       "root_beer_swig",
       "root_beer_glass"
     ]

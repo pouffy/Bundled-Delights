@@ -187,6 +187,9 @@ dependencies {
     implementation fg.deobf("curse.maven:${project.blueprint}")
     implementation fg.deobf("curse.maven:${project.respiteful}")
     implementation fg.deobf("curse.maven:${project.abnormalsDelight}")
+    implementation fg.deobf("curse.maven:${project.cofhCore}")
+    implementation fg.deobf("curse.maven:${project.thermalFoundation}")
+    implementation fg.deobf("curse.maven:${project.thermalExpansion}")
 
 
     // Examples using mod jars from ./libs

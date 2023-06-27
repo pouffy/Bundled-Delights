@@ -1,0 +1,27 @@
+{
+  "type": "thermal:bottler",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "neapolitan:mint_milkshake"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "create_central_kitchen:mint_milkshake",
+      "amount": 250
+    }
+  ],
+  "result": [
+    {
+      "item": "neapolitan:mint_milkshake"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "thermal:centrifuge",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "miners_delight"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "miners_delight:water_cup"
+    }
+  ],
+  "ingredient": {
+    "item": "miners_delight:water_cup"
+  },
+  "result": [
+    {
+      "item": "miners_delight:copper_cup"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ]
+}

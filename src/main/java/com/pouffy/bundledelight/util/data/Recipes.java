@@ -22,5 +22,6 @@ public class Recipes extends RecipeProvider {
         FermentingRecipes.register(consumer);
         CuttingRecipes.register(consumer);
         CookingRecipes.register(consumer);
+        ThermalRecipes.register(consumer);
     }
 }

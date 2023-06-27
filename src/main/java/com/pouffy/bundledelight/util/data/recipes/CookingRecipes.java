@@ -34,7 +34,6 @@ public class CookingRecipes {
         CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) BDItems.BORSCHT.get(), 1, 200, 1.0F).addIngredient(ForgeTags.RAW_BEEF).addIngredient(Items.BEETROOT).addIngredient(ForgeTags.CROPS_CABBAGE).addIngredient(ModItems.TOMATO_SAUCE.get()).unlockedByAnyIngredient(Items.BEEF, Items.BEETROOT, ModItems.CABBAGE.get(), ModItems.TOMATO_SAUCE.get()).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
         CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) BDItems.NETTLE_SOUP.get(), 1, 200, 1.0F).addIngredient(Items.WATER_BUCKET).addIngredient(Items.FERN).addIngredient(ForgeTags.VEGETABLES).addIngredient(ForgeTags.SEEDS).unlockedByAnyIngredient(Items.FERN).setRecipeBookTab(CookingPotRecipeBookTab.MEALS).build(consumer);
         CookingPotRecipeBuilder.cookingPotRecipe((ItemLike) FRItems.TEA_CURRY.get(), 1, 200, 0.35F).addIngredient((ItemLike) RespiteCompatItems.POWDERED_YELLOW_TEA_LEAVES.get()).addIngredient((ItemLike)RespiteCompatItems.POWDERED_YELLOW_TEA_LEAVES.get()).addIngredient(ForgeTags.RAW_CHICKEN).addIngredient(ForgeTags.CROPS_CABBAGE).addIngredient(ForgeTags.CROPS_ONION).addIngredient(ForgeTags.CROPS_RICE).build(consumer);
-
     }
 
 

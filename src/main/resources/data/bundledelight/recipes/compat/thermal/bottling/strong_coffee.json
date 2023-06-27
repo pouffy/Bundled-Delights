@@ -1,0 +1,27 @@
+{
+  "type": "thermal:bottler",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "farmersrespite:strong_coffee"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "create_central_kitchen:strong_coffee",
+      "amount": 250
+    }
+  ],
+  "result": [
+    {
+      "item": "farmersrespite:strong_coffee"
+    }
+  ]
+}

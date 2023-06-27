@@ -1,0 +1,25 @@
+{
+  "type": "thermal:centrifuge",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "farmersrespite:strong_coffee"
+    }
+  ],
+  "ingredient": {
+    "item": "farmersrespite:strong_coffee"
+  },
+  "result": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "create_central_kitchen:strong_coffee",
+      "amount": 250
+    }
+  ]
+}

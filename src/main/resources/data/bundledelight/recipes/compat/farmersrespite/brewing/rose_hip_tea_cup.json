@@ -1,0 +1,24 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersrespite"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:rose_hip_tea_cup"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "farmersrespite:rose_hips"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:rose_hip_tea_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersrespite"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:long_coffee_cup"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:coffee_cup"
+    },
+    {
+      "tag": "forge:milk"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:long_coffee_cup"
+  },
+  "container": {
+    "item": "bundledelight:cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": false
+}

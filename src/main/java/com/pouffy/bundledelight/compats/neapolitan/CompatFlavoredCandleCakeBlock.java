@@ -126,12 +126,12 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     }
 
     public Block getCake() {
-        return (Block)this.baseCake.get();
+        return this.baseCake.get();
     }
 
-    public static Iterable<Block> getCandleCakes() {
-        return (Iterable) ForgeRegistries.BLOCKS.getValues().stream().filter((block) -> {
-            return block.getRegistryName() != null && "neapolitan".equals(block.getRegistryName().getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
+    public static Iterable getCandleCakes() {
+        return ForgeRegistries.BLOCKS.getValues().stream().filter((block) -> {
+            return block.getRegistryName() != null && "bundledelight".equals(block.getRegistryName().getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
         }).collect(Collectors.toList());
     }
 

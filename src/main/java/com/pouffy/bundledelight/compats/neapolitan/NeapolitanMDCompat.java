@@ -24,6 +24,6 @@ public class NeapolitanMDCompat extends CompatibleDoubleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        NeapolitanMDCompatItems.ITEMS.register(bus);
+        //NeapolitanMDCompatItems.ITEMS.register(bus);
     }
 }

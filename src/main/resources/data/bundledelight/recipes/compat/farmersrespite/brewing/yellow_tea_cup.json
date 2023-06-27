@@ -1,0 +1,27 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersrespite"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:yellow_tea_cup"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_yellow_tea_leaves"
+    },
+    {
+      "item": "bundledelight:powdered_yellow_tea_leaves"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:yellow_tea_cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": true
+}

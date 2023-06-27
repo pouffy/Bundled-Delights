@@ -1,0 +1,25 @@
+{
+  "type": "thermal:centrifuge",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "neapolitan:vanilla_ice_cream"
+    }
+  ],
+  "ingredient": {
+    "item": "neapolitan:vanilla_ice_cream"
+  },
+  "result": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "fluid": "create_central_kitchen:vanilla_ice_cream",
+      "amount": 500
+    }
+  ]
+}

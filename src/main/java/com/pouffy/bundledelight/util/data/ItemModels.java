@@ -9,6 +9,7 @@ import com.pouffy.bundledelight.compats.miners_delight.MinersCompatItems;
 import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
 import com.pouffy.bundledelight.compats.neapolitan.NeapolitanMDCompatItems;
 import com.pouffy.bundledelight.compats.respiteful.RespitefulMDCompatItems;
+import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -89,9 +90,8 @@ public class ItemModels extends ItemModelProvider {
                 BrewinMDCompatItems.STEEL_TOE_STOUT_SWIG.get(),
                 BrewinMDCompatItems.STRONGROOT_ALE_SWIG.get(),
                 BrewinMDCompatItems.ROOT_BEER_SWIG.get(),
-                MinersCompatItems.BORSCHT_CUP.get(),
-                MinersCompatItems.NETTLE_SOUP_CUP.get(),
-                NeapolitanMDCompatItems.ADZUKI_CURRY_CUP.get(),
+                //MinersCompatItems.BORSCHT_CUP.get(),
+                //MinersCompatItems.NETTLE_SOUP_CUP.get(),
                 BrewinCompatItems.GLASS_TANKARD.get(),
                 BrewinCompatItems.BEER_GLASS.get(),
                 BrewinCompatItems.BLOODY_MARY_GLASS.get(),
@@ -116,7 +116,8 @@ public class ItemModels extends ItemModelProvider {
                 );
         takeAll(items, mugItems.toArray(new Item[0])).forEach(item -> itemMugModel(item, resourceItem(itemName(item))));
         Set<Item> generatedItems = Sets.newHashSet(
-                NeapolitanCompatItems.STRAWBERRY_CAKE.get()
+                NeapolitanCompatItems.STRAWBERRY_CAKE.get(),
+                BDItems.CARROT_CAKE.get()
         );
         takeAll(items, generatedItems.toArray(new Item[0])).forEach(item -> itemGeneratedModel(item, resourceItem(itemName(item))));
     }

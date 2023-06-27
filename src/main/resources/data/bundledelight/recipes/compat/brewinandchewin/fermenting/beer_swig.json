@@ -1,0 +1,36 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brewinandchewin"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:beer_swig"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:beer_swig"
+  },
+  "container": {
+    "item": "bundledelight:copper_tankard"
+  },
+  "liquid": {
+    "item": "miners_delight:water_cup"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 3
+}

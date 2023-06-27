@@ -1,5 +1,6 @@
 package com.pouffy.bundledelight.util.data;
 
+import com.pouffy.bundledelight.util.client.cake.CandleCakeBlockstate;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,6 +32,7 @@ public class DataGenerators {
             BlockStates blockStates = new BlockStates(generator, helper);
             generator.addProvider(blockStates);
             generator.addProvider(new ItemModels(generator, blockStates.models().existingFileHelper));
+            generator.addProvider(new LangProvider(generator));
         }
 
     }

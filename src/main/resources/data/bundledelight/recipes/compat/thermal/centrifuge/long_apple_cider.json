@@ -1,0 +1,25 @@
+{
+  "type": "thermal:centrifuge",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "farmersrespite:long_apple_cider"
+    }
+  ],
+  "ingredient": {
+    "item": "farmersrespite:long_apple_cider"
+  },
+  "result": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "create_central_kitchen:long_apple_cider",
+      "amount": 250
+    }
+  ]
+}

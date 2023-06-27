@@ -1,0 +1,30 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersrespite"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:strong_purulent_tea_cup"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:purulent_tea_cup"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:strong_purulent_tea_cup"
+  },
+  "container": {
+    "item": "bundledelight:cup"
+  },
+  "experience": 0.35,
+  "brewingtime": 2400,
+  "needwater": false
+}

@@ -5,7 +5,7 @@ license="All rights reserved"
 issueTrackerURL="https://github.com/pouffy/Bundled-Delights/issues" #optional
 [[mods]] #mandatory
 modId="bundledelight" #mandatory
-version="${file.jarVersion}" #mandatory
+version="1.1.1" #mandatory
 displayName="Bundled Delight" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional

@@ -1,0 +1,25 @@
+{
+  "type": "thermal:centrifuge",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create_central_kitchen"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "farmersrespite:black_tea"
+    }
+  ],
+  "ingredient": {
+    "item": "farmersrespite:black_tea"
+  },
+  "result": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "create_central_kitchen:black_tea",
+      "amount": 250
+    }
+  ]
+}

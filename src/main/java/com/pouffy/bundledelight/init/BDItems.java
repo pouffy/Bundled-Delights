@@ -1,15 +1,21 @@
 package com.pouffy.bundledelight.init;
 
 import com.pouffy.bundledelight.BundledDelights;
+import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatBlocks;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
+
+import static com.pouffy.bundledelight.util.ItemRegistryUtils.singleItem;
 
 public class BDItems {
     public static final DeferredRegister<Item> ITEMS;
@@ -31,6 +37,9 @@ public class BDItems {
 
     public static final RegistryObject<Item> BORSCHT;
     public static final RegistryObject<Item> NETTLE_SOUP;
+    public static final RegistryObject<Item> SWEET_BERRY_JUICE;
+    public static final RegistryObject<Item> CARROT_CAKE;
+    public static final RegistryObject<Item> CARROT_CAKE_SLICE;
     public BDItems(){
 }
 
@@ -41,6 +50,15 @@ public class BDItems {
         });
         NETTLE_SOUP = ITEMS.register("nettle_soup", () -> {
             return new DrinkableItem(bowlFoodItem(FoodValues.NETTLE_SOUP), true);
+        });
+        SWEET_BERRY_JUICE = ITEMS.register("sweet_berry_juice", () -> {
+            return new DrinkableItem(drinkItem().food(FoodValues.SWEET_BERRY_JUICE), true);
+        });
+        CARROT_CAKE  = ITEMS.register("carrot_cake", () -> {
+            return new BlockItem((Block) BDBlocks.CARROT_CAKE.get(), singleItem());
+        });
+        CARROT_CAKE_SLICE = ITEMS.register("carrot_cake_slice", () -> {
+            return new ConsumableItem(foodItem(FoodValues.CARROT_CAKE));
         });
     }
 

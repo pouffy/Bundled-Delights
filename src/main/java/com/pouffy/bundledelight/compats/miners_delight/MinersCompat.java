@@ -25,6 +25,5 @@ public class MinersCompat extends CompatibleMod {
     @Override
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-         MinersCompatItems.ITEMS.register(bus);
     }
 }

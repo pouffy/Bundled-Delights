@@ -1,9 +1,11 @@
 package com.pouffy.bundledelight.util.data;
 
+import com.pouffy.bundledelight.content.tag.BDTags;
 import com.pouffy.bundledelight.init.BDBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 
@@ -36,6 +38,9 @@ public class BlockTags extends BlockTagsProvider {
         BDBlocks.COFFEE_CRATE.get(),
         BDBlocks.COFFEE_POWDER_BASKET.get()
         );
+        tag(ModTags.MINEABLE_WITH_KNIFE).add(
+                BDBlocks.CARROT_CAKE.get()
+        );
     }
     protected void registerMinecraftTags() {
 
@@ -45,7 +50,12 @@ public class BlockTags extends BlockTagsProvider {
 
     }
     protected void registerModTags() {
-
+        tag(BDTags.DROPS_CAKE_SLICE).add(
+                BDBlocks.CARROT_CAKE.get()
+        );
+        tag(BDTags.DROPS_CARROT_CAKE_SLICE).add(
+                BDBlocks.CARROT_CAKE.get()
+        );
     }
 
 

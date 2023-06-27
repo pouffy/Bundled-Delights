@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brewinandchewin"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:saccharine_rum_glass"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:saccharine_rum_glass"
+  },
+  "container": {
+    "item": "bundledelight:glass_tankard"
+  },
+  "liquid": {
+    "item": "bundledelight:mead_glass"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 4
+}

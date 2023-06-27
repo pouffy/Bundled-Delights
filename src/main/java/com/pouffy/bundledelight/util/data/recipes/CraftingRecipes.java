@@ -8,6 +8,7 @@ import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
 import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.init.BDItems;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -82,11 +83,29 @@ public class CraftingRecipes {
     }
 
     private static void recipesFoodstuffs(Consumer<FinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapeless(BDItems.SWEET_BERRY_JUICE.get())
+                .requires(Items.SWEET_BERRIES)
+                .requires(Items.SWEET_BERRIES)
+                .requires(Items.SWEET_BERRIES)
+                .requires(Items.SWEET_BERRIES)
+                .requires(Items.SUGAR)
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy("has_sweet_berries", InventoryChangeTrigger.TriggerInstance.hasItems(Items.SWEET_BERRIES))
+                .save(consumer, new ResourceLocation(BundledDelights.MODID, "food/sweet_berry_juice"));
     }
 
     private static void recipesFoodBlocks(Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped((ItemLike)NeapolitanCompatItems.STRAWBERRY_CAKE.get()).pattern("mcm").pattern("ses").pattern("wcw").define('m', ForgeTags.MILK).define('s', Items.SUGAR).define('c', (ItemLike)NeapolitanItems.WHITE_STRAWBERRIES.get()).define('e', Items.EGG).define('w', Items.WHEAT).unlockedBy("has_strawberries", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike)NeapolitanItems.WHITE_STRAWBERRIES.get())).save(consumer, new ResourceLocation("bundledelight", "food/white_strawberry_cake"));
-
+        ShapedRecipeBuilder.shaped((ItemLike)BDItems.CARROT_CAKE.get()).pattern("mcm").pattern("ses").pattern("wcw").define('m', ForgeTags.MILK).define('s', Items.SUGAR).define('c', (ItemLike)Items.CARROT).define('e', Items.EGG).define('w', Items.WHEAT).unlockedBy("has_carrots", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike)Items.CARROT)).save(consumer, new ResourceLocation("bundledelight", "food/carrot_cake"));
+        ShapelessRecipeBuilder.shapeless(BDItems.CARROT_CAKE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .requires(BDItems.CARROT_CAKE_SLICE.get())
+                .unlockedBy("has_cake_slice", InventoryChangeTrigger.TriggerInstance.hasItems(BDItems.CARROT_CAKE_SLICE.get()))
+                .save(consumer, new ResourceLocation(BundledDelights.MODID, "food/carrot_cake_from_slices"));
     }
 
     private static void recipesCraftedMeals(Consumer<FinishedRecipe> consumer) {

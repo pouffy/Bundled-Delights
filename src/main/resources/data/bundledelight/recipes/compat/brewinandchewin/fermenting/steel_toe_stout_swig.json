@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brewinandchewin"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:steel_toe_stout_swig"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:steel_toe_stout_swig"
+  },
+  "container": {
+    "item": "bundledelight:copper_tankard"
+  },
+  "liquid": {
+    "item": "bundledelight:strongroot_ale_swig"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 1
+}

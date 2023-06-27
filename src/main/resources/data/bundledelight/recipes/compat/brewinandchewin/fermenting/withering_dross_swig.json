@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brewinandchewin"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:withering_dross_swig"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:wither_rose"
+    },
+    {
+      "item": "minecraft:ink_sac"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:withering_dross_swig"
+  },
+  "container": {
+    "item": "bundledelight:copper_tankard"
+  },
+  "liquid": {
+    "item": "bundledelight:salty_folly_swig"
+  },
+  "experience": 0.6,
+  "cookingtime": 12000,
+  "temperature": 5
+}

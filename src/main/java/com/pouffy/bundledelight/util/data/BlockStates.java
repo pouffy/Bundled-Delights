@@ -19,6 +19,7 @@ import vectorwing.farmersdelight.common.block.FeastBlock;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -28,7 +29,6 @@ public class BlockStates extends BlockStateProvider {
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, "bundledelight", exFileHelper);
     }
-
     private String blockName(Block block) {
         return block.getRegistryName().getPath();
     }
@@ -36,20 +36,21 @@ public class BlockStates extends BlockStateProvider {
     public ResourceLocation resourceBlock(String path) {
         return new ResourceLocation("bundledelight", "block/" + path);
     }
-    public void candleCake(CompatFlavoredCandleCakeBlock block) {
-        Block candle = block.getCandle();
-        Block cake = block.getCake();
-        ModelFile candleCake = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block), "block/template_cake_with_candle")).texture("candle", this.blockTexture(candle))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top"))).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
-        ModelFile candleCakeLit = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block) + "_lit", "block/template_cake_with_candle")).texture("candle", this.suffix(this.blockTexture(candle), "_lit"))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top"))).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
-        this.candleCakeBlock(block, (state) -> {
-            return (Boolean)state.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake;
-        });
+    public ResourceLocation resourceMCBlock(String path) {
+        return new ResourceLocation("minecraft", "block/" + path);
     }
-    public void candleCakeBlock(Block block, Function<BlockState, ModelFile> modelFunc) {
-        this.getVariantBuilder(block).forAllStates((state) -> {
-            return ConfiguredModel.builder().modelFile((ModelFile)modelFunc.apply(state)).build();
-        });
-    }
+    //public void candleCake(CompatFlavoredCandleCakeBlock block) {
+    //    Block candle = block.getCandle();
+    //    Block cake = block.getCake();
+    //    ModelFile candleCake = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block), "block/template_cake_with_candle")).texture("candle", this.blockTexture(candle))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top")).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
+    //    ModelFile candleCakeLit = ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(this.name(block) + "_lit", "block/template_cake_with_candle")).texture("candle", this.suffix(this.blockTexture(candle), "_lit"))).texture("bottom", this.suffix(this.blockTexture(cake), "_bottom"))).texture("side", this.suffix(this.blockTexture(cake), "_side"))).texture("top", this.suffix(this.blockTexture(cake), "_top"))).texture("particle", this.suffix(this.blockTexture(cake), "_side"));
+    //    this.candleCakeBlock(block, (state) -> (Boolean)state.getValue(BlockStateProperties.LIT) ? candleCakeLit : candleCake);
+    //}
+    //public void candleCakeBlock(Block block, Function<BlockState, ModelFile> modelFunc) {
+    //    this.getVariantBuilder(block).forAllStates((state) -> {
+    //        return ConfiguredModel.builder().modelFile((ModelFile)modelFunc.apply(state)).build();
+    //    });
+    //}
     private String name(Block block) {
         return block.getRegistryName().getPath();
     }
@@ -67,9 +68,6 @@ public class BlockStates extends BlockStateProvider {
     }
 
     protected void registerStatesAndModels() {
-        CompatFlavoredCandleCakeBlock.getCandleCakes().forEach((block) -> {
-            this.candleCake((CompatFlavoredCandleCakeBlock)block);
-        });
         String greenTeaPdr = this.blockName((Block) BDBlocks.GREEN_TEA_POWDER_BASKET.get());
         String yellowTeaPdr = this.blockName((Block) BDBlocks.YELLOW_TEA_POWDER_BASKET.get());
         String blackTeaPdr = this.blockName((Block) BDBlocks.BLACK_TEA_POWDER_BASKET.get());
@@ -86,6 +84,23 @@ public class BlockStates extends BlockStateProvider {
         String adzukiPdr = this.blockName((Block) BDBlocks.ADZUKI_POWDER_BASKET.get());
         String vanillaPdr = this.blockName((Block) BDBlocks.VANILLA_POWDER_BASKET.get());
         String mintPdr = this.blockName((Block) BDBlocks.MINT_POWDER_BASKET.get());
+        ArrayList<String> colours = new ArrayList<String>();
+        colours.add("white");
+        colours.add("orange");
+        colours.add("magenta");
+        colours.add("light_blue");
+        colours.add("yellow");
+        colours.add("lime");
+        colours.add("pink");
+        colours.add("gray");
+        colours.add("light_gray");
+        colours.add("cyan");
+        colours.add("purple");
+        colours.add("blue");
+        colours.add("brown");
+        colours.add("green");
+        colours.add("red");
+        colours.add("black");
 
         this.simpleBlock((Block) BDBlocks.GREEN_TEA_POWDER_BASKET.get(), ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(greenTeaPdr, "cube")).texture("particle", this.resourceBlock(greenTeaPdr + "_top"))).texture("down", this.resourceBlock("basket_bottom"))).texture("up", this.resourceBlock(greenTeaPdr + "_top"))).texture("north", this.resourceBlock("basket_side_handle"))).texture("south", this.resourceBlock("basket_side_handle"))).texture("east", this.resourceBlock("basket_side"))).texture("west", this.resourceBlock("basket_side")));
         this.simpleBlock((Block) BDBlocks.YELLOW_TEA_POWDER_BASKET.get(), ((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)((BlockModelBuilder)this.models().withExistingParent(yellowTeaPdr, "cube")).texture("particle", this.resourceBlock(yellowTeaPdr + "_top"))).texture("down", this.resourceBlock("basket_bottom"))).texture("up", this.resourceBlock(yellowTeaPdr + "_top"))).texture("north", this.resourceBlock("basket_side_handle")).texture("south", this.resourceBlock("basket_side_handle")).texture("east", this.resourceBlock("basket_side")).texture("west", this.resourceBlock("basket_side")));
@@ -102,6 +117,12 @@ public class BlockStates extends BlockStateProvider {
         this.simpleBlock((Block) BDBlocks.ADZUKI_CRATE.get(), ((BlockModelBuilder)this.models().withExistingParent(adzuki, "cube")).texture("particle", this.resourceBlock(adzuki + "_top")).texture("down", this.resourceBlock("basket_bottom")).texture("up", this.resourceBlock(adzuki + "_top")).texture("north", this.resourceBlock(adzuki + "_side")).texture("south", this.resourceBlock(adzuki + "_side")).texture("east", this.resourceBlock(adzuki + "_side")).texture("west", this.resourceBlock(adzuki + "_side")));
         this.simpleBlock((Block) BDBlocks.VANILLA_CRATE.get(), ((BlockModelBuilder)this.models().withExistingParent(vanilla, "cube")).texture("particle", this.resourceBlock(vanilla + "_top")).texture("down", this.resourceBlock("basket_bottom")).texture("up", this.resourceBlock(vanilla + "_top")).texture("north", this.resourceBlock(vanilla + "_side")).texture("south", this.resourceBlock(vanilla + "_side")).texture("east", this.resourceBlock(vanilla + "_side")).texture("west", this.resourceBlock(vanilla + "_side")));
         this.simpleBlock((Block) BDBlocks.MINT_CRATE.get(), ((BlockModelBuilder)this.models().withExistingParent(mint, "cube")).texture("particle", this.resourceBlock(mint + "_top")).texture("down", this.resourceBlock("basket_bottom")).texture("up", this.resourceBlock(mint + "_top")).texture("north", this.resourceBlock(mint + "_side")).texture("south", this.resourceBlock(mint + "_side")).texture("east", this.resourceBlock(mint + "_side")).texture("west", this.resourceBlock(mint + "_side")));
+        //for (String i : colours) {
+        //    this.simpleBlock((Block) BDBlocks.CARROT_CANDLE_CAKE.get(), ((BlockModelBuilder)this.models().withExistingParent(i + "_carrot_candle_cake_lit", "template_cake_with_candle").texture("particle", this.resourceBlock("carrot_cake/top")).texture("bottom", this.resourceBlock("carrot_cake/bottom")).texture("top", this.resourceBlock("carrot_cake/top")).texture("side", this.resourceBlock("carrot_cake/side")).texture("inside", this.resourceBlock("carrot_cake/inner")).texture("candle", this.resourceMCBlock( i + "_candle_lit"))));
+        //    this.simpleBlock((Block) BDBlocks.CARROT_CANDLE_CAKE.get(), ((BlockModelBuilder)this.models().withExistingParent(i + "_carrot_candle_cake", "template_cake_with_candle").texture("particle", this.resourceBlock("carrot_cake/top")).texture("bottom", this.resourceBlock("carrot_cake/bottom")).texture("top", this.resourceBlock("carrot_cake/top")).texture("side", this.resourceBlock("carrot_cake/side")).texture("inside", this.resourceBlock("carrot_cake/inner")).texture("candle", this.resourceMCBlock( i + "_candle"))));
+        //}
+        //this.simpleBlock((Block) BDBlocks.CARROT_CANDLE_CAKE.get(), ((BlockModelBuilder)this.models().withExistingParent("carrot_candle_cake_lit", "template_cake_with_candle").texture("particle", this.resourceBlock("carrot_cake/top")).texture("bottom", this.resourceBlock("carrot_cake/bottom")).texture("top", this.resourceBlock("carrot_cake/top")).texture("side", this.resourceBlock("carrot_cake/side")).texture("inside", this.resourceBlock("carrot_cake/inner")).texture("candle", this.resourceMCBlock( "candle_lit"))));
+        //this.simpleBlock((Block) BDBlocks.CARROT_CANDLE_CAKE.get(), ((BlockModelBuilder)this.models().withExistingParent("carrot_candle_cake", "template_cake_with_candle").texture("particle", this.resourceBlock("carrot_cake/top")).texture("bottom", this.resourceBlock("carrot_cake/bottom")).texture("top", this.resourceBlock("carrot_cake/top")).texture("side", this.resourceBlock("carrot_cake/side")).texture("inside", this.resourceBlock("carrot_cake/inner")).texture("candle", this.resourceMCBlock( "candle"))));
     }
     public ConfiguredModel[] cubeRandomRotation(Block block, String suffix) {
         String var10000 = this.blockName(block);

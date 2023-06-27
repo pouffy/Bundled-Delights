@@ -1,0 +1,15 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "miners_delight:water_cup"
+  },
+  "result": [
+    {
+      "item": "miners_delight:copper_cup"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ]
+}
