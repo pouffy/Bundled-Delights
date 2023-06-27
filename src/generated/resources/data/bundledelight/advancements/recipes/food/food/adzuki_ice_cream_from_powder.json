@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:food/adzuki_ice_cream_from_powder"
+    ]
+  },
+  "criteria": {
+    "has_adzuki_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:powdered_adzuki_beans"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:food/adzuki_ice_cream_from_powder"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_adzuki_powder",
+      "has_the_recipe"
+    ]
+  ]
+}

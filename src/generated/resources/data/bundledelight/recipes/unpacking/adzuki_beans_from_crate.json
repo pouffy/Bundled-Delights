@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bundledelight:adzuki_bean_crate"
+    }
+  ],
+  "result": {
+    "item": "neapolitan:adzuki_beans",
+    "count": 9
+  }
+}

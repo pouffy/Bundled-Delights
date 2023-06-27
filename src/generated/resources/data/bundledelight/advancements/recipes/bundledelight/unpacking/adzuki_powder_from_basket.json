@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "bundledelight:unpacking/adzuki_powder_from_basket"
+    ]
+  },
+  "criteria": {
+    "has_adzuki_powder_crate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bundledelight:adzuki_powder_basket"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "bundledelight:unpacking/adzuki_powder_from_basket"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_adzuki_powder_crate",
+      "has_the_recipe"
+    ]
+  ]
+}
