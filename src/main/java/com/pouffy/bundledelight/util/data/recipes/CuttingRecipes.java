@@ -1,9 +1,9 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
 import com.farmersrespite.core.registry.FRItems;
-import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsNeapolitanCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.abnormals_delight.AbnormalsNeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.neapolitan.NeapolitanCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import com.pouffy.bundledelight.util.data.builder.farmersdelight.CuttingBoardRecipeBuilder;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;

@@ -1,10 +1,10 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
 import com.farmersrespite.core.registry.FRItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.util.data.builder.brewinandchewin.KegRecipeBuilder;
 import com.sammy.minersdelight.setup.MDItems;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;

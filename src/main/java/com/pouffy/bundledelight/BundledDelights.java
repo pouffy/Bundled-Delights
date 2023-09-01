@@ -1,8 +1,10 @@
 package com.pouffy.bundledelight;
 
-import com.pouffy.bundledelight.compats.CompatibleManager;
-import com.pouffy.bundledelight.compats.DoubleCompatibleManager;
+import com.pouffy.bundledelight.compat.CompatibleManager;
+import com.pouffy.bundledelight.compat.DoubleCompatibleManager;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.init.BDBlocks;
+import com.pouffy.bundledelight.init.BDEffects;
 import com.pouffy.bundledelight.init.BDItems;
 import com.pouffy.bundledelight.util.Configuration;
 import net.minecraft.resources.ResourceLocation;
@@ -65,6 +67,10 @@ public class BundledDelights
 
         BDItems.ITEMS.register(modEventBus);
         BDBlocks.BLOCKS.register(modEventBus);
+        BDEffects.EFFECTS.register(modEventBus);
+        
+        //Compats
+        RespiteMDCompatItems.ITEMS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event)

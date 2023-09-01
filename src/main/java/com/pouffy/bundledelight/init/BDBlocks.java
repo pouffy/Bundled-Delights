@@ -1,7 +1,7 @@
 package com.pouffy.bundledelight.init;
 
-import com.pouffy.bundledelight.compats.neapolitan.CompatFlavoredCakeBlock;
-import com.pouffy.bundledelight.compats.neapolitan.CompatFlavoredCandleCakeBlock;
+import com.pouffy.bundledelight.compat.neapolitan.CompatFlavoredCakeBlock;
+import com.pouffy.bundledelight.compat.neapolitan.CompatFlavoredCandleCakeBlock;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data;
 
-import com.pouffy.bundledelight.compats.neapolitan.CompatFlavoredCandleCakeBlock;
 import com.pouffy.bundledelight.init.BDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;

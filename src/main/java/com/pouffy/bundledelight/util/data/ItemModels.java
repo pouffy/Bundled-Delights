@@ -2,13 +2,11 @@ package com.pouffy.bundledelight.util.data;
 
 import com.google.common.collect.Sets;
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
-import com.pouffy.bundledelight.compats.miners_delight.MinersCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanMDCompatItems;
-import com.pouffy.bundledelight.compats.respiteful.RespitefulMDCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.respiteful.RespitefulMDCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -32,15 +30,15 @@ public class ItemModels extends ItemModelProvider {
     }
 
     protected void registerModels() {
-        Set<Item> items = (Set) ForgeRegistries.ITEMS.getValues().stream().filter((i) -> {
-            return "bundledelight".equals(ForgeRegistries.ITEMS.getKey(i).getNamespace());
+        Set<Item> items = ForgeRegistries.ITEMS.getValues().stream().filter((i) -> {
+            return "bundledelight".equals(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(i)).getNamespace());
         }).collect(Collectors.toSet());
         takeAll(items, (i) -> {
             return i instanceof BlockItem;
         }).forEach((item) -> {
             this.blockBasedModel(item, "");
         });
-        Set<Item> handheldItems = Sets.newHashSet();
+        @SuppressWarnings("MismatchedQueryAndUpdateOfCollection") Set<Item> handheldItems = Sets.newHashSet();
         takeAll(items, (Object[])((Item[])handheldItems.toArray(new Item[0]))).forEach((item) -> {
             this.itemHandheldModel((Item) item, this.resourceItem(this.itemName((Item) item)));
         });

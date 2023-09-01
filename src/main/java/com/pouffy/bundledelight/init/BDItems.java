@@ -1,11 +1,9 @@
 package com.pouffy.bundledelight.init;
 
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatBlocks;
 import com.pouffy.bundledelight.content.food.FoodValues;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -14,8 +12,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
-
-import static com.pouffy.bundledelight.util.ItemRegistryUtils.singleItem;
 
 public class BDItems {
     public static final DeferredRegister<Item> ITEMS;
@@ -40,6 +36,7 @@ public class BDItems {
     public static final RegistryObject<Item> SWEET_BERRY_JUICE;
     public static final RegistryObject<Item> CARROT_CAKE;
     public static final RegistryObject<Item> CARROT_CAKE_SLICE;
+    public static final RegistryObject<Item> GLASS_OF_CONCRETE;
     public BDItems(){
 }
 
@@ -59,6 +56,9 @@ public class BDItems {
         });
         CARROT_CAKE_SLICE = ITEMS.register("carrot_cake_slice", () -> {
             return new ConsumableItem(foodItem(FoodValues.CARROT_CAKE));
+        });
+        GLASS_OF_CONCRETE = ITEMS.register("glass_of_concrete", () -> {
+            return new DrinkableItem(drinkItem().food(FoodValues.CONCRETE), true);
         });
     }
 

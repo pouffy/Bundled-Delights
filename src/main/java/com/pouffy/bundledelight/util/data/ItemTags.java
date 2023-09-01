@@ -2,11 +2,11 @@ package com.pouffy.bundledelight.util.data;
 
 import com.brewinandchewin.core.registry.BCItems;
 import com.farmersrespite.core.registry.FRItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.neapolitan.NeapolitanCompatItems;
 import com.pouffy.bundledelight.content.tag.BDTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;

@@ -2,8 +2,6 @@ package com.pouffy.bundledelight.content;
 
 import com.google.common.collect.Maps;
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsNeapolitanCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatBlocks;
 import com.pouffy.bundledelight.content.tag.BDTags;
 import com.pouffy.bundledelight.init.BDBlocks;
 import com.pouffy.bundledelight.init.BDItems;

@@ -1,7 +1,7 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
 import com.farmersrespite.core.registry.FRItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;

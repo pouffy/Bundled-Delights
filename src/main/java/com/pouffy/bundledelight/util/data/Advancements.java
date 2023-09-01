@@ -2,9 +2,9 @@ package com.pouffy.bundledelight.util.data;
 
 import com.google.common.collect.Sets;
 import com.google.gson.GsonBuilder;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
-import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinCompatItems;
+import com.pouffy.bundledelight.compat.brewinandchewin.BrewinMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import com.pouffy.bundledelight.util.TextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;

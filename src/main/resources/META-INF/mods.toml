@@ -5,15 +5,15 @@ license="All rights reserved"
 issueTrackerURL="https://github.com/pouffy/Bundled-Delights/issues" #optional
 [[mods]] #mandatory
 modId="bundledelight" #mandatory
-version="1.1.1" #mandatory
+version="1.18.2-1.2.0" #mandatory
 displayName="Bundled Delight" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/pouffy/Bundled-Delights" #optional
 logoFile="logo.png" #optional
-credits="Pouffy, All the authors of the original Add-Ons" #optional
-authors="Pouffy" #optional
+credits="PouffyDev & All the authors of the Mods this utilizes." #optional
+authors="PouffyDev" #optional
 description='''
 Bundled Delight is a mod that aims to add features connecting Farmer's Delight Add-Ons such as Brewin' & Chewin', Farmer's Respite and Miner's Delight!
 '''

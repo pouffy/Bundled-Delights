@@ -1,10 +1,10 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
 import com.farmersrespite.core.registry.FRItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
-import com.pouffy.bundledelight.compats.respiteful.RespitefulMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.respiteful.RespitefulMDCompatItems;
 import com.pouffy.bundledelight.content.tag.BDTags;
 import com.pouffy.bundledelight.util.data.builder.farmersrespite.KettleRecipeBuilder;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,7 +14,7 @@ import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
 
-import static com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems.CUP;
+import static com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems.CUP;
 
 public class BrewingRecipes {
     public BrewingRecipes() {

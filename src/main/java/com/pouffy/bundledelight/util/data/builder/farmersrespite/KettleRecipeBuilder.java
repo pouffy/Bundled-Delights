@@ -54,7 +54,7 @@ public class KettleRecipeBuilder {
 
     public KettleRecipeBuilder addIngredient(ItemLike itemIn, int quantity) {
         for(int i = 0; i < quantity; ++i) {
-            this.addIngredient(Ingredient.of(new ItemLike[]{itemIn}));
+            this.addIngredient(Ingredient.of(itemIn));
         }
 
         return this;

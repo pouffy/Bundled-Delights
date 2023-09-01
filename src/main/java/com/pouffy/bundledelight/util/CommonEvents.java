@@ -1,9 +1,9 @@
 package com.pouffy.bundledelight.util;
 
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsNeapolitanCompatItems;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
-import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.abnormals_delight.AbnormalsNeapolitanCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteCompatItems;
+import com.pouffy.bundledelight.compat.neapolitan.NeapolitanCompatItems;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;

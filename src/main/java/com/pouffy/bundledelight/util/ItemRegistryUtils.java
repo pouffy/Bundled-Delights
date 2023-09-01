@@ -1,13 +1,14 @@
 package com.pouffy.bundledelight.util;
 
 import com.pouffy.bundledelight.BundledDelights;
-import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
+import com.pouffy.bundledelight.compat.item.CompatEffectDrink;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-import static com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems.GLASS_TANKARD;
-import static com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems.COPPER_TANKARD;
+import static com.pouffy.bundledelight.compat.brewinandchewin.BrewinCompatItems.GLASS_TANKARD;
+import static com.pouffy.bundledelight.compat.brewinandchewin.BrewinMDCompatItems.COPPER_TANKARD;
 
 public class ItemRegistryUtils {
     public static Item.Properties basicItem() {
@@ -42,5 +43,8 @@ public class ItemRegistryUtils {
     }
     public static Item.Properties cupFoodItemHidden(FoodProperties food) {
         return new Item.Properties().food(food).craftRemainder(RespiteMDCompatItems.CUP.get()).stacksTo(16);
+    }
+    public static Item.Properties compatEffectDrink() {
+        return new Item.Properties().craftRemainder(RespiteMDCompatItems.CUP.get()).stacksTo(16);
     }
 }

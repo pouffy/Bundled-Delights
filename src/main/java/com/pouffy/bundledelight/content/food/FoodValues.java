@@ -40,4 +40,8 @@ public class FoodValues {
     }, 1.0F).build();
     public static final FoodProperties SYRUP_GLAZED_APPLE = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).build();
     public static final FoodProperties SYRUP_GLAZED_BERRIES = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).build();
+
+    public static final FoodProperties CONCRETE = (new FoodProperties.Builder()).effect(() -> {
+        return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1200, 3);
+    }, 1.0F).build();
 }

@@ -1,6 +1,7 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
 import com.farmersrespite.core.registry.FRItems;
+import com.pouffy.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.util.data.builder.thermal.BottlingRecipeBuilder;
 import com.pouffy.bundledelight.util.data.builder.thermal.SeparatorRecipeBuilder;
 import com.sammy.minersdelight.MinersDelightMod;
@@ -64,6 +65,24 @@ public class ThermalRecipes {
         BottlingRecipeBuilder.thermalBottling(FRItems.STRONG_ROSE_HIP_TEA.get(), 1, Items.GLASS_BOTTLE, centralKitchen + "strong_rose_hip_tea", 250, centralKitchenID, false).build(consumer);
         BottlingRecipeBuilder.thermalBottling(FRItems.STRONG_YELLOW_TEA.get(), 1, Items.GLASS_BOTTLE, centralKitchen + "strong_yellow_tea", 250, centralKitchenID, false).build(consumer);
         BottlingRecipeBuilder.thermalBottling(FRItems.YELLOW_TEA.get(), 1, Items.GLASS_BOTTLE, centralKitchen + "yellow_tea", 250, centralKitchenID, false).build(consumer);
+        //Farmer's Respite Drinks (Cups)
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.BLACK_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "black_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.COFFEE_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "coffee", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.DANDELION_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "dandelion_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.GREEN_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "green_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.LONG_BLACK_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "long_black_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.LONG_DANDELION_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "long_dandelion_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.LONG_GREEN_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "long_green_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.LONG_YELLOW_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "long_yellow_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.PURULENT_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "purulent_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "rose_hip_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_BLACK_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_black_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_COFFEE_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_coffee", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_GREEN_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_green_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_PURULENT_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_purulent_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_ROSE_HIP_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_rose_hip_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.STRONG_YELLOW_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "strong_yellow_tea", 250, centralKitchenID, false).build(consumer);
+        BottlingRecipeBuilder.thermalBottling(RespiteMDCompatItems.YELLOW_TEA_CUP.get(), 1, RespiteMDCompatItems.CUP.get(), centralKitchen + "yellow_tea", 250, centralKitchenID, false).build(consumer);
     }
 
     private static void centrifuge(Consumer<FinishedRecipe> consumer) {
@@ -104,5 +123,24 @@ public class ThermalRecipes {
         SeparatorRecipeBuilder.thermalSeparator(FRItems.STRONG_ROSE_HIP_TEA.get(), Items.GLASS_BOTTLE, 1, centralKitchen + "strong_rose_hip_tea", 250, centralKitchenID).build(consumer);
         SeparatorRecipeBuilder.thermalSeparator(FRItems.STRONG_YELLOW_TEA.get(), Items.GLASS_BOTTLE, 1, centralKitchen + "strong_yellow_tea", 250, centralKitchenID).build(consumer);
         SeparatorRecipeBuilder.thermalSeparator(FRItems.YELLOW_TEA.get(), Items.GLASS_BOTTLE, 1, centralKitchen + "yellow_tea", 250, centralKitchenID).build(consumer);
+        //Farmer's Respite Drinks (Cups)
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.BLACK_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "black_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.COFFEE_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "coffee", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.DANDELION_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "dandelion_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.GREEN_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "green_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.LONG_BLACK_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "long_black_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.LONG_COFFEE_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "long_coffee", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.LONG_DANDELION_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "long_dandelion_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.LONG_GREEN_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "long_green_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.LONG_YELLOW_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "long_yellow_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.PURULENT_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "purulent_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "rose_hip_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_BLACK_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_black_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_COFFEE_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_coffee", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_GREEN_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_green_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_PURULENT_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_purulent_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_ROSE_HIP_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_rose_hip_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.STRONG_YELLOW_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "strong_yellow_tea", 250, centralKitchenID).build(consumer);
+        SeparatorRecipeBuilder.thermalSeparator(RespiteMDCompatItems.YELLOW_TEA_CUP.get(), RespiteMDCompatItems.CUP.get(), 1, centralKitchen + "yellow_tea", 250, centralKitchenID).build(consumer);
     }
 }
