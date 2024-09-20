@@ -26,53 +26,37 @@ mixin {
     add sourceSets.main, "bundledelight.refmap.json"
 }
 
-version = "${mc_version}-${mod_version}"
-group = 'com.pouffy.bundledelight' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'bundledelight'
+version = project.mod_version + "-forge-mc" + project.mc_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
 
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+jarJar {
+    // Include or exclude dependencies here from runtime configuration
+    dependencies {
+        // Exclude any dependency which begins with 'com.google.gson.'
+        include (dependency 'org.apfloat:apfloat:2.0')
+        include (dependency 'org.jgrapht:jgrapht:1.5.2')
+        include (dependency 'org.jgrapht:jgrapht-core:1.5.2')
+    }
+}
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    // The mappings can be changed at any time and must be in the following format.
-    // Channel:   Version:
-    // official   MCVersion             Official field/method names from Mojang mapping files
-    // parchment  YYYY.MM.DD-MCVersion  Open community-sourced parameter names and javadocs layered on top of official
-    //
-    // You must be aware of the Mojang license when using the 'official' or 'parchment' mappings.
-    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
-    //
-    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
-    // Additional setup is needed to use their mappings: https://github.com/ParchmentMC/Parchment/wiki/Getting-Started
-    //
-    // Use non-default mappings at your own risk. They may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: '1.19.2'
 
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
+            arg '-mixin.config=metallurgica.mixins.json'
             property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'bundledelight'
-
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             mods {
                 bundledelight {
                     source sourceSets.main
@@ -82,15 +66,12 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-            arg "-mixin.config=bundledelight.mixins.json"
-
+            arg '-mixin.config=metallurgica.mixins.json'
             property 'forge.logging.markers', 'REGISTRIES'
-
             property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'bundledelight'
-
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             mods {
                 bundledelight {
                     source sourceSets.main
@@ -98,27 +79,13 @@ minecraft {
             }
         }
 
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'bundledelight'
-
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             mods {
                 bundledelight {
                     source sourceSets.main
@@ -133,7 +100,6 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the bundledelight for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'bundledelight', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
@@ -150,12 +116,11 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        // JEI
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
+        name = 'tterrag maven'
+        url = 'https://maven.tterrag.com/'
     }
     maven {
-        // CraftTweaker
+        // JEI
         name = "BlameJared"
         url = "https://maven.blamejared.com/"
     }
@@ -163,43 +128,49 @@ repositories {
     maven { url "https://www.cursemaven.com" }
     maven { url "https://dvs1.progwml6.com/files/maven/" }
     maven { url "https://modmaven.k-4u.nl" }
+    maven {
+        name = 'Thermal Maven'
+        url = 'https://maven.covers1624.net/'
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
-sourceSets.main.resources {
-    srcDirs += 'src/generated/resources'
-}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    // Real mod deobf dependency examples - these get remapped to your current mappings
-     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
-     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
-    // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
-    implementation fg.deobf("curse.maven:${project.farmersDelight}")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+
+    compileOnly fg.deobf("mezz.jei:jei-$mc_version-common-api:$jei_version")
+    compileOnly fg.deobf("mezz.jei:jei-$mc_version-forge-api:$jei_version")
+    implementation fg.deobf("mezz.jei:jei-$mc_version-forge:$jei_version")
+
     implementation fg.deobf("curse.maven:${project.farmersRespite}")
-    implementation fg.deobf("curse.maven:${project.minersDelight}")
     implementation fg.deobf("curse.maven:${project.brewNChew}")
-    implementation fg.deobf("curse.maven:${project.bundleOfJoy}")
-    implementation fg.deobf("curse.maven:${project.neapolitan}")
-    implementation fg.deobf("curse.maven:${project.blueprint}")
-    implementation fg.deobf("curse.maven:${project.respiteful}")
-    implementation fg.deobf("curse.maven:${project.abnormalsDelight}")
-    implementation fg.deobf("curse.maven:${project.cofhCore}")
-    implementation fg.deobf("curse.maven:${project.thermalFoundation}")
-    implementation fg.deobf("curse.maven:${project.thermalExpansion}")
 
+    //Farmers Delight & Its Addons [Fsr Umpazz hasn't made modrinth pages for Respite or Brewin' N Chewin' yet]
+    implementation fg.deobf("maven.modrinth:farmers-delight:${project.farmersDelight}")
+    implementation fg.deobf("maven.modrinth:miners-delight:${project.minersDelight}")
 
-    // Examples using mod jars from ./libs
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+    //Abnormals mods
+    implementation fg.deobf("maven.modrinth:blueprint:${project.blueprint}")
+    implementation fg.deobf("maven.modrinth:neapolitan:${project.neapolitan}")
+    implementation fg.deobf("maven.modrinth:abnormals-delight:${project.abnormalsDelight}")
+    implementation fg.deobf("maven.modrinth:respiteful:${project.respiteful}")
 
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    //Thermal mods
+    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofhCore}.+")
+    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermalCore}.+")
+    implementation fg.deobf("com.teamcofh:thermal_expansion:${mc_version}-${thermalExpansion}.+")
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
