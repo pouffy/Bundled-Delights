@@ -12,14 +12,21 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import static com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems.COPPER_TANKARD;
 
 public class MinersCompat extends CompatibleMod {
+    public static final String CLASS = "com.sammy.minersdelight.MinersDelightMod";
     public static final String MODID = "miners_delight";
+    
     public static ResourceLocation rl(String path) {
         return new ResourceLocation(MODID, path);
     }
 
     @Override
-    public String getModID() {
+    public String getModid() {
         return MODID;
+    }
+    
+    @Override
+    public String getRequiredClass() {
+        return CLASS;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data.builder.brewinandchewin;
 
-import com.brewinandchewin.common.crafting.KegRecipe;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,6 +11,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
+import umpaz.brewinandchewin.common.crafting.KegRecipe;
+import umpaz.brewinandchewin.common.registry.BCRecipeSerializers;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
@@ -171,7 +172,7 @@ public class KegRecipeBuilder {
         }
 
         public RecipeSerializer<?> getType() {
-            return KegRecipe.SERIALIZER;
+            return BCRecipeSerializers.FERMENTING.get();
         }
 
         @Nullable

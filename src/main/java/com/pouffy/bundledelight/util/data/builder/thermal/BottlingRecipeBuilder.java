@@ -108,7 +108,7 @@ public class BottlingRecipeBuilder {
         }
 
         public @NotNull RecipeSerializer<?> getType() {
-            return (RecipeSerializer) ThermalCore.RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_RECIPE_BOTTLER);
+            return (RecipeSerializer) ThermalCore.RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_BOTTLER_RECIPE);
         }
 
         @Nullable

@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -131,7 +132,8 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
 
     public static Iterable getCandleCakes() {
         return ForgeRegistries.BLOCKS.getValues().stream().filter((block) -> {
-            return block.getRegistryName() != null && "bundledelight".equals(block.getRegistryName().getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
+            ResourceLocation registryName = ForgeRegistries.BLOCKS.getKey(block);
+            return registryName != null && "bundledelight".equals(registryName.getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
         }).collect(Collectors.toList());
     }
 

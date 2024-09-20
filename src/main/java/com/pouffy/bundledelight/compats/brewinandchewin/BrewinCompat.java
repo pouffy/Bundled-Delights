@@ -6,14 +6,20 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class BrewinCompat extends CompatibleMod {
+    public static final String CLASS = "umpaz.brewinandchewin.BrewinAndChewin";
     public static final String MODID = "brewinandchewin";
 
     public static ResourceLocation rl(String path) {
         return new ResourceLocation(MODID, path);
     }
-
+    
     @Override
-    public String getModID() {
+    public String getRequiredClass() {
+        return CLASS;
+    }
+    
+    @Override
+    public String getModid() {
         return MODID;
     }
 

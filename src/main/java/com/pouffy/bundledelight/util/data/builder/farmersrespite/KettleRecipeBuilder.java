@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data.builder.farmersrespite;
 
-import com.farmersrespite.core.registry.FRRecipeSerializers;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
+import umpaz.farmersrespite.common.registry.FRRecipeSerializers;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
@@ -157,7 +157,7 @@ public class KettleRecipeBuilder {
         }
 
         public RecipeSerializer<?> getType() {
-            return (RecipeSerializer) FRRecipeSerializers.BREWING.get();
+            return FRRecipeSerializers.BREWING.get();
         }
 
         @Nullable

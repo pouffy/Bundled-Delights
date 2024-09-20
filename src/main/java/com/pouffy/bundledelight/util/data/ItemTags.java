@@ -1,7 +1,5 @@
 package com.pouffy.bundledelight.util.data;
 
-import com.brewinandchewin.core.registry.BCItems;
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinMDCompatItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
@@ -12,6 +10,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import umpaz.brewinandchewin.common.registry.BCItems;
+import umpaz.farmersrespite.common.registry.FRItems;
 
 import javax.annotation.Nullable;
 @SuppressWarnings("unchecked")

@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class RespiteCompat extends CompatibleMod {
+    public static final String CLASS = "umpaz.farmersrespite.FarmersRespite";
     public static final String MODID = "farmersrespite";
 
     public static ResourceLocation rl(String path) {
@@ -13,7 +14,12 @@ public class RespiteCompat extends CompatibleMod {
     }
 
     @Override
-    public String getModID() {
+    public String getRequiredClass() {
+        return CLASS;
+    }
+    
+    @Override
+    public String getModid() {
         return MODID;
     }
 

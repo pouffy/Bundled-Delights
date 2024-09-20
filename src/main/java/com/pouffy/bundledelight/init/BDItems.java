@@ -41,7 +41,7 @@ public class BDItems {
     public static final RegistryObject<Item> CARROT_CAKE;
     public static final RegistryObject<Item> CARROT_CAKE_SLICE;
     public BDItems(){
-}
+    }
 
     static {
         ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "bundledelight");

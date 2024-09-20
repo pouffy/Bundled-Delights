@@ -1,7 +1,7 @@
 package com.pouffy.bundledelight.compats.neapolitan;
 
 import com.pouffy.bundledelight.init.BDBlocks;
-import com.teamabnormals.neapolitan.common.item.HealingSoupItem;
+import com.teamabnormals.neapolitan.common.item.HealingDrinkItem;
 import com.teamabnormals.neapolitan.common.item.MilkshakeItem;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -63,10 +63,10 @@ public class NeapolitanCompatItems {
             return new BlockItem((Block) NeapolitanCompatBlocks.STRAWBERRY_CAKE.get(), singleItem());
         });
         WHITE_STRAWBERRY_ICE_CREAM = ITEMS.register("white_strawberry_ice_cream", () -> {
-            return new HealingSoupItem(3.0F, bowlFoodItem(NeapolitanItems.NeapolitanFoods.STRAWBERRY_ICE_CREAM));
+            return new HealingDrinkItem(3.0F, bowlFoodItem(NeapolitanItems.NeapolitanFoods.STRAWBERRY_ICE_CREAM));
         });
         WHITE_STRAWBERRY_MILKSHAKE = ITEMS.register("white_strawberry_milkshake", () -> {
-            return new MilkshakeItem(MobEffectCategory.HARMFUL, bowlFoodItem(NeapolitanItems.NeapolitanFoods.MILKSHAKE));
+            return new MilkshakeItem(bowlFoodItem(NeapolitanItems.NeapolitanFoods.STRAWBERRY_MILKSHAKE));
         });
         WHITE_STRAWBERRY_ICE_CREAM_BLOCK = ITEMS.register("white_strawberry_ice_cream_block", () -> {
             return new BlockItem((Block) BDBlocks.WHITE_STRAWBERRY_ICE_CREAM_BLOCK.get(), basicItem());

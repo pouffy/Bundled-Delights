@@ -1,15 +1,17 @@
 package com.pouffy.bundledelight.compats;
 
+import com.pouffy.bundledelight.util.ItemRegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
 
 public abstract class CompatibleMod {
     private boolean isLoaded;
 
-    public abstract String getModID();
+    public abstract String getRequiredClass();
+    public abstract String getModid();
 
     public void tryLoad() {
-        if (ModList.get().isLoaded(this.getModID())) {
+        if (ItemRegistryUtils.isClassFound(this.getRequiredClass())) {
             this.isLoaded = true;
 
             this.onLoad();
@@ -24,7 +26,7 @@ public abstract class CompatibleMod {
     }
 
     public ResourceLocation getLocation(String path) {
-        return new ResourceLocation(this.getModID(), path);
+        return new ResourceLocation(this.getModid(), path);
     }
 
 }

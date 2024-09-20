@@ -99,7 +99,7 @@ public class SeparatorRecipeBuilder {
         }
 
         public @NotNull RecipeSerializer<?> getType() {
-            return (RecipeSerializer) ThermalCore.RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_RECIPE_CENTRIFUGE);
+            return (RecipeSerializer) ThermalCore.RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_CENTRIFUGE_RECIPE);
         }
 
         @Nullable

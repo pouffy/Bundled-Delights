@@ -5,11 +5,17 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class NeapolitanCompat extends CompatibleMod {
+    public static final String CLASS = "com.teamabnormals.neapolitan.core.Neapolitan";
     public static final String MODID = "neapolitan";
 
     @Override
-    public String getModID() {
+    public String getModid() {
         return MODID;
+    }
+    
+    @Override
+    public String getRequiredClass() {
+        return CLASS;
     }
 
     @Override

@@ -12,6 +12,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -38,7 +39,7 @@ public class Advancements extends AdvancementProvider {
         this.PATH = generatorIn.getOutputFolder();
     }
 
-    public void run(HashCache cache) {
+    public void run(CachedOutput cache) {
         Set<ResourceLocation> set = Sets.newHashSet();
         Consumer<Advancement> consumer = (advancement) -> {
             if (!set.add(advancement.getId())) {
@@ -47,7 +48,7 @@ public class Advancements extends AdvancementProvider {
                 Path path1 = getPath(this.PATH, advancement);
 
                 try {
-                    DataProvider.save((new GsonBuilder()).setPrettyPrinting().create(), cache, advancement.deconstruct().serializeToJson(), path1);
+                    DataProvider.saveStable(cache, advancement.deconstruct().serializeToJson(), path1);
                 } catch (IOException var6) {
                     LOGGER.error("Couldn't save advancement {}", path1, var6);
                 }

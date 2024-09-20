@@ -1,11 +1,11 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
 import com.pouffy.bundledelight.init.BDItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;

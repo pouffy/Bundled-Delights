@@ -64,11 +64,11 @@ public class CommonEvents {
     }
     @SubscribeEvent
     public static void onCakeInteraction(PlayerInteractEvent.RightClickBlock event) {
-        Level world = event.getWorld();
+        Level world = event.getLevel();
         BlockPos pos = event.getPos();
-        BlockState state = event.getWorld().getBlockState(pos);
-        ItemStack tool = event.getPlayer().getItemInHand(event.getHand());
-        ResourceLocation name = state.getBlock().getRegistryName();
+        BlockState state = event.getLevel().getBlockState(pos);
+        ItemStack tool = event.getItemStack();
+        ResourceLocation name = ForgeRegistries.BLOCKS.getKey(state.getBlock());
         if (tool.is(ModTags.KNIVES) && name != null) {
             if (state.is(BDTags.DROPS_CAKE_SLICE)) {
                 Supplier<Item> cakeSlice = getCakeSlice(state);

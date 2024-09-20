@@ -8,18 +8,27 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class RespiteMDCompat extends CompatibleDoubleMod {
     public static final String MODID = "farmersrespite";
     public static final String MD_MODID = "miners_delight";
+    
+    public static final String CLASS = "umpaz.farmersrespite.FarmersRespite";
+    public static final String MD_CLASS = "com.sammy.minersdelight.MinersDelightMod";
+    
     public static ResourceLocation rl(String path) {
         return new ResourceLocation(MODID, path);
     }
 
     @Override
-    public String getModID() {
+    public String getModid() {
         return MODID;
     }
-
+    
     @Override
-    public String getOtherModID() {
-        return MD_MODID;
+    public String getRequiredClass() {
+        return CLASS;
+    }
+    
+    @Override
+    public String getOtherRequiredClass() {
+        return MD_CLASS;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.util.data.builder.thermal.BottlingRecipeBuilder;
 import com.pouffy.bundledelight.util.data.builder.thermal.SeparatorRecipeBuilder;
 import com.sammy.minersdelight.MinersDelightMod;
@@ -8,6 +7,7 @@ import com.sammy.minersdelight.setup.MDItems;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
+import umpaz.farmersrespite.common.registry.FRItems;
 
 import java.util.function.Consumer;
 

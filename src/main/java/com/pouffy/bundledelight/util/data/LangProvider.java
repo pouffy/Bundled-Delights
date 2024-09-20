@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.text.WordUtils;
 
 public class LangProvider extends LanguageProvider {
@@ -132,57 +133,57 @@ public class LangProvider extends LanguageProvider {
     }
 
     private void add(Item item) {
-        if (item.getRegistryName() != null) {
-            this.add(item, this.format(item.getRegistryName()));
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            this.add(item, this.format(ForgeRegistries.ITEMS.getKey(item)));
         }
     }
     private void addBasket(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, var10002.replace(" Crate", "") + " Basket");
         }
     }
     private void addGlass(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Glass of " + var10002.replace(" Glass", ""));
         }
     }
     private void addSwig(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Swig of " + var10002.replace(" Swig", ""));
         }
     }
     private void addCup(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Mug of " + var10002.replace(" Cup", ""));
         }
     }
     private void addLongCup(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Mug of " + var10002.replace(" Cup", "").replace("Long ", ""));
         }
     }
     private void addStrongCup(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Mug of " + var10002.replace(" Cup", "").replace("Strong ", ""));
         }
     }
     private void addRaw(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Raw " + var10002);
         }
 
     }
 
     private void add(Block block) {
-        if (block.getRegistryName() != null) {
-            this.add(block, this.format(block.getRegistryName()));
+        if (ForgeRegistries.BLOCKS.getKey(block) != null) {
+            this.add(block, this.format(ForgeRegistries.BLOCKS.getKey(block)));
         }
 
     }
@@ -192,8 +193,8 @@ public class LangProvider extends LanguageProvider {
     }
 
     private void addSlice(Item item) {
-        if (item.getRegistryName() != null) {
-            String var10002 = this.format(item.getRegistryName());
+        if (ForgeRegistries.ITEMS.getKey(item) != null) {
+            String var10002 = this.format(ForgeRegistries.ITEMS.getKey(item));
             this.add(item, "Slice of " + var10002.replace(" Slice", ""));
         }
 

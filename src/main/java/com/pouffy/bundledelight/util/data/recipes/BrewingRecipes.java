@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteMDCompatItems;
 import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
@@ -10,6 +9,7 @@ import com.pouffy.bundledelight.util.data.builder.farmersrespite.KettleRecipeBui
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
@@ -41,7 +41,7 @@ public class BrewingRecipes {
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.LONG_COFFEE_CUP.get(), 1, 2400, 0.35F, false, CUP.get()).addIngredient((ItemLike) RespiteMDCompatItems.COFFEE_CUP.get()).addIngredient(ForgeTags.MILK).build(consumer);
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.STRONG_COFFEE_CUP.get(), 1, 2400, 0.35F, false, CUP.get()).addIngredient((ItemLike) RespiteMDCompatItems.COFFEE_CUP.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
 
-        KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get()).addIngredient((ItemLike)FRItems.ROSE_HIPS.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get()).addIngredient((ItemLike) FRItems.ROSE_HIPS.get()).build(consumer);
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.STRONG_ROSE_HIP_TEA_CUP.get(), 1, 2400, 0.35F, false, CUP.get()).addIngredient((ItemLike) RespiteMDCompatItems.ROSE_HIP_TEA_CUP.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
 
         KettleRecipeBuilder.kettleRecipe((ItemLike) RespiteMDCompatItems.DANDELION_TEA_CUP.get()).addIngredient((ItemLike)Items.DANDELION).addIngredient(BDTags.TEA_POWDER).build(consumer);

@@ -1,7 +1,5 @@
 package com.pouffy.bundledelight.compats.brewinandchewin;
 
-import com.brewinandchewin.core.registry.BCEffects;
-import com.brewinandchewin.core.utility.BCTextUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -15,6 +13,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import umpaz.brewinandchewin.common.registry.BCEffects;
+import umpaz.brewinandchewin.common.utility.BCTextUtils;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
 import javax.annotation.Nullable;

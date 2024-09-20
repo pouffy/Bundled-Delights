@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.block.CabinetBlock;
 import vectorwing.farmersdelight.common.block.FeastBlock;
 import vectorwing.farmersdelight.common.block.PieBlock;
@@ -30,7 +31,7 @@ public class BlockStates extends BlockStateProvider {
         super(gen, "bundledelight", exFileHelper);
     }
     private String blockName(Block block) {
-        return block.getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
 
     public ResourceLocation resourceBlock(String path) {
@@ -52,7 +53,7 @@ public class BlockStates extends BlockStateProvider {
     //    });
     //}
     private String name(Block block) {
-        return block.getRegistryName().getPath();
+        return ForgeRegistries.BLOCKS.getKey(block).getPath();
     }
     private ResourceLocation suffix(ResourceLocation rl, String suffix) {
         String var10002 = rl.getNamespace();

@@ -1,7 +1,5 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.brewinandchewin.core.registry.BCItems;
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.BundledDelights;
 import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsNeapolitanCompatItems;
 import com.pouffy.bundledelight.compats.brewinandchewin.BrewinCompatItems;
@@ -18,6 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
+import umpaz.brewinandchewin.common.registry.BCItems;
+import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 

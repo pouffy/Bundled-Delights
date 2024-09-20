@@ -1,6 +1,5 @@
 package com.pouffy.bundledelight.util.data.recipes;
 
-import com.farmersrespite.core.registry.FRItems;
 import com.pouffy.bundledelight.compats.abnormals_delight.AbnormalsNeapolitanCompatItems;
 import com.pouffy.bundledelight.compats.farmersrespite.RespiteCompatItems;
 import com.pouffy.bundledelight.compats.neapolitan.NeapolitanCompatItems;
@@ -10,6 +9,7 @@ import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.function.Consumer;
