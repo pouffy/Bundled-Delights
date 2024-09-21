@@ -1,11 +1,10 @@
 package com.pouffydev.bundledelight.foundation;
 
-import com.pouffydev.bundledelight.BundledDelights;
-import com.pouffydev.bundledelight.compat.neapolitan.CompatFlavoredCakeBlock;
-import com.pouffydev.bundledelight.compat.neapolitan.CompatFlavoredCandleCakeBlock;
-import com.pouffydev.bundledelight.foundation.util.data.client.CakeGenerator;
-import com.pouffydev.bundledelight.foundation.util.data.client.CandleCakeGenerator;
-import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBlocks;
+import com.pouffydev.bundledelight.BundledDelight;
+import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCakeBlock;
+import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCandleCakeBlock;
+import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
+import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -79,7 +78,7 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public static Item.Properties foodProps(FoodProperties food) {
-        return new Item.Properties().food(food).tab(BundledDelights.itemGroup);
+        return new Item.Properties().food(food).tab(BundledDelight.itemGroup);
     }
     
     //ITEM

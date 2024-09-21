@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "bundledelight:block/white_strawberry_ice_cream_block"
-    }
-}

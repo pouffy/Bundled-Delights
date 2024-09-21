@@ -1,16 +1,10 @@
-
 modLoader="javafml" #mandatory
 loaderVersion="${fml_version_spec}" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 license="All rights reserved"
-issueTrackerURL="https://github.com/pouffy/Bundled-Delights/issues" #optional
 [[mods]] #mandatory
 modId="bundledelight" #mandatory
 version="${version}" #mandatory
 displayName="Bundled Delight" #mandatory
-# A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
-# A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="https://github.com/pouffy/Bundled-Delights" #optional
 logoFile="logo.png" #optional
 credits="PouffyDev & All the authors of the Mods this utilizes." #optional
 authors="${author}" #optional
@@ -18,9 +12,9 @@ description='''
 Bundled Delight is a mod that aims to add features connecting Farmer's Delight Add-Ons such as Brewin' & Chewin', Farmer's Respite and Miner's Delight!
 '''
 [[dependencies.bundledelight]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="${forge_version_spec}" #mandatory
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_spec}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.bundledelight]]
@@ -29,33 +23,9 @@ Bundled Delight is a mod that aims to add features connecting Farmer's Delight A
     versionRange="${minecraft_version_spec}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.bundledelight]]
-    modId="farmersdelight"
-    mandatory=true
-    versionRange="${farmers_delight_version_spec}"
-    ordering="NONE"
-    side="BOTH"
 #[[dependencies.bundledelight]]
-#modId="miners_delight"
-#mandatory=true
-#versionRange="[1.18.2-1.0.3,)"
-#ordering="NONE"
-#side="BOTH"
-#[[dependencies.bundledelight]]
-#modId="brewinandchewin"
-#mandatory=true
-#versionRange="[1.18.2-1.0.1,)"
-#ordering="NONE"
-#side="BOTH"
-#[[dependencies.bundledelight]]
-#modId="farmersrespite"
-#mandatory=true
-#versionRange="[1.18.2-1.3.0,)"
-#ordering="NONE"
-#side="BOTH"
-#[[dependencies.bundledelight]]
-#modId="farmers_bundle"
-#mandatory=true
-#versionRange="[1.18.21.1.5,)"
-#ordering="NONE"
-#side="BOTH"
+#    modId="farmersdelight"
+#    mandatory=true
+#    versionRange="${farmers_delight_version_spec}"
+#    ordering="NONE"
+#    side="BOTH"
