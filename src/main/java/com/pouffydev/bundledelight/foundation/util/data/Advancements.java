@@ -5,7 +5,7 @@ import com.pouffydev.bundledelight.compat.brewinandchewin.BrewinCompatItems;
 import com.pouffydev.bundledelight.compat.brewinandchewin.BrewinMDCompatItems;
 import com.pouffydev.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffydev.bundledelight.init.BDItems;
-import com.pouffydev.bundledelight.foundation.util.TextUtils;
+import com.pouffydev.bundledelight.foundation.util.BDTextUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
@@ -65,7 +65,7 @@ public class Advancements extends AdvancementProvider {
         public BundleDelightAdvancements() {
         }
         public void accept(Consumer<Advancement> consumer) {
-            Advancement bundleDelight = Advancement.Builder.advancement().display((ItemLike) BDItems.BORSCHT.get(), TextUtils.getTranslation("advancement.root", new Object[0]), TextUtils.getTranslation("advancement.root.desc", new Object[0]), new ResourceLocation("minecraft:textures/block/spruce_log.png"), FrameType.TASK, false, false, false).addCriterion("seeds", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[0])).save(consumer, this.getNameId("main/root"));
+            Advancement bundleDelight = Advancement.Builder.advancement().display((ItemLike) BDItems.BORSCHT.get(), BDTextUtils.getTranslation("advancement.root", new Object[0]), BDTextUtils.getTranslation("advancement.root.desc", new Object[0]), new ResourceLocation("minecraft:textures/block/spruce_log.png"), FrameType.TASK, false, false, false).addCriterion("seeds", InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[0])).save(consumer, this.getNameId("main/root"));
             Advancement copperStein = getAdvancement(bundleDelight, (ItemLike) BrewinMDCompatItems.COPPER_TANKARD.get(), "copper_stein", FrameType.TASK, true, true, false).addCriterion("copper_stein", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) BrewinMDCompatItems.COPPER_TANKARD.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_stein"));
             Advancement copperMug = getAdvancement(bundleDelight, (ItemLike) RespiteMDCompatItems.CUP.get(), "copper_mug", FrameType.TASK, true, true, false).addCriterion("copper_mug", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_mug"));
             Advancement copperTea = getAdvancement(copperMug, (ItemLike) RespiteMDCompatItems.GREEN_TEA_CUP.get(), "copper_tea", FrameType.TASK, true, true, false).addCriterion("green_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.GREEN_TEA_CUP.get())).addCriterion("yellow_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.YELLOW_TEA_CUP.get())).addCriterion("black_tea", InventoryChangeTrigger.TriggerInstance.hasItems((ItemLike) RespiteMDCompatItems.BLACK_TEA_CUP.get())).requirements(RequirementsStrategy.OR).save(consumer, this.getNameId("main/copper_tea"));
@@ -73,7 +73,7 @@ public class Advancements extends AdvancementProvider {
         }
 
         protected static Advancement.Builder getAdvancement(Advancement parent, ItemLike display, String name, FrameType frame, boolean showToast, boolean announceToChat, boolean hidden) {
-            return Advancement.Builder.advancement().parent(parent).display(display, TextUtils.getTranslation("advancement." + name, new Object[0]), TextUtils.getTranslation("advancement." + name + ".desc", new Object[0]), (ResourceLocation)null, frame, showToast, announceToChat, hidden);
+            return Advancement.Builder.advancement().parent(parent).display(display, BDTextUtils.getTranslation("advancement." + name, new Object[0]), BDTextUtils.getTranslation("advancement." + name + ".desc", new Object[0]), (ResourceLocation)null, frame, showToast, announceToChat, hidden);
         }
 
         private String getNameId(String id) {

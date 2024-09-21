@@ -1,12 +1,12 @@
 package com.pouffydev.bundledelight.compat.brewinandchewin;
 
 import com.pouffydev.bundledelight.content.food.FoodValues;
+import com.pouffydev.bundledelight.content.item.BundleBoozeItem;
+import com.pouffydev.bundledelight.content.item.BundleDreadNogItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import umpaz.brewinandchewin.common.item.BoozeItem;
-import umpaz.brewinandchewin.common.utility.BCFoods;
 
 import static com.pouffydev.bundledelight.foundation.util.ItemRegistryUtils.*;
 
@@ -58,58 +58,58 @@ public class BrewinCompatItems {
             return new Item(basicItem());
         });
         BEER_GLASS = ITEMS.register("beer_glass", () -> {
-            return new BoozeItem(1, 8, glassTankardFoodItemNoEffect());
+            return new BundleBoozeItem(1, 8, glassTankardFoodItemNoEffect());
         });
         VODKA_GLASS = ITEMS.register("vodka_glass", () -> {
-            return new BoozeItem(1, 12, glassTankardFoodItemNoEffect());
+            return new BundleBoozeItem(1, 12, glassTankardFoodItemNoEffect());
         });
         MEAD_GLASS = ITEMS.register("mead_glass", () -> {
-            return new BoozeItem(1, 8, glassTankardFoodItem(BCFoods.MEAD));
+            return new BundleBoozeItem(1, 8, glassTankardFoodItem(FoodValues.MEAD));
         });
         RICE_WINE_GLASS = ITEMS.register("rice_wine_glass", () -> {
-            return new BoozeItem(1, 5, glassTankardFoodItem(BCFoods.RICE_WINE));
+            return new BundleBoozeItem(1, 5, glassTankardFoodItem(FoodValues.RICE_WINE));
         });
         EGG_GROG_GLASS = ITEMS.register("egg_grog_glass", () -> {
-            return new BoozeItem(1, 0, glassTankardFoodItem(BCFoods.EGG_GROG));
+            return new BundleBoozeItem(1, 0, glassTankardFoodItem(FoodValues.EGG_GROG));
         });
         STRONGROOT_ALE_GLASS = ITEMS.register("strongroot_ale_glass", () -> {
-            return new BoozeItem(2, 12, glassTankardFoodItem(BCFoods.STRONGROOT_ALE));
+            return new BundleBoozeItem(2, 12, glassTankardFoodItem(FoodValues.STRONGROOT_ALE));
         });
         SACCHARINE_RUM_GLASS = ITEMS.register("saccharine_rum_glass", () -> {
-            return new BoozeItem(2, 8, glassTankardFoodItem(BCFoods.SACCHARINE_RUM));
+            return new BundleBoozeItem(2, 8, glassTankardFoodItem(FoodValues.SACCHARINE_RUM));
         });
         PALE_JANE_GLASS = ITEMS.register("pale_jane_glass", () -> {
-            return new BoozeItem(1, 5, glassTankardFoodItem(BCFoods.PALE_JANE));
+            return new BundleBoozeItem(1, 5, glassTankardFoodItem(FoodValues.PALE_JANE));
         });
         DREAD_NOG_GLASS = ITEMS.register("dread_nog_glass", () -> {
-            return new BundledDreadNogItem(3, 5, glassTankardFoodItemNoEffect());
+            return new BundleDreadNogItem(3, 5, glassTankardFoodItemNoEffect());
         });
         SALTY_FOLLY_GLASS = ITEMS.register("salty_folly_glass", () -> {
-            return new BoozeItem(2, 10, glassTankardFoodItem(BCFoods.SALTY_FOLLY));
+            return new BundleBoozeItem(2, 10, glassTankardFoodItem(FoodValues.SALTY_FOLLY));
         });
         STEEL_TOE_STOUT_GLASS = ITEMS.register("steel_toe_stout_glass", () -> {
-            return new BoozeItem(3, 10, glassTankardFoodItem(BCFoods.STEEL_TOE_STOUT));
+            return new BundleBoozeItem(3, 10, glassTankardFoodItem(FoodValues.STEEL_TOE_STOUT));
         });
         GLITTERING_GRENADINE_GLASS = ITEMS.register("glittering_grenadine_glass", () -> {
-            return new BoozeItem(1, 5, glassTankardFoodItem(BCFoods.GLITTERING_GRENADINE));
+            return new BundleBoozeItem(1, 5, glassTankardFoodItem(FoodValues.GLITTERING_GRENADINE));
         });
         BLOODY_MARY_GLASS = ITEMS.register("bloody_mary_glass", () -> {
-            return new BoozeItem(1, 12, glassTankardFoodItem(BCFoods.BLOODY_MARY));
+            return new BundleBoozeItem(1, 12, glassTankardFoodItem(FoodValues.BLOODY_MARY));
         });
         RED_RUM_GLASS = ITEMS.register("red_rum_glass", () -> {
-            return new BoozeItem(1, 18, glassTankardFoodItem(BCFoods.RED_RUM));
+            return new BundleBoozeItem(1, 18, glassTankardFoodItem(FoodValues.RED_RUM));
         });
         WITHERING_DROSS_GLASS = ITEMS.register("withering_dross_glass", () -> {
-            return new BoozeItem(3, 20, glassTankardFoodItem(BCFoods.WITHERING_DROSS));
+            return new BundleBoozeItem(3, 20, glassTankardFoodItem(FoodValues.WITHERING_DROSS));
         });
         KOMBUCHA_GLASS = ITEMS.register("kombucha_glass", () -> {
-            return new BoozeItem(1, 5, glassTankardFoodItem(BCFoods.KOMBUHCA));
+            return new BundleBoozeItem(1, 5, glassTankardFoodItem(FoodValues.KOMBUHCA));
         });
         RADIANT_BREW_GLASS = ITEMS.register("radiant_brew_glass", () -> {
-            return new BoozeItem(1, 6, glassTankardFoodItem(FoodValues.RADIANT_BREW));
+            return new BundleBoozeItem(1, 6, glassTankardFoodItem(FoodValues.RADIANT_BREW));
         });
         ROOT_BEER_GLASS = ITEMS.register("root_beer_glass", () -> {
-            return new BoozeItem(2, 8, glassTankardFoodItemNoEffect());
+            return new BundleBoozeItem(2, 8, glassTankardFoodItemNoEffect());
         });
 
     }

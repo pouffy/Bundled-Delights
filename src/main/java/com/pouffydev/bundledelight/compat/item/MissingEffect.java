@@ -1,6 +1,6 @@
 package com.pouffydev.bundledelight.compat.item;
 
-import com.pouffydev.bundledelight.foundation.util.TextUtils;
+import com.pouffydev.bundledelight.foundation.util.BDTextUtils;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +14,6 @@ public class MissingEffect extends MobEffect {
     }
     
     public void applyInstantenousEffect(@Nullable Entity entity, @Nullable Entity entity1, LivingEntity livingEntity, int p_19465_, double p_19466_) {
-        livingEntity.sendSystemMessage(TextUtils.getTranslation("missing_effect", this.getDisplayName().getString()));
+        livingEntity.sendSystemMessage(BDTextUtils.getTranslation("missing_effect", this.getDisplayName().getString()));
     }
 }

@@ -1,6 +1,6 @@
 package com.pouffydev.bundledelight.compat.abnormals_delight;
 
-import com.teamabnormals.abnormals_delight.core.registry.ADItems;
+import com.pouffydev.bundledelight.content.food.FoodValues;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,7 +16,7 @@ public class AbnormalsNeapolitanCompatItems {
     static {
         ITEMS = DeferredRegister.create(net.minecraftforge.registries.ForgeRegistries.ITEMS, "bundledelight");
         WHITE_STRAWBERRY_CAKE_SLICE = ITEMS.register("white_strawberry_cake_slice", () -> {
-            return new CompatCakeSliceItem(foodProps(ADItems.ADFoods.CAKE_SLICE));
+            return new CompatCakeSliceItem(foodProps(FoodValues.CAKE_SLICE));
         });
     }
 }

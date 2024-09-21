@@ -2,8 +2,8 @@ package com.pouffydev.bundledelight.compat;
 
 import com.google.common.collect.ImmutableMap;
 import com.pouffydev.bundledelight.compat.neapolitan.NeapolitanCompatItems;
-import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
-import com.teamabnormals.neapolitan.core.registry.NeapolitanMobEffects;
+import com.pouffydev.bundledelight.foundation.util.CommonUtil;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -12,73 +12,80 @@ import net.minecraft.world.item.Item;
 
 import java.util.Map;
 
+import static com.pouffydev.bundledelight.foundation.util.CommonUtil.getItem;
+
 public class CompatFoodValues {
+    public static MobEffect berserking = CommonUtil.getMobEffect(new ResourceLocation("neapolitan", "berserking"));
+    public static MobEffect harmony = CommonUtil.getMobEffect(new ResourceLocation("neapolitan", "harmony"));
+    public static MobEffect sugarRush = CommonUtil.getMobEffect(new ResourceLocation("neapolitan", "sugar_rush"));
+    public static MobEffect vanillaScent = CommonUtil.getMobEffect(new ResourceLocation("neapolitan", "vanilla_scent"));
+    public static MobEffect agility = CommonUtil.getMobEffect(new ResourceLocation("neapolitan", "agility"));
 
     public static final FoodProperties ADZUKI_CURRY_CUP = (new FoodProperties.Builder()).nutrition(6).saturationMod(1.2F).effect(() -> {
-        return new MobEffectInstance((MobEffect)NeapolitanMobEffects.HARMONY.get(), 300);
+        return new MobEffectInstance((MobEffect)harmony, 300);
     }, 1.0F).effect(() -> {
-        return new MobEffectInstance((MobEffect)NeapolitanMobEffects.AGILITY.get(), 300);
+        return new MobEffectInstance((MobEffect)agility, 300);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect) MobEffects.DIG_SPEED, 1800, 1);
     }, 1.0F).build();
     public static final Map<Item, FoodProperties> NEAPOLITAN_EFFECTS = (new ImmutableMap.Builder<Item, FoodProperties>())
             .put(NeapolitanCompatItems.WHITE_STRAWBERRY_ICE_CREAM.get(), (new FoodProperties.Builder())
                     .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).build())
-            .put(NeapolitanItems.CHOCOLATE_BAR.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 400, 1), 1.0F).build())
-            .put(NeapolitanItems.CHOCOLATE_SPIDER_EYE.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 800, 1), 1.0F).build())
-            .put(NeapolitanItems.CHOCOLATE_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 600, 2), 1.0F).build())
-            .put(NeapolitanItems.STRAWBERRY_ICE_CREAM.get(), (new FoodProperties.Builder())
+            .put(getItem(new ResourceLocation("neapolitan", "chocolate_bar")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(sugarRush, 400, 1), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "chocolate_spider_eye")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(sugarRush, 800, 1), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "chocolate_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(sugarRush, 600, 2), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "strawberry_ice_cream")), (new FoodProperties.Builder())
                     .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).build())
-            .put(NeapolitanItems.DRIED_VANILLA_PODS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 200), 1.0F).build())
-            .put(NeapolitanItems.VANILLA_FUDGE.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 100), 1.0F).build())
-            .put(NeapolitanItems.VANILLA_PUDDING.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 300), 1.0F).build())
-            .put(NeapolitanItems.VANILLA_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 400), 1.0F).build())
-            .put(NeapolitanItems.BANANA.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 300), 1.0F).build())
-            .put(NeapolitanItems.BANANA_BREAD.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 600), 1.0F).build())
-            .put(NeapolitanItems.DRIED_BANANA.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 200), 1.0F).build())
-            .put(NeapolitanItems.BANANA_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 1200), 1.0F).build())
-            .put(NeapolitanItems.MINT_LEAVES.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 600), 1.0F).build())
-            .put(NeapolitanItems.MINT_CHOPS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 900), 1.0F).build())
-            .put(NeapolitanItems.COOKED_MINT_CHOPS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 1200), 1.0F).build())
-            .put(NeapolitanItems.MINT_CANDIES.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 2400), 1.0F).build())
-            .put(NeapolitanItems.MINT_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 1600), 1.0F).build())
-            .put(NeapolitanItems.ROASTED_ADZUKI_BEANS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 100), 1.0F).build())
-            .put(NeapolitanItems.ADZUKI_BUN.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 300), 1.0F).build())
-            .put(NeapolitanItems.ADZUKI_STEW.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 400), 1.0F).build())
-            .put(NeapolitanItems.ADZUKI_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 600), 1.0F).build())
-            .put(NeapolitanItems.CHOCOLATE_STRAWBERRIES.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 200), 1.0F).build())
-            .put(NeapolitanItems.VANILLA_CHOCOLATE_FINGERS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 200), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 100), 1.0F).build())
-            .put(NeapolitanItems.STRAWBERRY_BANANA_SMOOTHIE.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 600), 1.0F).build())
-            .put(NeapolitanItems.MINT_CHOCOLATE.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 200), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.BERSERKING.get(), 1200), 1.0F).build())
-            .put(NeapolitanItems.STRAWBERRY_BEAN_BONBONS.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 100), 1.0F).build())
-            .put(NeapolitanItems.ADZUKI_CURRY.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(NeapolitanMobEffects.HARMONY.get(), 300), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.AGILITY.get(), 300), 1.0F).build())
-            .put(NeapolitanItems.NEAPOLITAN_ICE_CREAM.get(), (new FoodProperties.Builder())
-                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.SUGAR_RUSH.get(), 400, 1), 1.0F).effect(() -> new MobEffectInstance(NeapolitanMobEffects.VANILLA_SCENT.get(), 200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "dried_vanilla_pods")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(vanillaScent, 200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "vanilla_fudge")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(vanillaScent, 100), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "vanilla_pudding")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(vanillaScent, 300), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "vanilla_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(vanillaScent, 400), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "banana")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(agility, 300), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "banana_bread")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(agility, 600), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "dried_banana")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(agility, 200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "banana_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(agility, 1200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "mint_leaves")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(berserking, 600), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "mint_chops")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(berserking, 900), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "cooked_mint_chops")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(berserking, 1200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "mint_candies")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(berserking, 2400), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "mint_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(berserking, 1600), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "roasted_adzuki_beans")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(harmony, 100), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "adzuki_bun")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(harmony, 300), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "adzuki_stew")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(harmony, 400), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "adzuki_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(harmony, 600), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "chocolate_strawberries")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(sugarRush, 200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "vanilla_chocolate_fingers")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(sugarRush, 200), 1.0F).effect(() -> new MobEffectInstance(vanillaScent, 100), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "strawberry_banana_smoothie")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(agility, 600), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "mint_chocolate")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(sugarRush, 200), 1.0F).effect(() -> new MobEffectInstance(berserking, 1200), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "strawberry_bean_bonbons")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(harmony, 100), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "adzuki_curry")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(harmony, 300), 1.0F).effect(() -> new MobEffectInstance(agility, 300), 1.0F).build())
+            .put(getItem(new ResourceLocation("neapolitan", "neapolitan_ice_cream")), (new FoodProperties.Builder())
+                    .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2), 1.0F).effect(() -> new MobEffectInstance(sugarRush, 400, 1), 1.0F).effect(() -> new MobEffectInstance(vanillaScent, 200), 1.0F).build())
     .build();
 }

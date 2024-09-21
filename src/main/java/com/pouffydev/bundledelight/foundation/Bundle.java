@@ -1,7 +1,9 @@
 package com.pouffydev.bundledelight.foundation;
 
 import com.pouffydev.bundledelight.BundledDelights;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -16,7 +18,7 @@ import java.util.Objects;
 public abstract class Bundle {
     private boolean isLoaded;
     private final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-    private static String modid;
+    private final String modid;
     
     public abstract List<String> getRequiredClasses();
     
@@ -24,8 +26,12 @@ public abstract class Bundle {
         modid = pModid;
     }
     
-    public static String getModid() {
-        return modid;
+    public String getModid() {
+        return this.modid;
+    }
+    
+    public String getName() {
+        return null;
     }
     
     public void tryLoad() {
@@ -55,33 +61,36 @@ public abstract class Bundle {
         return new ResourceLocation(modid, path);
     }
     
-    public static ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.consumableItem(itemName);
+    public String getBundleContentName(String name) {
+        return Objects.equals(modid, "bundledelight") ? name : modid + "/" + name;
     }
     
-    public static ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.consumableItem(itemName, properties);
+    public <T extends Item> ItemEntry<T> item(BundledRegistrate reg, String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties) {
+        ItemBuilder<T, ?> builder = reg.item(getBundleContentName(name), factory).properties(properties);
+        return builder.register();
     }
     
-    public static ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name, Item.Properties properties) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.consumableItem(itemName, (p) -> properties);
+    public ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name) {
+        return reg.consumableItem(getBundleContentName(name));
     }
     
-    public static ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.drinkableItem(itemName);
+    public ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
+        return reg.consumableItem(getBundleContentName(name), properties);
     }
     
-    public static ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.drinkableItem(itemName, properties);
+    public ItemEntry<ConsumableItem> consumableItem(BundledRegistrate reg, String name, Item.Properties properties) {
+        return reg.consumableItem(getBundleContentName(name), (p) -> properties);
     }
     
-    public static ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, Item.Properties properties) {
-        String itemName = Objects.equals(getModid(), "bundledelight") ? name : getModid() + "/" + name;
-        return reg.drinkableItem(itemName, (p) -> properties);
+    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name) {
+        return reg.drinkableItem(getBundleContentName(name));
+    }
+    
+    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
+        return reg.drinkableItem(getBundleContentName(name), properties);
+    }
+    
+    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, Item.Properties properties) {
+        return reg.drinkableItem(getBundleContentName(name), (p) -> properties);
     }
 }

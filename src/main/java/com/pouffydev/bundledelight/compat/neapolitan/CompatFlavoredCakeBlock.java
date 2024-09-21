@@ -1,7 +1,6 @@
 package com.pouffydev.bundledelight.compat.neapolitan;
 
 import com.mojang.datafixers.util.Pair;
-import com.teamabnormals.neapolitan.common.item.HealingItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -72,9 +71,9 @@ public class CompatFlavoredCakeBlock extends CakeBlock {
         } else {
             player.awardStat(Stats.EAT_CAKE_SLICE);
             player.getFoodData().eat(this.food.getNutrition(), this.food.getSaturationModifier());
-            if (this == NeapolitanCompatBlocks.STRAWBERRY_CAKE.get()) {
-                HealingItem.applyHealing(1.0F, level, player);
-            }
+            //if (this == NeapolitanCompatBlocks.STRAWBERRY_CAKE.get()) {
+            //    BundleHealingItem.applyHealing(1.0F, level, player);
+            //}
 
             Iterator var5 = this.food.getEffects().iterator();
 

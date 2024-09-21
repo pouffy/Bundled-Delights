@@ -1,7 +1,7 @@
 package com.pouffydev.bundledelight;
 
 import com.pouffydev.bundledelight.foundation.Bundle;
-import com.pouffydev.bundledelight.init.DefaultBundle;
+import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBundle;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ public class BundleManager {
     static {
         List<Bundle> bundles = new ArrayList<>();
         
-        bundles.add(new DefaultBundle());
+        bundles.add(new BuiltinBundle());
         
         for (Bundle bundle : bundles) {
             bundle.tryLoad();
@@ -23,7 +23,15 @@ public class BundleManager {
     }
     
     public static void visit() {
-        int loaded = BUNDLES.size() + 1;
-        BundledDelights.LOGGER.info("Loaded {} bundles", loaded);
+        for (Bundle bundle : BUNDLES) {
+            if (bundle.getName() == null) {
+                BundledDelights.LOGGER.error("Bundle {} has no name set", bundle.getClass().getName());
+            }
+            if (bundle.isLoaded()) {
+                BundledDelights.LOGGER.info("Load Complete for {}", bundle.getName());
+            } else {
+                BundledDelights.LOGGER.error("Failed to load {}. This is likely due to its required mod(s) not being present.", bundle.getName());
+            }
+        }
     }
 }

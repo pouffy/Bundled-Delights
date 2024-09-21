@@ -1,13 +1,10 @@
 package com.pouffydev.bundledelight.foundation.util.data.builder.thermal;
 
-import cofh.thermal.core.ThermalCore;
-import cofh.thermal.core.init.TCoreRecipeTypes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.data.recipes.FinishedRecipe;
+import com.pouffydev.bundledelight.foundation.util.data.FinishedData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -35,11 +32,11 @@ public class BottlingRecipeBuilder {
     public static BottlingRecipeBuilder thermalBottling(ItemLike resultIn, int count, Item container, String fluid, int fluidAmount, String requiredMod, boolean shouldUseTag) {
         return new BottlingRecipeBuilder(resultIn, count, container, fluid, fluidAmount, requiredMod, shouldUseTag);
     }
-    public void build(Consumer<FinishedRecipe> consumerIn) {
+    public void build(Consumer<FinishedData> consumerIn) {
         ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.result);
         this.build(consumerIn, "bundledelight:compat/thermal/bottling/" + location.getPath());
     }
-    public void build(Consumer<FinishedRecipe> consumerIn, String save) {
+    public void build(Consumer<FinishedData> consumerIn, String save) {
         ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.result);
         if ((new ResourceLocation(save)).equals(resourcelocation)) {
             throw new IllegalStateException("Bottling Recipe " + save + " should remove its 'save' argument");
@@ -47,11 +44,11 @@ public class BottlingRecipeBuilder {
             this.build(consumerIn, new ResourceLocation(save));
         }
     }
-    public void build(Consumer<FinishedRecipe> consumerIn, ResourceLocation id) {
+    public void build(Consumer<FinishedData> consumerIn, ResourceLocation id) {
         consumerIn.accept(new BottlingRecipeBuilder.Result(id, this.result, this.resultCount, this.container, this.fluid, this.fluidAmount, this.requiredMod));
     }
 
-    public static class Result implements FinishedRecipe {
+    public static class Result implements FinishedData {
         private final ResourceLocation id;
         private final Item result;
         private final Item container;
@@ -69,7 +66,7 @@ public class BottlingRecipeBuilder {
             this.fluidAmount = fluidAmount;
             this.requiredMod = requiredMod;
         }
-        public void serializeRecipeData(JsonObject json) {
+        public void serializeData(JsonObject json) {
             JsonArray arrayConditions = new JsonArray();
             JsonObject objectCondition = new JsonObject();
             objectCondition.addProperty("type", "forge:mod_loaded");
@@ -107,8 +104,8 @@ public class BottlingRecipeBuilder {
             return this.id;
         }
 
-        public @NotNull RecipeSerializer<?> getType() {
-            return (RecipeSerializer) ThermalCore.RECIPE_SERIALIZERS.get(TCoreRecipeTypes.ID_BOTTLER_RECIPE);
+        public @NotNull ResourceLocation getType() {
+            return new ResourceLocation("thermal", "bottler");
         }
 
         @Nullable

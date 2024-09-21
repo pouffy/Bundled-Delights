@@ -3,6 +3,7 @@ package com.pouffydev.bundledelight.foundation.util.data.builder.farmersrespite;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.pouffydev.bundledelight.foundation.util.data.FinishedData;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
-import umpaz.farmersrespite.common.registry.FRRecipeSerializers;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
@@ -72,12 +72,12 @@ public class KettleRecipeBuilder {
         return this;
     }
 
-    public void build(Consumer<FinishedRecipe> consumerIn) {
+    public void build(Consumer<FinishedData> consumerIn) {
         ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.result);
         this.build(consumerIn, "bundledelight:compat/farmersrespite/brewing/" + location.getPath());
     }
 
-    public void build(Consumer<FinishedRecipe> consumerIn, String save) {
+    public void build(Consumer<FinishedData> consumerIn, String save) {
         ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.result);
         if ((new ResourceLocation(save)).equals(resourcelocation)) {
             throw new IllegalStateException("Brewing Recipe " + save + " should remove its 'save' argument");
@@ -86,11 +86,11 @@ public class KettleRecipeBuilder {
         }
     }
 
-    public void build(Consumer<FinishedRecipe> consumerIn, ResourceLocation id) {
+    public void build(Consumer<FinishedData> consumerIn, ResourceLocation id) {
         consumerIn.accept(new KettleRecipeBuilder.Result(id, this.result, this.count, this.ingredients, this.brewingTime, this.experience, this.needWater, this.container));
     }
 
-    public static class Result implements FinishedRecipe {
+    public static class Result implements FinishedData {
         private final ResourceLocation id;
         private final List<Ingredient> ingredients;
         private final Item result;
@@ -111,7 +111,7 @@ public class KettleRecipeBuilder {
             this.container = containerIn;
         }
 
-        public void serializeRecipeData(JsonObject json) {
+        public void serializeData(JsonObject json) {
             JsonArray arrayIngredients = new JsonArray();
             Iterator var3 = this.ingredients.iterator();
 
@@ -156,8 +156,8 @@ public class KettleRecipeBuilder {
             return this.id;
         }
 
-        public RecipeSerializer<?> getType() {
-            return (RecipeSerializer) FRRecipeSerializers.BREWING.get();
+        public ResourceLocation getType() {
+            return new ResourceLocation("farmersrespite", "brewing");
         }
 
         @Nullable

@@ -5,15 +5,17 @@ import com.google.gson.GsonBuilder;
 import com.pouffydev.bundledelight.compat.farmersrespite.RespiteMDCompatItems;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
 import com.pouffydev.bundledelight.foundation.util.Configuration;
+import com.pouffydev.bundledelight.foundation.util.data.DataGenerators;
 import com.pouffydev.bundledelight.init.BDBlocks;
 import com.pouffydev.bundledelight.init.BDEffects;
 import com.pouffydev.bundledelight.init.BDItems;
-import com.pouffydev.bundledelight.init.DefaultBundle;
+import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -43,7 +45,7 @@ public class BundledDelights
     public static final CreativeModeTab itemGroup = new CreativeModeTab(MODID) {
         @Override
         public @NotNull ItemStack makeIcon() {
-            return new ItemStack(DefaultBundle.Items.borscht.get());
+            return new ItemStack(BuiltinItems.borscht.get());
         }
     };
     public static final Logger LOGGER = LogManager.getLogger();
@@ -70,10 +72,10 @@ public class BundledDelights
         //DoubleCompatibleManager.visit();
         BundleManager.visit();
 
-        BDItems.ITEMS.register(modEventBus);
-        BDBlocks.BLOCKS.register(modEventBus);
+        //BDItems.ITEMS.register(modEventBus);
+        //BDBlocks.BLOCKS.register(modEventBus);
         BDEffects.EFFECTS.register(modEventBus);
-        
+        modEventBus.addListener(EventPriority.LOWEST, DataGenerators::gatherData);
         //Compats
         RespiteMDCompatItems.ITEMS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);

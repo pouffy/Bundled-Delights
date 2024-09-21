@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.compat.abnormals_delight;
 
+import com.pouffydev.bundledelight.foundation.util.CommonUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -30,7 +31,7 @@ public class CompatCakeSliceItem extends Item {
 
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
         if (!worldIn.isClientSide && this.effectName != null && ForgeRegistries.MOB_EFFECTS.getValue(this.effectName) != null) {
-            entityLiving.addEffect(new MobEffectInstance((MobEffect)ForgeRegistries.MOB_EFFECTS.getValue(this.effectName), this.duration));
+            entityLiving.addEffect(new MobEffectInstance(CommonUtil.getMobEffect(this.effectName), this.duration));
         } else if (this == AbnormalsNeapolitanCompatItems.WHITE_STRAWBERRY_CAKE_SLICE.get()) {
             applyHealing(1.0F, worldIn, entityLiving);
         }

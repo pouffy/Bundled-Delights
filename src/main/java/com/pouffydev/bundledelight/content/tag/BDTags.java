@@ -64,13 +64,13 @@ public class BDTags {
     private static TagKey<Item> respiteItemTag(String path) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("farmersrespite:" + path));
     }
-    private static TagKey<Item> respiteDrinkTag(String path) {
+    public static TagKey<Item> respiteDrinkTag(String path) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("farmersrespite:drinks/" + path));
     }
     private static TagKey<Item> brewinItemTag(String path) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("brewinandchewin:" + path));
     }
-    private static TagKey<Item> brewinDrinkTag(String path) {
+    public static TagKey<Item> brewinDrinkTag(String path) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("brewinandchewin:drinks/" + path));
     }
     private static TagKey<Item> forgeItemTag(String path) {

@@ -1,6 +1,6 @@
 package com.pouffydev.bundledelight.compat.neapolitan;
 
-import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
+import com.pouffydev.bundledelight.content.food.FoodValues;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -40,7 +40,7 @@ public class NeapolitanCompatBlocks {
         BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "bundledelight");
         
         STRAWBERRY_CAKE = BLOCKS.register("white_strawberry_cake", () -> {
-            return new CompatFlavoredCakeBlock(NeapolitanItems.NeapolitanFoods.STRAWBERRY_CAKE, NeapolitanCompatBlocks.Properties.STRAWBERRY_CAKE);
+            return new CompatFlavoredCakeBlock(FoodValues.STRAWBERRY_CAKE, NeapolitanCompatBlocks.Properties.STRAWBERRY_CAKE);
         });
         STRAWBERRY_CANDLE_CAKE = BLOCKS.register("white_strawberry_candle_cake", () -> {
             return new CompatFlavoredCandleCakeBlock(STRAWBERRY_CAKE, Blocks.CANDLE, NeapolitanCompatBlocks.Properties.STRAWBERRY_CANDLE_CAKE);

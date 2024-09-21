@@ -1,4 +1,4 @@
-package com.pouffydev.bundledelight.util.client;
+package com.pouffydev.bundledelight.foundation.util.client;
 
 import com.google.gson.JsonObject;
 
