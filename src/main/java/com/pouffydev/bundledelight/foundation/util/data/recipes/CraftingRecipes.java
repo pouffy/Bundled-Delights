@@ -57,7 +57,6 @@ public class CraftingRecipes {
         ShapedRecipeBuilder.shaped((ItemLike) BrewinMDCompatItems.COPPER_TANKARD.get()).pattern("# #").pattern("- -").pattern("###").define('-', Tags.Items.NUGGETS_IRON).define('#', Tags.Items.INGOTS_COPPER).unlockedBy("has_copper", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT)).save(consumer, new ResourceLocation("bundledelight", "crafting/copper_tankard"));
         ShapedRecipeBuilder.shaped((ItemLike) CUP.get()).pattern("# #").pattern(" #-").define('-', ModItems.CANVAS.get()).define('#', Tags.Items.INGOTS_COPPER).unlockedBy("has_copper", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT)).save(consumer, new ResourceLocation("bundledelight", "crafting/copper_mug"));
         ShapedRecipeBuilder.shaped((ItemLike) BrewinCompatItems.GLASS_TANKARD.get()).pattern("# #").pattern("# #").pattern(" # ").define('#', Tags.Items.GLASS).unlockedBy("has_glass", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLASS)).save(consumer, new ResourceLocation("bundledelight", "crafting/glass_tankard"));
-
     }
 
     private static void recipesTools(Consumer<FinishedRecipe> consumer) {

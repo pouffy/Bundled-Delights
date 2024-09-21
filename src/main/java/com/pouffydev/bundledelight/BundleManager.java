@@ -34,4 +34,12 @@ public class BundleManager {
             }
         }
     }
+    
+    public static void bundleDatagen() {
+        for (Bundle bundle : BUNDLES) {
+            if (bundle.isLoaded()) {
+                bundle.runDatagen();
+            }
+        }
+    }
 }

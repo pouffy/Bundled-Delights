@@ -19,22 +19,21 @@ public class DataGenerators {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        ExistingFileHelper helper = event.getExistingFileHelper();
+        addExtraRegistrateData();
         
-        BlockTags blockTags = new BlockTags(generator, "bundledelight", helper);
-        generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new ItemTags(generator, blockTags, "bundledelight", helper));
-        //generator.addProvider(new EntityTags(generator, "bundledelight", helper));
+        DataGenerator generator = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        
+        boolean client = event.includeClient();
+        boolean server = event.includeServer();
+        
         generator.addProvider(event.includeServer(), new Recipes(generator));
         generator.addProvider(event.includeServer(), new Advancements(generator));
-        
-        BlockStates blockStates = new BlockStates(generator, helper);
-        generator.addProvider(event.includeClient(), blockStates);
-        generator.addProvider(event.includeClient(), new ItemModels(generator, blockStates.models().existingFileHelper));
     }
     
     private static void addExtraRegistrateData() {
+        BundleRegistrateTags.addGenerators();
+        
         BundledDelights.registrate.addDataGenerator(ProviderType.LANG, provider -> {
             BiConsumer<String, String> langConsumer = provider::add;
             

@@ -93,4 +93,8 @@ public abstract class Bundle {
     public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, Item.Properties properties) {
         return reg.drinkableItem(getBundleContentName(name), (p) -> properties);
     }
+    
+    public void runDatagen() {
+    
+    }
 }
