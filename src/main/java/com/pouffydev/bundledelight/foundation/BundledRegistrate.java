@@ -3,8 +3,12 @@ package com.pouffydev.bundledelight.foundation;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCakeBlock;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCandleCakeBlock;
+import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
+import com.pouffydev.bundledelight.common.elements.item.BundleDreadNogItem;
 import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
+import com.pouffydev.bundledelight.foundation.util.ConsumptionEffect;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -22,6 +26,8 @@ import vectorwing.farmersdelight.common.item.DrinkableItem;
 
 import java.util.Objects;
 import java.util.function.Supplier;
+
+import static com.pouffydev.bundledelight.foundation.util.CommonUtil.getItem;
 
 public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     protected BundledRegistrate(String modid) {
@@ -80,7 +86,12 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     public static Item.Properties foodProps(FoodProperties food) {
         return new Item.Properties().food(food).tab(BundledDelight.itemGroup);
     }
-    
+    public static Item.Properties glassTankardFoodItemNoEffect() {
+        return new Item.Properties().craftRemainder(getItem(new ResourceLocation(BundledDelight.MODID, "brewinandchewin/glass_tankard"))).stacksTo(16).tab(BundledDelight.itemGroup);
+    }
+    public static Item.Properties glassTankardFoodItem(FoodProperties food) {
+        return new Item.Properties().craftRemainder(getItem(new ResourceLocation(BundledDelight.MODID, "brewinandchewin/glass_tankard"))).food(food).stacksTo(16).tab(BundledDelight.itemGroup);
+    }
     //ITEM
     public <T extends Item> ItemEntry<T> item(String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties) {
         ItemBuilder<T, ?> builder = this.item(name, factory).properties(properties);
@@ -110,12 +121,39 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     public ItemEntry<ConsumableItem> consumableItem(String name, Item.Properties properties) {
         return consumableItem(name, (p) -> properties);
     }
+    
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().noEffect(), p), properties);
+    }
+    
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().noEffect(), p), (p) -> properties);
+    }
+    
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, ResourceLocation effect, int effectDuration, int effectAmplifier) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().withEffect(effect, effectDuration, effectAmplifier), p), properties);
+    }
+    
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, ResourceLocation effect, int effectDuration, int effectAmplifier) {
+        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier);
+    }
+    
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p), properties);
+    }
+    
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties) {
+        return dreadNogItem(name, potency, duration, (p) -> properties);
+    }
+    
+    //BLOCK
     public BlockEntry<CompatFlavoredCakeBlock> cake(String name, FoodProperties food, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
         return block(name, (p) -> new CompatFlavoredCakeBlock(food, p))
                 .properties(properties)
                 .blockstate((ctx, provider) -> new CakeGenerator().generateCustom(ctx, provider))
                 .item()
-                .model((c, p) -> p.singleTexture(c.getName(), new ResourceLocation("item/generated"), p.modLoc("item/" + removeSlash(c.getName()))))
+                .properties(p -> p.stacksTo(1))
+                .model((c, p) -> p.singleTexture(c.getName(), new ResourceLocation("item/generated"), "layer0", p.modLoc("item/" + removeSlash(c.getName()))))
                 .build()
                 .register();
     }

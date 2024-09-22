@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "builtin"
+    }
+  ],
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:fern"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:seeds"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "bundledelight:nettle_soup"
+  }
+}

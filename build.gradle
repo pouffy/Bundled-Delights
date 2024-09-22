@@ -143,6 +143,8 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-$minecraft_version-forge-api:$jei_version")
     implementation fg.deobf("mezz.jei:jei-$minecraft_version-forge:$jei_version")
 
+    runtimeOnly fg.deobf("curse.maven:${project.brewNChew}")
+
     implementation fg.deobf("maven.modrinth:farmers-delight:${project.farmersDelight}")
 
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
@@ -154,8 +156,8 @@ processResources {
             "version":                      project.mod_version,
             "fml_version_spec":             project.fml_version_spec,
             "minecraft_version_spec":       project.minecraft_version_spec,
-            "forge_version_spec":           project.forge_version_spec
-            //"farmers_delight_version_spec": project.farmers_delight_version_spec
+            "forge_version_spec":           project.forge_version_spec,
+            "farmers_delight_version_spec": project.farmers_delight_version_spec
     ]
     inputs.properties properties
     filesMatching("META-INF/mods.toml") {

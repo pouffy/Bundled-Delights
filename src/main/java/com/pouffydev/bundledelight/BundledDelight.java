@@ -3,19 +3,25 @@ package com.pouffydev.bundledelight;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
+import com.pouffydev.bundledelight.datagen.BundledDatagen;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
+import com.pouffydev.bundledelight.init.CommonSetup;
+import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,6 +36,8 @@ public class BundledDelight
             .disableHtmlEscaping()
             .create();
     
+    public static final boolean isDevelopmentEnvironment = !FMLEnvironment.production;
+    
     public static final CreativeModeTab itemGroup = new CreativeModeTab(MODID) {
         @Override
         public @NotNull ItemStack makeIcon() {
@@ -41,7 +49,13 @@ public class BundledDelight
     public BundledDelight()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        
+        registrate.registerEventListeners(modEventBus);
+        
+        BundleManager.visit();
+        
+        modEventBus.addListener(EventPriority.LOWEST, BundledDatagen::gatherData);
+        modEventBus.addListener(CommonSetup::init);
         modEventBus.addListener(this::commonSetup);
     }
 
@@ -71,5 +85,12 @@ public class BundledDelight
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+    }
+    
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MODID, path);
+    }
+    public static @NotNull BundledRegistrate registrate() {
+        return registrate;
     }
 }

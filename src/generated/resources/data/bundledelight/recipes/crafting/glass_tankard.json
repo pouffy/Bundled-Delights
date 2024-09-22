@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "brewinandchewin"
+    }
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:glass"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #",
+    " # "
+  ],
+  "result": {
+    "item": "bundledelight:glass_tankard"
+  }
+}

@@ -1,7 +1,10 @@
 package com.pouffydev.bundledelight;
 
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBundle;
+import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +17,7 @@ public class BundleManager {
         List<Bundle> bundles = new ArrayList<>();
         
         bundles.add(new BuiltinBundle());
+        bundles.add(new BrewinBundle());
         
         for (Bundle bundle : bundles) {
             bundle.tryLoad();
@@ -35,11 +39,20 @@ public class BundleManager {
         }
     }
     
-    public static void bundleDatagen() {
+    public static void bundleDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
         for (Bundle bundle : BUNDLES) {
             if (bundle.isLoaded()) {
-                bundle.runDatagen();
+                bundle.runDatagen(generator, existingFileHelper, client, server);
             }
         }
+    }
+    
+    public static Bundle getBundle(String name) {
+        for (Bundle bundle : BUNDLES) {
+            if (bundle.getName().toLowerCase().equals(name)) {
+                return bundle;
+            }
+        }
+        return null;
     }
 }

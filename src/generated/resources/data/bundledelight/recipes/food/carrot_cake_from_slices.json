@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "builtin"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    },
+    {
+      "item": "bundledelight:carrot_cake_slice"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:carrot_cake"
+  }
+}

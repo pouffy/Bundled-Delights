@@ -6,8 +6,10 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
@@ -31,24 +33,28 @@ public abstract class Bundle {
         return this.modid;
     }
     
-    public String getName() {
-        return null;
-    }
+    public abstract String getName();
     
     public void tryLoad() {
-        boolean allClassesFound = false;
-        for (String className : getRequiredClasses()) {
-            if (BundledRegistrate.isClassFound(className)) {
-                allClassesFound = true;
-            } else {
-                allClassesFound = false;
-                break;
-            }
-        }
-        if (allClassesFound) {
+        if (BundledDelight.isDevelopmentEnvironment) {
             this.isLoaded = true;
             this.onLoad();
             BundledDelight.LOGGER.info("Bundle for {} is loaded", modid);
+        } else {
+            boolean allClassesFound = false;
+            for (String className : getRequiredClasses()) {
+                if (BundledRegistrate.isClassFound(className)) {
+                    allClassesFound = true;
+                } else {
+                    allClassesFound = false;
+                    break;
+                }
+            }
+            if (allClassesFound) {
+                this.isLoaded = true;
+                this.onLoad();
+                BundledDelight.LOGGER.info("Bundle for {} is loaded", modid);
+            }
         }
     }
     
@@ -95,7 +101,5 @@ public abstract class Bundle {
         return reg.drinkableItem(getBundleContentName(name), (p) -> properties);
     }
     
-    public void runDatagen() {
-    
-    }
+    public abstract void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server);
 }

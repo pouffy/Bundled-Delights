@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "builtin"
+    }
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:carrot"
+    },
+    "e": {
+      "item": "minecraft:egg"
+    },
+    "m": {
+      "tag": "forge:milk"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "mcm",
+    "ses",
+    "wcw"
+  ],
+  "result": {
+    "item": "bundledelight:carrot_cake"
+  }
+}

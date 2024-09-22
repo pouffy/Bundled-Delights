@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "builtin"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:carrot_cake"
+    }
+  ],
+  "result": [
+    {
+      "count": 7,
+      "item": "bundledelight:carrot_cake_slice"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "priority": 1100,
+  "package": "com.pouffydev.bundledelight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "bundledelight.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

@@ -5,12 +5,10 @@ import java.util.Objects;
 public class BundleRegistryClass {
     private static String modid = "bundledelight";
     
-    public BundleRegistryClass() {
-    }
-    
     public BundleRegistryClass(String pModid) {
         modid = pModid;
     }
+    
     
     public static String getModid() {
         return modid;
