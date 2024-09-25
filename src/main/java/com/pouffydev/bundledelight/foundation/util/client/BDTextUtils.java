@@ -14,4 +14,20 @@ public class BDTextUtils {
     public static MutableComponent getTranslation(String modid, String key, Object... args) {
         return Component.translatable(modid + "." + key, args);
     }
+
+    public static String toRomanNumeral(int number) {
+        return "I".repeat(number)
+                .replace("IIIII", "V")
+                .replace("IIII", "IV")
+                .replace("VV", "X")
+                .replace("VIV", "IX")
+                .replace("XXXXX", "L")
+                .replace("XXXX", "XL")
+                .replace("LL", "C")
+                .replace("LXL", "XC")
+                .replace("CCCCC", "D")
+                .replace("CCCC", "CD")
+                .replace("DD", "M")
+                .replace("DCD", "CM");
+    }
 }

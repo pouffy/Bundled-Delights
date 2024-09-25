@@ -33,7 +33,7 @@ public class BundledDatagen {
         
         BundledDelight.registrate.addDataGenerator(ProviderType.LANG, provider -> {
             BiConsumer<String, String> langConsumer = provider::add;
-            
+            provideDefaultLang("tooltips", langConsumer);
         });
     }
     

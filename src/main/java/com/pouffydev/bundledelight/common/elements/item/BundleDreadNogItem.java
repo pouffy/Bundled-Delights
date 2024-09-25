@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class BundleDreadNogItem extends BundleBoozeItem {
-    public BundleDreadNogItem(int potency, int duration, Item.Properties properties) {
-        super(potency, duration, new ConsumptionEffect().noEffect(), properties);
+    public BundleDreadNogItem(int potency, int duration, Item.Properties properties, boolean glass) {
+        super(potency, duration, properties, Effect.None, 0, 0, glass);
     }
     
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {

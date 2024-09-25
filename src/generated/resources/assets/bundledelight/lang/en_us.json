@@ -17,6 +17,8 @@
   "block.bundledelight.red_carrot_candle_cake": "Red Carrot Candle Cake",
   "block.bundledelight.white_carrot_candle_cake": "White Carrot Candle Cake",
   "block.bundledelight.yellow_carrot_candle_cake": "Yellow Carrot Candle Cake",
+  "bundledelight.tooltip.satisfaction": "Satisfaction %s(%s)",
+  "bundledelight.tooltip.sweet_heart": "Sweet Heart %s(%s)",
   "item.bundledelight.beer_glass": "Beer Glass",
   "item.bundledelight.bloody_mary_glass": "Bloody Mary Glass",
   "item.bundledelight.borscht": "Borscht",

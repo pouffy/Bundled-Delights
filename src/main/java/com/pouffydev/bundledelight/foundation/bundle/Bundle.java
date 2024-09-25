@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.loading.DatagenModLoader;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
@@ -36,10 +37,9 @@ public abstract class Bundle {
     public abstract String getName();
     
     public void tryLoad() {
-        if (BundledDelight.isDevelopmentEnvironment) {
+        if (DatagenModLoader.isRunningDataGen()) {
             this.isLoaded = true;
             this.onLoad();
-            BundledDelight.LOGGER.info("Bundle for {} is loaded", modid);
         } else {
             boolean allClassesFound = false;
             for (String className : getRequiredClasses()) {

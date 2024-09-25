@@ -6,6 +6,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import umpaz.brewinandchewin.common.registry.BCEffects;
+import umpaz.brewinandchewin.common.utility.BCFoods;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 public class FoodValues {
@@ -47,52 +49,7 @@ public class FoodValues {
     }, 1.0F).build();
     
     //Brewin n Chewin
-    public static MobEffect satisfaction = CommonUtil.getMobEffect(new ResourceLocation("brewinandchewin", "satisfaction"));
-    public static MobEffect sweetHeart = CommonUtil.getMobEffect(new ResourceLocation("brewinandchewin", "sweet_heart"));
-    public static final FoodProperties MEAD = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).alwaysEat().build();
-    public static final FoodProperties RICE_WINE = (new FoodProperties.Builder()).alwaysEat().build();
-    public static final FoodProperties EGG_GROG = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.ABSORPTION, 3600, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties STRONGROOT_ALE = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 6000, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties SACCHARINE_RUM = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).alwaysEat().build();
-    public static final FoodProperties PALE_JANE = (new FoodProperties.Builder()).alwaysEat().build();
-    public static final FoodProperties SALTY_FOLLY = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.WATER_BREATHING, 9600, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties STEEL_TOE_STOUT = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 1);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties GLITTERING_GRENADINE = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.GLOWING, 12000, 0);
-    }, 1.0F).effect(() -> {
-        return new MobEffectInstance(MobEffects.NIGHT_VISION, 12000, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties BLOODY_MARY = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 6000, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties RED_RUM = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 9600, 1);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties WITHERING_DROSS = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(MobEffects.BLINDNESS, 12000, 0);
-    }, 0.75F).effect(() -> {
-        return new MobEffectInstance(MobEffects.WEAKNESS, 12000, 0);
-    }, 0.75F).effect(() -> {
-        return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 12000, 0);
-    }, 0.75F).effect(() -> {
-        return new MobEffectInstance(MobEffects.WITHER, 12000, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties KOMBUCHA = (new FoodProperties.Builder()).effect(() -> {
-        return new MobEffectInstance(satisfaction, 3600, 0);
-    }, 1.0F).effect(() -> {
-        return new MobEffectInstance(MobEffects.DIG_SPEED, 6000, 0);
-    }, 1.0F).alwaysEat().build();
-    public static final FoodProperties KIMCHI = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).effect(() -> {
-        return new MobEffectInstance(satisfaction, 2400, 0);
-    }, 1.0F).build();
+
     
     //Farmers Respite
     public static MobEffect caffeinated = CommonUtil.getMobEffect(new ResourceLocation("farmersrespite", "caffeinated"));

@@ -7,8 +7,6 @@ import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleDreadNogItem;
 import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
-import com.pouffydev.bundledelight.foundation.util.ConsumptionEffect;
-import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -87,10 +85,10 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return new Item.Properties().food(food).tab(BundledDelight.itemGroup);
     }
     public static Item.Properties glassTankardFoodItemNoEffect() {
-        return new Item.Properties().craftRemainder(getItem(new ResourceLocation(BundledDelight.MODID, "brewinandchewin/glass_tankard"))).stacksTo(16).tab(BundledDelight.itemGroup);
+        return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
     }
     public static Item.Properties glassTankardFoodItem(FoodProperties food) {
-        return new Item.Properties().craftRemainder(getItem(new ResourceLocation(BundledDelight.MODID, "brewinandchewin/glass_tankard"))).food(food).stacksTo(16).tab(BundledDelight.itemGroup);
+        return new Item.Properties().food(food).stacksTo(16).tab(BundledDelight.itemGroup);
     }
     //ITEM
     public <T extends Item> ItemEntry<T> item(String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties) {
@@ -122,28 +120,28 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return consumableItem(name, (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().noEffect(), p), properties);
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass), properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().noEffect(), p), (p) -> properties);
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, boolean glass) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, BundleBoozeItem.Effect.None, 0, 0, glass), (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, ResourceLocation effect, int effectDuration, int effectAmplifier) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, new ConsumptionEffect().withEffect(effect, effectDuration, effectAmplifier), p), properties);
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass), properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, ResourceLocation effect, int effectDuration, int effectAmplifier) {
-        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier);
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
+        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier, glass);
     }
     
-    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p), properties);
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, boolean glass) {
+        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p, glass), properties);
     }
     
-    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties) {
-        return dreadNogItem(name, potency, duration, (p) -> properties);
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties, boolean glass) {
+        return dreadNogItem(name, potency, duration, (p) -> properties, glass);
     }
     
     //BLOCK
