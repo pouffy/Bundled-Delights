@@ -1,4 +1,5 @@
 {
   "bundledelight.tooltip.satisfaction": "Satisfaction %s(%s)",
-  "bundledelight.tooltip.sweet_heart": "Sweet Heart %s(%s)"
+  "bundledelight.tooltip.sweet_heart": "Sweet Heart %s(%s)",
+  "bundledelight.tooltip.mobeffect": "%s %s(%s)"
 }

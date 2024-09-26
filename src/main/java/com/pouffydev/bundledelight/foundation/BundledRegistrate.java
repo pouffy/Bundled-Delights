@@ -25,8 +25,6 @@ import vectorwing.farmersdelight.common.item.DrinkableItem;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-import static com.pouffydev.bundledelight.foundation.util.CommonUtil.getItem;
-
 public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     protected BundledRegistrate(String modid) {
         super(modid);

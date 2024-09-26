@@ -1,4 +1,4 @@
-// 1.19.2	2024-09-25T22:04:54.8592566	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2024-09-26T20:19:00.8408117	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 c3a5d416f71b819e28f649620454888d380cb7cf assets/bundledelight/blockstates/black_carrot_candle_cake.json
 906d7a6891c0ad45a6ecda6226dfa10f9b300a02 assets/bundledelight/blockstates/blue_carrot_candle_cake.json
 c343a6c60a97de6ed039399b8438442badb8e9a4 assets/bundledelight/blockstates/brown_carrot_candle_cake.json
@@ -17,8 +17,8 @@ ff6224673435a8a36769ccff55bae474fa637223 assets/bundledelight/blockstates/orange
 bdfd1b3c4e5bce5047ee78a56c6423da4788856c assets/bundledelight/blockstates/red_carrot_candle_cake.json
 bd7ad7e39ee3d2b2c34ae31fb3a5120509ed5707 assets/bundledelight/blockstates/white_carrot_candle_cake.json
 eb5e56d3fa9b9d8c03bb7a167a082e67069e143b assets/bundledelight/blockstates/yellow_carrot_candle_cake.json
-6c53901928df579c16cdcaf61e2edb2cd36d89da assets/bundledelight/lang/en_ud.json
-418b9d71b730dabb48cf62862d8c610db3e3568d assets/bundledelight/lang/en_us.json
+0d58970838b847fdc9d6377f502c7db0aa616195 assets/bundledelight/lang/en_ud.json
+f6ef289ca9b590cbfe0f31fe6826687f08822f67 assets/bundledelight/lang/en_us.json
 50c6b773c387e988283e2bf6b02a7612dc8fa90b assets/bundledelight/models/block/black_carrot_candle_cake.json
 36a04151073649b74bed09d591efb338765e6711 assets/bundledelight/models/block/black_carrot_candle_cake_lit.json
 eec7981b59cd64a27af20ee40b2ba6c9f8c2e399 assets/bundledelight/models/block/blue_carrot_candle_cake.json

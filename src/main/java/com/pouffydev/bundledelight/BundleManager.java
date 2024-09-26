@@ -3,6 +3,7 @@ package com.pouffydev.bundledelight;
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBundle;
+import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteBundle;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -18,6 +19,7 @@ public class BundleManager {
         
         bundles.add(new BuiltinBundle());
         bundles.add(new BrewinBundle());
+        bundles.add(new RespiteBundle());
         
         for (Bundle bundle : bundles) {
             bundle.tryLoad();

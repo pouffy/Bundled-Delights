@@ -1,6 +1,6 @@
-package com.pouffydev.bundledelight.init.bundles.brewinandchewin.data;
+package com.pouffydev.bundledelight.init.bundles.brewinandchewin;
 
-import com.pouffydev.bundledelight.init.bundles.builtin.data.BuiltinRecipes;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.data.BrewinRecipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
