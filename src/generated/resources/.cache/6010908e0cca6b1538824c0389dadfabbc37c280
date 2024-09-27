@@ -1,4 +1,4 @@
-// 1.19.2	2024-09-26T20:19:00.8408117	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2024-09-27T16:05:43.0970432	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 c3a5d416f71b819e28f649620454888d380cb7cf assets/bundledelight/blockstates/black_carrot_candle_cake.json
 906d7a6891c0ad45a6ecda6226dfa10f9b300a02 assets/bundledelight/blockstates/blue_carrot_candle_cake.json
 c343a6c60a97de6ed039399b8438442badb8e9a4 assets/bundledelight/blockstates/brown_carrot_candle_cake.json
@@ -17,8 +17,8 @@ ff6224673435a8a36769ccff55bae474fa637223 assets/bundledelight/blockstates/orange
 bdfd1b3c4e5bce5047ee78a56c6423da4788856c assets/bundledelight/blockstates/red_carrot_candle_cake.json
 bd7ad7e39ee3d2b2c34ae31fb3a5120509ed5707 assets/bundledelight/blockstates/white_carrot_candle_cake.json
 eb5e56d3fa9b9d8c03bb7a167a082e67069e143b assets/bundledelight/blockstates/yellow_carrot_candle_cake.json
-0d58970838b847fdc9d6377f502c7db0aa616195 assets/bundledelight/lang/en_ud.json
-f6ef289ca9b590cbfe0f31fe6826687f08822f67 assets/bundledelight/lang/en_us.json
+98ffdb7a3f64c97210a9abd24d60ea876f88e84f assets/bundledelight/lang/en_ud.json
+486264cf68a2d0c7ccedbf37d6cdca8f03e95bf7 assets/bundledelight/lang/en_us.json
 50c6b773c387e988283e2bf6b02a7612dc8fa90b assets/bundledelight/models/block/black_carrot_candle_cake.json
 36a04151073649b74bed09d591efb338765e6711 assets/bundledelight/models/block/black_carrot_candle_cake_lit.json
 eec7981b59cd64a27af20ee40b2ba6c9f8c2e399 assets/bundledelight/models/block/blue_carrot_candle_cake.json
@@ -74,6 +74,10 @@ c7c92de09764b6c0f901337ea0c5cd9887acf941 assets/bundledelight/models/item/egg_gr
 17b15a6d38375d94ca77c03d4fad568a6a51adf6 assets/bundledelight/models/item/mead_glass.json
 b8d49df6fbb3768da957835db4dacef9bff5ee88 assets/bundledelight/models/item/nettle_soup.json
 073bbd7dfaab55d64955208aae2d06995f1a8bbc assets/bundledelight/models/item/pale_jane_glass.json
+5fd0fa1905ea103a5eda38e4eb8156cfc6209bfc assets/bundledelight/models/item/powdered_black_tea_leaves.json
+4c148849ae2340bd5526480443932730bf0cc79e assets/bundledelight/models/item/powdered_coffee_beans.json
+78384288100054fc875fed29e8c8762c4514c439 assets/bundledelight/models/item/powdered_green_tea_leaves.json
+2ca4ce8b772a36e786bfe74754727e38548a6d48 assets/bundledelight/models/item/powdered_yellow_tea_leaves.json
 0307e2c342f2aace7220e0a4b31997308bcb2133 assets/bundledelight/models/item/red_rum_glass.json
 82345cb063d3cb44fcc42122345ac16e0d322c5a assets/bundledelight/models/item/rice_wine_glass.json
 138659ea101e9a929a4dfe67a3e648ce27e7fc2a assets/bundledelight/models/item/saccharine_rum_glass.json

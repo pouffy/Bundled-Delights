@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "farmersrespite"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "farmersrespite:coffee_beans"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_coffee_beans"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_coffee_beans"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

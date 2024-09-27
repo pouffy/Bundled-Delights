@@ -3,7 +3,7 @@ package com.pouffydev.bundledelight.foundation.bundle;
 import java.util.Objects;
 
 public class BundleRegistryClass {
-    private static String modid;
+    private static String modid = "bundledelight";
     
     public BundleRegistryClass(String pModid) {
         modid = pModid;

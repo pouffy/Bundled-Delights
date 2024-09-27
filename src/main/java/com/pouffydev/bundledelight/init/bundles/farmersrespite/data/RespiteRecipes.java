@@ -2,8 +2,8 @@ package com.pouffydev.bundledelight.init.bundles.farmersrespite.data;
 
 import com.pouffydev.bundledelight.datagen.CustomRecipeProvider;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
-import com.pouffydev.bundledelight.init.bundles.brewinandchewin.data.recipe.BrewinFermenting;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe.RespiteCutting;
+import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe.RespiteMilling;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -21,6 +21,6 @@ public class RespiteRecipes extends CustomRecipeProvider {
 
     @Override
     protected void buildCustomRecipes(Consumer<FinishedData> consumer) {
-        BrewinFermenting.register(consumer);
+        RespiteMilling.register(consumer);
     }
 }

@@ -12,6 +12,7 @@ import com.pouffydev.bundledelight.foundation.lang.Lang;
 import com.pouffydev.bundledelight.foundation.util.Pair;
 import com.tterrag.registrate.util.DataIngredient;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -28,12 +29,12 @@ import java.util.function.Consumer;
 
 public class CreateProcessingRecipeBuilder {
     private final ResourceLocation recipeType;
-    private List<Ingredient> ingredients;
-    private List<FluidIngredient> fluidIngredients;
-    private List<FluidStack> fluidOutputs;
-    private List<ProcessingOutput> outputs;
+    private List<Ingredient> ingredients = NonNullList.create();
+    private List<FluidIngredient> fluidIngredients = NonNullList.create();
+    private List<FluidStack> fluidOutputs = NonNullList.create();
+    private List<ProcessingOutput> outputs = NonNullList.create();
 
-    private int processingDuration;
+    private int processingDuration = 0;
     private HeatCondition requiredHeat = HeatCondition.NONE;
 
     private String requiredBundle;
@@ -43,6 +44,9 @@ public class CreateProcessingRecipeBuilder {
         this.requiredBundle = requiredBundle;
     }
 
+    public static CreateProcessingRecipeBuilder create(ResourceLocation recipeType, String requiredBundle) {
+        return new CreateProcessingRecipeBuilder(recipeType, requiredBundle);
+    }
 
     public CreateProcessingRecipeBuilder withItemIngredients(Ingredient... ingredients) {
         return withItemIngredients(NonNullList.of(Ingredient.EMPTY, ingredients));
@@ -172,15 +176,30 @@ public class CreateProcessingRecipeBuilder {
         return this;
     }
 
-    public void build(Consumer<FinishedData> consumerIn) {
+    public String constructRecipeId() {
         StringBuilder recipeId = new StringBuilder();
+        recipeId.append(recipeType.toString().substring(recipeType.toString().lastIndexOf(":") + 1)).append("_");
         for (Ingredient ingredient : ingredients) {
-            recipeId.append(ingredient.getItems()
+            String item = Registry.ITEM.getKey(ingredient.getItems()[0].getItem()).toString();
+            String formatted = item.replace(":", "_") + "_and_";
+            recipeId.append(formatted);
         }
-        this.build(consumerIn, "bundledelight:compat/create/" + recipeType.getPath() + "/" + location.getPath());
+        for (FluidIngredient ingredient : fluidIngredients) {
+            String fluid = Registry.FLUID.getKey(ingredient.getMatchingFluidStacks().get(0).getFluid()).toString();
+            String formatted = fluid.replace(":", "_") + "_and_";
+            recipeId.append(formatted);
+        }
+        if (recipeId.toString().endsWith("_and_"))
+            recipeId.delete(recipeId.length() - 5, recipeId.length());
+        return recipeId.toString();
+    }
+    public void build(Consumer<FinishedData> consumerIn) {
+
+
+        this.build(consumerIn, "bundledelight:compat/create/" + recipeType.getPath() + "/" + constructRecipeId());
     }
     public void build(Consumer<FinishedData> consumerIn, String save) {
-        ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.result);
+        ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.outputs.get(0).getStack().getItem());
         if ((new ResourceLocation(save)).equals(resourcelocation)) {
             throw new IllegalStateException("Processing Recipe " + save + " should remove its 'save' argument");
         } else {
@@ -226,6 +245,7 @@ public class CreateProcessingRecipeBuilder {
             objectCondition.addProperty("type", "bundledelight:bundle_loaded");
             objectCondition.addProperty("bundle", this.requiredBundle);
             arrayConditions.add(objectCondition);
+            json.add("conditions", arrayConditions);
             JsonArray jsonIngredients = new JsonArray();
             JsonArray jsonOutputs = new JsonArray();
             ingredients.forEach(i -> jsonIngredients.add(i.toJson()));
@@ -234,8 +254,13 @@ public class CreateProcessingRecipeBuilder {
             outputs.forEach(o -> jsonOutputs.add(o.serialize()));
             fluidOutputs.forEach(o -> jsonOutputs.add(FluidHelper.serializeFluidStack(o)));
 
+            json.add("ingredients", jsonIngredients);
+            json.add("results", jsonOutputs);
+
             if (processingDuration > 0)
                 json.addProperty("processingTime", processingDuration);
+
+            json.add("results", jsonOutputs);
 
             if (requiredHeat != HeatCondition.NONE)
                 json.addProperty("heatRequirement", requiredHeat.serialize());

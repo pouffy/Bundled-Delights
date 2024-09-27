@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "farmersrespite"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "farmersrespite:yellow_tea_leaves"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_yellow_tea_leaves"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_yellow_tea_leaves"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

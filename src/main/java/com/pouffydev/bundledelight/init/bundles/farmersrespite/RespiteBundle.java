@@ -31,6 +31,6 @@ public class RespiteBundle extends Bundle {
 
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
-
+        RespiteDatagen.gatherData(generator, existingFileHelper, client, server);
     }
 }

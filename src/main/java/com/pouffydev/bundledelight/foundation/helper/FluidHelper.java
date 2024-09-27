@@ -11,7 +11,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class FluidHelper {
@@ -68,5 +70,15 @@ public class FluidHelper {
             json.addProperty("nbt", stack.getTag()
                     .toString());
         return json;
+    }
+
+    public static Fluid convertToStill(Fluid fluid) {
+        if (fluid == Fluids.FLOWING_WATER)
+            return Fluids.WATER;
+        if (fluid == Fluids.FLOWING_LAVA)
+            return Fluids.LAVA;
+        if (fluid instanceof ForgeFlowingFluid)
+            return ((ForgeFlowingFluid) fluid).getSource();
+        return fluid;
     }
 }
