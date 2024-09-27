@@ -37,17 +37,7 @@ public class NeapolitanCrafting extends BundleRecipeGen {
     }
 
     private static void recipesFoodBlocks(Consumer<FinishedRecipe> consumer) {
-        BundleShapedRecipeBuilder.shaped(NeapolitanBlocks.whiteStrawberryCake.get(), BUNDLE_NAME)
-                .pattern("mcm")
-                .pattern("ses")
-                .pattern("wcw")
-                .define('m', ForgeTags.MILK)
-                .define('s', Items.SUGAR)
-                .define('c', com.teamabnormals.neapolitan.core.registry.NeapolitanItems.WHITE_STRAWBERRIES.get())
-                .define('e', Items.EGG)
-                .define('w', Items.WHEAT)
-                .unlockedBy("has_white_strawberries", InventoryChangeTrigger.TriggerInstance.hasItems(com.teamabnormals.neapolitan.core.registry.NeapolitanItems.WHITE_STRAWBERRIES.get()))
-                .save(consumer, new ResourceLocation(BundledDelight.MODID, "food/white_strawberry_cake"));
+        RecipeShortcuts.cake(NeapolitanBlocks.whiteStrawberryCake.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.WHITE_STRAWBERRIES.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/white_strawberry_cake"));
 
         RecipeShortcuts.compact9x9(NeapolitanBlocks.mintLeafSack.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.MINT_LEAVES.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "storage/mint_leaf_sack"));
         RecipeShortcuts.compact9x9(NeapolitanBlocks.adzukiBeanSack.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.ADZUKI_BEANS.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "storage/adzuki_bean_sack"));
