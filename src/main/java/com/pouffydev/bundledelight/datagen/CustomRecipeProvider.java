@@ -19,7 +19,7 @@ import java.nio.file.Path;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class CustomRecipeProvider implements DataProvider {
+public abstract class CustomRecipeProvider implements DataProvider {
     private static final Logger LOGGER = BundledDelight.LOGGER;
     
     protected final DataGenerator.PathProvider recipePathProvider;
@@ -84,11 +84,7 @@ public class CustomRecipeProvider implements DataProvider {
         
     }
     
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+    protected abstract void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer);
     
-    }
-    
-    protected void buildCustomRecipes(Consumer<FinishedData> customConsumer) {
-    
-    }
+    protected abstract void buildCustomRecipes(Consumer<FinishedData> customConsumer);
 }

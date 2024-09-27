@@ -47,7 +47,10 @@ public class FoodValues {
     public static final FoodProperties CONCRETE = (new FoodProperties.Builder()).effect(() -> {
         return new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1200, 3);
     }, 1.0F).build();
-    
+    public static final FoodProperties COOKIES = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).fast().build();
+    public static final FoodProperties CARROT_COOKIE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).fast().effect(() -> {
+        return new MobEffectInstance(MobEffects.NIGHT_VISION, 300, 0);
+    }, 1.0F).build();
     //Brewin n Chewin
 
     
@@ -147,6 +150,12 @@ public class FoodValues {
     }, 1.0F).build();
     
     //Neapolitan
+    public static final FoodProperties SWEET_BERRY_MILKSHAKE = (new FoodProperties.Builder()).nutrition(2).saturationMod(1.5F).alwaysEat().effect(() -> {
+        return new MobEffectInstance(MobEffects.REGENERATION, 200);
+    }, 1.0F).build();
+    public static final FoodProperties SWEET_BERRY_ICE_CREAM = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).effect(() -> {
+        return new MobEffectInstance(MobEffects.REGENERATION, 200);
+    }, 1.0F).build();
     public static final FoodProperties STRAWBERRY_MILKSHAKE = (new FoodProperties.Builder()).alwaysEat().nutrition(2).saturationMod(1.5F).build();
     public static final FoodProperties STRAWBERRY_ICE_CREAM = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).build();
     public static final FoodProperties STRAWBERRY_CAKE = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.1F).build();

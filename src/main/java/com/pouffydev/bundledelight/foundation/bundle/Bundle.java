@@ -21,13 +21,13 @@ import java.util.Objects;
 
 public abstract class Bundle {
     private boolean isLoaded;
-    private final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    protected final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     private final String modid;
     
     public abstract List<String> getRequiredClasses();
     
-    public Bundle(String pModid) {
-        modid = pModid;
+    public Bundle() {
+        modid = getModid();
     }
     
     public String getModid() {

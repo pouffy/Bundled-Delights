@@ -4,6 +4,7 @@ import com.pouffydev.bundledelight.foundation.bundle.Bundle;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBundle;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteBundle;
+import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBundle;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -16,10 +17,17 @@ public class BundleManager {
     
     static {
         List<Bundle> bundles = new ArrayList<>();
-        
+
+        // Single mod bundles
         bundles.add(new BuiltinBundle());
         bundles.add(new BrewinBundle());
         bundles.add(new RespiteBundle());
+        bundles.add(new NeapolitanBundle());
+
+        // Multi mod bundles
+        //bundles.add(new MinersBrewBundle());
+        //bundles.add(new MinersRespiteBundle());
+        //bundles.add(new ThermalKitchenBundle());
         
         for (Bundle bundle : bundles) {
             bundle.tryLoad();

@@ -3,10 +3,10 @@ package com.pouffydev.bundledelight.foundation;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCakeBlock;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCandleCakeBlock;
-import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
-import com.pouffydev.bundledelight.common.elements.item.BundleDreadNogItem;
+import com.pouffydev.bundledelight.common.elements.item.*;
 import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
+import com.pouffydev.bundledelight.datagen.blockstate.SackGenerator;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -16,8 +16,13 @@ import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
@@ -93,6 +98,46 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         ItemBuilder<T, ?> builder = this.item(name, factory).properties(properties);
         return builder.register();
     }
+
+    public ItemEntry<BundleMilkshakeItem> milkshakeItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleMilkshakeItem(p.food(food).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)), properties);
+    }
+
+    public ItemEntry<BundleMilkshakeItem> milkshakeItem(String name, FoodProperties food, Item.Properties properties) {
+        return milkshakeItem(name, food, (p) -> properties);
+    }
+
+    public ItemEntry<BundleMilkshakeItem> milkshakeItem(String name, FoodProperties food, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleMilkshakeItem(p.food(food).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)).withHealAmount(healAmount), properties);
+    }
+
+    public ItemEntry<BundleMilkshakeItem> milkshakeItem(String name, FoodProperties food, float healAmount, Item.Properties properties) {
+        return milkshakeItem(name, food, healAmount, (p) -> properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).craftRemainder(Items.BOWL).stacksTo(1)), properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, Item.Properties properties) {
+        return iceCreamItem(name, food, (p) -> properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).craftRemainder(Items.BOWL).stacksTo(1)).withHealAmount(healAmount), properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, Item.Properties properties) {
+        return iceCreamItem(name, food, healAmount, (p) -> properties);
+    }
+
+    public ItemEntry<BundleHealingDrinkItem> healingDrinkItem(String name, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleHealingDrinkItem(healAmount, p), properties);
+    }
+
+    public ItemEntry<BundleHealingDrinkItem> healingDrinkItem(String name, float healAmount, Item.Properties properties) {
+        return healingDrinkItem(name, healAmount, (p) -> properties);
+    }
     
     public ItemEntry<DrinkableItem> drinkableItem(String name) {
         return item(name, DrinkableItem::new, p->p);
@@ -163,6 +208,36 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return block(name, (p) -> new CompatFlavoredCandleCakeBlock(baseCake, candle, p))
                 .properties(properties)
                 .blockstate((ctx, provider) -> new CandleCakeGenerator().generateCustom(ctx, provider, color))
+                .register();
+    }
+
+    public BlockEntry<Block> sack(String name, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
+        return block(name, Block::new)
+                .properties(properties.andThen(p -> BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)))
+                .blockstate((ctx, provider) -> new SackGenerator().generateSack(ctx, provider))
+                .item()
+                .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
+                .build()
+                .register();
+    }
+
+    public BlockEntry<Block> crate(String name, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
+        return block(name, Block::new)
+                .properties(properties.andThen(p -> BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)))
+                .blockstate((ctx, provider) -> new SackGenerator().generateCrate(ctx, provider))
+                .item()
+                .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
+                .build()
+                .register();
+    }
+
+    public BlockEntry<Block> iceCreamBlock(String name, MaterialColor materialColor, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
+        return block(name, Block::new)
+                .properties(properties.andThen(p -> BlockBehaviour.Properties.of(Material.SNOW, materialColor).strength(0.2F).sound(SoundType.SNOW)))
+                .blockstate((ctx, provider) -> provider.cubeAll(ctx.get()))
+                .item()
+                .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
+                .build()
                 .register();
     }
 }

@@ -20,9 +20,10 @@ public class BuiltinItems extends BundleRegistryClass {
             nettleSoup = registrate.drinkableItem(getBundleContentName("nettle_soup")),
             sweetBerryJuice = registrate.drinkableItem(getBundleContentName("sweet_berry_juice")),
             glassOfConcrete = registrate.drinkableItem(getBundleContentName("glass_of_concrete"));
-    
+
     public static final ItemEntry<ConsumableItem>
-            carrotCakeSlice = registrate.consumableItem(getBundleContentName("carrot_cake_slice"), BundledRegistrate.foodProps(FoodValues.CARROT_CAKE));
+            carrotCakeSlice = registrate.consumableItem(getBundleContentName("carrot_cake_slice"), BundledRegistrate.foodProps(FoodValues.CARROT_CAKE)),
+            carrotCookie = registrate.consumableItem(getBundleContentName("carrot_cookie"), BundledRegistrate.foodProps(FoodValues.CARROT_COOKIE));
     
     
     

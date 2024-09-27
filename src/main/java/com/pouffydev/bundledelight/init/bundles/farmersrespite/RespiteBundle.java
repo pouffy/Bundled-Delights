@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RespiteBundle extends Bundle {
     public RespiteBundle() {
-        super("farmersrespite");
+        super();
     }
 
     @Override

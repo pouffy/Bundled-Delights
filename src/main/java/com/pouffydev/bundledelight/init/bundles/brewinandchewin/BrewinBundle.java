@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BrewinBundle extends Bundle {
     public BrewinBundle() {
-        super("brewinandchewin");
+        super();
     }
     
     @Override

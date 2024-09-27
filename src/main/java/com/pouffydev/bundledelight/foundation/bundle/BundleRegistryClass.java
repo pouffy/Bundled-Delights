@@ -5,8 +5,8 @@ import java.util.Objects;
 public class BundleRegistryClass {
     private static String modid = "bundledelight";
     
-    public BundleRegistryClass(String pModid) {
-        modid = pModid;
+    public BundleRegistryClass(String modid) {
+        BundleRegistryClass.modid = modid;
     }
     
     
