@@ -19,15 +19,20 @@ public class BundleManager {
         List<Bundle> bundles = new ArrayList<>();
 
         // Single mod bundles
+
         bundles.add(new BuiltinBundle());
         bundles.add(new BrewinBundle());
         bundles.add(new RespiteBundle());
         bundles.add(new NeapolitanBundle());
+        //TODO bundles.add(new AbnormalDelightBundle());
+        //TODO bundles.add(new CreateBundle());
+
 
         // Multi mod bundles
-        //bundles.add(new MinersBrewBundle());
-        //bundles.add(new MinersRespiteBundle());
-        //bundles.add(new ThermalKitchenBundle());
+
+        //TODO bundles.add(new MinersBrewBundle());
+        //TODO bundles.add(new MinersRespiteBundle());
+        //TODO bundles.add(new ThermalKitchenBundle());
         
         for (Bundle bundle : bundles) {
             bundle.tryLoad();
