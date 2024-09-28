@@ -11,6 +11,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.StringUtil;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -28,7 +29,6 @@ public class NeapolitanTooltips {
     @OnlyIn(Dist.CLIENT)
     public static void addTooltipToNeapolitanFoods(ItemTooltipEvent event) {
         if (Objects.requireNonNull(BundleManager.getBundle("neapolitan")).isLoaded()) {
-            BundledDelight.LOGGER.info("{}, {}, {}, {}, {}", sugarRush.getString(), vanillaScent.getString(), agility.getString(), berserking.getString(), harmony.getString());
             Item food = event.getItemStack().getItem();
             List<MutableComponent> effects = new ArrayList<>();
             for (Map.Entry<String, List<MutableComponent>> entry : NEAPOLITAN_EFFECTS.entrySet()) {
@@ -40,26 +40,30 @@ public class NeapolitanTooltips {
             }
             if (effects != null) {
                 List<Component> tooltip = event.getToolTip();
-                tooltip.addAll(effects);
+                int lastBeforeAdvancedTooltip = tooltip.size() - 1;
+                for (MutableComponent effect : effects) {
+                    tooltip.add(lastBeforeAdvancedTooltip, effect);
+                }
             }
         }
     }
 
     public static Map<String, List<MutableComponent>> NEAPOLITAN_EFFECTS;
-    public static final MutableComponent sugarRush = Components.translatable("effect.neapolitan.sugar_rush");
-    public static final MutableComponent vanillaScent = Components.translatable("effect.neapolitan.vanilla_scent");
-    public static final MutableComponent agility = Components.translatable("effect.neapolitan.agility");
-    public static final MutableComponent berserking = Components.translatable("effect.neapolitan.berserking");
-    public static final MutableComponent harmony = Components.translatable("effect.neapolitan.harmony");
-    public static final MutableComponent poison = Components.translatable("effect.minecraft.poison");
+    public static final ResourceLocation sugarRush = new ResourceLocation("neapolitan", "sugar_rush");
+    public static final ResourceLocation vanillaScent = new ResourceLocation("neapolitan", "vanilla_scent");
+    public static final ResourceLocation agility = new ResourceLocation("neapolitan", "agility");
+    public static final ResourceLocation berserking = new ResourceLocation("neapolitan", "berserking");
+    public static final ResourceLocation harmony = new ResourceLocation("neapolitan", "harmony");
+    public static final ResourceLocation poison = new ResourceLocation("minecraft", "poison");
 
     public static Optional<Item> getNeapolitanItem(String id) {
         return Optional.ofNullable(ForgeRegistries.ITEMS.getValue(new ResourceLocation("neapolitan", id)));
     }
+
+    //TODO: FSR The potion effect names from Neapolitan don't translate. I have no clue why.
     static {
         if (Objects.requireNonNull(BundleManager.getBundle("neapolitan")).isLoaded()) {
-            // noinspection unchecked
-            NEAPOLITAN_EFFECTS = new ImmutableMap.Builder()
+            NEAPOLITAN_EFFECTS = new ImmutableMap.Builder<String, List<MutableComponent>>()
                     .put("chocolate_bar", List.of(BDTextUtils.getFoodEffectTooltip(sugarRush, 400, 1).withStyle(ChatFormatting.BLUE)))
                     .put("chocolate_spider_eye", List.of(BDTextUtils.getFoodEffectTooltip(sugarRush, 800, 0).withStyle(ChatFormatting.BLUE), BDTextUtils.getFoodEffectTooltip(poison, 80, 0).withStyle(ChatFormatting.RED)))
                     .put("chocolate_ice_cream", List.of(BDTextUtils.getFoodEffectTooltip(sugarRush, 600, 2).withStyle(ChatFormatting.BLUE)))
@@ -95,6 +99,40 @@ public class NeapolitanTooltips {
                     .build();
         } else {
             NEAPOLITAN_EFFECTS = ImmutableMap.of();
+        }
+
+        enum Effect {
+            None,
+            Sugar_Rush,
+            Vanilla_Scent,
+            Agility,
+            Berserking,
+            Harmony,
+            Poison
+            ;
+
+            ResourceLocation getEffect() {
+                return switch (this) {
+                    case Sugar_Rush -> sugarRush;
+                    case Vanilla_Scent -> vanillaScent;
+                    case Agility -> agility;
+                    case Berserking -> berserking;
+                    case Harmony -> harmony;
+                    case Poison -> poison;
+                    default -> null;
+                };
+            }
+
+            public MutableComponent getTooltip(int duration, int amplifier) {
+                if (getEffect() == null) {
+                    return null;
+                }
+                String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
+                String translationKey = "effect." + getEffect().getNamespace() + "." + getEffect().getPath();
+                MutableComponent formattedName = Components.translatable(translationKey);
+                BundledDelight.LOGGER.info("Fetching translation for key: {}, effectName: {}, duration: {}, amplifier: {}", "bundledelight.tooltip.mobeffect", formattedName.getString(), duration, amplifier);
+                return BDTextUtils.getTranslation("bundledelight", "tooltip.mobeffect", formattedName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
+            }
         }
     }
 }

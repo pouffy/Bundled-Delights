@@ -41,17 +41,26 @@ public class BDTextUtils {
                 .replace("DCD", "CM");
     }
 
-    public static MutableComponent getFoodEffectTooltip(ResourceLocation effectName, int duration, int amplifier) {
+    public static MutableComponent getFoodEffectTooltipOld(ResourceLocation effectName, int duration, int amplifier) {
         String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
-        String effectNamespace = effectName.getNamespace().equals("neapolitan") ? BundledDelight.MODID : effectName.getNamespace();
-        MutableComponent formattedName = getTypeTranslation("effect", effectNamespace, effectName.getPath());
+        MutableComponent formattedName = getTranslation("effect." + effectName.getNamespace() + "." + effectName.getPath());
         MutableComponent formattedAmpAndDuration = Components.literal(romanNumeral + "(" + StringUtil.formatTickDuration(duration) + ")");
+        BundledDelight.LOGGER.info("Fetching translation for key: {}, effectName: {}, duration: {}, amplifier: {}", "bundledelight.tooltip.mobeffect", formattedName.getString(), duration, amplifier);
         return BDTextUtils.getTranslation("bundledelight", "tooltip.mobeffect", formattedName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
     }
 
-    public static MutableComponent getFoodEffectTooltip(MutableComponent effectName, int duration, int amplifier) {
+    public static MutableComponent getFoodEffectTooltip(String effectName, int duration, int amplifier) {
         String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
+        String translationKey = "bundledelight.tooltip.mobeffect";
+        return Component.translatable(translationKey, effectName, romanNumeral, StringUtil.formatTickDuration(duration));
+    }
+
+    public static MutableComponent getFoodEffectTooltip(ResourceLocation effectName, int duration, int amplifier) {
+        String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
+        String translationKey = "effect." + effectName.getNamespace() + "." + effectName.getPath();
+        MutableComponent formattedName = Component.translatable(translationKey);
         MutableComponent formattedAmpAndDuration = Components.literal(romanNumeral + "(" + StringUtil.formatTickDuration(duration) + ")");
-        return Component.translatable("bundledelight.tooltip.mobeffect", effectName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
+        BundledDelight.LOGGER.info("Fetching translation for key: {}, effectName: {}, duration: {}, amplifier: {}", "bundledelight.tooltip.mobeffect", formattedName.getString(), duration, amplifier);
+        return BDTextUtils.getTranslation("bundledelight", "tooltip.mobeffect", formattedName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
     }
 }

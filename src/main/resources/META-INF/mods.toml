@@ -35,3 +35,9 @@ Bundled Delight is a mod that aims to add features connecting Farmer's Delight A
     versionRange="${brewinandchewin_version_spec}"
     ordering="BEFORE"
     side="BOTH"
+[[dependencies.bundledelight]]
+    modId="neapolitan"
+    mandatory=false
+    versionRange="${neapolitan_version_spec}"
+    ordering="BEFORE"
+    side="BOTH"

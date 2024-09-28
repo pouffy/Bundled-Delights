@@ -52,7 +52,7 @@
   "bundledelight.effect.neapolitan.harmony": "Harmony",
   "bundledelight.effect.neapolitan.sugar_rush": "Sugar Rush",
   "bundledelight.effect.neapolitan.vanilla_scent": "Vanilla Scent",
-  "bundledelight.tooltip.mobeffect": "%s %s(%s)",
+  "bundledelight.tooltip.mobeffect": "%1$s %2$s (%3$s)",
   "bundledelight.tooltip.satisfaction": "Satisfaction %s(%s)",
   "bundledelight.tooltip.sweet_heart": "Sweet Heart %s(%s)",
   "effect.bundledelight.caffeinated": "Caffeinated",

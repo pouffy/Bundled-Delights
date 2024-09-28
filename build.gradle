@@ -165,7 +165,8 @@ processResources {
             "minecraft_version_spec":       project.minecraft_version_spec,
             "forge_version_spec":           project.forge_version_spec,
             "farmers_delight_version_spec": project.farmers_delight_version_spec,
-            "brewinandchewin_version_spec": project.brewinandchewin_version_spec
+            "brewinandchewin_version_spec": project.brewinandchewin_version_spec,
+            "neapolitan_version_spec":      project.neapolitan_version_spec
     ]
     inputs.properties properties
     filesMatching("META-INF/mods.toml") {
