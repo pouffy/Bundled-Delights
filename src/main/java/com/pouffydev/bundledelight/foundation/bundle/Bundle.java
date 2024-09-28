@@ -27,7 +27,7 @@ public abstract class Bundle {
     public abstract List<String> getRequiredClasses();
     
     public Bundle() {
-        modid = getModid();
+        modid = getName();
     }
     
     public String getModid() {
@@ -38,10 +38,12 @@ public abstract class Bundle {
     
     public void tryLoad() {
         if (DatagenModLoader.isRunningDataGen()) {
+            BundledDelight.LOGGER.info("Skipping required class check for bundle {} as data gen is running", modid);
             this.isLoaded = true;
             this.onLoad();
         } else {
             boolean allClassesFound = false;
+            BundledDelight.LOGGER.info("Checking required classes for bundle {}", modid);
             for (String className : getRequiredClasses()) {
                 if (BundledRegistrate.isClassFound(className)) {
                     allClassesFound = true;

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "farmersrespite"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_black_tea_leaves_sack"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "bundledelight:powdered_black_tea_leaves"
+  }
+}

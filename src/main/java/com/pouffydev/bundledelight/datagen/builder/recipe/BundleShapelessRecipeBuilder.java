@@ -90,7 +90,8 @@ public class BundleShapelessRecipeBuilder implements RecipeBuilder {
         this.ensureValid(pRecipeId);
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
         String group = this.group == null ? "" : this.group;
-        pFinishedRecipeConsumer.accept(new BundleShapelessRecipeBuilder.Result(pRecipeId, this.result, this.count, group, this.ingredients, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + pRecipeId.getPath()), this.requiredBundle));
+        ResourceLocation finalRecipeID = new ResourceLocation(pRecipeId.getNamespace(), "crafting/" + pRecipeId.getPath());
+        pFinishedRecipeConsumer.accept(new BundleShapelessRecipeBuilder.Result(finalRecipeID, this.result, this.count, group, this.ingredients, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + pRecipeId.getPath()), this.requiredBundle));
     }
     
     private void ensureValid(ResourceLocation pId) {

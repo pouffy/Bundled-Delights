@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "key": {
+    "c": {
+      "item": "neapolitan:white_strawberries"
+    },
+    "e": {
+      "item": "minecraft:egg"
+    },
+    "m": {
+      "tag": "forge:milk"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "mcm",
+    "ses",
+    "wcw"
+  ],
+  "result": {
+    "item": "bundledelight:white_strawberry_cake"
+  }
+}

@@ -1,6 +1,5 @@
 package com.pouffydev.bundledelight.init.bundles.neapolitan;
 
-import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.RespiteRecipes;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.data.NeapolitanRecipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;

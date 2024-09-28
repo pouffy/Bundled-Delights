@@ -152,7 +152,7 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public ItemEntry<ConsumableItem> consumableItem(String name, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, ConsumableItem::new, properties);
+        return item(name, (p) -> new ConsumableItem(p, true), properties);
     }
     
     public ItemEntry<DrinkableItem> drinkableItem(String name, Item.Properties properties) {

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "bundledelight:block/adzuki_bean_sack/bottom",
+    "east": "bundledelight:block/adzuki_bean_sack/side",
+    "north": "bundledelight:block/adzuki_bean_sack/side_tied",
+    "particle": "bundledelight:block/adzuki_bean_sack/top",
+    "south": "bundledelight:block/adzuki_bean_sack/side_tied",
+    "up": "bundledelight:block/adzuki_bean_sack/top",
+    "west": "bundledelight:block/adzuki_bean_sack/side"
+  }
+}

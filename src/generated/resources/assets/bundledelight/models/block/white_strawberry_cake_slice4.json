@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/cake_slice4",
+  "textures": {
+    "bottom": "bundledelight:block/white_strawberry_cake/bottom",
+    "inside": "bundledelight:block/white_strawberry_cake/inner",
+    "particle": "bundledelight:block/white_strawberry_cake/top",
+    "side": "bundledelight:block/white_strawberry_cake/side",
+    "top": "bundledelight:block/white_strawberry_cake/top"
+  }
+}

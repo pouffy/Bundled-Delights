@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.foundation.util.client;
 
+import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.lang.Components;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -42,8 +43,15 @@ public class BDTextUtils {
 
     public static MutableComponent getFoodEffectTooltip(ResourceLocation effectName, int duration, int amplifier) {
         String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
-        MutableComponent formattedName = getTypeTranslation("effect", effectName.getNamespace(), effectName.getPath());
+        String effectNamespace = effectName.getNamespace().equals("neapolitan") ? BundledDelight.MODID : effectName.getNamespace();
+        MutableComponent formattedName = getTypeTranslation("effect", effectNamespace, effectName.getPath());
         MutableComponent formattedAmpAndDuration = Components.literal(romanNumeral + "(" + StringUtil.formatTickDuration(duration) + ")");
         return BDTextUtils.getTranslation("bundledelight", "tooltip.mobeffect", formattedName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
+    }
+
+    public static MutableComponent getFoodEffectTooltip(MutableComponent effectName, int duration, int amplifier) {
+        String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
+        MutableComponent formattedAmpAndDuration = Components.literal(romanNumeral + "(" + StringUtil.formatTickDuration(duration) + ")");
+        return Component.translatable("bundledelight.tooltip.mobeffect", effectName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
     }
 }

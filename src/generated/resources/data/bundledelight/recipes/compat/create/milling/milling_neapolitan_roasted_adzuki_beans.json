@@ -1,0 +1,25 @@
+{
+  "type": "create:milling",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "neapolitan:roasted_adzuki_beans"
+    }
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_adzuki_beans"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_adzuki_beans"
+    }
+  ]
+}

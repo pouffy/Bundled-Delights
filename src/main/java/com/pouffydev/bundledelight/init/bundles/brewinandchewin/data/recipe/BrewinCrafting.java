@@ -36,7 +36,7 @@ public class BrewinCrafting extends BundleRecipeGen {
                 .pattern(" # ")
                 .define('#', Tags.Items.GLASS)
                 .unlockedBy("has_glass", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLASS))
-                .save(consumer, new ResourceLocation(BundledDelight.MODID, "crafting/glass_tankard"));
+                .save(consumer, new ResourceLocation(BundledDelight.MODID, "glass_tankard"));
     }
 
     private static void recipesFoods(Consumer<FinishedRecipe> consumer) {
@@ -48,7 +48,7 @@ public class BrewinCrafting extends BundleRecipeGen {
                 .requires(ForgeTags.CROPS_ONION)
                 .requires(BCItems.FLAXEN_CHEESE_WEDGE.get())
                 .unlockedBy("has_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BCItems.FLAXEN_CHEESE_WEDGE.get()))
-                .save(consumer, new ResourceLocation(BundledDelight.MODID, "crafting/food/cheeseburger"));
+                .save(consumer, new ResourceLocation(BundledDelight.MODID, "food/cheeseburger"));
         BundleShapelessRecipeBuilder.shapeless(BrewinItems.scarletCheeseburger.get(), BUNDLE_NAME)
                 .requires(ForgeTags.BREAD)
                 .requires(ModItems.BEEF_PATTY.get())
@@ -57,7 +57,7 @@ public class BrewinCrafting extends BundleRecipeGen {
                 .requires(ForgeTags.CROPS_ONION)
                 .requires(BCItems.SCARLET_CHEESE_WEDGE.get())
                 .unlockedBy("has_scarlet_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BCItems.SCARLET_CHEESE_WEDGE.get()))
-                .save(consumer, new ResourceLocation(BundledDelight.MODID, "crafting/food/scarlet_cheeseburger"));
+                .save(consumer, new ResourceLocation(BundledDelight.MODID, "food/scarlet_cheeseburger"));
     }
 
     

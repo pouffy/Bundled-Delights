@@ -1,12 +1,10 @@
 package com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe;
 
-import com.pouffydev.bundledelight.datagen.builder.recipe.CuttingBoardRecipeBuilder;
+import com.pouffydev.bundledelight.datagen.RecipeShortcuts;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
 import umpaz.farmersrespite.common.registry.FRItems;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.function.Consumer;
 
@@ -21,10 +19,10 @@ public class RespiteCutting extends BundleRecipeGen {
     }
 
     private static void cutMiscellaneous(Consumer<FinishedRecipe> consumer) {
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FRItems.GREEN_TEA_LEAVES.get()), Ingredient.of(ModTags.KNIVES), RespiteItems.powderedGreenTeaLeaves.get(), 2, BUNDLE_NAME).addResultWithChance(RespiteItems.powderedGreenTeaLeaves.get(), 0.5F).build(consumer);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FRItems.YELLOW_TEA_LEAVES.get()), Ingredient.of(ModTags.KNIVES), RespiteItems.powderedYellowTeaLeaves.get(), 2, BUNDLE_NAME).addResultWithChance(RespiteItems.powderedYellowTeaLeaves.get(), 0.5F).build(consumer);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FRItems.BLACK_TEA_LEAVES.get()), Ingredient.of(ModTags.KNIVES), RespiteItems.powderedBlackTeaLeaves.get(), 2, BUNDLE_NAME).addResultWithChance(RespiteItems.powderedBlackTeaLeaves.get(), 0.5F).build(consumer);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FRItems.COFFEE_BEANS.get()), Ingredient.of(ModTags.KNIVES), RespiteItems.powderedCoffeeBeans.get(), 2, BUNDLE_NAME).addResultWithChance(RespiteItems.powderedCoffeeBeans.get(), 0.5F).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedGreenTeaLeaves.get(), FRItems.GREEN_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedYellowTeaLeaves.get(), FRItems.YELLOW_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedBlackTeaLeaves.get(), FRItems.BLACK_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedCoffeeBeans.get(), FRItems.COFFEE_BEANS.get(), BUNDLE_NAME).build(consumer);
     }
 
     @Override

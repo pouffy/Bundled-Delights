@@ -1,0 +1,25 @@
+{
+  "type": "create:milling",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "neapolitan:dried_vanilla_pods"
+    }
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_vanilla"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_vanilla"
+    }
+  ]
+}

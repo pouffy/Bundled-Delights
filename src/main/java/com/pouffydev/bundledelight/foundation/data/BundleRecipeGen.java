@@ -1,5 +1,7 @@
 package com.pouffydev.bundledelight.foundation.data;
 
+import net.minecraft.resources.ResourceLocation;
+
 import java.util.function.Consumer;
 
 public abstract class BundleRecipeGen {
@@ -19,6 +21,9 @@ public abstract class BundleRecipeGen {
     public static final float SMALL_FERMENT_EXP = 0.35F;
     public static final float MEDIUM_FERMENT_EXP = 0.6F;
     public static final float LARGE_FERMENT_EXP = 1.3F;
+
+    // Create Recipe Types
+    public static final ResourceLocation MILLSTONE = new ResourceLocation("create", "milling");
     
     public abstract String getBundleName();
     

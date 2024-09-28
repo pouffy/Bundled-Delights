@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "farmersrespite"
+    }
+  ],
+  "key": {
+    "i": {
+      "item": "bundledelight:powdered_green_tea_leaves"
+    }
+  },
+  "pattern": [
+    "iii",
+    "iii",
+    "iii"
+  ],
+  "result": {
+    "item": "bundledelight:powdered_green_tea_leaves_sack"
+  }
+}

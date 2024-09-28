@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "neapolitan:dried_vanilla_pods"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_vanilla"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_vanilla"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

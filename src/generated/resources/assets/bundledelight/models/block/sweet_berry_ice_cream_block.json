@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bundledelight:block/sweet_berry_ice_cream_block"
+  }
+}

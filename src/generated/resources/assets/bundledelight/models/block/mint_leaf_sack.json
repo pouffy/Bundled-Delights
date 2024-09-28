@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "bundledelight:block/mint_leaf_sack/bottom",
+    "east": "bundledelight:block/mint_leaf_sack/side",
+    "north": "bundledelight:block/mint_leaf_sack/side_tied",
+    "particle": "bundledelight:block/mint_leaf_sack/top",
+    "south": "bundledelight:block/mint_leaf_sack/side_tied",
+    "up": "bundledelight:block/mint_leaf_sack/top",
+    "west": "bundledelight:block/mint_leaf_sack/side"
+  }
+}

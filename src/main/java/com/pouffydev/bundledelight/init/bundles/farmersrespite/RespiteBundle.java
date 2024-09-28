@@ -27,6 +27,7 @@ public class RespiteBundle extends Bundle {
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         RespiteItems.register();
+        RespiteBlocks.register();
     }
 
     @Override

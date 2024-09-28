@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "neapolitan:mint_leaves"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "bundledelight:powdered_mint_leaves"
+    },
+    {
+      "chance": 0.5,
+      "item": "bundledelight:powdered_mint_leaves"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

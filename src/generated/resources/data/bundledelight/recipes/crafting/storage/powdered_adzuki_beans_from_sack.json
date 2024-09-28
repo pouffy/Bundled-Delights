@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_adzuki_beans_sack"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "bundledelight:powdered_adzuki_beans"
+  }
+}

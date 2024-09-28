@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "key": {
+    "#": {
+      "item": "bundledelight:white_strawberry_ice_cream"
+    },
+    "i": {
+      "item": "minecraft:snow_block"
+    }
+  },
+  "pattern": [
+    "iii",
+    "i#i",
+    "iii"
+  ],
+  "result": {
+    "item": "bundledelight:white_strawberry_ice_cream_block"
+  }
+}

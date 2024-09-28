@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "bundledelight:block/powdered_yellow_tea_leaves_sack/bottom",
+    "east": "bundledelight:block/powdered_yellow_tea_leaves_sack/side",
+    "north": "bundledelight:block/powdered_yellow_tea_leaves_sack/side_tied",
+    "particle": "bundledelight:block/powdered_yellow_tea_leaves_sack/top",
+    "south": "bundledelight:block/powdered_yellow_tea_leaves_sack/side_tied",
+    "up": "bundledelight:block/powdered_yellow_tea_leaves_sack/top",
+    "west": "bundledelight:block/powdered_yellow_tea_leaves_sack/side"
+  }
+}

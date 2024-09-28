@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 
+import java.util.Objects;
+
 public class CandleCakeGenerator extends SpecialBlockStateGen {
     @Override
     protected int getXRotation(BlockState state) {
@@ -47,7 +49,7 @@ public class CandleCakeGenerator extends SpecialBlockStateGen {
     
     public <T extends Block> ModelFile createModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, boolean lit, String color) {
         String checkAndRemoveSub = ctx.getName().contains("/") ? ctx.getName().split("/")[1] : ctx.getName();
-        String removeColor = checkAndRemoveSub.replace(color + "_", "");
+        String removeColor = Objects.equals(checkAndRemoveSub, "white_white_strawberry_candle_cake") && Objects.equals(color, "white") ? "white_strawberry_candle_cake" : checkAndRemoveSub.replace(color + "_", "");
         String cakeName = removeColor.replace("_candle", "");
         ResourceLocation candle = color.equals("none") ? prov.mcLoc("block/candle") : prov.mcLoc("block/" + color + "_candle");
         ResourceLocation candleLit = color.equals("none") ? prov.mcLoc("block/candle_lit") : prov.mcLoc("block/" + color + "_candle_lit");

@@ -11,6 +11,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class BuiltinCrafting extends BundleRecipeGen {
@@ -25,6 +26,7 @@ public class BuiltinCrafting extends BundleRecipeGen {
     
     private static void recipesFoodstuffs(Consumer<FinishedRecipe> consumer) {
         RecipeShortcuts.juice(BuiltinItems.sweetBerryJuice.get(), Items.SWEET_BERRIES, BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/sweet_berry_juice"));
+        RecipeShortcuts.shapelessWithin4x4(BuiltinItems.carrotCookie.get(), 8, Items.CARROT, List.of(Items.WHEAT, Items.WHEAT), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/carrot_cookie"));
     }
     
     private static void recipesFoodBlocks(Consumer<FinishedRecipe> consumer) {

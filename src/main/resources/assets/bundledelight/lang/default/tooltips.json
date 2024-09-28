@@ -1,5 +1,15 @@
 {
   "bundledelight.tooltip.satisfaction": "Satisfaction %s(%s)",
   "bundledelight.tooltip.sweet_heart": "Sweet Heart %s(%s)",
-  "bundledelight.tooltip.mobeffect": "%s %s(%s)"
+  "bundledelight.tooltip.mobeffect": "%s %s(%s)",
+
+  "effect.bundledelight.satisfaction": "Satisfaction",
+  "effect.bundledelight.sweet_heart": "Sweet Heart",
+  "effect.bundledelight.caffeinated": "Caffeinated",
+  "bundledelight.effect.neapolitan.sugar_rush": "Sugar Rush",
+  "bundledelight.effect.neapolitan.vanilla_scent": "Vanilla Scent",
+  "bundledelight.effect.neapolitan.agility": "Agility",
+  "bundledelight.effect.neapolitan.berserking": "Berserking",
+  "bundledelight.effect.neapolitan.harmony": "Harmony"
+
 }

@@ -48,7 +48,11 @@ public class NeapolitanBlocks extends BundleRegistryClass {
 
     public static final BlockEntry<Block>
             mintLeafSack = registrate.sack(getBundleContentName("mint_leaf_sack"), (p) -> p),
-            adzukiBeanSack = registrate.sack(getBundleContentName("adzuki_bean_sack"), (p) -> p);
+            adzukiBeanSack = registrate.sack(getBundleContentName("adzuki_bean_sack"), (p) -> p),
+            roastedAdzukiBeanSack = registrate.sack(getBundleContentName("roasted_adzuki_bean_sack"), (p) -> p),
+            powderedAdzukiBeansSack = registrate.sack(getBundleContentName("powdered_adzuki_beans_sack"), (p) -> p),
+            powderedMintLeavesSack = registrate.sack(getBundleContentName("powdered_mint_leaves_sack"), (p) -> p),
+            powderedVanillaSack = registrate.sack(getBundleContentName("powdered_vanilla_sack"), (p) -> p);
 
     public static final BlockEntry<Block>
             whiteStrawberryIceCreamBlock = registrate.iceCreamBlock(getBundleContentName("white_strawberry_ice_cream_block"), MaterialColor.TERRACOTTA_WHITE, (p) -> p),
