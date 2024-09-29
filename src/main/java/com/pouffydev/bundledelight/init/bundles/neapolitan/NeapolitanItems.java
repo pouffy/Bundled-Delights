@@ -1,6 +1,7 @@
 package com.pouffydev.bundledelight.init.bundles.neapolitan;
 
 import com.pouffydev.bundledelight.BundledDelight;
+import com.pouffydev.bundledelight.common.elements.item.BundleCakeSliceItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleIceCreamItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleMilkshakeItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
@@ -23,6 +24,9 @@ public class NeapolitanItems extends BundleRegistryClass {
     public static final ItemEntry<BundleIceCreamItem>
             whiteStrawberryIceCream = registrate.iceCreamItem(getBundleContentName("white_strawberry_ice_cream"), FoodValues.STRAWBERRY_ICE_CREAM, 3.0F, (p) -> p),
             sweetBerryIceCream = registrate.iceCreamItem(getBundleContentName("sweet_berry_ice_cream"), FoodValues.SWEET_BERRY_ICE_CREAM, (p) -> p);
+
+    public static final ItemEntry<BundleCakeSliceItem>
+            whiteStrawberryCakeSlice = registrate.cakeSliceItem(getBundleContentName("white_strawberry_cake_slice"), 2.0F, FoodValues.STRAWBERRY_CAKE, (p) -> p);
 
     public static final ItemEntry<Item>
             powderedAdzukiBeans = registrate.item(getBundleContentName("powdered_adzuki_beans"), Item::new).register(),

@@ -1,8 +1,9 @@
 package com.pouffydev.bundledelight.foundation.data;
 
 import net.minecraft.resources.ResourceLocation;
-
-import java.util.function.Consumer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import vectorwing.farmersdelight.common.crafting.ingredient.ChanceResult;
 
 public abstract class BundleRecipeGen {
     // Cooking Pot Times
@@ -26,6 +27,11 @@ public abstract class BundleRecipeGen {
     public static final ResourceLocation MILLSTONE = new ResourceLocation("create", "milling");
     
     public abstract String getBundleName();
-    
-    
+
+    public static ChanceResult createCuttingResult(ItemLike result, int count, float chance) {
+        return new ChanceResult(new ItemStack(result.asItem(), count), chance);
+    }
+    public static ChanceResult createCuttingResult(ItemLike result, int count) {
+        return new ChanceResult(new ItemStack(result.asItem(), count), 1.0F);
+    }
 }

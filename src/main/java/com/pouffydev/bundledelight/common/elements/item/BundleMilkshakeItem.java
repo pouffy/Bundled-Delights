@@ -56,5 +56,6 @@ public class BundleMilkshakeItem extends DrinkableItem {
         if (this.healAmount > 0.0F) {
             tooltip.add(BDTextUtils.InstantHealth.getFromFloat(this.healAmount).getTooltip());
         }
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }

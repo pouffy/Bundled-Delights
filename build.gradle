@@ -149,8 +149,9 @@ dependencies {
     //Abnormals mods
     implementation fg.deobf("maven.modrinth:blueprint:${project.blueprint}")
     implementation fg.deobf("maven.modrinth:neapolitan:${project.neapolitan}")
-    //runtimeOnly fg.deobf("maven.modrinth:abnormals-delight:${project.abnormalsDelight}")
+    //implementation fg.deobf("maven.modrinth:abnormals-delight:${project.abnormalsDelight}")
     //runtimeOnly fg.deobf("maven.modrinth:respiteful:${project.respiteful}")
+    implementation fg.deobf("maven.modrinth:miners-delight:${project.minersDelight}")
 
     implementation fg.deobf("maven.modrinth:farmers-delight:${project.farmersDelight}")
 

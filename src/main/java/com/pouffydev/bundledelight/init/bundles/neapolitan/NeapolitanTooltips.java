@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringUtil;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -19,8 +20,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
-
-import static com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem.Effect.Sweet_Heart;
 
 @Mod.EventBusSubscriber(modid = BundledDelight.MODID, value = Dist.CLIENT)
 public class NeapolitanTooltips {
@@ -34,6 +33,7 @@ public class NeapolitanTooltips {
             for (Map.Entry<String, List<MutableComponent>> entry : NEAPOLITAN_EFFECTS.entrySet()) {
                 Optional<Item> item = getNeapolitanItem(entry.getKey());
                 if (item.isPresent() && item.get() == food) {
+                    FoodProperties foodProperties = item.get().getFoodProperties();
                     effects = entry.getValue();
                     break;
                 }

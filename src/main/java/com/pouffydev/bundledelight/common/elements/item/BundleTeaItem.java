@@ -18,7 +18,7 @@ import vectorwing.farmersdelight.common.utility.TextUtils;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BundleTeaItem extends DrinkableItem {
+public class BundleTeaItem extends BundleDrinkableItem {
     protected final Effect effect;
     protected final int effectDuration;
     protected final int effectAmplifier;
@@ -29,6 +29,7 @@ public class BundleTeaItem extends DrinkableItem {
         this.effect = effect;
         this.effectDuration = effectDuration;
         this.effectAmplifier = effectAmplifier;
+        this.remainderItem = RemainderItem.copperCup;
     }
 
     public BundleTeaItem(Properties properties, boolean copper) {
@@ -58,7 +59,6 @@ public class BundleTeaItem extends DrinkableItem {
     public enum Effect {
         None,
         Caffeinated
-
         ;
 
         ResourceLocation getEffect() {

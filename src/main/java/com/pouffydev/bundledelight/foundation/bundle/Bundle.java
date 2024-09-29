@@ -1,6 +1,7 @@
 package com.pouffydev.bundledelight.foundation.bundle;
 
 import com.pouffydev.bundledelight.BundledDelight;
+import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -91,15 +92,15 @@ public abstract class Bundle {
         return reg.consumableItem(getBundleContentName(name), (p) -> properties);
     }
     
-    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name) {
+    public ItemEntry<BundleDrinkableItem> drinkableItem(BundledRegistrate reg, String name) {
         return reg.drinkableItem(getBundleContentName(name));
     }
     
-    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
+    public ItemEntry<BundleDrinkableItem> drinkableItem(BundledRegistrate reg, String name, NonNullUnaryOperator<Item.Properties> properties) {
         return reg.drinkableItem(getBundleContentName(name), properties);
     }
     
-    public ItemEntry<DrinkableItem> drinkableItem(BundledRegistrate reg, String name, Item.Properties properties) {
+    public ItemEntry<BundleDrinkableItem> drinkableItem(BundledRegistrate reg, String name, Item.Properties properties) {
         return reg.drinkableItem(getBundleContentName(name), (p) -> properties);
     }
     

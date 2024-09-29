@@ -65,9 +65,7 @@ public class FoodValues {
     public static final FoodProperties YELLOW_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3600, 0);
     }, 1.0F).build();
-    public static final FoodProperties BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 600, 0);
-    }, 1.0F).build();
+    public static final FoodProperties BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().build();
     public static final FoodProperties ROSE_HIP_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.REGENERATION, 200, 0);
     }, 1.0F).build();
@@ -77,18 +75,14 @@ public class FoodValues {
     public static final FoodProperties PURULENT_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.WEAKNESS, 600, 0);
     }, 1.0F).build();
-    public static final FoodProperties COFFEE = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 6000, 1);
-    }, 1.0F).build();
+    public static final FoodProperties COFFEE = (new FoodProperties.Builder()).alwaysEat().build();
     public static final FoodProperties LONG_GREEN_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.DIG_SPEED, 5400, 0);
     }, 1.0F).build();
     public static final FoodProperties LONG_YELLOW_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5400, 0);
     }, 1.0F).build();
-    public static final FoodProperties LONG_BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 900, 0);
-    }, 1.0F).build();
+    public static final FoodProperties LONG_BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().build();
     public static final FoodProperties LONG_ROSE_HIP_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.REGENERATION, 300, 0);
     }, 1.0F).build();
@@ -98,9 +92,7 @@ public class FoodValues {
     public static final FoodProperties LONG_PURULENT_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.WEAKNESS, 300, 0);
     }, 1.0F).build();
-    public static final FoodProperties LONG_COFFEE = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 12000, 0);
-    }, 1.0F).build();
+    public static final FoodProperties LONG_COFFEE = (new FoodProperties.Builder()).alwaysEat().build();
     public static final FoodProperties LONG_APPLE_CIDER = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.ABSORPTION, 1800, 0);
     }, 1.0F).build();
@@ -110,14 +102,13 @@ public class FoodValues {
     public static final FoodProperties STRONG_YELLOW_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1800, 1);
     }, 1.0F).build();
-    public static final FoodProperties STRONG_BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 300, 1);
-    }, 1.0F).build();
+    public static final FoodProperties STRONG_BLACK_TEA = (new FoodProperties.Builder()).alwaysEat().build();
     public static final FoodProperties STRONG_ROSE_HIP_TEA = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
         return new MobEffectInstance(MobEffects.REGENERATION, 200, 1);
     }, 1.0F).build();
-    public static final FoodProperties STRONG_COFFEE = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
-        return new MobEffectInstance(caffeinated, 3000, 2);
+    public static final FoodProperties STRONG_COFFEE = (new FoodProperties.Builder()).alwaysEat().build();
+    public static final FoodProperties STRONG_APPLE_CIDER = (new FoodProperties.Builder()).alwaysEat().effect(() -> {
+        return new MobEffectInstance(MobEffects.ABSORPTION, 600, 1);
     }, 1.0F).build();
     
     //Respiteful

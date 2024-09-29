@@ -1,6 +1,9 @@
 package com.pouffydev.bundledelight.common.elements.block;
 
 import com.mojang.datafixers.util.Pair;
+import com.pouffydev.bundledelight.BundleManager;
+import com.pouffydev.bundledelight.common.elements.item.BundleHealingItem;
+import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -71,9 +74,11 @@ public class CompatFlavoredCakeBlock extends CakeBlock {
         } else {
             player.awardStat(Stats.EAT_CAKE_SLICE);
             player.getFoodData().eat(this.food.getNutrition(), this.food.getSaturationModifier());
-            //if (this == NeapolitanCompatBlocks.STRAWBERRY_CAKE.get()) {
-            //    BundleHealingItem.applyHealing(1.0F, level, player);
-            //}
+            if (BundleManager.getBundle("neapolitan").isLoaded()) {
+                if (this == NeapolitanBlocks.whiteStrawberryCake.get()) {
+                    BundleHealingItem.applyHealing(2.0F, level, player);
+                }
+            }
             
             Iterator var5 = this.food.getEffects().iterator();
             

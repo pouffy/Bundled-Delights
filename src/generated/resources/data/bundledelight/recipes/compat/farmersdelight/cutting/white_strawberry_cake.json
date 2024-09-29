@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cutting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitan"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "bundledelight:white_strawberry_cake"
+    }
+  ],
+  "result": [
+    {
+      "count": 7,
+      "item": "bundledelight:white_strawberry_cake_slice"
+    }
+  ],
+  "tool": {
+    "tag": "farmersdelight:tools/knives"
+  }
+}

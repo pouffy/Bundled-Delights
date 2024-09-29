@@ -7,6 +7,7 @@ import com.pouffydev.bundledelight.common.elements.item.*;
 import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.SackGenerator;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -91,7 +92,7 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
     }
     public static Item.Properties glassTankardFoodItem(FoodProperties food) {
-        return new Item.Properties().food(food).stacksTo(16).tab(BundledDelight.itemGroup);
+        return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
     }
     //ITEM
     public <T extends Item> ItemEntry<T> item(String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties) {
@@ -138,24 +139,48 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     public ItemEntry<BundleHealingDrinkItem> healingDrinkItem(String name, float healAmount, Item.Properties properties) {
         return healingDrinkItem(name, healAmount, (p) -> properties);
     }
+
+    public ItemEntry<BundleHealingItem> healingItem(String name, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleHealingItem(healAmount, p), properties);
+    }
+
+    public ItemEntry<BundleHealingItem> healingItem(String name, float healAmount, Item.Properties properties) {
+        return healingItem(name, healAmount, (p) -> properties);
+    }
+
+    public ItemEntry<BundleCakeSliceItem> cakeSliceItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleCakeSliceItem(p.food(food)), properties);
+    }
+
+    public ItemEntry<BundleCakeSliceItem> cakeSliceItem(String name, FoodProperties food, Item.Properties properties) {
+        return cakeSliceItem(name, food, (p) -> properties);
+    }
+
+    public ItemEntry<BundleCakeSliceItem> cakeSliceItem(String name, float healAmount, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleCakeSliceItem(p.food(food)).withHealAmount(healAmount), properties);
+    }
+
+    public ItemEntry<BundleCakeSliceItem> cakeSliceItem(String name, float healAmount, FoodProperties food, Item.Properties properties) {
+        return cakeSliceItem(name, healAmount, food, (p) -> properties);
+    }
     
-    public ItemEntry<DrinkableItem> drinkableItem(String name) {
-        return item(name, DrinkableItem::new, p->p);
+    public ItemEntry<BundleDrinkableItem> drinkableItem(String name) {
+        return item(name, BundleDrinkableItem::new, p->p);
     }
     
     public ItemEntry<ConsumableItem> consumableItem(String name) {
         return item(name, ConsumableItem::new, p->p);
     }
     
-    public ItemEntry<DrinkableItem> drinkableItem(String name, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, DrinkableItem::new, properties);
+    public ItemEntry<BundleDrinkableItem> drinkableItem(String name, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, BundleDrinkableItem::new, properties);
     }
     
     public ItemEntry<ConsumableItem> consumableItem(String name, NonNullUnaryOperator<Item.Properties> properties) {
         return item(name, (p) -> new ConsumableItem(p, true), properties);
     }
     
-    public ItemEntry<DrinkableItem> drinkableItem(String name, Item.Properties properties) {
+    public ItemEntry<BundleDrinkableItem> drinkableItem(String name, Item.Properties properties) {
         return drinkableItem(name, (p) -> properties);
     }
     
@@ -164,7 +189,10 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass), properties);
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass))
+                .properties(properties)
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
+                .register();
     }
     
     public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, boolean glass) {
@@ -172,7 +200,10 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass), properties);
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass))
+                .properties(properties)
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
+                .register();
     }
     
     public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
@@ -180,11 +211,62 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, boolean glass) {
-        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p, glass), properties);
+        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p, glass))
+                .properties(properties)
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
+                .register();
     }
     
     public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties, boolean glass) {
         return dreadNogItem(name, potency, duration, (p) -> properties, glass);
+    }
+
+    public ItemEntry<BundleTeaItem> teaItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleTeaItem(p.food(food), true))
+                .properties((p) -> p.stacksTo(16))
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName().replace("strong_", "").replace("long_", ""))))
+                .lang(autoLang(name).replace("Strong ", "").replace("Long ", ""))
+                .register();
+    }
+
+    public ItemEntry<BundleTeaItem> teaItem(String name, FoodProperties food, Item.Properties properties) {
+        return teaItem(name, food, (p) -> properties);
+    }
+
+    public ItemEntry<BundleTeaItem> teaItem(String name, FoodProperties food, BundleTeaItem.Effect effect, int duration, int amplifier, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundleTeaItem(p.food(food), effect, duration, amplifier, true))
+                .properties((p) -> p.stacksTo(16))
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName().replace("strong_", "").replace("long_", ""))))
+                .lang(autoLang(name).replace("Strong ", "").replace("Long ", ""))
+                .register();
+    }
+
+    public ItemEntry<BundleTeaItem> teaItem(String name, FoodProperties food, BundleTeaItem.Effect effect, int duration, int amplifier, Item.Properties properties) {
+        return teaItem(name, food, effect, duration, amplifier, (p) -> properties);
+    }
+
+    public ItemEntry<BundlePurulentTeaItem> purulentTea(String name, FoodProperties food, int effectBoost, BundleTeaItem.Effect effect, int duration, int amplifier, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundlePurulentTeaItem(p.food(food), effect, duration, amplifier, effectBoost, true))
+                .properties((p) -> p.stacksTo(16))
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName().replace("strong_", "").replace("long_", ""))))
+                .lang("Purulent Tea Cup")
+                .register();
+    }
+
+    public ItemEntry<BundlePurulentTeaItem> purulentTea(String name, FoodProperties food, int effectBoost, BundleTeaItem.Effect effect, int duration, int amplifier, Item.Properties properties) {
+        return purulentTea(name, food, effectBoost, effect, duration, amplifier, (p) -> properties);
+    }
+
+    public ItemEntry<BundlePurulentTeaItem> purulentTea(String name, FoodProperties food, int effectBoost, NonNullUnaryOperator<Item.Properties> properties) {
+        return item(name, (p) -> new BundlePurulentTeaItem(p.food(food), effectBoost, true))
+                .properties((p) -> p.stacksTo(16))
+                .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName().replace("strong_", "").replace("long_", ""))))
+                .lang("Purulent Tea Cup")
+                .register();
+    }
+
+    public ItemEntry<BundlePurulentTeaItem> purulentTea(String name, FoodProperties food, int effectBoost, Item.Properties properties) {
+        return purulentTea(name, food, effectBoost, (p) -> properties);
     }
     
     //BLOCK

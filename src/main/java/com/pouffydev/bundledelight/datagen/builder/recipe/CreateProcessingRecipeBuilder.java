@@ -178,15 +178,15 @@ public class CreateProcessingRecipeBuilder {
 
     public String constructRecipeId() {
         StringBuilder recipeId = new StringBuilder();
-        recipeId.append(recipeType.toString().substring(recipeType.toString().lastIndexOf(":") + 1)).append("_");
+        //recipeId.append(recipeType.toString().substring(recipeType.toString().lastIndexOf(":") + 1)).append("_");
         for (Ingredient ingredient : ingredients) {
             String item = Registry.ITEM.getKey(ingredient.getItems()[0].getItem()).toString();
-            String formatted = item.replace(":", "_") + "_and_";
+            String formatted = item.substring(item.lastIndexOf(":") + 1) + "_and_";
             recipeId.append(formatted);
         }
         for (FluidIngredient ingredient : fluidIngredients) {
             String fluid = Registry.FLUID.getKey(ingredient.getMatchingFluidStacks().get(0).getFluid()).toString();
-            String formatted = fluid.replace(":", "_") + "_and_";
+            String formatted = fluid.substring(fluid.lastIndexOf(":") + 1) + "_and_";
             recipeId.append(formatted);
         }
         if (recipeId.toString().endsWith("_and_"))

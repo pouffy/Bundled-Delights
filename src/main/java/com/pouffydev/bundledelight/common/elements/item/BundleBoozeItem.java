@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class BundleBoozeItem extends DrinkableItem {
+public class BundleBoozeItem extends BundleDrinkableItem {
     protected final int potency;
     protected final int duration;
     protected final Effect effect;
@@ -35,9 +35,7 @@ public class BundleBoozeItem extends DrinkableItem {
         this.effect = effect;
         this.effectDuration = effectDuration;
         this.effectAmplifier = effectAmplifier;
-        if (glass && Objects.requireNonNull(BundleManager.getBundle("brewinandchewin")).isLoaded()) {
-            ((ItemPropertiesMixin) properties).setCraftingRemainingItem(BrewinItems.glassTankard.get());
-        }
+        this.remainderItem = glass ? RemainderItem.glassTankard : RemainderItem.copperSwig;
     }
     
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {

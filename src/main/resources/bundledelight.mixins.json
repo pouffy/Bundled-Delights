@@ -4,6 +4,7 @@
   "package": "com.pouffydev.bundledelight.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "bundledelight.refmap.json",
+  "plugin": "com.pouffydev.bundledelight.mixin.plugin.BundledDelightMixinPlugin",
   "mixins": [
     "ItemPropertiesMixin"
   ],

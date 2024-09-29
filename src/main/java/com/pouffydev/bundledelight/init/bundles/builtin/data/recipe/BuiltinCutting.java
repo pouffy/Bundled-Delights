@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.builtin.data.recipe;
 
+import com.pouffydev.bundledelight.datagen.RecipeShortcuts;
 import com.pouffydev.bundledelight.datagen.builder.recipe.CuttingBoardRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBlocks;
@@ -20,7 +21,7 @@ public class BuiltinCutting extends BundleRecipeGen {
     }
     
     private static void cutMiscellaneous(Consumer<FinishedRecipe> consumer) {
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(BuiltinBlocks.carrotCake.get()), Ingredient.of(ModTags.KNIVES), BuiltinItems.carrotCakeSlice.get(), 7, BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.cutWithKnife(BuiltinItems.carrotCakeSlice.get(), 7, BuiltinBlocks.carrotCake.get(), BUNDLE_NAME).build(consumer);
     }
     
     @Override

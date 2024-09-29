@@ -6,13 +6,16 @@ import com.pouffydev.bundledelight.datagen.builder.recipe.CreateProcessingRecipe
 import com.pouffydev.bundledelight.datagen.builder.recipe.CuttingBoardRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import vectorwing.farmersdelight.common.crafting.ingredient.ChanceResult;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.List;
+import java.util.Map;
 
 public class RecipeShortcuts {
     public static BundleShapedRecipeBuilder compact3x3(ItemLike result, ItemLike ingredient, String bundleName) {
@@ -112,9 +115,34 @@ public class RecipeShortcuts {
     }
 
     public static CuttingBoardRecipeBuilder powder(ItemLike result, ItemLike ingredient, String bundleName) {
-        return CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ingredient), Ingredient.of(ModTags.KNIVES), result, 2, bundleName).addResultWithChance(result, 0.5F);
+        return cutWithKnife(result, 2, List.of(createCuttingResult(result, 1, 0.5F)), ingredient, bundleName);
     }
+
     public static CreateProcessingRecipeBuilder millPowder(ItemLike result, ItemLike ingredient, String bundleName) {
         return CreateProcessingRecipeBuilder.create(BundleRecipeGen.MILLSTONE, bundleName).require(ingredient).output(result, 2).output(0.5F, result).duration(50);
+    }
+
+    public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, ItemLike ingredient, String bundleName) {
+        return cut(result, resultAmount, List.of(), ingredient, Ingredient.of(ModTags.KNIVES), bundleName);
+    }
+    public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, String bundleName) {
+        return cut(result, resultAmount, chanceResults, ingredient, Ingredient.of(ModTags.KNIVES), bundleName);
+    }
+
+    public static CuttingBoardRecipeBuilder cut(ItemLike mainResult, int mainResultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, Ingredient tool, String bundleName) {
+        CuttingBoardRecipeBuilder builder = CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ingredient), tool, mainResult, mainResultAmount, bundleName);
+        for (ChanceResult chanceResult : chanceResults) {
+            ItemStack result = chanceResult.getStack();
+            float chance = chanceResult.getChance();
+            builder.addResultWithChance(result.getItem(), chance, result.getCount());
+        }
+        return builder;
+    }
+
+    public static ChanceResult createCuttingResult(ItemLike result, int count, float chance) {
+        return new ChanceResult(new ItemStack(result.asItem(), count), chance);
+    }
+    public static ChanceResult createCuttingResult(ItemLike result, int count) {
+        return new ChanceResult(new ItemStack(result.asItem(), count), 1.0F);
     }
 }

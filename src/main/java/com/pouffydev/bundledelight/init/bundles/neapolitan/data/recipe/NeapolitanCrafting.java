@@ -37,6 +37,7 @@ public class NeapolitanCrafting extends BundleRecipeGen {
 
     private static void recipesFoodBlocks(Consumer<FinishedRecipe> consumer) {
         RecipeShortcuts.cake(NeapolitanBlocks.whiteStrawberryCake.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.WHITE_STRAWBERRIES.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/white_strawberry_cake"));
+        RecipeShortcuts.compactCakeFromSlices(NeapolitanBlocks.whiteStrawberryCake.get(), NeapolitanItems.whiteStrawberryCakeSlice.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/white_strawberry_cake_from_slices"));
 
         RecipeShortcuts.compact3x3(NeapolitanBlocks.mintLeafSack.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.MINT_LEAVES.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "storage/mint_leaf_sack"));
         RecipeShortcuts.compact3x3(NeapolitanBlocks.adzukiBeanSack.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.ADZUKI_BEANS.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "storage/adzuki_bean_sack"));
