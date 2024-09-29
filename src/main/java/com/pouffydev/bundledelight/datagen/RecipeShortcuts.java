@@ -90,6 +90,17 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
+    public static BundleShapelessRecipeBuilder juice(ItemLike result, ItemLike ingredient, ItemLike bottle, String bundleName) {
+        return BundleShapelessRecipeBuilder.shapeless(result, bundleName)
+                .requires(ingredient)
+                .requires(ingredient)
+                .requires(ingredient)
+                .requires(ingredient)
+                .requires(Items.SUGAR)
+                .requires(bottle)
+                .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
+    }
+
     public static BundleShapelessRecipeBuilder shapelessWithin4x4(ItemLike result, int resultAmount, ItemLike mainIngredient, List<ItemLike> ingredients, String bundleName) {
         BundleShapelessRecipeBuilder builder = BundleShapelessRecipeBuilder.shapeless(result, resultAmount, bundleName);
         if (ingredients.size() > 3) {

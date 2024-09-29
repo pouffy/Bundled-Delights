@@ -24,6 +24,6 @@ public class MinersBundle extends Bundle {
 
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
-
+        MinersDatagen.gatherData(generator, existingFileHelper, client, server);
     }
 }
