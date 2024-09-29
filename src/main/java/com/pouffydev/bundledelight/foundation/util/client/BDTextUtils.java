@@ -2,6 +2,7 @@ package com.pouffydev.bundledelight.foundation.util.client;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.lang.Components;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
@@ -62,5 +63,32 @@ public class BDTextUtils {
         MutableComponent formattedAmpAndDuration = Components.literal(romanNumeral + "(" + StringUtil.formatTickDuration(duration) + ")");
         BundledDelight.LOGGER.info("Fetching translation for key: {}, effectName: {}, duration: {}, amplifier: {}", "bundledelight.tooltip.mobeffect", formattedName.getString(), duration, amplifier);
         return BDTextUtils.getTranslation("bundledelight", "tooltip.mobeffect", formattedName.getString(), romanNumeral, StringUtil.formatTickDuration(duration));
+    }
+
+    public enum InstantHealth {
+        Tiny,
+        Minor,
+        Medium,
+        Large,
+        Major
+        ;
+
+        public static InstantHealth getFromFloat(float healAmount) {
+            if (healAmount <= 1.0F) {
+                return Tiny;
+            } else if (healAmount <= 2.0F) {
+                return Minor;
+            } else if (healAmount <= 4.0F) {
+                return Medium;
+            } else if (healAmount <= 8.0F) {
+                return Large;
+            } else {
+                return Major;
+            }
+        }
+
+        public MutableComponent getTooltip() {
+            return BDTextUtils.getTranslation("bundledelight", "tooltip.instant_health." + this.name().toLowerCase()).withStyle(ChatFormatting.BLUE);
+        }
     }
 }
