@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:steel_toe_stout",
+      "required": false
+    },
+    {
+      "id": "bundledelight:steel_toe_stout_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:steel_toe_stout_glass",
+      "required": false
+    }
+  ]
+}

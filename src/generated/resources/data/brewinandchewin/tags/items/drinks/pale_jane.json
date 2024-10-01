@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:pale_jane",
+      "required": false
+    },
+    {
+      "id": "bundledelight:pale_jane_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:pale_jane_glass",
+      "required": false
+    }
+  ]
+}

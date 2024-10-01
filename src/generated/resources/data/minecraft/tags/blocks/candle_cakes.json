@@ -1,0 +1,89 @@
+{
+  "values": [
+    "bundledelight:carrot_candle_cake",
+    "bundledelight:white_carrot_candle_cake",
+    "bundledelight:orange_carrot_candle_cake",
+    "bundledelight:magenta_carrot_candle_cake",
+    "bundledelight:light_blue_carrot_candle_cake",
+    "bundledelight:yellow_carrot_candle_cake",
+    "bundledelight:lime_carrot_candle_cake",
+    "bundledelight:pink_carrot_candle_cake",
+    "bundledelight:gray_carrot_candle_cake",
+    "bundledelight:light_gray_carrot_candle_cake",
+    "bundledelight:cyan_carrot_candle_cake",
+    "bundledelight:purple_carrot_candle_cake",
+    "bundledelight:blue_carrot_candle_cake",
+    "bundledelight:brown_carrot_candle_cake",
+    "bundledelight:green_carrot_candle_cake",
+    "bundledelight:red_carrot_candle_cake",
+    "bundledelight:black_carrot_candle_cake",
+    {
+      "id": "bundledelight:white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:white_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:orange_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:magenta_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:light_blue_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:yellow_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:lime_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:pink_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:gray_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:light_gray_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:cyan_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:purple_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:blue_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:brown_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:green_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:red_white_strawberry_candle_cake",
+      "required": false
+    },
+    {
+      "id": "bundledelight:black_white_strawberry_candle_cake",
+      "required": false
+    }
+  ]
+}

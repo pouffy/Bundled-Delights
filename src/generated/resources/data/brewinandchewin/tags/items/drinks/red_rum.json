@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:red_rum",
+      "required": false
+    },
+    {
+      "id": "bundledelight:red_rum_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:red_rum_glass",
+      "required": false
+    }
+  ]
+}

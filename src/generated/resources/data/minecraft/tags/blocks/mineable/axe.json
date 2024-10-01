@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "bundledelight:mint_leaf_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:adzuki_bean_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:roasted_adzuki_bean_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_adzuki_beans_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_mint_leaves_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_vanilla_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_green_tea_leaves_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_yellow_tea_leaves_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_black_tea_leaves_sack",
+      "required": false
+    },
+    {
+      "id": "bundledelight:powdered_coffee_beans_sack",
+      "required": false
+    }
+  ]
+}

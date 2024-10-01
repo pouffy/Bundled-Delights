@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:bloody_mary",
+      "required": false
+    },
+    {
+      "id": "bundledelight:bloody_mary_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:bloody_mary_glass",
+      "required": false
+    }
+  ]
+}

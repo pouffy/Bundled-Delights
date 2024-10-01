@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:rice_wine",
+      "required": false
+    },
+    {
+      "id": "bundledelight:rice_wine_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:rice_wine_glass",
+      "required": false
+    }
+  ]
+}

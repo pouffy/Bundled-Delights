@@ -1,0 +1,9 @@
+{
+  "values": [
+    "bundledelight:carrot_cake",
+    {
+      "id": "bundledelight:white_strawberry_cake",
+      "required": false
+    }
+  ]
+}

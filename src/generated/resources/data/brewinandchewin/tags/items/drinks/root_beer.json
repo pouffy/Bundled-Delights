@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "bundledelight:root_beer",
+      "required": false
+    },
+    {
+      "id": "bundledelight:root_beer_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:root_beer_glass",
+      "required": false
+    }
+  ]
+}

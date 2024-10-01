@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:strongroot_ale",
+      "required": false
+    },
+    {
+      "id": "bundledelight:strongroot_ale_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:strongroot_ale_glass",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:withering_dross",
+      "required": false
+    },
+    {
+      "id": "bundledelight:withering_dross_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:withering_dross_glass",
+      "required": false
+    }
+  ]
+}

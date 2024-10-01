@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:long_green_tea",
+      "required": false
+    },
+    {
+      "id": "bundledelight:long_green_tea_cup",
+      "required": false
+    }
+  ]
+}

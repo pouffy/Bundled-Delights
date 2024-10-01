@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:saccharine_rum",
+      "required": false
+    },
+    {
+      "id": "bundledelight:saccharine_rum_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:saccharine_rum_glass",
+      "required": false
+    }
+  ]
+}

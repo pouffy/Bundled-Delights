@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:glittering_grenadine",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glittering_grenadine_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glittering_grenadine_glass",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:adzuki_milk_tea",
+      "required": false
+    },
+    {
+      "id": "bundledelight:adzuki_milk_tea_cup",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:long_coffee",
+      "required": false
+    },
+    {
+      "id": "bundledelight:long_coffee_cup",
+      "required": false
+    }
+  ]
+}

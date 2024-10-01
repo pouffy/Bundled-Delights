@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:dread_nog",
+      "required": false
+    },
+    {
+      "id": "bundledelight:dread_nog_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:dread_nog_glass",
+      "required": false
+    }
+  ]
+}

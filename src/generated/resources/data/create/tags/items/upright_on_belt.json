@@ -1,0 +1,160 @@
+{
+  "values": [
+    {
+      "id": "#brewinandchewin:drinks/beer",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/vodka",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/mead",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/rice_wine",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/egg_grog",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/strongroot_ale",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/saccharine_rum",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/pale_jane",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/dread_nog",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/salty_folly",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/steel_toe_stout",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/glittering_grenadine",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/bloody_mary",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/red_rum",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/withering_dross",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/kombucha",
+      "required": false
+    },
+    {
+      "id": "#brewinandchewin:drinks/root_beer",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/green_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_green_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/strong_green_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/yellow_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_yellow_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/strong_yellow_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/black_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_black_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/strong_black_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/rose_hip_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/strong_rose_hip_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/dandelion_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_dandelion_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/purulent_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_purulent_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/coffee",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/strong_coffee",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/long_coffee",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/adzuki_milk_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/mint_green_tea",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/mocha_coffee",
+      "required": false
+    },
+    {
+      "id": "#farmersrespite:drinks/vanilla_milk_tea",
+      "required": false
+    }
+  ]
+}

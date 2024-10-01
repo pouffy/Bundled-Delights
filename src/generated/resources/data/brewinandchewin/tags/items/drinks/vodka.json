@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:vodka",
+      "required": false
+    },
+    {
+      "id": "bundledelight:vodka_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:vodka_glass",
+      "required": false
+    }
+  ]
+}

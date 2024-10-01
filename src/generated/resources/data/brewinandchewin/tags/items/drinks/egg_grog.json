@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:egg_grog",
+      "required": false
+    },
+    {
+      "id": "bundledelight:egg_grog_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:egg_grog_glass",
+      "required": false
+    }
+  ]
+}

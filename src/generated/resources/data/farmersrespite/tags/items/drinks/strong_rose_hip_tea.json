@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:strong_rose_hip_tea",
+      "required": false
+    },
+    {
+      "id": "bundledelight:strong_rose_hip_tea_cup",
+      "required": false
+    }
+  ]
+}

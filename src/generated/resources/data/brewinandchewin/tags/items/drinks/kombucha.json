@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:kombucha",
+      "required": false
+    },
+    {
+      "id": "bundledelight:kombucha_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:kombucha_glass",
+      "required": false
+    }
+  ]
+}

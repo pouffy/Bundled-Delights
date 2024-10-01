@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:tea_seeds",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:coffee_beans",
+      "required": false
+    }
+  ]
+}

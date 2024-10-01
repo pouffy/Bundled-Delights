@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "farmersrespite:vanilla_milk_tea",
+      "required": false
+    },
+    {
+      "id": "bundledelight:vanilla_milk_tea_cup",
+      "required": false
+    }
+  ]
+}

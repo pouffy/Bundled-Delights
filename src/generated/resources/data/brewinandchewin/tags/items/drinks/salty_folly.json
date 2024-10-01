@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "brewinandchewin:salty_folly",
+      "required": false
+    },
+    {
+      "id": "bundledelight:salty_folly_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:salty_folly_glass",
+      "required": false
+    }
+  ]
+}
