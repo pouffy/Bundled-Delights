@@ -1,0 +1,28 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:green_tea_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "green_tea_cup",
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_green_tea_leaves"
+    },
+    {
+      "item": "bundledelight:powdered_green_tea_leaves"
+    }
+  ],
+  "needwater": true,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:green_tea_cup"
+  }
+}

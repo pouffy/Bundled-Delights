@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "bundle": "miners_delight",
+      "bowl": "farmersdelight:apple_cider",
+      "cup": "bundledelight:apple_cider_cup"
+    },
+    {
+      "bundle": "gobbledygook",
+      "bowl": "minecraft:dirt",
+      "cup": "minecraft:diamond"
+    }
+  ]
+}

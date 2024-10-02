@@ -6,6 +6,7 @@ import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
 import com.pouffydev.bundledelight.init.bundles.miners_respite.MinersRespiteItems;
+import com.pouffydev.bundledelight.init.bundles.minersdelight.MinersItems;
 import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.world.item.Items;
 import umpaz.farmersrespite.common.registry.FRItems;
@@ -26,14 +27,14 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
     }
 
     private static void brewTeaCups(Consumer<FinishedData> consumer) {
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.greenTeaCup.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedGreenTeaLeaves.get()).addIngredient(RespiteItems.powderedGreenTeaLeaves.get()).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.yellowTeaCup.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedYellowTeaLeaves.get()).addIngredient(RespiteItems.powderedYellowTeaLeaves.get()).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.blackTeaCup.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.coffeeCup.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedCoffeeBeans.get()).addIngredient(RespiteItems.powderedCoffeeBeans.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.greenTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedGreenTeaLeaves.get()).addIngredient(RespiteItems.powderedGreenTeaLeaves.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.yellowTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedYellowTeaLeaves.get()).addIngredient(RespiteItems.powderedYellowTeaLeaves.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.blackTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.coffeeCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(RespiteItems.powderedCoffeeBeans.get()).addIngredient(RespiteItems.powderedCoffeeBeans.get()).build(consumer);
 
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.roseHipTeaCup.get(), BUNDLE_NAME).addIngredient(FRItems.ROSE_HIPS.get()).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.dandelionTeaCup.get(), BUNDLE_NAME).addIngredient(Items.DANDELION).addIngredient(BundleTags.TEA_POWDER).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.purulentTeaCup.get(), BUNDLE_NAME).addIngredient(Items.SPIDER_EYE).addIngredient(Items.NETHER_WART).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.roseHipTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(FRItems.ROSE_HIPS.get()).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.dandelionTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(Items.DANDELION).addIngredient(BundleTags.TEA_POWDER).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.purulentTeaCup.get(), 1, 2400, 0.35F, true, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(Items.SPIDER_EYE).addIngredient(Items.NETHER_WART).build(consumer);
     }
 
     private static void brewLongTeaCups(Consumer<FinishedData> consumer) {
@@ -44,6 +45,8 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
 
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.longDandelionTeaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersRespiteItems.dandelionTeaCup.get()).addIngredient(ForgeTags.MILK).build(consumer);
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.longPurulentTeaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersRespiteItems.purulentTeaCup.get()).addIngredient(ForgeTags.MILK).build(consumer);
+
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.longAppleCiderCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersItems.appleCiderCup.get()).addIngredient(ForgeTags.MILK).build(consumer);
     }
 
     private static void brewStrongTeaCups(Consumer<FinishedData> consumer) {
@@ -54,6 +57,10 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
 
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongRoseHipTeaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersRespiteItems.roseHipTeaCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongPurulentTeaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersRespiteItems.purulentTeaCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongAppleCiderCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersItems.appleCiderCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongMelonJuiceCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersItems.melonJuiceCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongHotCocoaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MDItems.HOT_COCOA_CUP.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
     }
 
 

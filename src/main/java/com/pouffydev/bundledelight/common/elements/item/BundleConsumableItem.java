@@ -1,6 +1,7 @@
 package com.pouffydev.bundledelight.common.elements.item;
 
 import com.pouffydev.bundledelight.BundleManager;
+import com.pouffydev.bundledelight.mixin.ItemMixin;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
@@ -26,11 +27,13 @@ public class BundleConsumableItem extends Item {
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     RemainderItem remainderItem;
-
     public BundleConsumableItem(Item.Properties properties) {
         super(properties);
         this.hasFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
+        if (this.remainderItem != null) {
+            ((ItemMixin) this).setCraftingRemainingItem(remainderItem.getRemainderItem().getItem());
+        }
     }
 
     public BundleConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip) {
@@ -107,7 +110,7 @@ public class BundleConsumableItem extends Item {
 
     public enum RemainderItem {
         glassTankard("brewinandchewin", "bundledelight:glass_tankard"),
-        copperSwig("brewinandchewin_x_miners_delight", "bundledelight:copper_swig"),
+        copperSwig("miners_brew", "bundledelight:copper_swig"),
         copperCup("miners_{}", "miners_delight:copper_cup"),
         ;
 

@@ -115,41 +115,41 @@ public class KettleRecipeBuilder {
         
         public void serializeData(JsonObject json) {
             JsonArray arrayIngredients = new JsonArray();
-            
+            String item = ForgeRegistries.ITEMS.getKey(this.result).getPath();
+            String clearedName = item.replace("strong_", "").replace("long_", "");
             for (Ingredient ingredient : this.ingredients) {
                 arrayIngredients.add(ingredient.toJson());
             }
             JsonArray arrayConditions = new JsonArray();
-            JsonObject objectCondition = new JsonObject();
-            objectCondition.addProperty("type", "bundledelight:bundle_loaded");
-            objectCondition.addProperty("bundle", this.requiredBundle);
+            //JsonObject objectCondition = new JsonObject();
+            //objectCondition.addProperty("type", "bundledelight:bundle_loaded");
+            //objectCondition.addProperty("bundle", this.requiredBundle);
             JsonObject objectCondition2 = new JsonObject();
             objectCondition2.addProperty("type", "forge:item_exists");
             objectCondition2.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
-            arrayConditions.add(objectCondition);
+            //arrayConditions.add(objectCondition);
             arrayConditions.add(objectCondition2);
-            json.add("conditions", arrayConditions);
-            
-            json.add("ingredients", arrayIngredients);
+
             JsonObject objectResult = new JsonObject();
             objectResult.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
             if (this.count > 1) {
                 objectResult.addProperty("count", this.count);
             }
-            
-            json.add("result", objectResult);
             if (this.container != null) {
                 JsonObject objectContainer = new JsonObject();
                 objectContainer.addProperty("item", ForgeRegistries.ITEMS.getKey(this.container).toString());
                 json.add("container", objectContainer);
             }
-            
+            json.addProperty("cookingtime", this.brewingTime);
             if (this.experience > 0.0F) {
                 json.addProperty("experience", this.experience);
             }
-            
-            json.addProperty("brewingtime", this.brewingTime);
+            json.addProperty("group", clearedName);
+            json.add("ingredients", arrayIngredients);
             json.addProperty("needwater", this.needWater);
+            json.addProperty("recipe_book_tab", "drinks");
+            json.add("result", objectResult);
+            json.add("conditions", arrayConditions);
         }
         
         public ResourceLocation getId() {

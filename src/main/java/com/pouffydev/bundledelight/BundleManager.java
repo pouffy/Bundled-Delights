@@ -26,6 +26,7 @@ public class BundleManager {
         bundles.add(new BrewinBundle());
         bundles.add(new RespiteBundle());
         bundles.add(new NeapolitanBundle());
+        bundles.add(new MinersRespiteBundle());
         bundles.add(new MinersBundle());
         //TODO bundles.add(new AbnormalDelightBundle());
         //TODO bundles.add(new CreateBundle());
@@ -34,7 +35,7 @@ public class BundleManager {
         // Multi mod bundles
 
         //TODO bundles.add(new MinersBrewBundle());
-        bundles.add(new MinersRespiteBundle());
+
         //TODO bundles.add(new ThermalKitchenBundle());
         
         for (Bundle bundle : bundles) {
@@ -59,9 +60,10 @@ public class BundleManager {
     
     public static void bundleDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
         for (Bundle bundle : BUNDLES) {
-            if (bundle.isLoaded()) {
-                bundle.runDatagen(generator, existingFileHelper, client, server);
-            }
+            // Idfk why I was checking if the bundle was loaded here. I literally force load them all during datagen.
+            //if (bundle.isLoaded()) {
+            bundle.runDatagen(generator, existingFileHelper, client, server);
+            //}
         }
     }
     

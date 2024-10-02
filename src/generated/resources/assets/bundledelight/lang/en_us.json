@@ -129,5 +129,6 @@
   "item.bundledelight.white_strawberry_ice_cream": "White Strawberry Ice Cream",
   "item.bundledelight.white_strawberry_milkshake": "White Strawberry Milkshake",
   "item.bundledelight.withering_dross_glass": "Withering Dross Glass",
-  "item.bundledelight.yellow_tea_cup": "Yellow Tea Cup"
+  "item.bundledelight.yellow_tea_cup": "Yellow Tea Cup",
+  "itemGroup.bundledelight": "Bundled Delights"
 }

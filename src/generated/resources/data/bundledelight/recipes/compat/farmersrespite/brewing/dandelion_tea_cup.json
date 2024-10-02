@@ -1,0 +1,28 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:dandelion_tea_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "dandelion_tea_cup",
+  "ingredients": [
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "tag": "bundledelight:tea_powders"
+    }
+  ],
+  "needwater": true,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:dandelion_tea_cup"
+  }
+}

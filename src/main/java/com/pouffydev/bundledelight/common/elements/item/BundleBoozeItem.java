@@ -1,10 +1,7 @@
 package com.pouffydev.bundledelight.common.elements.item;
 
-import com.pouffydev.bundledelight.BundleManager;
 import com.pouffydev.bundledelight.foundation.util.CommonUtil;
 import com.pouffydev.bundledelight.foundation.util.client.BDTextUtils;
-import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
-import com.pouffydev.bundledelight.mixin.ItemPropertiesMixin;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -14,12 +11,10 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Objects;
 
 public class BundleBoozeItem extends BundleDrinkableItem {
     protected final int potency;

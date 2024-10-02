@@ -1,0 +1,28 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:coffee_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "coffee_cup",
+  "ingredients": [
+    {
+      "item": "bundledelight:powdered_coffee_beans"
+    },
+    {
+      "item": "bundledelight:powdered_coffee_beans"
+    }
+  ],
+  "needwater": true,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:coffee_cup"
+  }
+}

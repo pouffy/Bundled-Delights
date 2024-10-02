@@ -1,0 +1,28 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:purulent_tea_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "purulent_tea_cup",
+  "ingredients": [
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    }
+  ],
+  "needwater": true,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:purulent_tea_cup"
+  }
+}

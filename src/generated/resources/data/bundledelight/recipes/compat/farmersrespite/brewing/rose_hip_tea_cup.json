@@ -1,0 +1,25 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:rose_hip_tea_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "rose_hip_tea_cup",
+  "ingredients": [
+    {
+      "item": "farmersrespite:rose_hips"
+    }
+  ],
+  "needwater": true,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:rose_hip_tea_cup"
+  }
+}

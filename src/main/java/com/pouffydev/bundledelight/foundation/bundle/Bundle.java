@@ -17,7 +17,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public abstract class Bundle {
@@ -38,26 +40,35 @@ public abstract class Bundle {
     public abstract String getName();
     
     public void tryLoad() {
-        if (DatagenModLoader.isRunningDataGen()) {
-            BundledDelight.LOGGER.info("Skipping required class check for bundle {} as data gen is running", modid);
-            this.isLoaded = true;
+        Map<String, Boolean> classMap = new HashMap<>();
+        boolean allClassesFound;
+        BundledDelight.LOGGER.info("Checking required classes for bundle {}", modid);
+        for (String className : getRequiredClasses()) {
+            classMap.put(className, false);
+        }
+        for (Map.Entry<String, Boolean> entry : classMap.entrySet()) {
+            if (!entry.getValue() && BundledRegistrate.isClassFound(entry.getKey())) {
+                entry.setValue(true);
+            }
+        }
+        // Check if all classes are found
+        allClassesFound = classMap.values().stream().allMatch(Boolean::booleanValue);
+        this.isLoaded = loadCheck(allClassesFound);
+    }
+
+    private boolean loadCheck(boolean allClassesFound) {
+        if (allClassesFound) {
             this.onLoad();
-        } else {
-            boolean allClassesFound = false;
-            BundledDelight.LOGGER.info("Checking required classes for bundle {}", modid);
-            for (String className : getRequiredClasses()) {
-                if (BundledRegistrate.isClassFound(className)) {
-                    allClassesFound = true;
-                } else {
-                    allClassesFound = false;
-                    break;
-                }
-            }
-            if (allClassesFound) {
-                this.isLoaded = true;
-                this.onLoad();
-                BundledDelight.LOGGER.info("Bundle for {} is loaded", modid);
-            }
+            BundledDelight.LOGGER.info("Bundle for {} is loaded", modid);
+            return true;
+        } else if (DatagenModLoader.isRunningDataGen()) {
+            this.onLoad();
+            BundledDelight.LOGGER.info("Skipping required class check for bundle {} as data gen is running", modid);
+            return true;
+        }
+        else {
+            BundledDelight.LOGGER.info("Bundle for {} is not loaded", modid);
+            return false;
         }
     }
     

@@ -1,14 +1,17 @@
 package com.pouffydev.bundledelight.init;
 
+import com.mojang.datafixers.util.Pair;
 import com.pouffydev.bundledelight.foundation.util.CommonUtil;
+import com.pouffydev.bundledelight.mixin.FoodPropertiesMixin;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import umpaz.brewinandchewin.common.registry.BCEffects;
-import umpaz.brewinandchewin.common.utility.BCFoods;
+import net.minecraftforge.data.loading.DatagenModLoader;
 import vectorwing.farmersdelight.common.registry.ModEffects;
+
+import java.util.function.Supplier;
 
 public class FoodValues {
     public static final FoodProperties RADIANT_BREW = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).effect(() -> {
@@ -155,4 +158,33 @@ public class FoodValues {
     public static final FoodProperties CAKE_SLICE = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.1F).fast().effect(() -> {
         return new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0);
     }, 1.0F).build();
+
+    public static FoodProperties copyAndAddHaste(FoodProperties foodProperties) {
+        if (DatagenModLoader.isRunningDataGen()) {
+            return foodProperties;
+        } else {
+            FoodProperties.Builder builder = (new FoodProperties.Builder()).nutrition(foodProperties.getNutrition()).saturationMod(foodProperties.getSaturationModifier());
+
+            for (Pair<Supplier<MobEffectInstance>, Float> supplierFloatPair : ((FoodPropertiesMixin) foodProperties).getEffectsRaw()) {
+                builder.effect(supplierFloatPair.getFirst(), supplierFloatPair.getSecond());
+            }
+
+            if (foodProperties.isFastFood()) {
+                builder.fast();
+            }
+
+            if (foodProperties.canAlwaysEat()) {
+                builder.alwaysEat();
+            }
+
+            if (foodProperties.isMeat()) {
+                builder.meat();
+            }
+
+            builder.effect(() -> {
+                return new MobEffectInstance(MobEffects.DIG_SPEED, 1800);
+            }, 1.0F);
+            return builder.build();
+        }
+    }
 }

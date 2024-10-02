@@ -6,7 +6,9 @@
   "refmap": "bundledelight.refmap.json",
   "plugin": "com.pouffydev.bundledelight.mixin.plugin.BundledDelightMixinPlugin",
   "mixins": [
-    "ItemPropertiesMixin"
+    "FoodPropertiesMixin",
+    "ItemMixin",
+    "miners_delight.CupConversionReloadListenerMixin"
   ],
   "client": [
   ],

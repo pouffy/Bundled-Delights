@@ -7,7 +7,6 @@ import com.pouffydev.bundledelight.foundation.bundle.BundleRegistryClass;
 import com.pouffydev.bundledelight.init.FoodValues;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
 
 public class MinersRespiteItems extends BundleRegistryClass {
     private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);

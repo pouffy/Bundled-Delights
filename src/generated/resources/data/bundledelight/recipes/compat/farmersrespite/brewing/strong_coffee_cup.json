@@ -1,0 +1,28 @@
+{
+  "type": "farmersrespite:brewing",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:strong_coffee_cup"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "cookingtime": 2400,
+  "experience": 0.35,
+  "group": "coffee_cup",
+  "ingredients": [
+    {
+      "item": "bundledelight:coffee_cup"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "needwater": false,
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "bundledelight:strong_coffee_cup"
+  }
+}

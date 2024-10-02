@@ -1,4 +1,4 @@
-package com.pouffydev.bundledelight.init.bundles.miners_respite;
+package com.pouffydev.bundledelight.init.bundles.miners_brew;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
@@ -7,23 +7,25 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.List;
 
-public class MinersRespiteBundle extends Bundle {
+public class MinersBrewBundle extends Bundle {
     @Override
     public List<String> getRequiredClasses() {
-        return List.of("umpaz.farmersrespite.FarmersRespite", "com.sammy.minersdelight.MinersDelightMod");
+        return List.of("umpaz.brewinandchewin.BrewinAndChewin", "com.sammy.minersdelight.MinersDelightMod");
     }
 
-    public MinersRespiteBundle() {
+    public MinersBrewBundle() {
+        super();
     }
 
     @Override
     public String getName() {
-        return "miners_respite";
+        return "miners_brew";
     }
 
     @Override
     public void tryLoad() {
-        MinersRespiteItems.register();
+        super.tryLoad();
+        MinersBrewItems.register();
     }
 
     @Override
@@ -33,7 +35,6 @@ public class MinersRespiteBundle extends Bundle {
 
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
-        BundledDelight.LOGGER.info("Running MinersRespite datagen");
-        MinersRespiteDatagen.gatherData(generator, existingFileHelper, client, server);
+        BundledDelight.LOGGER.info("Running MinersBrew datagen");
     }
 }

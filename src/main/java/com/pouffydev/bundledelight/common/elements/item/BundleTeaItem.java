@@ -36,6 +36,11 @@ public class BundleTeaItem extends BundleDrinkableItem {
         this(properties, Effect.None, 0, 0, copper);
     }
 
+    public BundleTeaItem withRemainderItem(RemainderItem remainderItem) {
+        this.remainderItem = remainderItem;
+        return this;
+    }
+
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
         if (this.effect != Effect.None) {
             CommonUtil.addEffect(consumer, this.effectDuration, this.effectAmplifier, effect.getEffect());
@@ -47,7 +52,6 @@ public class BundleTeaItem extends BundleDrinkableItem {
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if (this.effect != Effect.None) {
             ResourceLocation effectName = this.effect.getEffect();
-            assert effectName != null;
             MutableComponent textEffect = BDTextUtils.getFoodEffectTooltip(effectName, this.effectDuration, this.effectAmplifier);
             tooltip.add(textEffect.withStyle(ChatFormatting.BLUE));
         } else {
@@ -62,7 +66,7 @@ public class BundleTeaItem extends BundleDrinkableItem {
         ;
 
         ResourceLocation getEffect() {
-            return this == None ? null : new ResourceLocation("farmersdelight", "caffeinated");
+            return this == None ? null : new ResourceLocation("farmersrespite", "caffeinated");
         }
     }
 }
