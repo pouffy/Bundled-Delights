@@ -1,7 +1,6 @@
 package com.pouffydev.bundledelight.common.elements.item;
 
 import com.pouffydev.bundledelight.BundleManager;
-import com.pouffydev.bundledelight.mixin.ItemMixin;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
@@ -26,30 +25,38 @@ import java.util.List;
 public class BundleConsumableItem extends Item {
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
-    RemainderItem remainderItem;
+    static RemainderItem remainderItem = RemainderItem.bowl;
+
+    public static Item.Properties createItemProperties(Item.Properties properties) {
+        if (remainderItem != null) {
+            properties = properties.craftRemainder(remainderItem.getRemainderItem().getItem());
+        }
+        return properties;
+    }
+
     public BundleConsumableItem(Item.Properties properties) {
-        super(properties);
+        super(createItemProperties(properties));
         this.hasFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
-        if (this.remainderItem != null) {
-            ((ItemMixin) this).setCraftingRemainingItem(remainderItem.getRemainderItem().getItem());
-        }
+        //if (remainderItem != null) {
+        //    ((ItemMixin) this).setCraftingRemainingItem(remainderItem.getRemainderItem().getItem());
+        //}
     }
 
     public BundleConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip) {
-        super(properties);
+        super(createItemProperties(properties));
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = false;
     }
 
     public BundleConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(properties);
+        super(createItemProperties(properties));
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
     }
 
-    public BundleConsumableItem withRemainderItem(RemainderItem remainderItem) {
-        this.remainderItem = remainderItem;
+    public BundleConsumableItem withRemainderItem(RemainderItem pRemainderItem) {
+        remainderItem = pRemainderItem;
         return this;
     }
 
@@ -109,9 +116,12 @@ public class BundleConsumableItem extends Item {
     }
 
     public enum RemainderItem {
+        bowl("builtin", "minecraft:bowl"),
+        glassBottle("builtin", "minecraft:glass_bottle"),
         glassTankard("brewinandchewin", "bundledelight:glass_tankard"),
         copperSwig("miners_brew", "bundledelight:copper_swig"),
         copperCup("miners_{}", "miners_delight:copper_cup"),
+        tankard("brewinandchewin", "brewinandchewin:tankard"),
         ;
 
         private final String bundleName;
@@ -139,4 +149,6 @@ public class BundleConsumableItem extends Item {
             return remainderItem;
         }
     }
+
+
 }

@@ -35,6 +35,7 @@ public class MinersBrewBundle extends Bundle {
 
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
-        BundledDelight.LOGGER.info("Running MinersBrew datagen");
+        BundledDelight.LOGGER.info("Running Miner's Brew datagen");
+        MinersBrewDatagen.gatherData(generator, existingFileHelper, client, server);
     }
 }

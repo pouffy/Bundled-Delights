@@ -4,9 +4,13 @@ import com.pouffydev.bundledelight.datagen.builder.recipe.KegRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
+import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
+import com.pouffydev.bundledelight.init.bundles.miners_brew.MinersBrewItems;
+import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.function.Consumer;
@@ -21,7 +25,7 @@ public class BrewinFermenting extends BundleRecipeGen {
         fermentFoods(consumer);
     }
     
-    private static Item glassTankard = BrewinItems.glassTankard.get();
+    private static final Item glassTankard = BrewinItems.glassTankard.get();
     
     private static void fermentBrews(Consumer<FinishedData> consumer) {
         KegRecipeBuilder.kegRecipe(BrewinItems.beerGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.BROWN_MUSHROOM).addIngredient(Items.WHEAT).addIngredient(Items.WHEAT).build(consumer);
@@ -39,7 +43,8 @@ public class BrewinFermenting extends BundleRecipeGen {
         KegRecipeBuilder.kegRecipe(BrewinItems.bloodyMaryGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.vodkaGlass.get(), 4, BUNDLE_NAME).addIngredient(ModItems.TOMATO.get()).addIngredient(ModItems.TOMATO.get()).addIngredient(ModItems.CABBAGE_LEAF.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
         KegRecipeBuilder.kegRecipe(BrewinItems.redRumGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.bloodyMaryGlass.get(), 5, BUNDLE_NAME).addIngredient(Items.CRIMSON_FUNGUS).addIngredient(Items.NETHER_WART).addIngredient(Items.FERMENTED_SPIDER_EYE).addIngredient(Items.SHROOMLIGHT).build(consumer);
         KegRecipeBuilder.kegRecipe(BrewinItems.witheringDrossGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.saltyFollyGlass.get(), 5, BUNDLE_NAME).addIngredient(Items.WITHER_ROSE).addIngredient(Items.INK_SAC).addIngredient(Items.NETHER_WART).addIngredient(Items.BONE).build(consumer);
-        //KegRecipeBuilder.kegRecipe(BrewinItems.kombuchaGlass.get(), 1, 12000, MEDIUM_FERMENT_EXP, glassTankard, fromFR("GREEN_TEA"), 3, BUNDLE_NAME).addIngredient(Items.BEETROOT).addIngredient(Items.CARROT).addIngredient(RespiteCompatItems.POWDERED_BLACK_TEA_LEAVES.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
+        KegRecipeBuilder.kegRecipe(BrewinItems.kombuchaGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, FRItems.GREEN_TEA.get(), 3, BUNDLE_NAME).addIngredient(Items.BEETROOT).addIngredient(Items.CARROT).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
+        KegRecipeBuilder.kegRecipe(BrewinItems.rootBeerGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
     }
     
     private static void fermentFoods(Consumer<FinishedData> consumer) {

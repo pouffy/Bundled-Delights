@@ -2,6 +2,7 @@ package com.pouffydev.bundledelight.init.bundles.brewinandchewin;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
+import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleDreadNogItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
 import com.pouffydev.bundledelight.foundation.bundle.BundleRegistryClass;
@@ -15,8 +16,8 @@ import net.minecraft.world.item.Item;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
-import static com.pouffydev.bundledelight.foundation.BundledRegistrate.glassTankardFoodItem;
-import static com.pouffydev.bundledelight.foundation.BundledRegistrate.glassTankardFoodItemNoEffect;
+import static com.pouffydev.bundledelight.foundation.BundledRegistrate.tankardFoodItem;
+import static com.pouffydev.bundledelight.foundation.BundledRegistrate.tankardFoodItemNoEffect;
 
 public class BrewinItems extends BundleRegistryClass {
     private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
@@ -34,26 +35,28 @@ public class BrewinItems extends BundleRegistryClass {
     public static final ItemEntry<Item> glassTankard = registrate.item(getBundleContentName("glass_tankard"), Item::new, p -> p);
     
     public static final ItemEntry<BundleBoozeItem>
-            beerGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("beer_glass"), 1, 8, glassTankardFoodItemNoEffect(), true),
-            vodkaGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("vodka_glass"), 1, 12, glassTankardFoodItemNoEffect(), true),
-            meadGlass = registrate.boozeItem(getBundleContentName("mead_glass"), 1, 8, glassTankardFoodItem(BrewinFoodValues.MEAD), BundleBoozeItem.Effect.Sweet_Heart, 6000, 0, true),
-            riceWineGlass = registrate.boozeItem(getBundleContentName("rice_wine_glass"), 1, 5, glassTankardFoodItem(BrewinFoodValues.RICE_WINE), BundleBoozeItem.Effect.Satisfaction, 6000, 0, true),
-            eggGrogGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("egg_grog_glass"), 1, 0, glassTankardFoodItem(BrewinFoodValues.EGG_GROG), true),
-            strongrootAleGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("strongroot_ale_glass"), 2, 12, glassTankardFoodItem(BrewinFoodValues.STRONGROOT_ALE), true),
-            saccharineRumGlass = registrate.boozeItem(getBundleContentName("saccharine_rum_glass"), 2, 8, glassTankardFoodItem(BrewinFoodValues.SACCHARINE_RUM), BundleBoozeItem.Effect.Sweet_Heart, 9600, 1, true),
-            paleJaneGlass = registrate.boozeItem(getBundleContentName("pale_jane_glass"), 1, 5, glassTankardFoodItem(BrewinFoodValues.PALE_JANE), BundleBoozeItem.Effect.Satisfaction, 9600, 1, true),
-            saltyFollyGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("salty_folly_glass"), 2, 10, glassTankardFoodItem(BrewinFoodValues.SALTY_FOLLY), true),
-            steelToeStoutGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("steel_toe_stout_glass"), 3, 10, glassTankardFoodItem(BrewinFoodValues.STEEL_TOE_STOUT), true),
-            glitteringGrenadineGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("glittering_grenadine_glass"), 1, 5, glassTankardFoodItem(BrewinFoodValues.GLITTERING_GRENADINE), true),
-            bloodyMaryGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("bloody_mary_glass"), 1, 12, glassTankardFoodItem(BrewinFoodValues.BLOODY_MARY), true),
-            redRumGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("red_rum_glass"), 1, 18, glassTankardFoodItem(BrewinFoodValues.RED_RUM), true),
-            witheringDrossGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("withering_dross_glass"), 3, 20, glassTankardFoodItem(BrewinFoodValues.WITHERING_DROSS), true);
-            //kombuchaGlass = registrate.boozeItem(getBundleContentName("kombucha_glass"), 1, 5, glassTankardFoodItem(FoodValues.KOMBUCHA));
+            beerGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("beer_glass"), 1, 8, tankardFoodItemNoEffect(), BundleConsumableItem.RemainderItem.glassTankard),
+            vodkaGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("vodka_glass"), 1, 12, tankardFoodItemNoEffect(), BundleConsumableItem.RemainderItem.glassTankard),
+            meadGlass = registrate.boozeItem(getBundleContentName("mead_glass"), 1, 8, tankardFoodItem(BrewinFoodValues.MEAD), BundleBoozeItem.Effect.Sweet_Heart, 6000, 0, BundleConsumableItem.RemainderItem.glassTankard),
+            riceWineGlass = registrate.boozeItem(getBundleContentName("rice_wine_glass"), 1, 5, tankardFoodItem(BrewinFoodValues.RICE_WINE), BundleBoozeItem.Effect.Satisfaction, 6000, 0, BundleConsumableItem.RemainderItem.glassTankard),
+            eggGrogGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("egg_grog_glass"), 1, 0, tankardFoodItem(BrewinFoodValues.EGG_GROG), BundleConsumableItem.RemainderItem.glassTankard),
+            strongrootAleGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("strongroot_ale_glass"), 2, 12, tankardFoodItem(BrewinFoodValues.STRONGROOT_ALE), BundleConsumableItem.RemainderItem.glassTankard),
+            saccharineRumGlass = registrate.boozeItem(getBundleContentName("saccharine_rum_glass"), 2, 8, tankardFoodItem(BrewinFoodValues.SACCHARINE_RUM), BundleBoozeItem.Effect.Sweet_Heart, 9600, 1, BundleConsumableItem.RemainderItem.glassTankard),
+            paleJaneGlass = registrate.boozeItem(getBundleContentName("pale_jane_glass"), 1, 5, tankardFoodItem(BrewinFoodValues.PALE_JANE), BundleBoozeItem.Effect.Satisfaction, 9600, 1, BundleConsumableItem.RemainderItem.glassTankard),
+            saltyFollyGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("salty_folly_glass"), 2, 10, tankardFoodItem(BrewinFoodValues.SALTY_FOLLY), BundleConsumableItem.RemainderItem.glassTankard),
+            steelToeStoutGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("steel_toe_stout_glass"), 3, 10, tankardFoodItem(BrewinFoodValues.STEEL_TOE_STOUT), BundleConsumableItem.RemainderItem.glassTankard),
+            glitteringGrenadineGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("glittering_grenadine_glass"), 1, 5, tankardFoodItem(BrewinFoodValues.GLITTERING_GRENADINE), BundleConsumableItem.RemainderItem.glassTankard),
+            bloodyMaryGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("bloody_mary_glass"), 1, 12, tankardFoodItem(BrewinFoodValues.BLOODY_MARY), BundleConsumableItem.RemainderItem.glassTankard),
+            redRumGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("red_rum_glass"), 1, 18, tankardFoodItem(BrewinFoodValues.RED_RUM), BundleConsumableItem.RemainderItem.glassTankard),
+            witheringDrossGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("withering_dross_glass"), 3, 20, tankardFoodItem(BrewinFoodValues.WITHERING_DROSS), BundleConsumableItem.RemainderItem.glassTankard),
+            kombuchaGlass = registrate.boozeItem(getBundleContentName("kombucha_glass"), 1, 5, tankardFoodItem(BrewinFoodValues.KOMBUCHA), BundleBoozeItem.Effect.Satisfaction, 3600, 0, BundleConsumableItem.RemainderItem.glassTankard),
+            rootBeerGlass = registrate.boozeItemNoExtraEffect(getBundleContentName("root_beer_glass"), 1, 8, tankardFoodItemNoEffect(), BundleConsumableItem.RemainderItem.glassTankard),
+            rootBeer = registrate.boozeItemNoExtraEffect(getBundleContentName("root_beer"), 1, 8, tankardFoodItemNoEffect(), BundleConsumableItem.RemainderItem.tankard);
     
     public static final ItemEntry<BundleDreadNogItem>
-            dreadNogGlass = registrate.dreadNogItem(getBundleContentName("dread_nog_glass"), 3, 5, glassTankardFoodItemNoEffect(), true);
+            dreadNogGlass = registrate.dreadNogItem(getBundleContentName("dread_nog_glass"), 3, 5, tankardFoodItemNoEffect(), BundleConsumableItem.RemainderItem.glassTankard);
 
-    public class BrewinFoodValues {
+    public static class BrewinFoodValues {
         public static final FoodProperties MEAD = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.1F).alwaysEat().build();
         public static final FoodProperties RICE_WINE = (new FoodProperties.Builder()).alwaysEat().build();
         public static final FoodProperties EGG_GROG = (new FoodProperties.Builder()).effect(() -> {

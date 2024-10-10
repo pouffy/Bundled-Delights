@@ -1,0 +1,36 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:mead_swig"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "cookingtime": 12000,
+  "experience": 0.6,
+  "fluiditem": {
+    "item": "minecraft:honey_bottle"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:mead_swig"
+  },
+  "temperature": 3
+}

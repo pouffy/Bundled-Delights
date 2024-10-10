@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:bloody_mary_swig"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "cookingtime": 12000,
+  "experience": 0.6,
+  "fluiditem": {
+    "item": "bundledelight:vodka_swig"
+  },
+  "ingredients": [
+    {
+      "item": "farmersdelight:tomato"
+    },
+    {
+      "item": "farmersdelight:tomato"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:bloody_mary_swig"
+  },
+  "temperature": 4
+}

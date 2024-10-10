@@ -4,6 +4,7 @@ import com.pouffydev.bundledelight.foundation.bundle.Bundle;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBundle;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteBundle;
+import com.pouffydev.bundledelight.init.bundles.miners_brew.MinersBrewBundle;
 import com.pouffydev.bundledelight.init.bundles.miners_respite.MinersRespiteBundle;
 import com.pouffydev.bundledelight.init.bundles.minersdelight.MinersBundle;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBundle;
@@ -13,6 +14,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class BundleManager {
     public static final List<Bundle> BUNDLES;
@@ -34,7 +36,7 @@ public class BundleManager {
 
         // Multi mod bundles
 
-        //TODO bundles.add(new MinersBrewBundle());
+        bundles.add(new MinersBrewBundle());
 
         //TODO bundles.add(new ThermalKitchenBundle());
         
@@ -85,14 +87,23 @@ public class BundleManager {
     }
 
     public static boolean isBundleLoaded(String name) {
-        if (name.startsWith("{}") || name.endsWith("{}")) {
+        boolean startsWith = name.startsWith("{}");
+        boolean endsWith = name.endsWith("{}");
+        if (startsWith) {
             String resultingName = name.replace("{}", "");
             for (String bundleName : getBundleNames()) {
-                if (bundleName.endsWith(resultingName) || bundleName.startsWith(resultingName)) {
-                    return getBundle(bundleName) != null && getBundle(bundleName).isLoaded();
+                if (bundleName.endsWith(resultingName)) {
+                    return getBundle(bundleName) != null && Objects.requireNonNull(getBundle(bundleName)).isLoaded();
+                }
+            }
+        } else if (endsWith) {
+            String resultingName = name.replace("{}", "");
+            for (String bundleName : getBundleNames()) {
+                if (bundleName.startsWith(resultingName)) {
+                    return getBundle(bundleName) != null && Objects.requireNonNull(getBundle(bundleName)).isLoaded();
                 }
             }
         }
-        return getBundle(name) != null && getBundle(name).isLoaded();
+        return getBundle(name) != null && Objects.requireNonNull(getBundle(name)).isLoaded();
     }
 }

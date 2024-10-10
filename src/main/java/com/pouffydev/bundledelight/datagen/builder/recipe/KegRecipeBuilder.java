@@ -3,6 +3,7 @@ package com.pouffydev.bundledelight.datagen.builder.recipe;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.pouffydev.bundledelight.common.elements.item.BundleTeaItem;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -14,6 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class KegRecipeBuilder {
@@ -133,13 +135,19 @@ public class KegRecipeBuilder {
             objectCondition.addProperty("bundle", this.requiredBundle);
             JsonObject objectCondition2 = new JsonObject();
             objectCondition2.addProperty("type", "forge:item_exists");
-            objectCondition2.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
+            objectCondition2.addProperty("item", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(this.result)).toString());
+            JsonObject objectCondition3 = new JsonObject();
+            objectCondition3.addProperty("type", "forge:item_exists");
+            objectCondition3.addProperty("item", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(this.liquid)).toString());
             arrayConditions.add(objectCondition);
             arrayConditions.add(objectCondition2);
+            if (this.liquid instanceof BundleTeaItem) {
+                arrayConditions.add(objectCondition3);
+            }
             json.add("conditions", arrayConditions);
             json.add("ingredients", arrayIngredients);
             JsonObject objectResult = new JsonObject();
-            objectResult.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
+            objectResult.addProperty("item", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(this.result)).toString());
             if (this.count > 1) {
                 objectResult.addProperty("count", this.count);
             }
@@ -148,7 +156,7 @@ public class KegRecipeBuilder {
             JsonObject objectLiquid;
             if (this.container != null) {
                 objectLiquid = new JsonObject();
-                objectLiquid.addProperty("item", ForgeRegistries.ITEMS.getKey(this.container).toString());
+                objectLiquid.addProperty("item", Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(this.container)).toString());
                 json.add("container", objectLiquid);
             }
             

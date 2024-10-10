@@ -23,14 +23,14 @@ public class BundleBoozeItem extends BundleDrinkableItem {
     protected final int effectDuration;
     protected final int effectAmplifier;
 
-    public BundleBoozeItem(int potency, int duration, Item.Properties properties, Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
+    public BundleBoozeItem(int potency, int duration, Item.Properties properties, Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
         super(properties);
         this.potency = potency;
         this.duration = duration;
         this.effect = effect;
         this.effectDuration = effectDuration;
         this.effectAmplifier = effectAmplifier;
-        this.remainderItem = glass ? RemainderItem.glassTankard : RemainderItem.copperSwig;
+        remainderItem = remainder;
     }
     
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
@@ -66,6 +66,7 @@ public class BundleBoozeItem extends BundleDrinkableItem {
 
         ;
 
+        @Nullable
         ResourceLocation getEffect() {
             return switch (this) {
                 case Sweet_Heart -> new ResourceLocation("brewinandchewin", "sweet_heart");

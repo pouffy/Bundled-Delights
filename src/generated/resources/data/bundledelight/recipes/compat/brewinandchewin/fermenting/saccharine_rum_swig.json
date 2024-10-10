@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:saccharine_rum_swig"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "cookingtime": 12000,
+  "experience": 0.6,
+  "fluiditem": {
+    "item": "bundledelight:mead_swig"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:saccharine_rum_swig"
+  },
+  "temperature": 4
+}

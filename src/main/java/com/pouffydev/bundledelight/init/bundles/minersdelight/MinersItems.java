@@ -18,10 +18,10 @@ public class MinersItems extends BundleRegistryClass {
     }
 
     public static final ItemEntry<BundleDrinkableItem>
-            borscht = registrate.drinkableItem(getBundleContentName("borscht")),
-            nettleSoup = registrate.drinkableItem(getBundleContentName("nettle_soup")),
-            sweetBerryJuice = registrate.drinkableItem(getBundleContentName("sweet_berry_juice")),
-            glassOfConcrete = registrate.drinkableItem(getBundleContentName("glass_of_concrete"));
+            borschtCup = registrate.drinkableItem(getBundleContentName("borscht_cup")),
+            nettleSoupCup = registrate.drinkableItem(getBundleContentName("nettle_soup_cup")),
+            sweetBerryJuiceCup = registrate.drinkableItem(getBundleContentName("sweet_berry_juice_cup")),
+            cupOfConcrete = registrate.drinkableItem(getBundleContentName("cup_of_concrete"));
 
     public static final ItemEntry<BundleDrinkableItem> appleCiderCup = registrate.item(getBundleContentName("apple_cider_cup"), (p) -> new BundleDrinkableItem(p).withRemainderItem(BundleConsumableItem.RemainderItem.copperCup))
             .properties(p -> p.food(FoodValues.APPLE_CIDER).stacksTo(16))

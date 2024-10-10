@@ -1,0 +1,26 @@
+{
+  "entries": [
+    {
+      "conditions": [
+        {
+          "type": "bundledelight:bundle_loaded",
+          "bundle": "gobbledygook"
+        }
+      ],
+      "bowl": "minecraft:dirt",
+      "cup": "minecraft:diamond"
+    },
+    {
+      "bowl": "farmersdelight:apple_cider",
+      "cup": "bundledelight:apple_cider_cup"
+    },
+    {
+      "bowl": "bundledelight:borscht",
+      "cup": "bundledelight:borscht_cup"
+    },
+    {
+      "bowl": "bundledelight:nettle_soup",
+      "cup": "bundledelight:nettle_soup_cup"
+    }
+  ]
+}

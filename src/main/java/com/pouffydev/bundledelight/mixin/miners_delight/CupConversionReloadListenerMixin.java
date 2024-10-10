@@ -9,8 +9,11 @@ import com.pouffydev.bundledelight.foundation.bundle.Bundle;
 import com.sammy.minersdelight.logic.CupConversionReloadListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.tags.TagManager;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.conditions.ICondition;
 import org.spongepowered.asm.mixin.*;
 
 import java.util.HashMap;
@@ -36,6 +39,7 @@ public class CupConversionReloadListenerMixin {
     @Overwrite(remap = false)
     protected void apply(Map<ResourceLocation, JsonElement> objectIn, ResourceManager resourceManagerIn, ProfilerFiller profilerIn) {
         BOWL_TO_CUP.clear();
+        int failed = 0;
 
         for(int i = 0; i < objectIn.size(); ++i) {
             ResourceLocation location = (ResourceLocation)objectIn.keySet().toArray()[i];
@@ -44,8 +48,10 @@ public class CupConversionReloadListenerMixin {
 
             for (JsonElement entry : entries) {
                 JsonObject entryObject = entry.getAsJsonObject();
-                if (entryObject.has("bundle") && !bundledDelight$isBundleLoaded(entryObject.get("bundle").getAsString())) {
-                    BundledDelight.LOGGER.warn("[Bundled Delight's 'Miner's Delight' MIXIN] Bundle " + entryObject.get("bundle").getAsString() + " is not loaded, skipping copper cup conversion");
+                boolean conditionsMet = CraftingHelper.processConditions(entryObject, "conditions", ICondition.IContext.TAGS_INVALID);
+                if (entryObject.has("conditions") && !conditionsMet) {
+                    BundledDelight.LOGGER.warn("[Bundled Delight's 'Miner's Delight' MIXIN] Conditions not met for cup conversion: {}, skipping", "(bowl: " + entryObject.get("bowl") + ", cup: " + entryObject.get("cup") + ")");
+                    failed++;
                     continue;
                 }
                 Item bowlFood = itemFromJson(entryObject.get("bowl"));
@@ -54,6 +60,7 @@ public class CupConversionReloadListenerMixin {
             }
         }
 
+        BundledDelight.LOGGER.info("[Bundled Delight's 'Miner's Delight' MIXIN] Applied {} cup conversions, {} failed due to unmet conditions", BOWL_TO_CUP.size(), failed);
     }
 
     @Unique

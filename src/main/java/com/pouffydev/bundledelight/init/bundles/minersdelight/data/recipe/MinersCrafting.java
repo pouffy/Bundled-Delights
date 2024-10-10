@@ -23,6 +23,7 @@ public class MinersCrafting extends BundleRecipeGen {
 
     private static void recipesFoods(Consumer<FinishedRecipe> consumer) {
         RecipeShortcuts.juice(MinersItems.melonJuiceCup.get(), Items.MELON_SLICE, MDItems.COPPER_CUP.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/melon_juice_cup"));
+        RecipeShortcuts.juice(MinersItems.sweetBerryJuiceCup.get(), Items.SWEET_BERRIES, MDItems.COPPER_CUP.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/sweet_berry_juice_cup"));
     }
 
     @Override

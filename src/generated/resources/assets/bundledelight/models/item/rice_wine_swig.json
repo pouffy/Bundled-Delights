@@ -1,0 +1,6 @@
+{
+  "parent": "bundledelight:item/mug",
+  "textures": {
+    "layer0": "bundledelight:item/rice_wine_swig"
+  }
+}

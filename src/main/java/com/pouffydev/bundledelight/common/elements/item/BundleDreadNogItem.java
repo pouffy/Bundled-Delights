@@ -23,16 +23,19 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class BundleDreadNogItem extends BundleBoozeItem {
-    public BundleDreadNogItem(int potency, int duration, Item.Properties properties, boolean glass) {
-        super(potency, duration, properties, Effect.None, 0, 0, glass);
+    public BundleDreadNogItem(int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        super(potency, duration, properties, Effect.None, 0, 0, remainder);
     }
 
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
         MobEffectInstance badOmenEffect = consumer.getEffect(MobEffects.BAD_OMEN);
         if (!consumer.hasEffect(MobEffects.BAD_OMEN)) {
             consumer.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 12000, 0), consumer);
-        } else if (badOmenEffect.getAmplifier() < 2) {
-            consumer.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 12000, badOmenEffect.getAmplifier() + 1), consumer);
+        } else {
+            assert badOmenEffect != null;
+            if (badOmenEffect.getAmplifier() < 2) {
+                consumer.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 12000, badOmenEffect.getAmplifier() + 1), consumer);
+            }
         }
         MobEffect tipsy = CommonUtil.getMobEffect(new ResourceLocation("brewinandchewin", "tipsy"));
         if (consumer.hasEffect((MobEffect) tipsy)) {

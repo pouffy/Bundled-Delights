@@ -95,7 +95,7 @@ public class BundleRegistrateTags {
 
         for (Brews brew : Brews.values()) {
             prov.tag(brew.getTag()).addOptional(brew.tankardId()).addOptional(brew.swigId()).addOptional(brew.glassId());
-            prov.tag(BundleTags.BELT_UPRIGHT).addOptionalTag(brew.getTagLoc());
+            prov.tag(BundleTags.BELT_UPRIGHT).addOptionalTag(brew.getTagLoc()).addOptional(new ResourceLocation("bundledelight", "copper_swig")).addOptional(new ResourceLocation("bundledelight", "glass_tankard"));
         }
         for (Teas tea : Teas.values()) {
             prov.tag(tea.getTag()).addOptional(tea.getTeaLoc()).addOptional(tea.getTeaCupLoc());

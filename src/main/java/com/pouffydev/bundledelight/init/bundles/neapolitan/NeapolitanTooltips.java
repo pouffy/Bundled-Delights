@@ -137,7 +137,6 @@ public class NeapolitanTooltips {
                 return Components.empty();
             }
             String romanNumeral = amplifier > 0 ? BDTextUtils.toRomanNumeral(amplifier + 1) + " " : "";
-            BundledDelight.LOGGER.info("Fetching translation for key: {}, duration: {}, amplifier: {}", "bundledelight.tooltip." + getEffect().getPath(), duration, amplifier);
             MutableComponent result = BDTextUtils.getTranslation("bundledelight", "tooltip." + getEffect().getPath(), romanNumeral, StringUtil.formatTickDuration(duration));
             if (this == Poison) {
                 MutableComponent formattedName = Component.translatable("effect.minecraft.poison");

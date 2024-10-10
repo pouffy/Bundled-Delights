@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:egg_grog_swig"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "cookingtime": 12000,
+  "experience": 0.6,
+  "fluiditem": {
+    "item": "miners_delight:milk_cup"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:egg_grog_swig"
+  },
+  "temperature": 3
+}

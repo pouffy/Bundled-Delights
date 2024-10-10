@@ -1,0 +1,39 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "bundledelight:dread_nog_swig"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "cookingtime": 12000,
+  "experience": 0.6,
+  "fluiditem": {
+    "item": "bundledelight:egg_grog_swig"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:turtle_egg"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    }
+  ],
+  "result": {
+    "item": "bundledelight:dread_nog_swig"
+  },
+  "temperature": 1
+}

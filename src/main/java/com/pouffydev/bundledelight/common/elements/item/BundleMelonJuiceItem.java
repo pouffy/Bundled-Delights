@@ -18,7 +18,7 @@ public class BundleMelonJuiceItem extends BundleDrinkableItem {
 
     public BundleMelonJuiceItem(Item.Properties properties, float healAmount) {
         super(properties, false, true);
-        this.remainderItem = RemainderItem.copperCup;
+        remainderItem = RemainderItem.copperCup;
         this.healAmount = healAmount;
     }
 

@@ -3,18 +3,21 @@
   "conditions": [
     {
       "type": "bundledelight:bundle_loaded",
-      "bundle": "brewinandchewin"
+      "bundle": "miners_brew"
     }
   ],
   "key": {
     "#": {
-      "tag": "forge:glass"
+      "tag": "forge:ingots/copper"
+    },
+    "-": {
+      "tag": "forge:nuggets/iron"
     }
   },
   "pattern": [
     "# #",
-    "# #",
-    " # "
+    "- -",
+    "###"
   ],
   "result": {
     "item": "bundledelight:glass_tankard"

@@ -22,8 +22,8 @@ public class BundleDrinkableItem extends BundleConsumableItem {
         super(properties, hasPotionEffectTooltip, hasCustomTooltip);
     }
 
-    public BundleDrinkableItem withRemainderItem(RemainderItem remainderItem) {
-        this.remainderItem = remainderItem;
+    public BundleDrinkableItem withRemainderItem(RemainderItem pRemainderItem) {
+        remainderItem = pRemainderItem;
         return this;
     }
 

@@ -7,7 +7,6 @@ import com.pouffydev.bundledelight.common.elements.item.*;
 import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.SackGenerator;
-import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -26,7 +25,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -88,10 +86,10 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     public static Item.Properties foodProps(FoodProperties food) {
         return new Item.Properties().food(food).tab(BundledDelight.itemGroup);
     }
-    public static Item.Properties glassTankardFoodItemNoEffect() {
+    public static Item.Properties tankardFoodItemNoEffect() {
         return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
     }
-    public static Item.Properties glassTankardFoodItem(FoodProperties food) {
+    public static Item.Properties tankardFoodItem(FoodProperties food) {
         return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
     }
     //ITEM
@@ -116,20 +114,36 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return milkshakeItem(name, food, healAmount, (p) -> properties);
     }
 
-    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, (p) -> new BundleIceCreamItem(p.food(food).craftRemainder(Items.BOWL).stacksTo(1)), properties);
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).stacksTo(1), remainder), properties);
     }
 
-    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, Item.Properties properties) {
-        return iceCreamItem(name, food, (p) -> properties);
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return iceCreamItem(name, food, (p) -> properties, remainder);
     }
 
-    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
-        return item(name, (p) -> new BundleIceCreamItem(p.food(food).craftRemainder(Items.BOWL).stacksTo(1)).withHealAmount(healAmount), properties);
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).stacksTo(1), remainder).withHealAmount(healAmount), properties);
     }
 
-    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, Item.Properties properties) {
-        return iceCreamItem(name, food, healAmount, (p) -> properties);
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return iceCreamItem(name, food, healAmount, (p) -> properties, remainder);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, BundleIceCreamItem.Effect effect, int duration, int amplifier, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).stacksTo(1), remainder).withEffect(effect, duration, amplifier), properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, BundleIceCreamItem.Effect effect, int duration, int amplifier, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return iceCreamItem(name, food, effect, duration, amplifier, (p) -> properties, remainder);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, BundleIceCreamItem.Effect effect, int duration, int amplifier, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleIceCreamItem(p.food(food).stacksTo(1), remainder).withHealAmount(healAmount).withEffect(effect, duration, amplifier), properties);
+    }
+
+    public ItemEntry<BundleIceCreamItem> iceCreamItem(String name, FoodProperties food, float healAmount, BundleIceCreamItem.Effect effect, int duration, int amplifier, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return iceCreamItem(name, food, healAmount, effect, duration, amplifier, (p) -> properties, remainder);
     }
 
     public ItemEntry<BundleHealingDrinkItem> healingDrinkItem(String name, float healAmount, NonNullUnaryOperator<Item.Properties> properties) {
@@ -188,37 +202,37 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return consumableItem(name, (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass))
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, remainder))
                 .properties(properties)
                 .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
                 .register();
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, boolean glass) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, BundleBoozeItem.Effect.None, 0, 0, glass), (p) -> properties);
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, BundleBoozeItem.Effect.None, 0, 0, remainder), (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, glass))
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, remainder))
                 .properties(properties)
                 .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
                 .register();
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, boolean glass) {
-        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier, glass);
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
+        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier, remainder);
     }
     
-    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, boolean glass) {
-        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p, glass))
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleDreadNogItem(potency, duration, p, remainder))
                 .properties(properties)
                 .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
                 .register();
     }
     
-    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties, boolean glass) {
-        return dreadNogItem(name, potency, duration, (p) -> properties, glass);
+    public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return dreadNogItem(name, potency, duration, (p) -> properties, remainder);
     }
 
     public ItemEntry<BundleTeaItem> teaItem(String name, FoodProperties food, NonNullUnaryOperator<Item.Properties> properties) {

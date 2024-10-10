@@ -17,7 +17,7 @@ public class BundleHotCocoaItem extends BundleDrinkableItem {
 
     public BundleHotCocoaItem(Properties properties) {
         super(properties, false, true);
-        this.remainderItem = RemainderItem.copperCup;
+        remainderItem = RemainderItem.copperCup;
     }
 
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
