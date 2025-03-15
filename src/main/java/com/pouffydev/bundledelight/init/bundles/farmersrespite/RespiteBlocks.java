@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.farmersrespite;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
 import com.pouffydev.bundledelight.foundation.bundle.BundleRegistryClass;
@@ -7,7 +8,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.Block;
 
 public class RespiteBlocks extends BundleRegistryClass {
-    public static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    public static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public RespiteBlocks() {
         super("farmersrespite");

@@ -16,8 +16,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import umpaz.brewinandchewin.common.item.DreadNogItem;
-import umpaz.brewinandchewin.common.utility.BCTextUtils;
+import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -48,12 +47,12 @@ public class BundleDreadNogItem extends BundleBoozeItem {
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        MutableComponent textTipsy = BCTextUtils.getTranslation("tooltip.tipsy1", this.duration);
-        MutableComponent textBadOmen = BCTextUtils.getTranslation("tooltip.dread_nog");
+        MutableComponent textTipsy = BnCTextUtils.getTranslation("tooltip.tipsy1", this.duration);
+        MutableComponent textBadOmen = BnCTextUtils.getTranslation("tooltip.dread_nog");
         if (this.potency == 2) {
-            textTipsy = BCTextUtils.getTranslation("tooltip.tipsy2", this.duration);
+            textTipsy = BnCTextUtils.getTranslation("tooltip.tipsy2", this.duration);
         } else if (this.potency == 3) {
-            textTipsy = BCTextUtils.getTranslation("tooltip.tipsy3", this.duration);
+            textTipsy = BnCTextUtils.getTranslation("tooltip.tipsy3", this.duration);
         }
 
         tooltip.add(textTipsy.withStyle(ChatFormatting.RED));

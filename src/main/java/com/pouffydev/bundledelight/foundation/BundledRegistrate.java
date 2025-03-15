@@ -8,28 +8,49 @@ import com.pouffydev.bundledelight.datagen.blockstate.CakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.CandleCakeGenerator;
 import com.pouffydev.bundledelight.datagen.blockstate.SackGenerator;
 import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.builders.Builder;
+import com.tterrag.registrate.builders.FluidBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.registries.RegistryObject;
+import umpaz.brewinandchewin.common.fluid.AlcoholFluidType;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
+import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
+    private static final Map<RegistryEntry<?>, RegistryObject<CreativeModeTab>> TAB_LOOKUP = Collections.synchronizedMap(new IdentityHashMap<>());
+    @Nullable
+    protected RegistryObject<CreativeModeTab> currentTab;
+
     protected BundledRegistrate(String modid) {
         super(modid);
     }
@@ -84,13 +105,13 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
     }
     
     public static Item.Properties foodProps(FoodProperties food) {
-        return new Item.Properties().food(food).tab(BundledDelight.itemGroup);
+        return new Item.Properties().food(food);
     }
     public static Item.Properties tankardFoodItemNoEffect() {
-        return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
+        return new Item.Properties().stacksTo(16);
     }
     public static Item.Properties tankardFoodItem(FoodProperties food) {
-        return new Item.Properties().stacksTo(16).tab(BundledDelight.itemGroup);
+        return new Item.Properties().stacksTo(16);
     }
     //ITEM
     public <T extends Item> ItemEntry<T> item(String name, NonNullFunction<Item.Properties, T> factory, NonNullUnaryOperator<Item.Properties> properties) {
@@ -319,7 +340,7 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
 
     public BlockEntry<Block> crate(String name, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
         return block(name, Block::new)
-                .properties(properties.andThen(p -> BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)))
+                .properties(properties.andThen(p -> BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)))
                 .blockstate((ctx, provider) -> new SackGenerator().generateCrate(ctx, provider))
                 .item()
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
@@ -327,13 +348,44 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
                 .register();
     }
 
-    public BlockEntry<Block> iceCreamBlock(String name, MaterialColor materialColor, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
+    public BlockEntry<Block> iceCreamBlock(String name, MapColor materialColor, NonNullUnaryOperator<BlockBehaviour.Properties> properties) {
         return block(name, Block::new)
-                .properties(properties.andThen(p -> BlockBehaviour.Properties.of(Material.SNOW, materialColor).strength(0.2F).sound(SoundType.SNOW)))
+                .properties(properties.andThen(p -> BlockBehaviour.Properties.of().mapColor(materialColor).strength(0.2F).sound(SoundType.SNOW)))
                 .blockstate((ctx, provider) -> provider.cubeAll(ctx.get()))
                 .item()
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
                 .build()
                 .register();
+    }
+
+    public FluidBuilder<ForgeFlowingFluid.Flowing, BundledRegistrate> alcohol(String name, int color) {
+        return fluid(name, AlcoholFluidType.FLUID_STILL_TEXTURE, AlcoholFluidType.FLUID_FLOWING_TEXTURE, createAlcohol(color), ForgeFlowingFluid.Flowing::new);
+    }
+
+    public static FluidBuilder.FluidTypeFactory createAlcohol(int color) {
+        return (properties, still, flow) -> new AlcoholFluidType(color | 0xFF000000);
+    }
+
+    @Nullable
+    public BundledRegistrate setCreativeTab(RegistryObject<CreativeModeTab> tab) {
+        currentTab = tab;
+        return self();
+    }
+
+    public RegistryObject<CreativeModeTab> getCreativeTab() {
+        return currentTab;
+    }
+
+    public static boolean isInCreativeTab(RegistryEntry<?> entry, RegistryObject<CreativeModeTab> tab) {
+        return TAB_LOOKUP.get(entry) == tab;
+    }
+
+    @Override
+    protected <R, T extends R> RegistryEntry<T> accept(String name, ResourceKey<? extends Registry<R>> type, Builder<R, T, ?, ?> builder, NonNullSupplier<? extends T> creator, NonNullFunction<RegistryObject<T>, ? extends RegistryEntry<T>> entryFactory) {
+        RegistryEntry<T> entry = super.accept(name, type, builder, creator, entryFactory);
+        if (currentTab != null)
+            TAB_LOOKUP.put(entry, currentTab);
+
+        return entry;
     }
 }

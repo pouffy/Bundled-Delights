@@ -60,7 +60,7 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
 
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongAppleCiderCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersItems.appleCiderCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
         KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongMelonJuiceCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MinersItems.melonJuiceCup.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
-        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongHotCocoaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(MDItems.HOT_COCOA_CUP.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+        KettleRecipeBuilder.kettleRecipe(MinersRespiteItems.strongHotCocoaCup.get(), 1, 2400, 0.35F, false, MDItems.COPPER_CUP.get(), BUNDLE_NAME).addIngredient(Items.HONEY_BOTTLE).build(consumer);
     }
 
 

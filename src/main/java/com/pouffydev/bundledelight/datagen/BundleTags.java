@@ -1,12 +1,21 @@
 package com.pouffydev.bundledelight.datagen;
 
-import net.minecraft.core.Registry;
+import com.pouffydev.bundledelight.BundledDelight;
+import com.tterrag.registrate.providers.RegistrateTagsProvider;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class BundleTags {
     public static final TagKey<Item> GREEN_TEA = respiteDrinkTag("green_tea");
@@ -58,42 +67,87 @@ public class BundleTags {
     }
 
     private static TagKey<Item> modItemTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("bundledelight:" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("bundledelight:" + path));
     }
 
     private static TagKey<Item> respiteItemTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("farmersrespite:" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("farmersrespite:" + path));
     }
     public static TagKey<Item> respiteDrinkTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("farmersrespite:drinks/" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("farmersrespite:drinks/" + path));
     }
     private static TagKey<Item> brewinItemTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("brewinandchewin:" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("brewinandchewin:" + path));
     }
     public static TagKey<Item> brewinDrinkTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("brewinandchewin:drinks/" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("brewinandchewin:drinks/" + path));
     }
     private static TagKey<Item> forgeItemTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge:" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("forge:" + path));
     }
     private static TagKey<Fluid> forgeFluidTag(String path) {
-        return TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge:" + path));
+        return TagKey.create(Registries.FLUID, new ResourceLocation("forge:" + path));
     }
     private static TagKey<Fluid> fluidTag(String path) {
-        return TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("minecraft:" + path));
+        return TagKey.create(Registries.FLUID, new ResourceLocation("minecraft:" + path));
     }
     private static TagKey<Fluid> modFluidTag(String path) {
-        return TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("bundledelight:" + path));
+        return TagKey.create(Registries.FLUID, new ResourceLocation("bundledelight:" + path));
     }
     public static TagKey<Item> createItemTag(String path) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("create:" + path));
+        return TagKey.create(Registries.ITEM, new ResourceLocation("create:" + path));
     }
 
     private static TagKey<Block> modBlockTag(String path) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation("bundledelight:" + path));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation("bundledelight:" + path));
     }
 
     private static TagKey<EntityType<?>> modEntityTag(String path) {
-        return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("bundledelight:" + path));
+        return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("bundledelight:" + path));
+    }
+
+    public static class BDTagsProvider<T> {
+
+        private RegistrateTagsProvider<T> provider;
+        private Function<T, ResourceKey<T>> keyExtractor;
+
+        public BDTagsProvider(RegistrateTagsProvider<T> provider, Function<T, Holder.Reference<T>> refExtractor) {
+            this.provider = provider;
+            this.keyExtractor = refExtractor.andThen(Holder.Reference::key);
+        }
+
+        public BDTagAppender<T> tag(TagKey<T> tag) {
+            TagBuilder tagbuilder = getOrCreateRawBuilder(tag);
+            return new BDTagAppender<>(tagbuilder, keyExtractor, BundledDelight.MODID);
+        }
+
+        public TagBuilder getOrCreateRawBuilder(TagKey<T> tag) {
+            return provider.addTag(tag).getInternalBuilder();
+        }
+
+    }
+
+    public static class BDTagAppender<T> extends TagsProvider.TagAppender<T> {
+
+        private Function<T, ResourceKey<T>> keyExtractor;
+
+        public BDTagAppender(TagBuilder pBuilder, Function<T, ResourceKey<T>> pKeyExtractor, String modId) {
+            super(pBuilder, modId);
+            this.keyExtractor = pKeyExtractor;
+        }
+
+        public BDTagAppender<T> add(T entry) {
+            this.add(this.keyExtractor.apply(entry));
+            return this;
+        }
+
+        @SafeVarargs
+        public final BDTagAppender<T> add(T... entries) {
+            Stream.<T>of(entries)
+                    .map(this.keyExtractor)
+                    .forEach(this::add);
+            return this;
+        }
+
     }
 }

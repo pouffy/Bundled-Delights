@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.builtin;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCakeBlock;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCandleCakeBlock;
@@ -12,13 +13,12 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.ToIntFunction;
 
 public class BuiltinBlocks extends BundleRegistryClass {
-    public static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    public static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
     
     public BuiltinBlocks() {
         super("bundledelight");
@@ -61,8 +61,8 @@ public class BuiltinBlocks extends BundleRegistryClass {
         }
         
         static {
-            CARROT_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WOOL);
-            CARROT_CANDLE_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
+            CARROT_CAKE = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WOOL);
+            CARROT_CANDLE_CAKE = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
             
         }
     }

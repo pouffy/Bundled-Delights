@@ -28,6 +28,7 @@ public class BrewinBundle extends Bundle {
     protected void onLoad() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BrewinItems.register();
+        BrewinFluids.register();
     }
     
     @Override

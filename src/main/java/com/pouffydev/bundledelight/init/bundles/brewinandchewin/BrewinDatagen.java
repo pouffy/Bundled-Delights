@@ -6,6 +6,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class BrewinDatagen {
     public static void gatherData(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
-        generator.addProvider(server, new BrewinRecipes(generator));
+        generator.addProvider(server, new BrewinRecipes(generator.getPackOutput()));
     }
 }

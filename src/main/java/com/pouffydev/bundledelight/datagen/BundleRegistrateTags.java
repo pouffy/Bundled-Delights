@@ -22,7 +22,8 @@ public class BundleRegistrateTags {
         BundledDelight.registrate.addDataGenerator(ProviderType.ITEM_TAGS, BundleRegistrateTags::genItemTags);
     }
     
-    private static void genBlockTags(RegistrateTagsProvider<Block> prov) {
+    private static void genBlockTags(RegistrateTagsProvider<Block> provIn) {
+        BundleTags.BDTagsProvider<Block> prov = new BundleTags.BDTagsProvider<>(provIn, Block::builtInRegistryHolder);
         prov.tag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptional(new ResourceLocation("bundledelight", "mint_leaf_sack"))
                 .addOptional(new ResourceLocation("bundledelight", "adzuki_bean_sack"))
@@ -86,7 +87,8 @@ public class BundleRegistrateTags {
         );
     }
     
-    private static void genItemTags(RegistrateTagsProvider<Item> prov) {
+    private static void genItemTags(RegistrateTagsProvider<Item> provIn) {
+        BundleTags.BDTagsProvider<Item> prov = new BundleTags.BDTagsProvider<>(provIn, Item::builtInRegistryHolder);
         ResourceLocation teaSeeds = new ResourceLocation("farmersrespite", "tea_seeds");
         ResourceLocation coffeeSeeds = new ResourceLocation("farmersrespite", "coffee_beans");
         prov.tag(BundleTags.SEEDS).addOptional(teaSeeds).addOptional(coffeeSeeds);

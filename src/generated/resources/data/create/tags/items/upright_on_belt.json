@@ -5,7 +5,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/vodka",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -13,7 +29,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/rice_wine",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -21,7 +53,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/strongroot_ale",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -29,7 +77,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/pale_jane",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -37,7 +101,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/salty_folly",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -45,7 +125,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/glittering_grenadine",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -53,7 +149,23 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/red_rum",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {
@@ -61,11 +173,35 @@
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/kombucha",
       "required": false
     },
     {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
+      "required": false
+    },
+    {
       "id": "#brewinandchewin:drinks/root_beer",
+      "required": false
+    },
+    {
+      "id": "bundledelight:copper_swig",
+      "required": false
+    },
+    {
+      "id": "bundledelight:glass_tankard",
       "required": false
     },
     {

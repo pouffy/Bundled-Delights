@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.neapolitan;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCakeBlock;
 import com.pouffydev.bundledelight.common.elements.block.CompatFlavoredCandleCakeBlock;
@@ -13,13 +14,12 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.ToIntFunction;
 
 public class NeapolitanBlocks extends BundleRegistryClass {
-    public static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    public static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public NeapolitanBlocks() {
         super("neapolitan");
@@ -55,8 +55,8 @@ public class NeapolitanBlocks extends BundleRegistryClass {
             powderedVanillaSack = registrate.sack(getBundleContentName("powdered_vanilla_sack"), (p) -> p);
 
     public static final BlockEntry<Block>
-            whiteStrawberryIceCreamBlock = registrate.iceCreamBlock(getBundleContentName("white_strawberry_ice_cream_block"), MaterialColor.TERRACOTTA_WHITE, (p) -> p),
-            sweetBerryIceCreamBlock = registrate.iceCreamBlock(getBundleContentName("sweet_berry_ice_cream_block"), MaterialColor.TERRACOTTA_PINK, (p) -> p);
+            whiteStrawberryIceCreamBlock = registrate.iceCreamBlock(getBundleContentName("white_strawberry_ice_cream_block"), MapColor.TERRACOTTA_WHITE, (p) -> p),
+            sweetBerryIceCreamBlock = registrate.iceCreamBlock(getBundleContentName("sweet_berry_ice_cream_block"), MapColor.TERRACOTTA_PINK, (p) -> p);
 
 
     static class Properties {
@@ -72,8 +72,8 @@ public class NeapolitanBlocks extends BundleRegistryClass {
         }
 
         static {
-            STRAWBERRY_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL);
-            STRAWBERRY_CANDLE_CAKE = BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
+            STRAWBERRY_CAKE = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL);
+            STRAWBERRY_CANDLE_CAKE = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.5F).sound(SoundType.WOOL).lightLevel(litBlockEmission(3));
 
         }
     }

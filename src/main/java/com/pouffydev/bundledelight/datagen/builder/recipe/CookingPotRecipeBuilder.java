@@ -118,9 +118,7 @@ public class CookingPotRecipeBuilder {
     public void build(Consumer<FinishedRecipe> consumerIn, ResourceLocation id) {
         if (!this.advancement.getCriteria().isEmpty()) {
             this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(id)).requirements(RequirementsStrategy.OR);
-            String var10002 = id.getNamespace();
-            String var10003 = this.result.getItemCategory().getRecipeFolderName();
-            ResourceLocation advancementId = new ResourceLocation(var10002, "recipes/" + var10003 + "/" + id.getPath());
+            ResourceLocation advancementId = new ResourceLocation(id.getNamespace(), "recipes/" + id.getPath());
             consumerIn.accept(new CookingPotRecipeBuilder.Result(id, this.result, this.count, this.ingredients, this.cookingTime, this.experience, this.container, this.tab, this.advancement, advancementId, this.requiredBundle));
         } else {
             consumerIn.accept(new CookingPotRecipeBuilder.Result(id, this.result, this.count, this.ingredients, this.cookingTime, this.experience, this.container, this.tab, this.requiredBundle));

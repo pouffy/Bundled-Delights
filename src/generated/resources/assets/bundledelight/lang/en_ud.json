@@ -39,6 +39,7 @@
   "block.bundledelight.red_carrot_candle_cake": "ǝʞɐƆ ǝןpuɐƆ ʇoɹɹɐƆ pǝᴚ",
   "block.bundledelight.red_white_strawberry_candle_cake": "ǝʞɐƆ ǝןpuɐƆ ʎɹɹǝqʍɐɹʇS ǝʇıɥM pǝᴚ",
   "block.bundledelight.roasted_adzuki_bean_sack": "ʞɔɐS uɐǝᗺ ıʞnzpⱯ pǝʇsɐoᴚ",
+  "block.bundledelight.root_beer": "ɹǝǝᗺ ʇooᴚ",
   "block.bundledelight.sweet_berry_ice_cream_block": "ʞɔoןᗺ ɯɐǝɹƆ ǝɔI ʎɹɹǝᗺ ʇǝǝʍS",
   "block.bundledelight.white_carrot_candle_cake": "ǝʞɐƆ ǝןpuɐƆ ʇoɹɹɐƆ ǝʇıɥM",
   "block.bundledelight.white_strawberry_cake": "ǝʞɐƆ ʎɹɹǝqʍɐɹʇS ǝʇıɥM",
@@ -69,6 +70,7 @@
   "effect.bundledelight.caffeinated": "pǝʇɐuıǝɟɟɐƆ",
   "effect.bundledelight.satisfaction": "uoıʇɔɐɟsıʇɐS",
   "effect.bundledelight.sweet_heart": "ʇɹɐǝH ʇǝǝʍS",
+  "fluid_type.bundledelight.root_beer": "ɹǝǝᗺ ʇooᴚ",
   "item.bundledelight.apple_cider_cup": "dnƆ ɹǝpıƆ ǝןddⱯ",
   "item.bundledelight.beer_glass": "ssɐן⅁ ɹǝǝᗺ",
   "item.bundledelight.beer_swig": "bıʍS ɹǝǝᗺ",
@@ -154,6 +156,5 @@
   "item.bundledelight.white_strawberry_milkshake": "ǝʞɐɥsʞןıW ʎɹɹǝqʍɐɹʇS ǝʇıɥM",
   "item.bundledelight.withering_dross_glass": "ssɐן⅁ ssoɹᗡ buıɹǝɥʇıM",
   "item.bundledelight.withering_dross_swig": "bıʍS ssoɹᗡ buıɹǝɥʇıM",
-  "item.bundledelight.yellow_tea_cup": "dnƆ ɐǝ⟘ ʍoןןǝʎ",
-  "itemGroup.bundledelight": "sʇɥbıןǝᗡ pǝןpunᗺ"
+  "item.bundledelight.yellow_tea_cup": "dnƆ ɐǝ⟘ ʍoןןǝʎ"
 }

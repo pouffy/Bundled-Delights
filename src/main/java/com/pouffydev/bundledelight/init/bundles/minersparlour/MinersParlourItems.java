@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.minersparlour;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleIceCreamItem;
@@ -9,7 +10,7 @@ import com.pouffydev.bundledelight.init.FoodValues;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
 public class MinersParlourItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public MinersParlourItems() {
         super("miners_parlour");

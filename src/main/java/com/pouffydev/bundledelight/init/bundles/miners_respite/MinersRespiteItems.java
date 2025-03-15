@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.miners_respite;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.*;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
@@ -9,7 +10,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
 
 public class MinersRespiteItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
     private static final BundledRegistrate noTabRegistrate = BundledDelight.registrate();
 
     public MinersRespiteItems() {

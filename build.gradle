@@ -13,13 +13,15 @@ buildscript {
     }
 }
 plugins {
-    id 'com.matthewprenger.cursegradle' version "${cursegradle_version}"
+    id "idea"
+    id "me.shedaniel.unified-publishing" version "0.1.+"
+    id "net.neoforged.moddev.legacyforge" version "2.0.74"
+    id "dev.ithundxr.silk" version "0.11.15"
+    id "io.freefair.lombok" version "8.11"
+
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
+apply from: "./gradle/java.gradle"
+apply from: "gradle/property_loader.gradle"
 
 version = project.mod_version + "-forge-mc" + project.minecraft_version
 group = project.maven_group
@@ -28,66 +30,78 @@ archivesBaseName = project.archives_base_name
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-
-jarJar.enable()
-
-mixin {
-    add sourceSets.main, "${modid}.refmap.json"
-    config "${modid}.mixins.json"
-
-    debug.verbose = true
-    debug.export = true
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
 
-minecraft {
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    mappings channel: 'parchment', version: "${parchment_version}-${minecraft_version}"
+legacyForge {
+    version = "$minecraft_version-$forge_version"
 
+
+    validateAccessTransformers = false
+
+    if (file('src/main/resources/META-INF/accesstransformer.cfg').exists()) {
+        accessTransformers.from "src/main/resources/META-INF/accesstransformer.cfg"
+    }
+
+    parchment {
+        minecraftVersion = minecraft_version
+        mappingsVersion = parchment_version
+    }
+
+    mods {
+        modid {
+            sourceSet sourceSets.main
+        }
+    }
     runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', project.modid
+        configureEach {
+            systemProperty 'forge.logging.markers', ''
+            systemProperty 'forge.logging.console.level', 'info'
+            jvmArguments = ["-XX:+IgnoreUnrecognizedVMOptions", "-XX:+AllowEnhancedClassRedefinition"]
 
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
+            systemProperty 'mixin.debug.export', 'true'
+            systemProperty 'mixin.debug.verbose', 'true'
+            programArgument '-mixin.config=bundledelight.mixins.json'
+        }
+        client {
+            client()
+            gameDirectory = project.file('run')
         }
 
         server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', project.modid
+            server()
 
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
+            gameDirectory = project.file('run/server')
+        }
+
+        gameTestServer {
+            type = "gameTestServer"
+
+            gameDirectory = project.file('run/gametest')
         }
 
         data {
-            workingDirectory project.file('run')
+            data()
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', project.modid, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                "${modid}" {
-                    source sourceSets.main
-                }
-            }
+            gameDirectory = project.file('run')
+            systemProperty 'forge.logging.markers', 'REGISTRIES,REGISTRYDUMP'
+            systemProperty 'forge.logging.console.level', 'debug'
+            programArguments.addAll("--mod", modid as String, "--all", "--output", file("src/generated/resources/").getAbsolutePath(), "--existing", file("src/main/resources").getAbsolutePath())
         }
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main {
+    resources {
+        srcDir 'src/generated/resources'
+        exclude '.cache/'
+    }
+}
 
 repositories {
     maven {
@@ -101,11 +115,7 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven {
-        // JEI
-        name = "BlameJared"
-        url = "https://maven.blamejared.com/"
-    }
+    maven { url = "https://maven.blamejared.com" } // JEI, Vazkii's Mods
     maven { url = "https://maven.jaackson.me" }
     maven { url = "https://www.cursemaven.com" }
     maven {
@@ -127,87 +137,58 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation 'org.jetbrains:annotations:22.0.0'
 
-    //implementation(jarJar("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}")) {
-    //    transitive = false
-    //    jarJar.ranged(it, "[${mixin_extras_version},)")
-    //}
-    jarJar(group: "com.tterrag.registrate", name: "Registrate", version: "[${registrate_version},)") {
-        transitive = false
-        jarJar.pin(it, project.registrate_version)
-    }
-    implementation  fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    compileOnly fg.deobf("mezz.jei:jei-$minecraft_version-common-api:$jei_version")
-    compileOnly fg.deobf("mezz.jei:jei-$minecraft_version-forge-api:$jei_version")
-    implementation fg.deobf("mezz.jei:jei-$minecraft_version-forge:$jei_version")
+    modCompileOnly("mezz.jei:jei-$minecraft_version-common-api:$jei_version")
+    modCompileOnly("mezz.jei:jei-$minecraft_version-forge-api:$jei_version")
+    modImplementation("mezz.jei:jei-$minecraft_version-forge:$jei_version")
 
-    implementation fg.deobf("curse.maven:${project.brewNChew}")
-    implementation fg.deobf("curse.maven:${project.farmersRespite}")
+    modImplementation("maven.modrinth:brewin-and-chewin:${project.brewNChew}")
+    modImplementation("curse.maven:${project.farmersRespite}")
 
     //Abnormals mods
-    implementation fg.deobf("maven.modrinth:blueprint:${project.blueprint}")
-    implementation fg.deobf("maven.modrinth:neapolitan:${project.neapolitan}")
+    modImplementation("maven.modrinth:blueprint:${project.blueprint}")
+    modImplementation("maven.modrinth:neapolitan:${project.neapolitan}")
+    modImplementation("maven.modrinth:gallery:${project.gallery}")
     //implementation fg.deobf("maven.modrinth:abnormals-delight:${project.abnormalsDelight}")
     //runtimeOnly fg.deobf("maven.modrinth:respiteful:${project.respiteful}")
-    implementation fg.deobf("maven.modrinth:miners-delight:${project.minersDelight}")
+    modImplementation("maven.modrinth:miners-delight:${project.minersDelight}")
 
-    implementation fg.deobf("maven.modrinth:farmers-delight:${project.farmersDelight}")
+    modImplementation("maven.modrinth:farmers-delight:${project.farmersDelight}")
 
-    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    if (System.getProperty('idea.sync.active') != 'true') {
+        annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    }
 }
 
+compileJava.options.encoding = 'UTF-8'
+compileJava {
+    options.compilerArgs = ['-Xdiags:verbose']
+}
 processResources {
-    def properties = [
-            "author":                       project.author,
-            "version":                      project.mod_version,
-            "fml_version_spec":             project.fml_version_spec,
-            "minecraft_version_spec":       project.minecraft_version_spec,
-            "forge_version_spec":           project.forge_version_spec,
-            "farmers_delight_version_spec": project.farmers_delight_version_spec,
-            "brewinandchewin_version_spec": project.brewinandchewin_version_spec,
-            "neapolitan_version_spec":      project.neapolitan_version_spec
-    ]
-    inputs.properties properties
-    filesMatching("META-INF/mods.toml") {
-        expand properties
-    }
-    exclude ".cache"
-}
+    def buildProps = project.properties.clone()
 
-jar {
-    classifier "slim"
-    from "LICENSE"
-    manifest {
-        attributes([
-                "Specification-Title"     : project.modid,
-                "Specification-Vendor"    : project.author,
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : "1",
-                "Implementation-Vendor"   : project.author,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'MixinConfigs': "${modid}.mixins.json"
-        ])
+    buildProps.put('file', [jarVersion: project.version])
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand buildProps
     }
 }
 
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
+mixin {
+    add sourceSets.main, "${modid}.refmap.json"
 }
+
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+compileJava {
+    options.compilerArgs = ['-Xdiags:verbose']
+}
+
+
+jar.finalizedBy('reobfJar')
+tasks.jarJar.finalizedBy('reobfJarJar')

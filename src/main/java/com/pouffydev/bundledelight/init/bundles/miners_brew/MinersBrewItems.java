@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.miners_brew;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
@@ -15,7 +16,7 @@ import static com.pouffydev.bundledelight.foundation.BundledRegistrate.tankardFo
 
 
 public class MinersBrewItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public MinersBrewItems() {
         super("miners_brew");

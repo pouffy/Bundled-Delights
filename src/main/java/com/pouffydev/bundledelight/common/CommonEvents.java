@@ -12,6 +12,8 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -55,7 +57,7 @@ public class CommonEvents {
             }
         }
         ResourceLocation cakeSlice = TAGS_TO_SLICES.get(cakeTag);
-        RegistryEntry<Item> item = BundledDelight.registrate().get(cakeSlice.getPath(), Registry.ITEM_REGISTRY);
+        RegistryEntry<Item> item = BundledDelight.registrate().get(cakeSlice.getPath(), Registries.ITEM);
         if (!item.isPresent()) {
             return BuiltinItems.carrotCakeSlice;
         }

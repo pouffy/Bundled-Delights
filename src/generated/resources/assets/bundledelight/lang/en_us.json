@@ -39,6 +39,7 @@
   "block.bundledelight.red_carrot_candle_cake": "Red Carrot Candle Cake",
   "block.bundledelight.red_white_strawberry_candle_cake": "Red White Strawberry Candle Cake",
   "block.bundledelight.roasted_adzuki_bean_sack": "Roasted Adzuki Bean Sack",
+  "block.bundledelight.root_beer": "Root Beer",
   "block.bundledelight.sweet_berry_ice_cream_block": "Sweet Berry Ice Cream Block",
   "block.bundledelight.white_carrot_candle_cake": "White Carrot Candle Cake",
   "block.bundledelight.white_strawberry_cake": "White Strawberry Cake",
@@ -69,6 +70,7 @@
   "effect.bundledelight.caffeinated": "Caffeinated",
   "effect.bundledelight.satisfaction": "Satisfaction",
   "effect.bundledelight.sweet_heart": "Sweet Heart",
+  "fluid_type.bundledelight.root_beer": "Root Beer",
   "item.bundledelight.apple_cider_cup": "Apple Cider Cup",
   "item.bundledelight.beer_glass": "Beer Glass",
   "item.bundledelight.beer_swig": "Beer Swig",
@@ -154,6 +156,5 @@
   "item.bundledelight.white_strawberry_milkshake": "White Strawberry Milkshake",
   "item.bundledelight.withering_dross_glass": "Withering Dross Glass",
   "item.bundledelight.withering_dross_swig": "Withering Dross Swig",
-  "item.bundledelight.yellow_tea_cup": "Yellow Tea Cup",
-  "itemGroup.bundledelight": "Bundled Delights"
+  "item.bundledelight.yellow_tea_cup": "Yellow Tea Cup"
 }

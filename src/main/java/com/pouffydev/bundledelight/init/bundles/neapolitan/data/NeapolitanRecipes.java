@@ -2,6 +2,8 @@ package com.pouffydev.bundledelight.init.bundles.neapolitan.data;
 
 import com.pouffydev.bundledelight.datagen.CustomRecipeProvider;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
+import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBundle;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.data.recipe.NeapolitanCrafting;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.data.recipe.NeapolitanCutting;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.data.recipe.NeapolitanFermenting;
@@ -13,7 +15,7 @@ import java.util.function.Consumer;
 
 public class NeapolitanRecipes extends CustomRecipeProvider {
     public NeapolitanRecipes(DataGenerator generator) {
-        super(generator);
+        super(generator.getPackOutput());
     }
 
     @Override
@@ -26,5 +28,10 @@ public class NeapolitanRecipes extends CustomRecipeProvider {
     protected void buildCustomRecipes(Consumer<FinishedData> consumer) {
         NeapolitanFermenting.register(consumer);
         NeapolitanMilling.register(consumer);
+    }
+
+    @Override
+    public String getName() {
+        return "Bundled Delights' Custom Recipes [Neapolitan]";
     }
 }

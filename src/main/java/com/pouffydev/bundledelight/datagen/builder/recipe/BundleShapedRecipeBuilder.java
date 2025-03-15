@@ -10,6 +10,7 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -97,7 +98,7 @@ public class BundleShapedRecipeBuilder implements RecipeBuilder {
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
         String group = this.group == null ? "" : this.group;
         ResourceLocation finalRecipeID = new ResourceLocation(pRecipeId.getNamespace(), "crafting/" + pRecipeId.getPath());
-        pFinishedRecipeConsumer.accept(new BundleShapedRecipeBuilder.Result(finalRecipeID, this.result, this.count, group, this.rows, this.key, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + this.result.getItemCategory().getRecipeFolderName() + "/" + pRecipeId.getPath()), this.requiredBundle));
+        pFinishedRecipeConsumer.accept(new BundleShapedRecipeBuilder.Result(finalRecipeID, this.result, this.count, group, this.rows, this.key, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + pRecipeId.getPath()), this.requiredBundle));
     }
     
     private void ensureValid(ResourceLocation pId) {
@@ -181,7 +182,7 @@ public class BundleShapedRecipeBuilder implements RecipeBuilder {
             
             pJson.add("key", key);
             JsonObject result = new JsonObject();
-            result.addProperty("item", Registry.ITEM.getKey(this.result).toString());
+            result.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
             if (this.count > 1) {
                 result.addProperty("count", this.count);
             }

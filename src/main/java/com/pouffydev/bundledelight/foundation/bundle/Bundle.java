@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.foundation.bundle;
 
+import com.google.common.collect.Sets;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
@@ -7,6 +8,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import lombok.Getter;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,26 +19,24 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.DrinkableItem;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Supplier;
 
 public abstract class Bundle {
     private boolean isLoaded;
     protected final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    @Getter
     private final String modid;
-    
+    @Getter
+    public static String recipeProvName;
+
     public abstract List<String> getRequiredClasses();
     
     public Bundle() {
         modid = getName();
+        recipeProvName = getName();
     }
-    
-    public String getModid() {
-        return this.modid;
-    }
-    
+
     public abstract String getName();
     
     public void tryLoad() {

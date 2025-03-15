@@ -2,7 +2,6 @@ package com.pouffydev.bundledelight;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
 import com.pouffydev.bundledelight.datagen.BundledDatagen;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
 import com.pouffydev.bundledelight.init.CommonSetup;
@@ -37,13 +36,7 @@ public class BundledDelight
             .create();
     
     public static final boolean isDevelopmentEnvironment = !FMLEnvironment.production;
-    
-    public static final CreativeModeTab itemGroup = new CreativeModeTab(MODID) {
-        @Override
-        public @NotNull ItemStack makeIcon() {
-            return new ItemStack(BuiltinItems.borscht.get());
-        }
-    };
+
     public static final Logger LOGGER = LogManager.getLogger();
     
     public BundledDelight()
@@ -51,8 +44,10 @@ public class BundledDelight
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         
         registrate.registerEventListeners(modEventBus);
-        
+
+        BundleDelightCreativeTab.register(modEventBus);
         BundleManager.visit();
+
         
         modEventBus.addListener(EventPriority.LOWEST, BundledDatagen::gatherData);
         modEventBus.addListener(CommonSetup::init);

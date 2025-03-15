@@ -3,6 +3,7 @@ package com.pouffydev.bundledelight.common.elements.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
+import com.teamabnormals.neapolitan.common.block.FlavoredCandleCakeBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -97,9 +98,9 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     public BlockState updateShape(BlockState p_152898_, Direction p_152899_, BlockState p_152900_, LevelAccessor p_152901_, BlockPos p_152902_, BlockPos p_152903_) {
         return p_152899_ == Direction.DOWN && !p_152898_.canSurvive(p_152901_, p_152902_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_152898_, p_152899_, p_152900_, p_152901_, p_152902_, p_152903_);
     }
-    
+
     public boolean canSurvive(BlockState p_152891_, LevelReader p_152892_, BlockPos p_152893_) {
-        return p_152892_.getBlockState(p_152893_.below()).getMaterial().isSolid();
+        return p_152892_.getBlockState(p_152893_.below()).isSolid();
     }
     
     public int getAnalogOutputSignal(BlockState p_152880_, Level p_152881_, BlockPos p_152882_) {

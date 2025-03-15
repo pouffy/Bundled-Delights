@@ -1,7 +1,9 @@
 package com.pouffydev.bundledelight.init.bundles.neapolitan;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleCakeSliceItem;
+import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleIceCreamItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleMilkshakeItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
@@ -11,7 +13,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
 
 public class NeapolitanItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public NeapolitanItems() {
         super("neapolitan");
@@ -22,8 +24,8 @@ public class NeapolitanItems extends BundleRegistryClass {
             sweetBerryMilkshake = registrate.milkshakeItem(getBundleContentName("sweet_berry_milkshake"), FoodValues.SWEET_BERRY_MILKSHAKE, (p) -> p);
 
     public static final ItemEntry<BundleIceCreamItem>
-            whiteStrawberryIceCream = registrate.iceCreamItem(getBundleContentName("white_strawberry_ice_cream"), FoodValues.STRAWBERRY_ICE_CREAM, 3.0F, (p) -> p),
-            sweetBerryIceCream = registrate.iceCreamItem(getBundleContentName("sweet_berry_ice_cream"), FoodValues.SWEET_BERRY_ICE_CREAM, (p) -> p);
+            whiteStrawberryIceCream = registrate.iceCreamItem(getBundleContentName("white_strawberry_ice_cream"), FoodValues.STRAWBERRY_ICE_CREAM, 3.0F, (p) -> p, BundleConsumableItem.RemainderItem.bowl),
+            sweetBerryIceCream = registrate.iceCreamItem(getBundleContentName("sweet_berry_ice_cream"), FoodValues.SWEET_BERRY_ICE_CREAM, (p) -> p, BundleConsumableItem.RemainderItem.bowl);
 
     public static final ItemEntry<BundleCakeSliceItem>
             whiteStrawberryCakeSlice = registrate.cakeSliceItem(getBundleContentName("white_strawberry_cake_slice"), 2.0F, FoodValues.STRAWBERRY_CAKE, (p) -> p);

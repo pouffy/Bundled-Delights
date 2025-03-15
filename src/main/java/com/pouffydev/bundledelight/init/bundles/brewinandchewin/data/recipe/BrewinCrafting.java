@@ -7,12 +7,10 @@ import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
-import umpaz.brewinandchewin.common.registry.BCItems;
+import umpaz.brewinandchewin.common.registry.BnCItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
@@ -46,8 +44,8 @@ public class BrewinCrafting extends BundleRecipeGen {
                 .requires(ForgeTags.SALAD_INGREDIENTS)
                 .requires(ForgeTags.CROPS_TOMATO)
                 .requires(ForgeTags.CROPS_ONION)
-                .requires(BCItems.FLAXEN_CHEESE_WEDGE.get())
-                .unlockedBy("has_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BCItems.FLAXEN_CHEESE_WEDGE.get()))
+                .requires(BnCItems.FLAXEN_CHEESE_WEDGE.get())
+                .unlockedBy("has_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BnCItems.FLAXEN_CHEESE_WEDGE.get()))
                 .save(consumer, new ResourceLocation(BundledDelight.MODID, "food/cheeseburger"));
         BundleShapelessRecipeBuilder.shapeless(BrewinItems.scarletCheeseburger.get(), BUNDLE_NAME)
                 .requires(ForgeTags.BREAD)
@@ -55,8 +53,8 @@ public class BrewinCrafting extends BundleRecipeGen {
                 .requires(ForgeTags.SALAD_INGREDIENTS)
                 .requires(ForgeTags.CROPS_TOMATO)
                 .requires(ForgeTags.CROPS_ONION)
-                .requires(BCItems.SCARLET_CHEESE_WEDGE.get())
-                .unlockedBy("has_scarlet_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BCItems.SCARLET_CHEESE_WEDGE.get()))
+                .requires(BnCItems.SCARLET_CHEESE_WEDGE.get())
+                .unlockedBy("has_scarlet_cheeseburger_ingredients", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BEEF_PATTY.get(), BnCItems.SCARLET_CHEESE_WEDGE.get()))
                 .save(consumer, new ResourceLocation(BundledDelight.MODID, "food/scarlet_cheeseburger"));
     }
 

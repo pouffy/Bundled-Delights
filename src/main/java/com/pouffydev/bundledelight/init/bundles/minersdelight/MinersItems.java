@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.minersdelight;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
@@ -11,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import vectorwing.farmersdelight.common.FoodValues;
 
 public class MinersItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public MinersItems() {
         super("miners_delight");

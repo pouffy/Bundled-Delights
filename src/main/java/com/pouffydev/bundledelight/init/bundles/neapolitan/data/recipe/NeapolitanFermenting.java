@@ -5,6 +5,8 @@ import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
 import com.teamabnormals.neapolitan.core.registry.NeapolitanItems;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.common.ForgeMod;
+import umpaz.brewinandchewin.data.recipe.KegFermentingRecipes;
 
 import java.util.function.Consumer;
 
@@ -16,7 +18,7 @@ public class NeapolitanFermenting extends BundleRecipeGen {
     }
 
     private static void fermentFoods(Consumer<FinishedData> consumer) {
-        KegRecipeBuilder.kegRecipe(NeapolitanItems.VANILLA_FUDGE.get(), 4, FERMENTING_TIME, MEDIUM_FERMENT_EXP, Items.MILK_BUCKET, 5, BUNDLE_NAME).addIngredient(Items.SUGAR).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).build(consumer);
+        KegRecipeBuilder.kegRecipe(NeapolitanItems.VANILLA_FUDGE.get(), 2, FERMENTING_TIME, MEDIUM_FERMENT_EXP, 5, BUNDLE_NAME).addFluidIngredient(ForgeMod.MILK.get(), 500).addIngredient(Items.SUGAR).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).addIngredient(NeapolitanItems.DRIED_VANILLA_PODS.get()).build(consumer);
     }
 
     @Override

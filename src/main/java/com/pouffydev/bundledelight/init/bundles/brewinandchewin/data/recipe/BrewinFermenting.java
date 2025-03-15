@@ -1,8 +1,10 @@
 package com.pouffydev.bundledelight.init.bundles.brewinandchewin.data.recipe;
 
+import com.pouffydev.bundledelight.datagen.builder.recipe.KegPouringRecipeBuilder;
 import com.pouffydev.bundledelight.datagen.builder.recipe.KegRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinFluids;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
 import com.pouffydev.bundledelight.init.bundles.miners_brew.MinersBrewItems;
@@ -10,6 +12,10 @@ import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import umpaz.brewinandchewin.common.registry.BnCFluids;
+import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -23,34 +29,40 @@ public class BrewinFermenting extends BundleRecipeGen {
     public static void register(Consumer<FinishedData> consumer) {
         fermentBrews(consumer);
         fermentFoods(consumer);
+        pourBrews(consumer);
     }
     
     private static final Item glassTankard = BrewinItems.glassTankard.get();
     
     private static void fermentBrews(Consumer<FinishedData> consumer) {
-        KegRecipeBuilder.kegRecipe(BrewinItems.beerGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.BROWN_MUSHROOM).addIngredient(Items.WHEAT).addIngredient(Items.WHEAT).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.vodkaGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.POTATO).addIngredient(Items.POTATO).addIngredient(Items.WHEAT).addIngredient(Items.WHEAT).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.meadGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.HONEY_BOTTLE, 3, BUNDLE_NAME).addIngredient(Items.WHEAT).addIngredient(Items.WHEAT).addIngredient(Items.HONEY_BOTTLE).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.riceWineGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(ModItems.RICE.get()).addIngredient(ModItems.RICE.get()).addIngredient(Items.SUGAR).addIngredient(Items.SUGAR).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.eggGrogGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.MILK_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.EGG).addIngredient(Items.EGG).addIngredient(Items.KELP).addIngredient(Items.SUGAR).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.strongrootAleGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.beerGlass.get(), 3, BUNDLE_NAME).addIngredient(Items.BEETROOT).addIngredient(Items.POTATO).addIngredient(Items.BROWN_MUSHROOM).addIngredient(Items.CARROT).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.saccharineRumGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.meadGlass.get(), 4, BUNDLE_NAME).addIngredient(Items.SWEET_BERRIES).addIngredient(Items.SUGAR_CANE).addIngredient(Items.SUGAR_CANE).addIngredient(Items.MELON_SLICE).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.paleJaneGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.riceWineGlass.get(), 4, BUNDLE_NAME).addIngredient(Items.HONEY_BOTTLE).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.LILY_OF_THE_VALLEY).addIngredient(Items.SUGAR).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.dreadNogGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.eggGrogGlass.get(), 1, BUNDLE_NAME).addIngredient(Items.EGG).addIngredient(Items.EGG).addIngredient(Items.TURTLE_EGG).addIngredient(Items.FERMENTED_SPIDER_EYE).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.saltyFollyGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.vodkaGlass.get(), 2, BUNDLE_NAME).addIngredient(Items.SEA_PICKLE).addIngredient(Items.DRIED_KELP).addIngredient(Items.DRIED_KELP).addIngredient(Items.SEAGRASS).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.steelToeStoutGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.strongrootAleGlass.get(), 1, BUNDLE_NAME).addIngredient(Items.CRIMSON_FUNGUS).addIngredient(Items.IRON_INGOT).addIngredient(Items.NETHER_WART).addIngredient(Items.WHEAT).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.glitteringGrenadineGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 2, BUNDLE_NAME).addIngredient(Items.HONEY_BOTTLE).addIngredient(Items.GLOW_INK_SAC).addIngredient(Items.GLOWSTONE_DUST).addIngredient(Items.GLOW_BERRIES).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.bloodyMaryGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.vodkaGlass.get(), 4, BUNDLE_NAME).addIngredient(ModItems.TOMATO.get()).addIngredient(ModItems.TOMATO.get()).addIngredient(ModItems.CABBAGE_LEAF.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.redRumGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.bloodyMaryGlass.get(), 5, BUNDLE_NAME).addIngredient(Items.CRIMSON_FUNGUS).addIngredient(Items.NETHER_WART).addIngredient(Items.FERMENTED_SPIDER_EYE).addIngredient(Items.SHROOMLIGHT).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.witheringDrossGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, BrewinItems.saltyFollyGlass.get(), 5, BUNDLE_NAME).addIngredient(Items.WITHER_ROSE).addIngredient(Items.INK_SAC).addIngredient(Items.NETHER_WART).addIngredient(Items.BONE).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.kombuchaGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, FRItems.GREEN_TEA.get(), 3, BUNDLE_NAME).addIngredient(Items.BEETROOT).addIngredient(Items.CARROT).addIngredient(RespiteItems.powderedBlackTeaLeaves.get()).addIngredient(Items.SWEET_BERRIES).build(consumer);
-        KegRecipeBuilder.kegRecipe(BrewinItems.rootBeerGlass.get(), 1, FERMENTING_TIME, MEDIUM_FERMENT_EXP, glassTankard, Items.WATER_BUCKET, 3, BUNDLE_NAME).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+        KegRecipeBuilder.kegRecipe(BrewinFluids.rootBeer.get(), 1000, FERMENTING_TIME, MEDIUM_FERMENT_EXP, 3, BUNDLE_NAME).addFluidIngredient(Fluids.WATER, 1000).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
     }
     
     private static void fermentFoods(Consumer<FinishedData> consumer) {
     
     }
-    
+
+    private static void pourBrews(Consumer<FinishedData> consumer) {
+        KegPouringRecipeBuilder.kegPouringRecipe(BrewinFluids.rootBeer.get(), 250, BrewinItems.rootBeer.get(), BUNDLE_NAME).withContainer(BnCItems.TANKARD.get()).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BrewinFluids.rootBeer.get(), 250, BrewinItems.rootBeerGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.BEER.get(), 250, BrewinItems.beerGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.VODKA.get(), 250, BrewinItems.vodkaGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.MEAD.get(), 250, BrewinItems.meadGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.RICE_WINE.get(), 250, BrewinItems.riceWineGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.EGG_GROG.get(), 250, BrewinItems.eggGrogGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.STRONGROOT_ALE.get(), 250, BrewinItems.strongrootAleGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.SACCHARINE_RUM.get(), 250, BrewinItems.saccharineRumGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.PALE_JANE.get(), 250, BrewinItems.paleJaneGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.SALTY_FOLLY.get(), 250, BrewinItems.saltyFollyGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.STEEL_TOE_STOUT.get(), 250, BrewinItems.steelToeStoutGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.GLITTERING_GRENADINE.get(), 250, BrewinItems.glitteringGrenadineGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.BLOODY_MARY.get(), 250, BrewinItems.bloodyMaryGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.RED_RUM.get(), 250, BrewinItems.redRumGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.WITHERING_DROSS.get(), 250, BrewinItems.witheringDrossGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.DREAD_NOG.get(), 250, BrewinItems.dreadNogGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+        KegPouringRecipeBuilder.kegPouringRecipe(BnCFluids.KOMBUCHA.get(), 250, BrewinItems.kombuchaGlass.get(), BUNDLE_NAME).withContainer(BrewinItems.glassTankard).build(consumer);
+    }
+
     @Override
     public String getBundleName() {
         return BUNDLE_NAME;

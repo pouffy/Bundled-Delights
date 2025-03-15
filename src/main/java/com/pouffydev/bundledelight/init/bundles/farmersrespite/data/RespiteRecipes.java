@@ -2,6 +2,8 @@ package com.pouffydev.bundledelight.init.bundles.farmersrespite.data;
 
 import com.pouffydev.bundledelight.datagen.CustomRecipeProvider;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
+import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinBundle;
+import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteBundle;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe.RespiteCrafting;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe.RespiteCutting;
 import com.pouffydev.bundledelight.init.bundles.farmersrespite.data.recipe.RespiteMilling;
@@ -12,7 +14,7 @@ import java.util.function.Consumer;
 
 public class RespiteRecipes extends CustomRecipeProvider {
     public RespiteRecipes(DataGenerator generator) {
-        super(generator);
+        super(generator.getPackOutput());
     }
 
     @Override
@@ -24,5 +26,10 @@ public class RespiteRecipes extends CustomRecipeProvider {
     @Override
     protected void buildCustomRecipes(Consumer<FinishedData> consumer) {
         RespiteMilling.register(consumer);
+    }
+
+    @Override
+    public String getName() {
+        return "Bundled Delights' Custom Recipes [Farmer's Respite]";
     }
 }

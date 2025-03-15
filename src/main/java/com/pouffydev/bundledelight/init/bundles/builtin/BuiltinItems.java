@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.builtin;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleCakeSliceItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
@@ -12,7 +13,7 @@ import vectorwing.farmersdelight.common.item.DrinkableItem;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 public class BuiltinItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup, "Bundled Delights");
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
     
     public BuiltinItems() {
         super("bundledelight");

@@ -1,4 +1,4 @@
-// 1.19.2	2024-10-10T22:10:58.609636	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2025-03-15T07:47:04.2476534	Registrate Provider for bundledelight [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 0c3c38cf1e288186fc16ba9e73f8acd935d9e65b assets/bundledelight/blockstates/adzuki_bean_sack.json
 c3a5d416f71b819e28f649620454888d380cb7cf assets/bundledelight/blockstates/black_carrot_candle_cake.json
 7dcc2a44000e47fca5d2585ea436437b720f173d assets/bundledelight/blockstates/black_white_strawberry_candle_cake.json
@@ -318,7 +318,7 @@ d7264773981ddcaaa905c9f7f3d2360422542a75 data/bundledelight/tags/items/powders/c
 28e185e1cc73d4754e17328c6583fa417ad0a530 data/bundledelight/tags/items/powders/vanilla.json
 9f7642f8797fb7387bc6fe1b9f0d12a89a5bd56a data/bundledelight/tags/items/powders/yellow_tea.json
 6071d40fb961049a45f4567b87de45a7fdbb60b3 data/bundledelight/tags/items/tea_powders.json
-904c69bf727f53342c8efc27796b27bff652ed91 data/create/tags/items/upright_on_belt.json
+3bc8d02fe80367eb39e8bb370e1d7c8d4819b4b6 data/create/tags/items/upright_on_belt.json
 7ffd864b9ddb4efbef9c4b89d66c9fdf10438c7f data/farmersdelight/tags/blocks/mineable/knife.json
 5393b9efef51d1adb07322674d56bf20a7e5e6db data/farmersrespite/tags/items/drinks/adzuki_milk_tea.json
 e6d9b2a08cbdbcdf0d3cf2456ba8625bb25f2e13 data/farmersrespite/tags/items/drinks/black_tea.json

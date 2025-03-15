@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    }
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:ingots/copper"
+    },
+    "-": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "pattern": [
+    "# #",
+    "- -",
+    "###"
+  ],
+  "result": {
+    "item": "bundledelight:copper_swig"
+  }
+}

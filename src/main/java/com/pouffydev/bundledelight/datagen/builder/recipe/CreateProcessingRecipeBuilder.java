@@ -13,6 +13,8 @@ import com.pouffydev.bundledelight.foundation.util.Pair;
 import com.tterrag.registrate.util.DataIngredient;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -180,12 +182,12 @@ public class CreateProcessingRecipeBuilder {
         StringBuilder recipeId = new StringBuilder();
         //recipeId.append(recipeType.toString().substring(recipeType.toString().lastIndexOf(":") + 1)).append("_");
         for (Ingredient ingredient : ingredients) {
-            String item = Registry.ITEM.getKey(ingredient.getItems()[0].getItem()).toString();
+            String item = BuiltInRegistries.ITEM.getKey(ingredient.getItems()[0].getItem()).toString();
             String formatted = item.substring(item.lastIndexOf(":") + 1) + "_and_";
             recipeId.append(formatted);
         }
         for (FluidIngredient ingredient : fluidIngredients) {
-            String fluid = Registry.FLUID.getKey(ingredient.getMatchingFluidStacks().get(0).getFluid()).toString();
+            String fluid = BuiltInRegistries.FLUID.getKey(ingredient.getMatchingFluidStacks().get(0).getFluid()).toString();
             String formatted = fluid.substring(fluid.lastIndexOf(":") + 1) + "_and_";
             recipeId.append(formatted);
         }

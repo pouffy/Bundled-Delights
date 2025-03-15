@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.init.bundles.brewinandchewin;
 
+import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleBoozeItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
@@ -20,7 +21,7 @@ import static com.pouffydev.bundledelight.foundation.BundledRegistrate.tankardFo
 import static com.pouffydev.bundledelight.foundation.BundledRegistrate.tankardFoodItemNoEffect;
 
 public class BrewinItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().creativeModeTab(() -> BundledDelight.itemGroup);
+    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
     private static final ResourceLocation sweetHeart = new ResourceLocation("brewinandchewin", "sweet_heart");
     private static final ResourceLocation satisfaction = new ResourceLocation("brewinandchewin", "satisfaction");
     
