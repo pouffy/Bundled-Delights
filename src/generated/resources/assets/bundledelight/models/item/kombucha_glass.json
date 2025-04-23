@@ -1,5 +1,5 @@
 {
-  "parent": "bundledelight:item/mug",
+  "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "bundledelight:item/kombucha_glass"
   }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bundledelight:item/pale_jane_swig"
+    "layer0": "bundledelight:item/white_strawberry_jam"
   }
 }

@@ -16,7 +16,7 @@ public class NeapolitansBrewItems extends BundleRegistryClass {
     private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
 
     public NeapolitansBrewItems() {
-        super("neapolitan");
+        super("neapolitans_brew");
     }
 
     public static final ItemEntry<BundleMilkshakeItem>
@@ -24,6 +24,6 @@ public class NeapolitansBrewItems extends BundleRegistryClass {
             strawberryJam = registrate.milkshakeItem(getBundleContentName("strawberry_jam"), FoodValues.SWEET_BERRY_MILKSHAKE, 3.0F, (p) -> p);
 
     public static void register() {
-        BundledDelight.LOGGER.info("Registering Neapolitan Items");
+        BundledDelight.LOGGER.info("Registering Neapolitan's Brew Items");
     }
 }

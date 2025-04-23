@@ -1,18 +1,12 @@
 package com.pouffydev.bundledelight.init.bundles.miners_respite.data.recipe;
 
-import com.pouffydev.bundledelight.datagen.BundleTags;
-import com.pouffydev.bundledelight.datagen.builder.KettlePouringRecipeBuilder;
-import com.pouffydev.bundledelight.datagen.builder.recipe.KettleRecipeBuilder;
+import com.pouffydev.bundledelight.datagen.builder.recipe.KettlePouringRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
-import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
 import com.pouffydev.bundledelight.init.bundles.miners_respite.MinersRespiteItems;
 import com.pouffydev.bundledelight.init.bundles.minersdelight.MinersItems;
 import com.sammy.minersdelight.setup.MDItems;
-import net.minecraft.world.item.Items;
 import umpaz.farmersrespite.common.registry.FRFluids;
-import umpaz.farmersrespite.common.registry.FRItems;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
 

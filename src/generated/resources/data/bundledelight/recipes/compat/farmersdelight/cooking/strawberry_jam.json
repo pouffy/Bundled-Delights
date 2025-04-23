@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "neapolitans_brew"
+    }
+  ],
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "neapolitan:strawberries"
+    },
+    {
+      "item": "neapolitan:strawberries"
+    },
+    {
+      "item": "neapolitan:strawberries"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "item": "bundledelight:strawberry_jam"
+  }
+}

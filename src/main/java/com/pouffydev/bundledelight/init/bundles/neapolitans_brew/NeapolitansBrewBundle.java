@@ -15,18 +15,17 @@ public class NeapolitansBrewBundle extends Bundle {
 
     @Override
     public List<String> getRequiredClasses() {
-        return List.of("com.teamabnormals.neapolitan.core.Neapolitan");
+        return List.of("com.teamabnormals.neapolitan.core.Neapolitan", "umpaz.brewinandchewin.BrewinAndChewin");
     }
 
     @Override
     public String getName() {
-        return "neapolitan";
+        return "neapolitans_brew";
     }
 
     @Override
     protected void onLoad() {
         IEventBus bus = this.bus;
-        NeapolitanBlocks.register();
         NeapolitansBrewItems.register();
     }
 

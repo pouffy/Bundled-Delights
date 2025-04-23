@@ -4,12 +4,6 @@
     "count": 1000,
     "fluid": "minecraft:water"
   },
-  "conditions": [
-    {
-      "type": "bundledelight:bundle_loaded",
-      "bundle": "brewinandchewin"
-    }
-  ],
   "experience": 0.6,
   "fermentingtime": 9600,
   "ingredients": [

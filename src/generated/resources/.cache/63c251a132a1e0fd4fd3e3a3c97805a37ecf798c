@@ -1,8 +1,8 @@
-// 1.20.1	2025-04-23T18:17:28.0459948	Bundled Delights' Custom Recipes [Brewin' and Chewin']
+// 1.20.1	2025-04-23T20:55:42.6481731	Bundled Delights' Custom Recipes [Brewin' and Chewin']
 a9027a387c0957dc53829d5753ba8d671a068dd5 data/bundledelight/advancements/recipes/food/cheeseburger.json
 20e9c2809617c0e69208ce70adaa5ae7f5bd282b data/bundledelight/advancements/recipes/food/scarlet_cheeseburger.json
 4cfd7ad5c4d02600808b19c5478a40aba2755364 data/bundledelight/advancements/recipes/glass_tankard.json
-5507c5a408b3b2d81ad5187d41a2fa83ca090afa data/bundledelight/recipes/compat/brewinandchewin/fermenting/root_beer_from_water.json
+b3687742b660cebb0e2b8e726db18f02bf26e35b data/bundledelight/recipes/compat/brewinandchewin/fermenting/root_beer_from_water.json
 d19b317e298608cc287d6b96d1086e6e10e1df4a data/bundledelight/recipes/compat/brewinandchewin/pouring/beer_glass.json
 7c2ea483300ce2ddbc870b6cd49043e67bce3e6b data/bundledelight/recipes/compat/brewinandchewin/pouring/bloody_mary_glass.json
 7177196f628037232b134eb3a0d9ee7c3fb28f07 data/bundledelight/recipes/compat/brewinandchewin/pouring/dread_nog_glass.json

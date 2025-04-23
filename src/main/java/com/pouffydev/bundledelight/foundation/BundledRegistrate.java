@@ -223,26 +223,26 @@ public class BundledRegistrate extends AbstractRegistrate<BundledRegistrate> {
         return consumableItem(name, (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, remainder))
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, int intoxicationDuration, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, intoxicationDuration, remainder))
                 .properties(properties)
                 .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
                 .register();
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, BundleBoozeItem.Effect.None, 0, 0, remainder), (p) -> properties);
+    public ItemEntry<BundleBoozeItem> boozeItemNoExtraEffect(String name, int potency, int duration, int intoxicationDuration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, BundleBoozeItem.Effect.None, 0, 0, intoxicationDuration, remainder), (p) -> properties);
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
-        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, remainder))
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, int intoxicationDuration, BundleConsumableItem.RemainderItem remainder) {
+        return item(name, (p) -> new BundleBoozeItem(potency, duration, p, effect, effectDuration, effectAmplifier, intoxicationDuration, remainder))
                 .properties(properties)
                 .model((c, p) -> p.withExistingParent(c.getName(), new ResourceLocation("bundledelight", "item/mug")).texture("layer0", p.modLoc("item/" + c.getName())))
                 .register();
     }
     
-    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, BundleConsumableItem.RemainderItem remainder) {
-        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier, remainder);
+    public ItemEntry<BundleBoozeItem> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleBoozeItem.Effect effect, int effectDuration, int effectAmplifier, int intoxicationDuration, BundleConsumableItem.RemainderItem remainder) {
+        return boozeItem(name, potency, duration, (p) -> properties, effect, effectDuration, effectAmplifier, intoxicationDuration, remainder);
     }
     
     public ItemEntry<BundleDreadNogItem> dreadNogItem(String name, int potency, int duration, NonNullUnaryOperator<Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {

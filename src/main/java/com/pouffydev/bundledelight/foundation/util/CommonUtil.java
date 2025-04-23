@@ -69,11 +69,22 @@ public class CommonUtil {
     public static void addTipsyEffect(LivingEntity entity, int duration, int amplifier) {
         MobEffect tipsy = getMobEffect(new ResourceLocation("brewinandchewin", "tipsy"));
         if (!entity.hasEffect(tipsy)) {
-            entity.forceAddEffect(new MobEffectInstance(tipsy, duration * 1200, amplifier - 1, false, false, true), entity);
+            entity.forceAddEffect(new MobEffectInstance(tipsy, duration, amplifier, false, false, true), entity);
         } else if (entity.hasEffect(tipsy)) {
             MobEffectInstance effect = entity.getEffect(tipsy);
-            entity.forceAddEffect(new MobEffectInstance(tipsy, effect.getDuration() + duration * 600, Math.min(effect.getAmplifier() + amplifier, 9), false, false, true), entity);
+            entity.forceAddEffect(new MobEffectInstance(tipsy, effect.getDuration() == -1 ? -1 : effect.getDuration() + duration, Math.min(effect.getAmplifier() + amplifier, 9), effect.isAmbient(), effect.isVisible(), effect.showIcon()), entity);
         }
+    }
+
+    public static void addIntoxicationEffect(LivingEntity entity, int duration, int amplifier) {
+        MobEffect intoxication = getMobEffect(new ResourceLocation("brewinandchewin", "intoxication"));
+        entity.forceAddEffect(new MobEffectInstance(intoxication, duration, amplifier, false, false, true), entity);
+        //if (!entity.hasEffect(intoxication)) {
+        //    entity.forceAddEffect(new MobEffectInstance(intoxication, duration, amplifier, false, false, true), entity);
+        //} else if (entity.hasEffect(intoxication)) {
+        //    MobEffectInstance effect = entity.getEffect(intoxication);
+        //    entity.forceAddEffect(new MobEffectInstance(intoxication, effect.getDuration() + duration / 2 , Math.min(effect.getAmplifier() + amplifier, 9), false, false, true), entity);
+        //}
     }
     
     public static void addEffect(LivingEntity entity, int duration, int amplifier, ResourceLocation effect) {

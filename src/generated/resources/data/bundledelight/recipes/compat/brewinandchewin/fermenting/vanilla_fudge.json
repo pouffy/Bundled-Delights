@@ -4,12 +4,6 @@
     "count": 500,
     "fluid": "minecraft:milk"
   },
-  "conditions": [
-    {
-      "type": "bundledelight:bundle_loaded",
-      "bundle": "neapolitan"
-    }
-  ],
   "experience": 0.6,
   "fermentingtime": 9600,
   "ingredients": [

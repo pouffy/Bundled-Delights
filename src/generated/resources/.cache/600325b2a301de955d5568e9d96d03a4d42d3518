@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-23T18:17:28.0469937	Bundled Delights' Custom Recipes [Neapolitan]
+// 1.20.1	2025-04-23T20:55:42.6501711	Bundled Delights' Custom Recipes [Neapolitan]
 dd9b4e0d40cf556eaee524ef41acb5f610b5ed26 data/bundledelight/advancements/recipes/food/sweet_berry_ice_cream.json
 255e7034fce6bece5c17862c49a4c707545ac728 data/bundledelight/advancements/recipes/food/sweet_berry_milkshake.json
 4623cab70b46fedf210235c92f4523e05942d828 data/bundledelight/advancements/recipes/food/white_strawberry_cake.json
@@ -19,7 +19,7 @@ a4d87ff069a11f9909d2f7df3b4778d4f4af53b3 data/bundledelight/advancements/recipes
 2359e12f9f5bb7f373d6690c86ea1830ceb10eca data/bundledelight/advancements/recipes/storage/roasted_adzuki_bean_sack.json
 546ff78f142efb7830daf01aee23c07cb424d1cc data/bundledelight/advancements/recipes/storage/sweet_berry_ice_cream_block.json
 13e114db17f795cbabfefc1a4917c0c897ea7aa1 data/bundledelight/advancements/recipes/storage/white_strawberry_ice_cream_block.json
-4c8bd62d64cb35b1e660c9876f44a0a152be7990 data/bundledelight/recipes/compat/brewinandchewin/fermenting/vanilla_fudge.json
+743a9086108d8e0fdf3855d19e67d400edb71e96 data/bundledelight/recipes/compat/brewinandchewin/fermenting/vanilla_fudge.json
 7baafd3ec1afa62639da6a9132602906bef75559 data/bundledelight/recipes/compat/create/milling/dried_vanilla_pods.json
 5412f97236fd178d3bf120255977f7381770eaa8 data/bundledelight/recipes/compat/create/milling/mint_leaves.json
 1d8a37767ae58f031dc94e6da212bbab3213d52f data/bundledelight/recipes/compat/create/milling/roasted_adzuki_beans.json

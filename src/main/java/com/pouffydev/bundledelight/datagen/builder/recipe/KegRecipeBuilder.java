@@ -33,7 +33,6 @@ import java.util.function.Consumer;
 
 public class KegRecipeBuilder {
     private final String requiredBundle;
-
     private final List<Ingredient> ingredients = Lists.newArrayList();
     private Optional<FluidStack> fluidIngredient = Optional.empty();
     private Optional<Fluid> resultFluid = Optional.empty();
@@ -214,16 +213,18 @@ public class KegRecipeBuilder {
         
         public void serializeData(JsonObject json) {
             JsonArray arrayIngredients = new JsonArray();
-            
-            for (Ingredient ingredient : this.ingredients) {
+
+            for(Ingredient ingredient : this.ingredients) {
                 arrayIngredients.add(ingredient.toJson());
             }
+
+            json.add("ingredients", arrayIngredients);
             JsonArray arrayConditions = new JsonArray();
             JsonObject objectCondition = new JsonObject();
             objectCondition.addProperty("type", "bundledelight:bundle_loaded");
             objectCondition.addProperty("bundle", this.requiredBundle);
             arrayConditions.add(objectCondition);
-            json.add("conditions", arrayConditions);
+            //json.add("conditions", arrayConditions);
             json.add("ingredients", arrayIngredients);
             JsonObject result = new JsonObject();
             if (this.resultItem.isPresent()) {

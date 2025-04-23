@@ -8,6 +8,7 @@ import com.pouffydev.bundledelight.init.bundles.miners_brew.MinersBrewBundle;
 import com.pouffydev.bundledelight.init.bundles.miners_respite.MinersRespiteBundle;
 import com.pouffydev.bundledelight.init.bundles.minersdelight.MinersBundle;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBundle;
+import com.pouffydev.bundledelight.init.bundles.neapolitans_brew.NeapolitansBrewBundle;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -37,6 +38,7 @@ public class BundleManager {
         // Multi mod bundles
 
         bundles.add(new MinersBrewBundle());
+        bundles.add(new NeapolitansBrewBundle());
 
         //TODO bundles.add(new ThermalKitchenBundle());
         

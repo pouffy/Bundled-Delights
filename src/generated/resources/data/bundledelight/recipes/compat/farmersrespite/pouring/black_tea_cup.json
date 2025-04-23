@@ -1,12 +1,6 @@
 {
   "type": "farmersrespite:kettle_pouring",
   "amount": 250,
-  "conditions": [
-    {
-      "type": "bundledelight:bundle_loaded",
-      "bundle": "miners_respite"
-    }
-  ],
   "container": {
     "item": "miners_delight:copper_cup"
   },

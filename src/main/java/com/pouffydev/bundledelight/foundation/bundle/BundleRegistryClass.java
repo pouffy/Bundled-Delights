@@ -1,19 +1,18 @@
 package com.pouffydev.bundledelight.foundation.bundle;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
 public class BundleRegistryClass {
+    @Getter
     private static String modid = "bundledelight";
     
     public BundleRegistryClass(String modid) {
         BundleRegistryClass.modid = modid;
     }
-    
-    
-    public static String getModid() {
-        return modid;
-    }
-    
+
+
     public static String getBundleName(String name) {
         return modid + "/" + name;
     }

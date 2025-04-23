@@ -1,4 +1,4 @@
-package com.pouffydev.bundledelight.datagen.builder;
+package com.pouffydev.bundledelight.datagen.builder.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -89,7 +89,7 @@ public class KettlePouringRecipeBuilder {
             objectCondition.addProperty("type", "bundledelight:bundle_loaded");
             objectCondition.addProperty("bundle", this.requiredBundle);
             arrayConditions.add(objectCondition);
-            json.add("conditions", arrayConditions);
+            //json.add("conditions", arrayConditions);
         }
 
         public ResourceLocation getId() {
