@@ -1,0 +1,19 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "brewinandchewin"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:glass_tankard"
+  },
+  "filling": true,
+  "fluid": "brewinandchewin:pale_jane",
+  "output": {
+    "item": "bundledelight:pale_jane_glass"
+  },
+  "strict": false
+}

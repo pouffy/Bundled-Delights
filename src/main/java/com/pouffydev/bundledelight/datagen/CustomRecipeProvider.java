@@ -13,6 +13,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -42,32 +43,34 @@ public abstract class CustomRecipeProvider implements DataProvider {
         List<CompletableFuture<?>> list = new ArrayList();
         this.buildCraftingRecipes((finishedRecipe) -> {
             if (!set.add(finishedRecipe.getId())) {
-                throw new IllegalStateException("Duplicate recipe " + String.valueOf(finishedRecipe.getId()));
+                throw new IllegalStateException("Duplicate recipe " + finishedRecipe.getId());
             } else {
                 list.add(DataProvider.saveStable(output, finishedRecipe.serializeRecipe(), this.recipePathProvider.json(finishedRecipe.getId())));
-                JsonObject jsonobject = finishedRecipe.serializeAdvancement();
-                if (jsonobject != null) {
-                    CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedRecipe, jsonobject);
-                    if (saveAdvancementFuture != null) {
-                        list.add(saveAdvancementFuture);
+                if (finishedRecipe.getAdvancementId() != null) {
+                    JsonObject jsonobject = finishedRecipe.serializeAdvancement();
+                    if (jsonobject != null) {
+                        CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedRecipe, jsonobject);
+                        if (saveAdvancementFuture != null) {
+                            list.add(saveAdvancementFuture);
+                        }
                     }
                 }
-
             }
         });
         this.buildCustomRecipes((finishedData) -> {
             if (!set.add(finishedData.getId())) {
-                throw new IllegalStateException("Duplicate recipe " + String.valueOf(finishedData.getId()));
+                throw new IllegalStateException("Duplicate recipe " + finishedData.getId());
             } else {
                 list.add(DataProvider.saveStable(output, finishedData.serialize(), this.recipePathProvider.json(finishedData.getId())));
-                JsonObject jsonobject = finishedData.serializeAdvancement();
-                if (jsonobject != null) {
-                    CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedData, jsonobject);
-                    if (saveAdvancementFuture != null) {
-                        list.add(saveAdvancementFuture);
+                if (finishedData.getAdvancementId() != null) {
+                    JsonObject jsonobject = finishedData.serializeAdvancement();
+                    if (jsonobject != null) {
+                        CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedData, jsonobject);
+                        if (saveAdvancementFuture != null) {
+                            list.add(saveAdvancementFuture);
+                        }
                     }
                 }
-
             }
         });
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
@@ -79,10 +82,10 @@ public abstract class CustomRecipeProvider implements DataProvider {
     }
 
     protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedRecipe finishedRecipe, JsonObject advancementJson) {
-        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(Objects.requireNonNull(finishedRecipe.getAdvancementId())));
+        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(finishedRecipe.getAdvancementId()));
     }
     protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedData finishedData, JsonObject advancementJson) {
-        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(Objects.requireNonNull(finishedData.getAdvancementId())));
+        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(finishedData.getAdvancementId()));
     }
     
     protected abstract void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer);

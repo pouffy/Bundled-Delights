@@ -1,20 +1,17 @@
 {
   "type": "brewinandchewin:fermenting",
+  "basefluid": {
+    "count": 500,
+    "fluid": "minecraft:milk"
+  },
   "conditions": [
     {
       "type": "bundledelight:bundle_loaded",
       "bundle": "neapolitan"
-    },
-    {
-      "type": "forge:item_exists",
-      "item": "neapolitan:vanilla_fudge"
     }
   ],
-  "cookingtime": 12000,
   "experience": 0.6,
-  "fluiditem": {
-    "item": "minecraft:milk_bucket"
-  },
+  "fermentingtime": 9600,
   "ingredients": [
     {
       "item": "minecraft:sugar"
@@ -27,7 +24,7 @@
     }
   ],
   "result": {
-    "count": 4,
+    "count": 2,
     "item": "neapolitan:vanilla_fudge"
   },
   "temperature": 5

@@ -1,0 +1,19 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "filling": true,
+  "fluid": "brewinandchewin:strongroot_ale",
+  "output": {
+    "item": "bundledelight:strongroot_ale_swig"
+  },
+  "strict": false
+}

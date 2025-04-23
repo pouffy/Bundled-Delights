@@ -1,0 +1,19 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_brew"
+    }
+  ],
+  "container": {
+    "item": "bundledelight:copper_swig"
+  },
+  "filling": true,
+  "fluid": "bundledelight:flowing_root_beer",
+  "output": {
+    "item": "bundledelight:root_beer_swig"
+  },
+  "strict": false
+}

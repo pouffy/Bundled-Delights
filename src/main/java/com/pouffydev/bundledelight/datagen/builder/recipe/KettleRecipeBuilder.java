@@ -4,11 +4,14 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
+import lombok.Getter;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -18,30 +21,22 @@ import java.util.function.Consumer;
 
 public class KettleRecipeBuilder {
     private final List<Ingredient> ingredients = Lists.newArrayList();
-    private final Item result;
-    private final int count;
     private final int brewingTime;
     private final float experience;
-    private final Item container;
-    private final boolean needWater;
+    private final FluidStack fluidIn;
+    private final FluidStack fluidOut;
     private final String requiredBundle;
     
-    private KettleRecipeBuilder(ItemLike resultIn, @Nullable int count, @Nullable int brewingTime, @Nullable float experience, @Nullable boolean needWater, @Nullable ItemLike container, String requiredBundle) {
-        this.result = resultIn.asItem();
-        this.count = count;
+    private KettleRecipeBuilder(FluidStack fluidIn, FluidStack fluidOut, int brewingTime, float experience, String requiredBundle) {
+        this.fluidIn = fluidIn;
+        this.fluidOut = fluidOut;
         this.brewingTime = brewingTime;
         this.experience = experience;
-        this.container = container != null ? container.asItem() : null;
-        this.needWater = needWater;
         this.requiredBundle = requiredBundle;
     }
     
-    public static KettleRecipeBuilder kettleRecipe(ItemLike mainResult, String requiredBundle) {
-        return new KettleRecipeBuilder(mainResult, 1, 2400, 0.35F, true, (ItemLike)null, requiredBundle);
-    }
-    
-    public static KettleRecipeBuilder kettleRecipe(ItemLike mainResult, int count, int brewingTime, float experience, boolean needWater, ItemLike container, String requiredBundle) {
-        return new KettleRecipeBuilder(mainResult, count, brewingTime, experience, needWater, container, requiredBundle);
+    public static KettleRecipeBuilder kettleRecipe(FluidStack fluidIn, FluidStack fluidOut, int cookingTime, float experience, String requiredBundle) {
+        return new KettleRecipeBuilder(fluidIn, fluidOut, cookingTime, experience, requiredBundle);
     }
     
     public KettleRecipeBuilder addIngredient(TagKey<Item> tagIn) {
@@ -49,14 +44,14 @@ public class KettleRecipeBuilder {
     }
     
     public KettleRecipeBuilder addIngredient(ItemLike itemIn) {
-        return this.addIngredient((ItemLike)itemIn, 1);
+        return this.addIngredient(itemIn, 1);
     }
-    
+
     public KettleRecipeBuilder addIngredient(ItemLike itemIn, int quantity) {
         for(int i = 0; i < quantity; ++i) {
             this.addIngredient(Ingredient.of(itemIn));
         }
-        
+
         return this;
     }
     
@@ -71,91 +66,74 @@ public class KettleRecipeBuilder {
         
         return this;
     }
+
+    protected String getDefaultRecipeName(ResourceLocation resultItemKey) {
+        return "bundledelight:compat/farmersrespite/brewing/" + resultItemKey.getPath();
+    }
     
     public void build(Consumer<FinishedData> consumerIn) {
-        ResourceLocation location = ForgeRegistries.ITEMS.getKey(this.result);
-        this.build(consumerIn, "bundledelight:compat/farmersrespite/brewing/" + location.getPath());
+        ResourceLocation baseFluidLocation = ForgeRegistries.FLUIDS.getKey(this.fluidIn.getFluid());
+        ResourceLocation resultFluidLocation = ForgeRegistries.FLUIDS.getKey(this.fluidOut.getFluid());
+        String var10002 = resultFluidLocation.getPath();
+        this.build(consumerIn, "bundledelight:compat/farmersrespite/brewing/" + var10002 + "_from_" + baseFluidLocation.getPath());
     }
-    
+
     public void build(Consumer<FinishedData> consumerIn, String save) {
-        ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(this.result);
-        if ((new ResourceLocation(save)).equals(resourcelocation)) {
-            throw new IllegalStateException("Brewing Recipe " + save + " should remove its 'save' argument");
-        } else {
-            this.build(consumerIn, new ResourceLocation(save));
-        }
+        this.build(consumerIn, new ResourceLocation(save));
     }
-    
+
     public void build(Consumer<FinishedData> consumerIn, ResourceLocation id) {
-        consumerIn.accept(new KettleRecipeBuilder.Result(id, this.result, this.count, this.ingredients, this.brewingTime, this.experience, this.needWater, this.container, this.requiredBundle));
+        consumerIn.accept(new KettleRecipeBuilder.Result(id, this.fluidIn, this.fluidOut, this.ingredients, this.brewingTime, this.experience, this.requiredBundle));
     }
     
     public static class Result implements FinishedData {
+        @Getter
         private final ResourceLocation id;
         private final List<Ingredient> ingredients;
-        private final Item result;
-        private final int count;
-        private final int brewingTime;
+        private final int cookingTime;
         private final float experience;
-        private final boolean needWater;
-        private final Item container;
+        private final FluidStack fluidIn;
+        private final FluidStack fluidOut;
         private final String requiredBundle;
         
-        public Result(ResourceLocation idIn, Item resultIn, int countIn, List<Ingredient> ingredientsIn, int brewingTimeIn, float experienceIn, @Nullable boolean needWaterIn, @Nullable Item containerIn, String requiredBundle) {
+        public Result(ResourceLocation idIn, FluidStack fluidIn, FluidStack fluidOut, List<Ingredient> ingredientsIn, int cookingTimeIn, float experienceIn, String requiredBundle) {
             this.id = idIn;
+            this.fluidIn = fluidIn;
+            this.fluidOut = fluidOut;
             this.ingredients = ingredientsIn;
-            this.result = resultIn;
-            this.count = countIn;
-            this.brewingTime = brewingTimeIn;
+            this.cookingTime = cookingTimeIn;
             this.experience = experienceIn;
-            this.needWater = needWaterIn;
-            this.container = containerIn;
             this.requiredBundle = requiredBundle;
         }
         
         public void serializeData(JsonObject json) {
             JsonArray arrayIngredients = new JsonArray();
-            String item = ForgeRegistries.ITEMS.getKey(this.result).getPath();
-            String clearedName = item.replace("strong_", "").replace("long_", "");
-            for (Ingredient ingredient : this.ingredients) {
+
+            for(Ingredient ingredient : this.ingredients) {
                 arrayIngredients.add(ingredient.toJson());
             }
+            json.add("ingredients", arrayIngredients);
+            JsonObject basefluid = new JsonObject();
+            basefluid.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(this.fluidIn.getFluid()).toString());
+            basefluid.addProperty("count", this.fluidIn.getAmount());
+            json.add("base", basefluid);
             JsonArray arrayConditions = new JsonArray();
-            //JsonObject objectCondition = new JsonObject();
-            //objectCondition.addProperty("type", "bundledelight:bundle_loaded");
-            //objectCondition.addProperty("bundle", this.requiredBundle);
-            JsonObject objectCondition2 = new JsonObject();
-            objectCondition2.addProperty("type", "forge:item_exists");
-            objectCondition2.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
-            //arrayConditions.add(objectCondition);
-            arrayConditions.add(objectCondition2);
-
-            JsonObject objectResult = new JsonObject();
-            objectResult.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
-            if (this.count > 1) {
-                objectResult.addProperty("count", this.count);
-            }
-            if (this.container != null) {
-                JsonObject objectContainer = new JsonObject();
-                objectContainer.addProperty("item", ForgeRegistries.ITEMS.getKey(this.container).toString());
-                json.add("container", objectContainer);
-            }
-            json.addProperty("cookingtime", this.brewingTime);
+            JsonObject objectCondition = new JsonObject();
+            objectCondition.addProperty("type", "bundledelight:bundle_loaded");
+            objectCondition.addProperty("bundle", this.requiredBundle);
+            arrayConditions.add(objectCondition);
+            JsonObject resultFluid = new JsonObject();
+            resultFluid.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(this.fluidOut.getFluid()).toString());
+            resultFluid.addProperty("count", this.fluidOut.getAmount());
+            json.add("result", resultFluid);
             if (this.experience > 0.0F) {
                 json.addProperty("experience", this.experience);
             }
-            json.addProperty("group", clearedName);
-            json.add("ingredients", arrayIngredients);
-            json.addProperty("needwater", this.needWater);
-            json.addProperty("recipe_book_tab", "drinks");
-            json.add("result", objectResult);
+
+            json.addProperty("cookingtime", this.cookingTime);
             json.add("conditions", arrayConditions);
         }
-        
-        public ResourceLocation getId() {
-            return this.id;
-        }
-        
+
         public ResourceLocation getType() {
             return new ResourceLocation("farmersrespite", "brewing");
         }

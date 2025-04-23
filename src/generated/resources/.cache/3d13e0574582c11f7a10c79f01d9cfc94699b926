@@ -1,0 +1,14 @@
+// 1.20.1	2025-04-23T17:49:33.6401989	Bundled Delights' Custom Recipes [Builtin]
+71a8171979b9f0864bd560115c6d86ffe68d0a41 data/bundledelight/advancements/recipes/compat/farmersdelight/cooking/borscht.json
+0f8e03a19e3581cb26254225bf4ecf221cc6fda6 data/bundledelight/advancements/recipes/compat/farmersdelight/cooking/nettle_soup.json
+597d0e710647ddf9bc98001f39de75e292a00edc data/bundledelight/advancements/recipes/food/carrot_cake.json
+b1109209535f2fbec54798ae965bcb884fb9af16 data/bundledelight/advancements/recipes/food/carrot_cake_from_slices.json
+887d0d31cdf17ac5f8934a3ba6693666ccf8bc5c data/bundledelight/advancements/recipes/food/carrot_cookie.json
+a30fe9fa657dca1c95401e4a53cd5dced0c5568c data/bundledelight/advancements/recipes/food/sweet_berry_juice.json
+ed0ddc57e2609569fe606cdce856e7ab8b4c171e data/bundledelight/recipes/compat/farmersdelight/cooking/borscht.json
+1e5e6fe50486514dd12776eb4dca46e4730a1c5c data/bundledelight/recipes/compat/farmersdelight/cooking/nettle_soup.json
+3e46201154aaf36e3ccd06c6c1f170f99458feb9 data/bundledelight/recipes/compat/farmersdelight/cutting/carrot_cake.json
+fcb2cd0d6765d81c14a79d5b05c35ea559540dbd data/bundledelight/recipes/crafting/food/carrot_cake.json
+ecccb7fcb0773d23711130103594f6d622122b06 data/bundledelight/recipes/crafting/food/carrot_cake_from_slices.json
+bedd5ef770815a4d2aa52af7ae4eaed7dcb6a578 data/bundledelight/recipes/crafting/food/carrot_cookie.json
+65933c8dea9de24fe8ea566570c8bd26e7c782ca data/bundledelight/recipes/crafting/food/sweet_berry_juice.json

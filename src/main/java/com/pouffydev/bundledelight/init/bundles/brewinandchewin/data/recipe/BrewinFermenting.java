@@ -6,22 +6,15 @@ import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.foundation.data.FinishedData;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinFluids;
 import com.pouffydev.bundledelight.init.bundles.brewinandchewin.BrewinItems;
-import com.pouffydev.bundledelight.init.bundles.farmersrespite.RespiteItems;
-import com.pouffydev.bundledelight.init.bundles.miners_brew.MinersBrewItems;
-import com.sammy.minersdelight.setup.MDItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import umpaz.brewinandchewin.client.recipebook.FermentingRecipeBookTab;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
 import umpaz.brewinandchewin.common.registry.BnCItems;
-import umpaz.farmersrespite.common.registry.FRItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.function.Consumer;
-
-import static com.pouffydev.bundledelight.foundation.util.CommonUtil.fromFR;
 
 public class BrewinFermenting extends BundleRecipeGen {
     private static final String BUNDLE_NAME = "brewinandchewin";
@@ -35,7 +28,11 @@ public class BrewinFermenting extends BundleRecipeGen {
     private static final Item glassTankard = BrewinItems.glassTankard.get();
     
     private static void fermentBrews(Consumer<FinishedData> consumer) {
-        KegRecipeBuilder.kegRecipe(BrewinFluids.rootBeer.get(), 1000, FERMENTING_TIME, MEDIUM_FERMENT_EXP, 3, BUNDLE_NAME).addFluidIngredient(Fluids.WATER, 1000).addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE).build(consumer);
+        KegRecipeBuilder.kegRecipe(BrewinFluids.rootBeer.getSource(), 1000, FERMENTING_TIME, MEDIUM_FERMENT_EXP, 3, BUNDLE_NAME)
+                .addFluidIngredient(Fluids.WATER, 1000)
+                .addIngredient(Items.HANGING_ROOTS).addIngredient(Items.SUGAR).addIngredient(ModItems.TREE_BARK.get()).addIngredient(Items.HONEY_BOTTLE)
+                .setRecipeBookTab(FermentingRecipeBookTab.DRINKS)
+                .build(consumer);
     }
     
     private static void fermentFoods(Consumer<FinishedData> consumer) {

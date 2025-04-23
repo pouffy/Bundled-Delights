@@ -12,7 +12,7 @@ public abstract class BundleRecipeGen {
     public static final int SLOW_COOKING = 400;
     
     // Fermenting Times
-    public static final int FERMENTING_TIME = 12000;
+    public static final int FERMENTING_TIME = 9600;
     
     // Experience Amounts
     public static final float SMALL_EXP = 0.35F;

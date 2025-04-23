@@ -1,0 +1,17 @@
+{
+  "type": "farmersrespite:kettle_pouring",
+  "amount": 250,
+  "conditions": [
+    {
+      "type": "bundledelight:bundle_loaded",
+      "bundle": "miners_respite"
+    }
+  ],
+  "container": {
+    "item": "miners_delight:copper_cup"
+  },
+  "fluid": "farmersrespite:black_tea",
+  "output": {
+    "item": "bundledelight:black_tea_cup"
+  }
+}
