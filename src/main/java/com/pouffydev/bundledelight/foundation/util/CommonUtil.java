@@ -68,9 +68,7 @@ public class CommonUtil {
     
     public static void addTipsyEffect(LivingEntity entity, int duration, int amplifier) {
         MobEffect tipsy = getMobEffect(new ResourceLocation("brewinandchewin", "tipsy"));
-        if (!entity.hasEffect(tipsy)) {
-            entity.forceAddEffect(new MobEffectInstance(tipsy, duration, amplifier, false, false, true), entity);
-        } else if (entity.hasEffect(tipsy)) {
+        if (entity.hasEffect(tipsy)) {
             MobEffectInstance effect = entity.getEffect(tipsy);
             entity.forceAddEffect(new MobEffectInstance(tipsy, effect.getDuration() == -1 ? -1 : effect.getDuration() + duration, Math.min(effect.getAmplifier() + amplifier, 9), effect.isAmbient(), effect.isVisible(), effect.showIcon()), entity);
         }

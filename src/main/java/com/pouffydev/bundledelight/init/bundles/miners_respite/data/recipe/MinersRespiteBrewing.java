@@ -65,13 +65,13 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.YELLOW_TEA.get(), 250, MinersRespiteItems.yellowTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.BLACK_TEA.get(), 250, MinersRespiteItems.blackTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.COFFEE.get(), 250, MinersRespiteItems.coffeeCup.get(), consumer, BUNDLE_NAME);
-
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.ROSE_HIP_TEA.get(), 250, MinersRespiteItems.roseHipTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.DANDELION_TEA.get(), 250, MinersRespiteItems.dandelionTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.PURULENT_TEA.get(), 250, MinersRespiteItems.purulentTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.APPLE_CIDER.get(), 250, MinersItems.appleCiderCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.MELON_JUICE.get(), 250, MinersItems.melonJuiceCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.HOT_COCOA.get(), 250, MinersRespiteItems.strongHotCocoaCup.get(), consumer, BUNDLE_NAME);
+        KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.GAMBLERS_TEA.get(), 250, MinersRespiteItems.gamblersTeaCup.get(), consumer, BUNDLE_NAME);
 
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_GREEN_TEA.get(), 250, MinersRespiteItems.strongGreenTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_YELLOW_TEA.get(), 250, MinersRespiteItems.strongYellowTeaCup.get(), consumer, BUNDLE_NAME);
@@ -80,6 +80,10 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_ROSE_HIP_TEA.get(), 250, MinersRespiteItems.strongRoseHipTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_PURULENT_TEA.get(), 250, MinersRespiteItems.strongPurulentTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_APPLE_CIDER.get(), 250, MinersRespiteItems.strongAppleCiderCup.get(), consumer, BUNDLE_NAME);
+        KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_MELON_JUICE.get(), 250, MinersRespiteItems.strongMelonJuiceCup.get(), consumer, BUNDLE_NAME);
+        KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_HOT_COCOA.get(), 250, MinersRespiteItems.strongHotCocoaCup.get(), consumer, BUNDLE_NAME);
+        KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.STRONG_GAMBLERS_TEA.get(), 250, MinersRespiteItems.strongGamblersTeaCup.get(), consumer, BUNDLE_NAME);
+
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_GREEN_TEA.get(), 250, MinersRespiteItems.longGreenTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_YELLOW_TEA.get(), 250, MinersRespiteItems.longYellowTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_BLACK_TEA.get(), 250, MinersRespiteItems.longBlackTeaCup.get(), consumer, BUNDLE_NAME);
@@ -87,6 +91,7 @@ public class MinersRespiteBrewing extends BundleRecipeGen {
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_DANDELION_TEA.get(), 250, MinersRespiteItems.longDandelionTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_PURULENT_TEA.get(), 250, MinersRespiteItems.longPurulentTeaCup.get(), consumer, BUNDLE_NAME);
         KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_APPLE_CIDER.get(), 250, MinersRespiteItems.longAppleCiderCup.get(), consumer, BUNDLE_NAME);
+        KettlePouringRecipeBuilder.kettlePouringRecipe(MDItems.COPPER_CUP, FRFluids.LONG_GAMBLERS_TEA.get(), 250, MinersRespiteItems.longGamblersTeaCup.get(), consumer, BUNDLE_NAME);
     }
 
 

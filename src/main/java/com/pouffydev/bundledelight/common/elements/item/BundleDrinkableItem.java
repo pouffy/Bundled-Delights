@@ -18,8 +18,8 @@ public class BundleDrinkableItem extends BundleConsumableItem {
         super(properties, hasFoodEffectTooltip);
     }
 
-    public BundleDrinkableItem(Item.Properties properties, boolean hasPotionEffectTooltip, boolean hasCustomTooltip) {
-        super(properties, hasPotionEffectTooltip, hasCustomTooltip);
+    public BundleDrinkableItem(Item.Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
+        super(properties, hasFoodEffectTooltip, hasCustomTooltip);
     }
 
     public BundleDrinkableItem withRemainderItem(RemainderItem pRemainderItem) {

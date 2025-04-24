@@ -25,6 +25,7 @@ public class BundlePurulentTeaItem extends BundleTeaItem {
         this.effectBoost = effectBoost;
     }
 
+
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
         Iterator<MobEffectInstance> itr = consumer.getActiveEffects().iterator();
         ArrayList<MobEffect> compatibleEffects = new ArrayList<>();

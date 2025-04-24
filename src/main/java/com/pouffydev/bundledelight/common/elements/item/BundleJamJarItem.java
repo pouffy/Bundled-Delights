@@ -5,36 +5,32 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BundleMilkshakeItem extends DrinkableItem {
+public class BundleJamJarItem extends ConsumableItem {
     private float healAmount = 0.0F;
 
-
-    public BundleMilkshakeItem(Properties builder) {
-        super(builder, true, false);
+    public BundleJamJarItem(Item.Properties pProperties) {
+        super(pProperties);
     }
 
-    public BundleMilkshakeItem withHealAmount(float pHealAmount) {
+    public BundleJamJarItem withHealAmount(float pHealAmount) {
         healAmount = pHealAmount;
         return this;
     }
 
-    public int getUseDuration(ItemStack stack) {
-        return 40;
-    }
-
-    public UseAnim getUseAnimation(ItemStack stack) {
+    public UseAnim getUseAnimation(ItemStack pStack) {
         return UseAnim.DRINK;
     }
 

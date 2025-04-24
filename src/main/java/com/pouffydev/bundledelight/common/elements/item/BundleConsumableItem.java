@@ -65,13 +65,11 @@ public class BundleConsumableItem extends Item {
             this.affectConsumer(stack, level, consumer);
         }
 
-
         ItemStack containerStack = remainderItem != null ? remainderItem.getRemainderItem() : stack.getCraftingRemainingItem();
-        Player player;
         if (stack.isEdible()) {
             super.finishUsingItem(stack, level, consumer);
         } else {
-            player = consumer instanceof Player ? (Player)consumer : null;
+            Player player = consumer instanceof Player ? (Player)consumer : null;
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
             }
@@ -88,7 +86,7 @@ public class BundleConsumableItem extends Item {
             return containerStack;
         } else {
             if (consumer instanceof Player) {
-                player = (Player)consumer;
+                Player player = (Player)consumer;
                 if (!((Player)consumer).getAbilities().instabuild && !player.getInventory().add(containerStack)) {
                     player.drop(containerStack, false);
                 }
@@ -102,9 +100,9 @@ public class BundleConsumableItem extends Item {
     }
 
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if (Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+        if ((Boolean)Configuration.FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = TextUtils.getTranslation("tooltip." + this);
+                MutableComponent textEmpty = TextUtils.getTranslation("tooltip." + this, new Object[0]);
                 tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
             }
 
@@ -112,7 +110,6 @@ public class BundleConsumableItem extends Item {
                 TextUtils.addFoodEffectTooltip(stack, tooltip, 1.0F);
             }
         }
-
     }
 
     public enum RemainderItem {
