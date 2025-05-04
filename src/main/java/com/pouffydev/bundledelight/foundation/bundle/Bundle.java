@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
 import com.pouffydev.bundledelight.foundation.BundledRegistrate;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.AbstractBundleRecipeHandler;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
@@ -23,6 +24,7 @@ import java.util.*;
 import java.util.function.Supplier;
 
 public abstract class Bundle {
+    @Getter
     private boolean isLoaded;
     protected final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     @Getter
@@ -73,11 +75,7 @@ public abstract class Bundle {
     }
     
     protected abstract void onLoad();
-    
-    public boolean isLoaded() {
-        return this.isLoaded;
-    }
-    
+
     public ResourceLocation getLocation(String path) {
         return new ResourceLocation(modid, path);
     }
@@ -116,4 +114,6 @@ public abstract class Bundle {
     }
     
     public abstract void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server);
+
+    public abstract AbstractBundleRecipeHandler getRecipeHandler();
 }

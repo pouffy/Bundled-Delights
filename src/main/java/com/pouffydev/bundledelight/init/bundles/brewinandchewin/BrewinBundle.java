@@ -2,6 +2,7 @@ package com.pouffydev.bundledelight.init.bundles.brewinandchewin;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.AbstractBundleRecipeHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,5 +36,10 @@ public class BrewinBundle extends Bundle {
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
         BundledDelight.LOGGER.info("Running BrewinAndChewin datagen");
         BrewinDatagen.gatherData(generator, existingFileHelper, client, server);
+    }
+
+    @Override
+    public AbstractBundleRecipeHandler getRecipeHandler() {
+        return new BrewinRecipeHandler();
     }
 }

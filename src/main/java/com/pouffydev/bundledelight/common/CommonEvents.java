@@ -3,6 +3,9 @@ package com.pouffydev.bundledelight.common;
 import com.google.common.collect.Maps;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.datagen.BundleTags;
+import com.pouffydev.bundledelight.foundation.data.runtime.BundleDynamicDataPack;
+import com.pouffydev.bundledelight.foundation.data.runtime.BundlePackSource;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.BundledRecipes;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBlocks;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinItems;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBlocks;
@@ -15,6 +18,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
@@ -26,6 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -97,5 +103,21 @@ public class CommonEvents {
             }
         }
 
+    }
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModBusEvents {
+        @SubscribeEvent
+        public static void addPackFinders(AddPackFindersEvent event) {
+            if (event.getPackType() == PackType.SERVER_DATA) {
+                BundleDynamicDataPack.clearServer();
+
+                long startTime = System.currentTimeMillis();
+                BundledRecipes.recipeAddition(BundleDynamicDataPack::addRecipe);
+                BundledRecipes.customDataAddition(BundleDynamicDataPack::addRecipe);
+                BundledDelight.LOGGER.info("Bundled Delight Data loading took {}ms", System.currentTimeMillis() - startTime);
+                event.addRepositorySource(new BundlePackSource("bundledelight:dynamic_data", event.getPackType(), Pack.Position.BOTTOM, BundleDynamicDataPack::new));
+            }
+        }
     }
 }

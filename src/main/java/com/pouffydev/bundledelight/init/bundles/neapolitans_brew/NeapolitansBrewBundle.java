@@ -1,6 +1,7 @@
 package com.pouffydev.bundledelight.init.bundles.neapolitans_brew;
 
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.AbstractBundleRecipeHandler;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -32,5 +33,10 @@ public class NeapolitansBrewBundle extends Bundle {
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
         NeapolitansBrewDatagen.gatherData(generator, existingFileHelper, client, server);
+    }
+
+    @Override
+    public AbstractBundleRecipeHandler getRecipeHandler() {
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package com.pouffydev.bundledelight.init.bundles.minersdelight;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.AbstractBundleRecipeHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -27,5 +28,10 @@ public class MinersBundle extends Bundle {
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
         BundledDelight.LOGGER.info("Running MinersDelight datagen");
         MinersDatagen.gatherData(generator, existingFileHelper, client, server);
+    }
+
+    @Override
+    public AbstractBundleRecipeHandler getRecipeHandler() {
+        return null;
     }
 }

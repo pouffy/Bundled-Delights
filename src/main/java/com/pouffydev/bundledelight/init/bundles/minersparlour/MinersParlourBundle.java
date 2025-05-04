@@ -1,6 +1,7 @@
 package com.pouffydev.bundledelight.init.bundles.minersparlour;
 
 import com.pouffydev.bundledelight.foundation.bundle.Bundle;
+import com.pouffydev.bundledelight.foundation.data.runtime.recipe.AbstractBundleRecipeHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -25,5 +26,10 @@ public class MinersParlourBundle extends Bundle {
     @Override
     public void runDatagen(DataGenerator generator, ExistingFileHelper existingFileHelper, boolean client, boolean server) {
 
+    }
+
+    @Override
+    public AbstractBundleRecipeHandler getRecipeHandler() {
+        return null;
     }
 }

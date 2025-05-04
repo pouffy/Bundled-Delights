@@ -66,7 +66,7 @@ public class BundleManager {
         for (Bundle bundle : BUNDLES) {
             // Idfk why I was checking if the bundle was loaded here. I literally force load them all during datagen.
             //if (bundle.isLoaded()) {
-            bundle.runDatagen(generator, existingFileHelper, client, server);
+            //bundle.runDatagen(generator, existingFileHelper, client, server);
             //}
         }
     }
