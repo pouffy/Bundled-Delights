@@ -10,12 +10,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.Tags;
 import vectorwing.farmersdelight.common.crafting.ingredient.ChanceResult;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.List;
-import java.util.Map;
 
 public class RecipeShortcuts {
     public static BundleShapedRecipeBuilder compact3x3(ItemLike result, ItemLike ingredient, String bundleName) {
@@ -59,7 +58,7 @@ public class RecipeShortcuts {
                 .pattern("mcm")
                 .pattern("ses")
                 .pattern("wcw")
-                .define('m', ForgeTags.MILK)
+                .define('m', Tags.Items.BUCKETS_MILK)
                 .define('s', Items.SUGAR)
                 .define('c', ingredient)
                 .define('e', Items.EGG)
@@ -134,17 +133,17 @@ public class RecipeShortcuts {
     }
 
     public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, ItemLike ingredient, String bundleName) {
-        return cut(result, resultAmount, List.of(), ingredient, Ingredient.of(ModTags.KNIVES), bundleName);
+        return cut(result, resultAmount, List.of(), ingredient, Ingredient.of(ModTags.Items.KNIVES), bundleName);
     }
     public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, String bundleName) {
-        return cut(result, resultAmount, chanceResults, ingredient, Ingredient.of(ModTags.KNIVES), bundleName);
+        return cut(result, resultAmount, chanceResults, ingredient, Ingredient.of(ModTags.Items.KNIVES), bundleName);
     }
 
     public static CuttingBoardRecipeBuilder cut(ItemLike mainResult, int mainResultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, Ingredient tool, String bundleName) {
         CuttingBoardRecipeBuilder builder = CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ingredient), tool, mainResult, mainResultAmount, bundleName);
         for (ChanceResult chanceResult : chanceResults) {
-            ItemStack result = chanceResult.getStack();
-            float chance = chanceResult.getChance();
+            ItemStack result = chanceResult.stack();
+            float chance = chanceResult.chance();
             builder.addResultWithChance(result.getItem(), chance, result.getCount());
         }
         return builder;

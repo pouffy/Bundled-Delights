@@ -115,6 +115,14 @@ repositories {
 
 dependencies {
     implementation("maven.modrinth:krystal-core:${property("krystal_version")}")
+    implementation("maven.modrinth:farmers-delight:${property("farmersdelight_version")}")
+
+    compileOnly("maven.modrinth:brewin-and-chewin:${property("bnc_version")}")
+    runtimeOnly("maven.modrinth:brewin-and-chewin:${property("bnc_version")}")
+    compileOnly("maven.modrinth:farmers-respite-unofficial-port:${property("fr_version")}")
+    runtimeOnly("maven.modrinth:farmers-respite-unofficial-port:${property("fr_version")}")
+    compileOnly("maven.modrinth:miners-delight:${property("md_version")}")
+    runtimeOnly("maven.modrinth:miners-delight:${property("md_version")}")
 
     compileOnlyApi("dev.emi:emi-neoforge:${property("emi_version")}:api")
     localRuntime("dev.emi:emi-neoforge:${property("emi_version")}")

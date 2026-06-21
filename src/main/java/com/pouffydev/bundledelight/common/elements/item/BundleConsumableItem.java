@@ -1,11 +1,12 @@
 package com.pouffydev.bundledelight.common.elements.item;
 
-import com.pouffydev.bundledelight.BundleManager;
+import com.pouffydev.krystal_core.KrystalCore;
+import com.pouffydev.krystal_core.foundation.CompatHelpers;
+import lombok.Getter;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,42 +16,31 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.Configuration;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Objects;
 
 public class BundleConsumableItem extends Item {
     private final boolean hasFoodEffectTooltip;
     private final boolean hasCustomTooltip;
     static RemainderItem remainderItem = RemainderItem.bowl;
 
-    public static Item.Properties createItemProperties(Item.Properties properties) {
-        if (remainderItem != null) {
-            properties = properties.craftRemainder(remainderItem.getRemainderItem().getItem());
-        }
-        return properties;
-    }
-
     public BundleConsumableItem(Item.Properties properties) {
-        super(createItemProperties(properties));
+        super(properties);
         this.hasFoodEffectTooltip = false;
         this.hasCustomTooltip = false;
-        //if (remainderItem != null) {
-        //    ((ItemMixin) this).setCraftingRemainingItem(remainderItem.getRemainderItem().getItem());
-        //}
     }
 
     public BundleConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip) {
-        super(createItemProperties(properties));
+        super(properties);
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = false;
     }
 
     public BundleConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(createItemProperties(properties));
+        super(properties);
         this.hasFoodEffectTooltip = hasFoodEffectTooltip;
         this.hasCustomTooltip = hasCustomTooltip;
     }
@@ -66,7 +56,7 @@ public class BundleConsumableItem extends Item {
         }
 
         ItemStack containerStack = remainderItem != null ? remainderItem.getRemainderItem() : stack.getCraftingRemainingItem();
-        if (stack.isEdible()) {
+        if (stack.getFoodProperties(consumer) != null) {
             super.finishUsingItem(stack, level, consumer);
         } else {
             Player player = consumer instanceof Player ? (Player)consumer : null;
@@ -99,38 +89,36 @@ public class BundleConsumableItem extends Item {
     public void affectConsumer(ItemStack stack, Level level, LivingEntity consumer) {
     }
 
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if ((Boolean)Configuration.FOOD_EFFECT_TOOLTIP.get()) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag isAdvanced) {
+        if (Configuration.ENABLE_FOOD_EFFECT_TOOLTIP.get()) {
             if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = TextUtils.getTranslation("tooltip." + this, new Object[0]);
-                tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
+                tooltip.add(TextUtils.tooltip(BuiltInRegistries.ITEM.getKey(this).getPath()).withStyle(ChatFormatting.BLUE));
             }
 
             if (this.hasFoodEffectTooltip) {
-                TextUtils.addFoodEffectTooltip(stack, tooltip, 1.0F);
+                Objects.requireNonNull(tooltip);
+                TextUtils.addFoodEffectTooltip(stack, tooltip::add, 1.0F, context.tickRate());
             }
         }
+
     }
 
     public enum RemainderItem {
-        bowl("builtin", "minecraft:bowl"),
-        glassBottle("builtin", "minecraft:glass_bottle"),
-        glassTankard("brewinandchewin", "bundledelight:glass_tankard"),
-        copperSwig("miners_brew", "bundledelight:copper_swig"),
-        copperCup("miners_{}", "miners_delight:copper_cup"),
+        bowl("minecraft", "minecraft:bowl"),
+        glassBottle("minecraft", "minecraft:glass_bottle"),
+        glassTankard("bundledelight", "bundledelight:glass_tankard"),
+        copperSwig("bundledelight", "bundledelight:copper_swig"),
+        copperCup("miners_delight", "miners_delight:copper_cup"),
         tankard("brewinandchewin", "brewinandchewin:tankard"),
         ;
 
-        private final String bundleName;
+        @Getter
+        private final String namespace;
         private final String remainderItem;
 
-        RemainderItem(String bundleName, String remainderItem) {
-            this.bundleName = bundleName;
+        RemainderItem(String namespace, String remainderItem) {
+            this.namespace = namespace;
             this.remainderItem = remainderItem;
-        }
-
-        public String getBundleName() {
-            return this.bundleName;
         }
 
         public String getRemainderItemName() {
@@ -138,10 +126,10 @@ public class BundleConsumableItem extends Item {
         }
 
         public ItemStack getRemainderItem() {
-            boolean shouldUse = BundleManager.isBundleLoaded(this.bundleName);
+            boolean shouldUse = CompatHelpers.isLoaded(this.namespace);
             ItemStack remainderItem = new ItemStack(Items.BOWL);
             if (shouldUse) {
-                remainderItem = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(this.remainderItem)));
+                remainderItem = new ItemStack(BuiltInRegistries.ITEM.get(KrystalCore.location(this.remainderItem)));
             }
             return remainderItem;
         }

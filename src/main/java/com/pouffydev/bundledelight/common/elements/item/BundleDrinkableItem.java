@@ -37,7 +37,7 @@ public class BundleDrinkableItem extends BundleConsumableItem {
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack heldStack = player.getItemInHand(hand);
-        if (heldStack.isEdible()) {
+        if (heldStack.getFoodProperties(player) != null) {
             if (player.canEat(heldStack.getFoodProperties(player).canAlwaysEat())) {
                 player.startUsingItem(hand);
                 return InteractionResultHolder.consume(heldStack);

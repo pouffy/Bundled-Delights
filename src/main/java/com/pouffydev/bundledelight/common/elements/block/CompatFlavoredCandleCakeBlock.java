@@ -3,9 +3,13 @@ package com.pouffydev.bundledelight.common.elements.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
-import com.teamabnormals.neapolitan.common.block.FlavoredCandleCakeBlock;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -13,45 +17,50 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Map;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
+    public static final MapCodec<CompatFlavoredCandleCakeBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+            BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("base").forGetter((cakeBlock) -> cakeBlock.baseCake),
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("candle").forGetter((cakeBlock) -> cakeBlock.candle),
+            propertiesCodec()).apply(instance, CompatFlavoredCandleCakeBlock::new));
+
     public static final BooleanProperty LIT;
     protected static final VoxelShape CAKE_SHAPE;
     protected static final VoxelShape CANDLE_SHAPE;
     protected static final VoxelShape SHAPE;
     private static final Map<Pair<Block, CompatFlavoredCakeBlock>, CompatFlavoredCandleCakeBlock> BY_CANDLE_AND_CAKE;
     private static final Iterable<Vec3> PARTICLE_OFFSETS;
-    private final Supplier<Block> baseCake;
+    private final Holder<Block> baseCake;
+    @Getter
     private final Block candle;
     
-    public CompatFlavoredCandleCakeBlock(Supplier<Block> baseCake, Block candle, BlockBehaviour.Properties properties) {
+    public CompatFlavoredCandleCakeBlock(Holder<Block> baseCake, Block candle, BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(LIT, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIT, Boolean.FALSE));
         this.baseCake = baseCake;
         this.candle = candle;
-        BY_CANDLE_AND_CAKE.put(Pair.of(candle, (CompatFlavoredCakeBlock)baseCake.get()), this);
+        BY_CANDLE_AND_CAKE.put(Pair.of(candle, (CompatFlavoredCakeBlock)baseCake.value()), this);
     }
-    
+
+    @Override
+    protected MapCodec<? extends AbstractCandleBlock> codec() {
+        return null;
+    }
+
     protected Iterable<Vec3> getParticleOffsets(BlockState p_152868_) {
         return PARTICLE_OFFSETS;
     }
@@ -63,7 +72,7 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         ItemStack itemstack = player.getItemInHand(hand);
         if (!itemstack.is(Items.FLINT_AND_STEEL) && !itemstack.is(Items.FIRE_CHARGE)) {
-            Object var9 = this.baseCake.get();
+            Object var9 = this.baseCake.value();
             if (var9 instanceof CompatFlavoredCakeBlock) {
                 CompatFlavoredCakeBlock cakeBlock = (CompatFlavoredCakeBlock)var9;
                 if (candleHit(result) && player.getItemInHand(hand).isEmpty() && (Boolean)state.getValue(LIT)) {
@@ -84,7 +93,7 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     }
     
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return new ItemStack((ItemLike)this.baseCake.get());
+        return new ItemStack(this.baseCake.value());
     }
     
     private static boolean candleHit(BlockHitResult result) {
@@ -92,7 +101,7 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     }
     
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_152905_) {
-        p_152905_.add(new Property[]{LIT});
+        p_152905_.add(LIT);
     }
     
     public BlockState updateShape(BlockState p_152898_, Direction p_152899_, BlockState p_152900_, LevelAccessor p_152901_, BlockPos p_152902_, BlockPos p_152903_) {
@@ -120,21 +129,17 @@ public class CompatFlavoredCandleCakeBlock extends AbstractCandleBlock {
     }
     
     public static BlockState byCandle(Block candle, CompatFlavoredCakeBlock cake) {
-        return ((CompatFlavoredCandleCakeBlock)BY_CANDLE_AND_CAKE.get(Pair.of(candle, cake))).defaultBlockState();
+        return BY_CANDLE_AND_CAKE.get(Pair.of(candle, cake)).defaultBlockState();
     }
-    
-    public Block getCandle() {
-        return this.candle;
-    }
-    
+
     public Block getCake() {
-        return this.baseCake.get();
+        return this.baseCake.value();
     }
     
-    public static Iterable getCandleCakes() {
-        return ForgeRegistries.BLOCKS.getValues().stream().filter((block) -> {
-            ResourceLocation registryName = ForgeRegistries.BLOCKS.getKey(block);
-            return registryName != null && "bundledelight".equals(registryName.getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
+    public static Iterable<Block> getCandleCakes() {
+        return BuiltInRegistries.BLOCK.stream().filter((block) -> {
+            ResourceLocation registryName = BuiltInRegistries.BLOCK.getKey(block);
+            return "bundledelight".equals(registryName.getNamespace()) && block instanceof CompatFlavoredCandleCakeBlock;
         }).collect(Collectors.toList());
     }
     

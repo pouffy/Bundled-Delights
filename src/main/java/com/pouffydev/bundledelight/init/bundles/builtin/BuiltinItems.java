@@ -1,38 +1,35 @@
 package com.pouffydev.bundledelight.init.bundles.builtin;
 
-import com.pouffydev.bundledelight.BundleDelightCreativeTab;
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.common.elements.item.BundleCakeSliceItem;
+import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
 import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
-import com.pouffydev.bundledelight.foundation.BundledRegistrate;
-import com.pouffydev.bundledelight.foundation.bundle.BundleRegistryClass;
+import com.pouffydev.bundledelight.foundation.BDItemHelper;
 import com.pouffydev.bundledelight.init.FoodValues;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import vectorwing.farmersdelight.common.item.ConsumableItem;
-import vectorwing.farmersdelight.common.item.DrinkableItem;
-import vectorwing.farmersdelight.common.registry.ModItems;
+import com.pouffydev.krystal_core.KrystalCore;
+import net.neoforged.neoforge.registries.DeferredItem;
 
-public class BuiltinItems extends BundleRegistryClass {
-    private static final BundledRegistrate registrate = BundledDelight.registrate().setCreativeTab(BundleDelightCreativeTab.MAIN_TAB);
-    
-    public BuiltinItems() {
-        super("bundledelight");
-    }
-    
-    public static final ItemEntry<BundleDrinkableItem>
-            borscht = registrate.drinkableItem(getBundleContentName("borscht")),
-            nettleSoup = registrate.drinkableItem(getBundleContentName("nettle_soup")),
-            sweetBerryJuice = registrate.drinkableItem(getBundleContentName("sweet_berry_juice")),
-            glassOfConcrete = registrate.drinkableItem(getBundleContentName("glass_of_concrete"));
+public class BuiltinItems {
+    private static final BDItemHelper HELPER = new BDItemHelper(BundledDelight.getRegistryHelper().getItemHelper());
 
-    public static final ItemEntry<ConsumableItem>
-            carrotCookie = registrate.consumableItem(getBundleContentName("carrot_cookie"), BundledRegistrate.foodProps(FoodValues.CARROT_COOKIE));
+    public static final DeferredItem<BundleDrinkableItem>
+            borscht = HELPER.drinkableItem(formatName("borscht")),
+            nettleSoup = HELPER.drinkableItem(formatName("nettle_soup")),
+            sweetBerryJuice = HELPER.drinkableItem(formatName("sweet_berry_juice"));
 
-    public static final ItemEntry<BundleCakeSliceItem>
-            carrotCakeSlice = registrate.cakeSliceItem(getBundleContentName("carrot_cake_slice"), FoodValues.CARROT_CAKE, (p) -> p);
+    public static final DeferredItem<BundleConsumableItem>
+            carrotCookie = HELPER.consumableItem(formatName("carrot_cookie"), HELPER.foodProps(FoodValues.CARROT_COOKIE));
+
+    public static final DeferredItem<BundleCakeSliceItem>
+            carrotCakeSlice = HELPER.cakeSliceItem(formatName("carrot_cake_slice"), HELPER.foodProps(FoodValues.CARROT_CAKE));
     
     
     public static void register() {
         BundledDelight.LOGGER.info("Registering Builtin Items");
+    }
+
+    private static String formatName(String name) {
+        var bundle = KrystalCore.getBundle(BundledDelight.location("builtin"));
+        return bundle == null ? name : bundle.getBundleContentName(name);
     }
 }

@@ -1,9 +1,9 @@
 package com.pouffydev.bundledelight.common.elements.block;
 
 import com.mojang.datafixers.util.Pair;
-import com.pouffydev.bundledelight.BundleManager;
 import com.pouffydev.bundledelight.common.elements.item.BundleHealingItem;
 import com.pouffydev.bundledelight.init.bundles.neapolitan.NeapolitanBlocks;
+import com.pouffydev.krystal_core.foundation.CompatHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,8 +26,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
-import java.util.Iterator;
-
 public class CompatFlavoredCakeBlock extends CakeBlock {
     private final FoodProperties food;
     
@@ -39,14 +37,14 @@ public class CompatFlavoredCakeBlock extends CakeBlock {
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(handIn);
         Item item = stack.getItem();
-        if (stack.is(ItemTags.CANDLES) && (Integer)state.getValue(BITES) == 0) {
+        if (stack.is(ItemTags.CANDLES) && state.getValue(BITES) == 0) {
             Block block = Block.byItem(item);
             if (block instanceof CandleBlock && CompatFlavoredCandleCakeBlock.hasEntry(block, this)) {
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
                 
-                worldIn.playSound((Player)null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                worldIn.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 worldIn.setBlockAndUpdate(pos, CompatFlavoredCandleCakeBlock.byCandle(block, this));
                 worldIn.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 player.awardStat(Stats.ITEM_USED.get(item));
@@ -73,26 +71,24 @@ public class CompatFlavoredCakeBlock extends CakeBlock {
             return InteractionResult.PASS;
         } else {
             player.awardStat(Stats.EAT_CAKE_SLICE);
-            player.getFoodData().eat(this.food.getNutrition(), this.food.getSaturationModifier());
-            if (BundleManager.getBundle("neapolitan").isLoaded()) {
+            player.getFoodData().eat(this.food.nutrition(), this.food.saturation());
+            if (CompatHelpers.isLoaded("neapolitan")) {
                 if (this == NeapolitanBlocks.whiteStrawberryCake.get()) {
                     BundleHealingItem.applyHealing(2.0F, level, player);
                 }
             }
-            
-            Iterator var5 = this.food.getEffects().iterator();
-            
-            while(var5.hasNext()) {
-                Pair<MobEffectInstance, Float> pair = (Pair)var5.next();
-                if (!level.isClientSide() && pair.getFirst() != null && level.getRandom().nextFloat() < (Float)pair.getSecond()) {
+
+            for (FoodProperties.PossibleEffect possibleEffect : this.food.effects()) {
+                Pair<MobEffectInstance, Float> pair = Pair.of(possibleEffect.effect(), possibleEffect.probability());
+                if (!level.isClientSide() && pair.getFirst() != null && level.getRandom().nextFloat() < (Float) pair.getSecond()) {
                     player.addEffect(new MobEffectInstance(pair.getFirst()));
                 }
             }
             
-            int i = (Integer)state.getValue(BITES);
+            int i = state.getValue(BITES);
             level.gameEvent(player, GameEvent.EAT, pos);
             if (i < 6) {
-                level.setBlock(pos, (BlockState)state.setValue(BITES, i + 1), 3);
+                level.setBlock(pos, state.setValue(BITES, i + 1), 3);
             } else {
                 level.removeBlock(pos, false);
                 level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
