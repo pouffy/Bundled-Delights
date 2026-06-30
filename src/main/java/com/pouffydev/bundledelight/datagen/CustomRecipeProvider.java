@@ -1,32 +1,28 @@
 package com.pouffydev.bundledelight.datagen;
 
 import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
 import com.pouffydev.bundledelight.BundledDelight;
-import com.pouffydev.bundledelight.foundation.bundle.Bundle;
-import com.pouffydev.bundledelight.foundation.data.FinishedData;
+import com.pouffydev.krystal_core.foundation.dynamicpack.data.recipe.custom.CustomRecipe;
+import com.pouffydev.krystal_core.foundation.dynamicpack.data.recipe.output.CustomRecipeOutput;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.critereon.ImpossibleTrigger;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.conditions.WithConditions;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
+@SuppressWarnings({"DuplicatedCode", "removal"})
 public abstract class CustomRecipeProvider implements DataProvider {
     private static final Logger LOGGER = BundledDelight.LOGGER;
     
@@ -38,37 +34,40 @@ public abstract class CustomRecipeProvider implements DataProvider {
         this.advancementPathProvider = packOutput.createPathProvider(PackOutput.Target.DATA_PACK, "advancements");
     }
 
-    public CompletableFuture<?> run(CachedOutput output) {
+    public CompletableFuture<?> run(CachedOutput output, final HolderLookup.Provider registries) {
         Set<ResourceLocation> set = Sets.newHashSet();
         List<CompletableFuture<?>> list = new ArrayList();
-        this.buildCraftingRecipes((finishedRecipe) -> {
-            if (!set.add(finishedRecipe.getId())) {
-                throw new IllegalStateException("Duplicate recipe " + finishedRecipe.getId());
-            } else {
-                list.add(DataProvider.saveStable(output, finishedRecipe.serializeRecipe(), this.recipePathProvider.json(finishedRecipe.getId())));
-                if (finishedRecipe.getAdvancementId() != null) {
-                    JsonObject jsonobject = finishedRecipe.serializeAdvancement();
-                    if (jsonobject != null) {
-                        CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedRecipe, jsonobject);
-                        if (saveAdvancementFuture != null) {
-                            list.add(saveAdvancementFuture);
-                        }
+        this.buildCraftingRecipes(new RecipeOutput() {
+            @Override
+            public void accept(ResourceLocation location, Recipe<?> recipe, AdvancementHolder advancementHolder, @Nullable ICondition... conditions) {
+                if (!set.add(location)) {
+                    throw new IllegalStateException("Duplicate recipe " + location);
+                } else {
+                    list.add(DataProvider.saveStable(output, registries, Recipe.CONDITIONAL_CODEC, Optional.of(new WithConditions<>(recipe, conditions)), recipePathProvider.json(location)));
+                    if (advancementHolder != null) {
+                        list.add(DataProvider.saveStable(output, registries, Advancement.CONDITIONAL_CODEC, Optional.of(new WithConditions<>(advancementHolder.value(), conditions)), advancementPathProvider.json(advancementHolder.id())));
                     }
                 }
             }
+
+            public Advancement.Builder advancement() {
+                return Advancement.Builder.recipeAdvancement().parent(RecipeBuilder.ROOT_RECIPE_ADVANCEMENT);
+            }
         });
-        this.buildCustomRecipes((finishedData) -> {
-            if (!set.add(finishedData.getId())) {
-                throw new IllegalStateException("Duplicate recipe " + finishedData.getId());
-            } else {
-                list.add(DataProvider.saveStable(output, finishedData.serialize(), this.recipePathProvider.json(finishedData.getId())));
-                if (finishedData.getAdvancementId() != null) {
-                    JsonObject jsonobject = finishedData.serializeAdvancement();
-                    if (jsonobject != null) {
-                        CompletableFuture<?> saveAdvancementFuture = this.saveAdvancement(output, finishedData, jsonobject);
-                        if (saveAdvancementFuture != null) {
-                            list.add(saveAdvancementFuture);
-                        }
+        this.buildCustomRecipes(new CustomRecipeOutput() {
+            @Override
+            public Advancement.Builder advancement() {
+                return Advancement.Builder.recipeAdvancement().parent(RecipeBuilder.ROOT_RECIPE_ADVANCEMENT);
+            }
+
+            @Override
+            public void accept(ResourceLocation location, CustomRecipe<?> customRecipe, @Nullable AdvancementHolder advancementHolder, ICondition... conditions) {
+                if (!set.add(location)) {
+                    throw new IllegalStateException("Duplicate recipe " + location);
+                } else {
+                    list.add(DataProvider.saveStable(output, registries, Recipe.CONDITIONAL_CODEC, Optional.of(new WithConditions<>(customRecipe, conditions)), recipePathProvider.json(location)));
+                    if (advancementHolder != null) {
+                        list.add(DataProvider.saveStable(output, registries, Advancement.CONDITIONAL_CODEC, Optional.of(new WithConditions<>(advancementHolder.value(), conditions)), advancementPathProvider.json(advancementHolder.id())));
                     }
                 }
             }
@@ -81,14 +80,15 @@ public abstract class CustomRecipeProvider implements DataProvider {
         return "Bundled Delights' Custom Recipes";
     }
 
-    protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedRecipe finishedRecipe, JsonObject advancementJson) {
-        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(finishedRecipe.getAdvancementId()));
+    protected CompletableFuture<?> buildAdvancement(CachedOutput output, HolderLookup.Provider registries, AdvancementHolder advancement) {
+        return this.buildAdvancement(output, registries, advancement);
     }
-    protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedData finishedData, JsonObject advancementJson) {
-        return DataProvider.saveStable(output, advancementJson, this.advancementPathProvider.json(finishedData.getAdvancementId()));
+
+    protected CompletableFuture<?> buildAdvancement(CachedOutput output, HolderLookup.Provider registries, AdvancementHolder advancement, ICondition... conditions) {
+        return DataProvider.saveStable(output, registries, Advancement.CONDITIONAL_CODEC, Optional.of(new WithConditions(advancement.value(), conditions)), this.advancementPathProvider.json(advancement.id()));
     }
     
-    protected abstract void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer);
+    protected abstract void buildCraftingRecipes(RecipeOutput recipeConsumer);
     
-    protected abstract void buildCustomRecipes(Consumer<FinishedData> customConsumer);
+    protected abstract void buildCustomRecipes(CustomRecipeOutput customConsumer);
 }

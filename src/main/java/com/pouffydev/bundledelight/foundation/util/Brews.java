@@ -1,12 +1,15 @@
 package com.pouffydev.bundledelight.foundation.util;
 
+import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.datagen.BundleTags;
+import lombok.Getter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 import java.util.Objects;
 
+@Getter
 public enum Brews {
     BEER("beer"),
     VODKA("vodka"),
@@ -32,17 +35,13 @@ public enum Brews {
     Brews(String id) {
         this.id = id;
     }
-    
-    public String getId() {
-        return id;
-    }
-    
+
     public TagKey<Item> getTag() {
         return BundleTags.brewinDrinkTag(id);
     }
 
     public ResourceLocation getTagLoc() {
-        return new ResourceLocation("brewinandchewin:drinks/" + id);
+        return BundledDelight.location("brewinandchewin:drinks/" + id);
     }
     
     public Item getTankard() {
@@ -59,14 +58,14 @@ public enum Brews {
     
     public ResourceLocation tankardId() {
         String namespace = Objects.equals(id, ROOT_BEER.getId()) ? "bundledelight" : "brewinandchewin";
-        return new ResourceLocation(namespace, id);
+        return BundledDelight.location(namespace + ":" + id);
     }
     
     public ResourceLocation glassId() {
-        return new ResourceLocation("bundledelight", id + "_glass");
+        return BundledDelight.location(id + "_glass");
     }
     
     public ResourceLocation swigId() {
-        return new ResourceLocation("bundledelight", id + "_swig");
+        return BundledDelight.location(id + "_swig");
     }
 }

@@ -18,9 +18,9 @@ public class NeapolitanMilling extends BundleRecipeGen {
     }
 
     private static void millMiscellaneous(Consumer<FinishedData> consumer) {
-        RecipeShortcuts.millPowder(NeapolitanItems.powderedMintLeaves.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.MINT_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.millPowder(NeapolitanItems.powderedVanilla.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.DRIED_VANILLA_PODS.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.millPowder(NeapolitanItems.powderedAdzukiBeans.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.ROASTED_ADZUKI_BEANS.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.millPowder(NeapolitanItems.powderedMintLeaves.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.MINT_LEAVES.get()).build(consumer);
+        RecipeShortcuts.millPowder(NeapolitanItems.powderedVanilla.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.DRIED_VANILLA_PODS.get()).build(consumer);
+        RecipeShortcuts.millPowder(NeapolitanItems.powderedAdzukiBeans.get(), com.teamabnormals.neapolitan.core.registry.NeapolitanItems.ROASTED_ADZUKI_BEANS.get()).build(consumer);
     }
 
     @Override

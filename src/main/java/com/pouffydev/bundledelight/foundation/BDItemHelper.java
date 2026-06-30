@@ -1,10 +1,9 @@
 package com.pouffydev.bundledelight.foundation;
 
-import com.pouffydev.bundledelight.common.elements.item.BundleCakeSliceItem;
-import com.pouffydev.bundledelight.common.elements.item.BundleConsumableItem;
-import com.pouffydev.bundledelight.common.elements.item.BundleDrinkableItem;
+import com.pouffydev.bundledelight.common.elements.item.*;
 import com.pouffydev.krystal_core.foundation.registry.item.ItemRegistryHelper;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -50,6 +49,32 @@ public class BDItemHelper extends ItemRegistryHelper {
     public <T extends BundleCakeSliceItem> DeferredItem<T> cakeSliceItem(String name, Function<Item.Properties, Item.Properties> properties) {
         return (DeferredItem<T>) register(name, () -> new BundleCakeSliceItem(properties.apply(new Item.Properties())));
     }
+
+    public <T extends BundleBoozeItem> DeferredItem<T> boozeItemNoExtraEffect(String name, int potency, int duration, Function<Item.Properties, Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return (DeferredItem<T>) register(name, () -> new BundleBoozeItem(potency, duration, properties.apply(new Item.Properties()), remainder));
+    }
+
+    public <T extends BundleBoozeItem> DeferredItem<T> boozeItemNoExtraEffect(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return (DeferredItem<T>) register(name, () -> new BundleBoozeItem(potency, duration, properties, remainder));
+    }
+
+    public <T extends BundleBoozeItem> DeferredItem<T> boozeItem(String name, int potency, int duration, Function<Item.Properties, Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return (DeferredItem<T>) register(name, () -> new BundleBoozeItem(potency, duration, properties.apply(new Item.Properties()), remainder));
+    }
+
+    public <T extends BundleBoozeItem> DeferredItem<T> boozeItem(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return boozeItem(name, potency, duration, (p) -> properties, remainder);
+    }
+
+    public <T extends BundleDreadNogItem> DeferredItem<T> dreadNogItem(String name, int potency, int duration, Function<Item.Properties, Item.Properties> properties, BundleConsumableItem.RemainderItem remainder) {
+        return (DeferredItem<T>) register(name, () -> new BundleDreadNogItem(potency, duration, properties.apply(new Item.Properties()), remainder));
+    }
+
+    public <T extends BundleDreadNogItem> DeferredItem<T> dreadNogItem(String name, int potency, int duration, Item.Properties properties, BundleConsumableItem.RemainderItem remainder) {
+        return dreadNogItem(name, potency, duration, (p) -> properties, remainder);
+    }
+
+
 
     public Function<Item.Properties, Item.Properties> foodProps(FoodProperties properties) {
         return p -> p.food(properties);

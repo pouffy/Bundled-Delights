@@ -23,9 +23,6 @@ public abstract class BundleRecipeGen {
     public static final float MEDIUM_FERMENT_EXP = 0.6F;
     public static final float LARGE_FERMENT_EXP = 1.3F;
 
-    // Create Recipe Types
-    public static final ResourceLocation MILLSTONE = new ResourceLocation("create", "milling");
-    
     public abstract String getBundleName();
 
     public static ChanceResult createCuttingResult(ItemLike result, int count, float chance) {

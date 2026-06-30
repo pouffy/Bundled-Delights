@@ -19,10 +19,10 @@ public class RespiteMilling extends BundleRecipeGen {
     }
 
     private static void millMiscellaneous(Consumer<FinishedData> consumer) {
-        RecipeShortcuts.millPowder(RespiteItems.powderedGreenTeaLeaves.get(), FRItems.GREEN_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.millPowder(RespiteItems.powderedYellowTeaLeaves.get(), FRItems.YELLOW_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.millPowder(RespiteItems.powderedBlackTeaLeaves.get(), FRItems.BLACK_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.millPowder(RespiteItems.powderedCoffeeBeans.get(), FRItems.COFFEE_BEANS.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.millPowder(RespiteItems.powderedGreenTeaLeaves.get(), FRItems.GREEN_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.millPowder(RespiteItems.powderedYellowTeaLeaves.get(), FRItems.YELLOW_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.millPowder(RespiteItems.powderedBlackTeaLeaves.get(), FRItems.BLACK_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.millPowder(RespiteItems.powderedCoffeeBeans.get(), FRItems.COFFEE_BEANS.get()).build(consumer);
     }
 
     @Override

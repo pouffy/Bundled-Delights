@@ -1,48 +1,56 @@
 package com.pouffydev.bundledelight.datagen.builder.recipe;
 
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.RequirementsStrategy;
+import lombok.Getter;
+import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class BundleShapelessRecipeBuilder implements RecipeBuilder {
+    @Getter
     private final Item result;
     private final int count;
-    private final List<Ingredient> ingredients = Lists.newArrayList();
-    private final Advancement.Builder advancement = Advancement.Builder.advancement();
+    private final ItemStack resultStack;
+    private final NonNullList<Ingredient> ingredients;
     @Nullable
     private String group;
-    private final String requiredBundle;
-    
-    public BundleShapelessRecipeBuilder(ItemLike pResult, int pCount, String requiredBundle) {
-        this.result = pResult.asItem();
-        this.count = pCount;
-        this.requiredBundle = requiredBundle;
+    private final RecipeCategory category;
+    private final Map<String, Criterion<?>> criteria;
+
+    public BundleShapelessRecipeBuilder(RecipeCategory category, ItemStack resultStack) {
+        this.result = resultStack.getItem();
+        this.count = resultStack.getCount();
+        this.resultStack = resultStack;
+        this.criteria = new LinkedHashMap<>();
+        this.ingredients = NonNullList.create();
+        this.category = category;
+    }
+
+    public  BundleShapelessRecipeBuilder(RecipeCategory category, ItemLike result, int count) {
+        this(category, new ItemStack(result, count));
     }
     
-    public static BundleShapelessRecipeBuilder shapeless(ItemLike pResult, String requiredBundle) {
-        return new BundleShapelessRecipeBuilder(pResult, 1, requiredBundle);
+    public static BundleShapelessRecipeBuilder shapeless(RecipeCategory category, ItemLike pResult) {
+        return new BundleShapelessRecipeBuilder(category, pResult, 1);
     }
     
-    public static BundleShapelessRecipeBuilder shapeless(ItemLike pResult, int pCount, String requiredBundle) {
-        return new BundleShapelessRecipeBuilder(pResult, pCount, requiredBundle);
+    public static BundleShapelessRecipeBuilder shapeless(RecipeCategory category, ItemLike pResult, int pCount) {
+        return new BundleShapelessRecipeBuilder(category, pResult, pCount);
     }
     
     public BundleShapelessRecipeBuilder requires(TagKey<Item> pTag) {
@@ -66,106 +74,48 @@ public class BundleShapelessRecipeBuilder implements RecipeBuilder {
     }
     
     public BundleShapelessRecipeBuilder requires(Ingredient pIngredient, int pQuantity) {
-        for(int $$2 = 0; $$2 < pQuantity; ++$$2) {
+        for (int $$2 = 0; $$2 < pQuantity; ++$$2) {
             this.ingredients.add(pIngredient);
         }
-        
+
         return this;
     }
-    
-    public BundleShapelessRecipeBuilder unlockedBy(String pCriterionName, CriterionTriggerInstance pCriterionTrigger) {
-        this.advancement.addCriterion(pCriterionName, pCriterionTrigger);
+
+    @Override
+    public BundleShapelessRecipeBuilder unlockedBy(String pCriterionName, Criterion<?> criterion) {
+        this.criteria.put(pCriterionName, criterion);
         return this;
     }
-    
+
     public BundleShapelessRecipeBuilder group(@Nullable String pGroupName) {
         this.group = pGroupName;
         return this;
     }
-    
-    public Item getResult() {
-        return this.result;
+
+    @Override
+    public void save(RecipeOutput recipeOutput, ResourceLocation id) {
+        this.ensureValid(id);
+        Advancement.Builder advancement = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+        Map<String, Criterion<?>> criteria = this.criteria;
+        Objects.requireNonNull(advancement);
+        criteria.forEach(advancement::addCriterion);
+        ShapelessRecipe shapelessrecipe = new ShapelessRecipe(Objects.requireNonNullElse(this.group, ""), RecipeBuilder.determineBookCategory(this.category), this.resultStack, this.ingredients);
+        recipeOutput.accept(id, shapelessrecipe, advancement.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+    }
+
+    public void save(RecipeOutput recipeOutput, ResourceLocation id, ICondition... conditions) {
+        this.ensureValid(id);
+        Advancement.Builder advancement = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
+        Map<String, Criterion<?>> criteria = this.criteria;
+        Objects.requireNonNull(advancement);
+        criteria.forEach(advancement::addCriterion);
+        ShapelessRecipe shapelessrecipe = new ShapelessRecipe(Objects.requireNonNullElse(this.group, ""), RecipeBuilder.determineBookCategory(this.category), this.resultStack, this.ingredients);
+        recipeOutput.accept(id, shapelessrecipe, advancement.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")), conditions);
     }
     
-    public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
-        this.ensureValid(pRecipeId);
-        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-        String group = this.group == null ? "" : this.group;
-        ResourceLocation finalRecipeID = new ResourceLocation(pRecipeId.getNamespace(), "crafting/" + pRecipeId.getPath());
-        pFinishedRecipeConsumer.accept(new BundleShapelessRecipeBuilder.Result(finalRecipeID, this.result, this.count, group, this.ingredients, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + pRecipeId.getPath()), this.requiredBundle));
-    }
-    
-    private void ensureValid(ResourceLocation pId) {
-        if (this.advancement.getCriteria().isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + pId);
-        }
-    }
-    
-    public static class Result implements FinishedRecipe {
-        private final ResourceLocation id;
-        private final Item result;
-        private final int count;
-        private final String group;
-        private final List<Ingredient> ingredients;
-        private final Advancement.Builder advancement;
-        private final ResourceLocation advancementId;
-        private final String requiredBundle;
-        
-        public Result(ResourceLocation pId, Item pResult, int pCount, String pGroup, List<Ingredient> pIngredients, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, String requiredBundle) {
-            this.id = pId;
-            this.result = pResult;
-            this.count = pCount;
-            this.group = pGroup;
-            this.ingredients = pIngredients;
-            this.advancement = pAdvancement;
-            this.advancementId = pAdvancementId;
-            this.requiredBundle = requiredBundle;
-        }
-        
-        public void serializeRecipeData(JsonObject pJson) {
-            if (!this.group.isEmpty()) {
-                pJson.addProperty("group", this.group);
-            }
-            
-            JsonArray ingredients = new JsonArray();
-            
-            for (Ingredient ingredient : this.ingredients) {
-                ingredients.add(ingredient.toJson());
-            }
-            
-            JsonArray arrayConditions = new JsonArray();
-            JsonObject objectCondition = new JsonObject();
-            objectCondition.addProperty("type", "bundledelight:bundle_loaded");
-            objectCondition.addProperty("bundle", this.requiredBundle);
-            arrayConditions.add(objectCondition);
-            pJson.add("conditions", arrayConditions);
-            
-            pJson.add("ingredients", ingredients);
-            JsonObject result = new JsonObject();
-            result.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
-            if (this.count > 1) {
-                result.addProperty("count", this.count);
-            }
-            
-            pJson.add("result", result);
-        }
-        
-        public RecipeSerializer<?> getType() {
-            return RecipeSerializer.SHAPELESS_RECIPE;
-        }
-        
-        public ResourceLocation getId() {
-            return this.id;
-        }
-        
-        @Nullable
-        public JsonObject serializeAdvancement() {
-            return this.advancement.serializeToJson();
-        }
-        
-        @Nullable
-        public ResourceLocation getAdvancementId() {
-            return this.advancementId;
+    private void ensureValid(ResourceLocation id) {
+        if (this.criteria.isEmpty()) {
+            throw new IllegalStateException("No way of obtaining recipe " + id);
         }
     }
 }

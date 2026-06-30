@@ -41,7 +41,7 @@ public class BundledDelight {
         this.registryHelper = new RegistryHelper(MODID, modEventBus);
         this.bundleManager = BundleManager.create(MODID, modEventBus);
         BundleDelightCreativeTab.staticInit();
-        
+        bundleManager.visit();
         modEventBus.addListener(EventPriority.LOWEST, BundledDatagen::gatherData);
         modEventBus.addListener(CommonSetup::init);
     }

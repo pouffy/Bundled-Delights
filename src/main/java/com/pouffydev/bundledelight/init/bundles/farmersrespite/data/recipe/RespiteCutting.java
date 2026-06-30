@@ -19,10 +19,10 @@ public class RespiteCutting extends BundleRecipeGen {
     }
 
     private static void cutMiscellaneous(Consumer<FinishedRecipe> consumer) {
-        RecipeShortcuts.powder(RespiteItems.powderedGreenTeaLeaves.get(), FRItems.GREEN_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.powder(RespiteItems.powderedYellowTeaLeaves.get(), FRItems.YELLOW_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.powder(RespiteItems.powderedBlackTeaLeaves.get(), FRItems.BLACK_TEA_LEAVES.get(), BUNDLE_NAME).build(consumer);
-        RecipeShortcuts.powder(RespiteItems.powderedCoffeeBeans.get(), FRItems.COFFEE_BEANS.get(), BUNDLE_NAME).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedGreenTeaLeaves.get(), FRItems.GREEN_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedYellowTeaLeaves.get(), FRItems.YELLOW_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedBlackTeaLeaves.get(), FRItems.BLACK_TEA_LEAVES.get()).build(consumer);
+        RecipeShortcuts.powder(RespiteItems.powderedCoffeeBeans.get(), FRItems.COFFEE_BEANS.get()).build(consumer);
     }
 
     @Override

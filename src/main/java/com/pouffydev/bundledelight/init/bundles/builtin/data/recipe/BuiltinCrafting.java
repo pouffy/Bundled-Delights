@@ -2,36 +2,37 @@ package com.pouffydev.bundledelight.init.bundles.builtin.data.recipe;
 
 import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.datagen.RecipeShortcuts;
-import com.pouffydev.bundledelight.datagen.builder.recipe.BundleShapelessRecipeBuilder;
 import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinBlocks;
 import com.pouffydev.bundledelight.init.bundles.builtin.BuiltinItems;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.resources.ResourceLocation;
+import com.pouffydev.krystal_core.foundation.data.condition.BundleLoadedCondition;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class BuiltinCrafting extends BundleRecipeGen {
     private static final String BUNDLE_NAME = "builtin";
     public BuiltinCrafting() {
     }
+
+    static ICondition condition = new BundleLoadedCondition(BundledDelight.location("builtin"));
     
-    public static void register(Consumer<FinishedRecipe> consumer) {
-        recipesFoodstuffs(consumer);
-        recipesFoodBlocks(consumer);
+    public static void register(RecipeOutput output) {
+        recipesFoodstuffs(output);
+        recipesFoodBlocks(output);
     }
     
-    private static void recipesFoodstuffs(Consumer<FinishedRecipe> consumer) {
-        RecipeShortcuts.juice(BuiltinItems.sweetBerryJuice.get(), Items.SWEET_BERRIES, BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/sweet_berry_juice"));
-        RecipeShortcuts.shapelessWithin4x4(BuiltinItems.carrotCookie.get(), 8, Items.CARROT, List.of(Items.WHEAT, Items.WHEAT), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/carrot_cookie"));
+    private static void recipesFoodstuffs(RecipeOutput output) {
+        RecipeShortcuts.juice(BuiltinItems.sweetBerryJuice.get(), Items.SWEET_BERRIES).save(output, BundledDelight.location("food/sweet_berry_juice"), condition);
+        RecipeShortcuts.shapelessWithin4x4(BuiltinItems.carrotCookie.get(), 8, Items.CARROT, List.of(Items.WHEAT, Items.WHEAT), RecipeCategory.FOOD).save(output, BundledDelight.location("food/carrot_cookie"), condition);
     }
     
-    private static void recipesFoodBlocks(Consumer<FinishedRecipe> consumer) {
-        RecipeShortcuts.cake(BuiltinBlocks.carrotCake.get(), Items.CARROT, BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/carrot_cake"));
-        RecipeShortcuts.compactCakeFromSlices(BuiltinBlocks.carrotCake.get(), BuiltinItems.carrotCakeSlice.get(), BUNDLE_NAME).save(consumer, new ResourceLocation(BundledDelight.MODID, "food/carrot_cake_from_slices"));
+    private static void recipesFoodBlocks(RecipeOutput output) {
+        RecipeShortcuts.cake(BuiltinBlocks.carrotCake.get(), Items.CARROT).save(output, BundledDelight.location("food/carrot_cake"), condition);
+        RecipeShortcuts.compactCakeFromSlices(BuiltinBlocks.carrotCake.get(), BuiltinItems.carrotCakeSlice.get()).save(output, BundledDelight.location("food/carrot_cake_from_slices"), condition);
     }
     
     @Override

@@ -1,5 +1,6 @@
 package com.pouffydev.bundledelight.foundation.util;
 
+import com.pouffydev.bundledelight.BundledDelight;
 import com.pouffydev.bundledelight.datagen.BundleTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -57,28 +58,28 @@ public enum Teas {
     }
 
     public ResourceLocation getTagLoc() {
-        return new ResourceLocation("farmersrespite:drinks/" + id);
+        return BundledDelight.location("farmersrespite:drinks/" + id);
     }
     
     public Item getTea() {
-        ResourceLocation location = new ResourceLocation(namespace, id);
+        ResourceLocation location = BundledDelight.location(namespace + ":" + id);
         return CommonUtil.getItem(location);
     }
     
     public Item getTeaCup() {
-        ResourceLocation location = new ResourceLocation("bundledelight", getNamespace() + "/" + id + "_cup");
+        ResourceLocation location = BundledDelight.location(getNamespace() + "/" + id + "_cup");
         return CommonUtil.getItem(location);
     }
     
     public ResourceLocation teaCupId() {
-        return new ResourceLocation("bundledelight", getNamespace() + "/" + id + "_cup");
+        return BundledDelight.location(getNamespace() + "/" + id + "_cup");
     }
 
     public ResourceLocation getTeaLoc() {
-        return new ResourceLocation(namespace, id);
+        return BundledDelight.location(namespace + ":" + id);
     }
 
     public ResourceLocation getTeaCupLoc() {
-        return new ResourceLocation("bundledelight", id + "_cup");
+        return BundledDelight.location(id + "_cup");
     }
 }

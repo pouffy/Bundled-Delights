@@ -2,10 +2,11 @@ package com.pouffydev.bundledelight.datagen;
 
 import com.pouffydev.bundledelight.datagen.builder.recipe.BundleShapedRecipeBuilder;
 import com.pouffydev.bundledelight.datagen.builder.recipe.BundleShapelessRecipeBuilder;
-import com.pouffydev.bundledelight.datagen.builder.recipe.CreateProcessingRecipeBuilder;
-import com.pouffydev.bundledelight.datagen.builder.recipe.CuttingBoardRecipeBuilder;
-import com.pouffydev.bundledelight.foundation.data.BundleRecipeGen;
+import com.pouffydev.krystal_core.foundation.dynamicpack.data.recipe.custom.RecipeTemplates;
+import com.pouffydev.krystal_core.foundation.dynamicpack.data.recipe.custom.create.CreateRecipe;
+import com.pouffydev.krystal_core.foundation.dynamicpack.data.recipe.custom.farmersdelight.CuttingBoardRecipe;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,8 +18,8 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import java.util.List;
 
 public class RecipeShortcuts {
-    public static BundleShapedRecipeBuilder compact3x3(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapedRecipeBuilder.shaped(result, bundleName)
+    public static BundleShapedRecipeBuilder compact3x3(ItemLike result, ItemLike ingredient, RecipeCategory category) {
+        return BundleShapedRecipeBuilder.shaped(category, result)
                 .pattern("iii")
                 .pattern("iii")
                 .pattern("iii")
@@ -26,25 +27,25 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapedRecipeBuilder compact2x2(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapedRecipeBuilder.shaped(result, bundleName)
+    public static BundleShapedRecipeBuilder compact2x2(ItemLike result, ItemLike ingredient, RecipeCategory category) {
+        return BundleShapedRecipeBuilder.shaped(category, result)
                 .pattern("ii")
                 .pattern("ii")
                 .define('i', ingredient)
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder decompact3x3(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapelessRecipeBuilder.shapeless(result, 9, bundleName).requires(ingredient).unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
+    public static BundleShapelessRecipeBuilder decompact3x3(ItemLike result, ItemLike ingredient, RecipeCategory category) {
+        return BundleShapelessRecipeBuilder.shapeless(category, result, 9).requires(ingredient).unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder decompact2x2(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapelessRecipeBuilder.shapeless(result, 4, bundleName).requires(ingredient).unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
+    public static BundleShapelessRecipeBuilder decompact2x2(ItemLike result, ItemLike ingredient, RecipeCategory category) {
+        return BundleShapelessRecipeBuilder.shapeless(category, result, 4).requires(ingredient).unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
 
-    public static BundleShapedRecipeBuilder doughnutCraft(ItemLike result, ItemLike center, ItemLike ring, String bundleName) {
-        return BundleShapedRecipeBuilder.shaped(result, bundleName)
+    public static BundleShapedRecipeBuilder doughnutCraft(ItemLike result, ItemLike center, ItemLike ring, RecipeCategory category) {
+        return BundleShapedRecipeBuilder.shaped(category, result)
                 .pattern("iii")
                 .pattern("i#i")
                 .pattern("iii")
@@ -53,8 +54,8 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(center));
     }
 
-    public static BundleShapedRecipeBuilder cake(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapedRecipeBuilder.shaped(result, bundleName)
+    public static BundleShapedRecipeBuilder cake(ItemLike result, ItemLike ingredient) {
+        return BundleShapedRecipeBuilder.shaped(RecipeCategory.FOOD, result)
                 .pattern("mcm")
                 .pattern("ses")
                 .pattern("wcw")
@@ -66,8 +67,8 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder compactCakeFromSlices(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapelessRecipeBuilder.shapeless(result, bundleName)
+    public static BundleShapelessRecipeBuilder compactCakeFromSlices(ItemLike result, ItemLike ingredient) {
+        return BundleShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, result)
                 .requires(ingredient)
                 .requires(ingredient)
                 .requires(ingredient)
@@ -78,8 +79,8 @@ public class RecipeShortcuts {
                 .unlockedBy("has_cake_slice", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder juice(ItemLike result, ItemLike ingredient, String bundleName) {
-        return BundleShapelessRecipeBuilder.shapeless(result, bundleName)
+    public static BundleShapelessRecipeBuilder juice(ItemLike result, ItemLike ingredient) {
+        return BundleShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, result)
                 .requires(ingredient)
                 .requires(ingredient)
                 .requires(ingredient)
@@ -89,8 +90,8 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder juice(ItemLike result, ItemLike ingredient, ItemLike bottle, String bundleName) {
-        return BundleShapelessRecipeBuilder.shapeless(result, bundleName)
+    public static BundleShapelessRecipeBuilder juice(ItemLike result, ItemLike ingredient, ItemLike bottle) {
+        return BundleShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, result)
                 .requires(ingredient)
                 .requires(ingredient)
                 .requires(ingredient)
@@ -100,8 +101,8 @@ public class RecipeShortcuts {
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingredient));
     }
 
-    public static BundleShapelessRecipeBuilder shapelessWithin4x4(ItemLike result, int resultAmount, ItemLike mainIngredient, List<ItemLike> ingredients, String bundleName) {
-        BundleShapelessRecipeBuilder builder = BundleShapelessRecipeBuilder.shapeless(result, resultAmount, bundleName);
+    public static BundleShapelessRecipeBuilder shapelessWithin4x4(ItemLike result, int resultAmount, ItemLike mainIngredient, List<ItemLike> ingredients, RecipeCategory category) {
+        BundleShapelessRecipeBuilder builder = BundleShapelessRecipeBuilder.shapeless(category, result, resultAmount);
         if (ingredients.size() > 3) {
             throw new IllegalArgumentException("Too many ingredients for a 4x4 recipe");
         }
@@ -112,8 +113,8 @@ public class RecipeShortcuts {
         return builder.unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(mainIngredient));
     }
 
-    public static BundleShapelessRecipeBuilder shapelessWithin9x9(ItemLike result, int resultAmount, ItemLike mainIngredient, List<ItemLike> ingredients, String bundleName) {
-        BundleShapelessRecipeBuilder builder = BundleShapelessRecipeBuilder.shapeless(result, resultAmount, bundleName);
+    public static BundleShapelessRecipeBuilder shapelessWithin9x9(ItemLike result, int resultAmount, ItemLike mainIngredient, List<ItemLike> ingredients, RecipeCategory category) {
+        BundleShapelessRecipeBuilder builder = BundleShapelessRecipeBuilder.shapeless(category, result, resultAmount);
         if (ingredients.size() > 8) {
             throw new IllegalArgumentException("Too many ingredients for a 9x9 recipe");
         }
@@ -124,23 +125,24 @@ public class RecipeShortcuts {
         return builder.unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(mainIngredient));
     }
 
-    public static CuttingBoardRecipeBuilder powder(ItemLike result, ItemLike ingredient, String bundleName) {
-        return cutWithKnife(result, 2, List.of(createCuttingResult(result, 1, 0.5F)), ingredient, bundleName);
+    public static CuttingBoardRecipe powder(ItemLike result, ItemLike ingredient) {
+        return cutWithKnife(result, 2, List.of(createCuttingResult(result, 1, 0.5F)), ingredient);
     }
 
-    public static CreateProcessingRecipeBuilder millPowder(ItemLike result, ItemLike ingredient, String bundleName) {
-        return CreateProcessingRecipeBuilder.create(BundleRecipeGen.MILLSTONE, bundleName).require(ingredient).output(result, 2).output(0.5F, result).duration(50);
+    public static CreateRecipe millPowder(ItemLike result, ItemLike ingredient) {
+        CreateRecipe milling = RecipeTemplates.Create.MILLING;
+        return milling.input(ingredient).result(result, 2).result(0.5F, result, 1).duration(50);
     }
 
-    public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, ItemLike ingredient, String bundleName) {
-        return cut(result, resultAmount, List.of(), ingredient, Ingredient.of(ModTags.Items.KNIVES), bundleName);
+    public static CuttingBoardRecipe cutWithKnife(ItemLike result, int resultAmount, ItemLike ingredient) {
+        return cut(result, resultAmount, List.of(), ingredient, Ingredient.of(ModTags.Items.KNIVES));
     }
-    public static CuttingBoardRecipeBuilder cutWithKnife(ItemLike result, int resultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, String bundleName) {
-        return cut(result, resultAmount, chanceResults, ingredient, Ingredient.of(ModTags.Items.KNIVES), bundleName);
+    public static CuttingBoardRecipe cutWithKnife(ItemLike result, int resultAmount, List<ChanceResult> chanceResults, ItemLike ingredient) {
+        return cut(result, resultAmount, chanceResults, ingredient, Ingredient.of(ModTags.Items.KNIVES));
     }
 
-    public static CuttingBoardRecipeBuilder cut(ItemLike mainResult, int mainResultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, Ingredient tool, String bundleName) {
-        CuttingBoardRecipeBuilder builder = CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ingredient), tool, mainResult, mainResultAmount, bundleName);
+    public static CuttingBoardRecipe cut(ItemLike mainResult, int mainResultAmount, List<ChanceResult> chanceResults, ItemLike ingredient, Ingredient tool) {
+        CuttingBoardRecipe builder = CuttingBoardRecipe.cuttingRecipe(Ingredient.of(ingredient), tool, mainResult, mainResultAmount);
         for (ChanceResult chanceResult : chanceResults) {
             ItemStack result = chanceResult.stack();
             float chance = chanceResult.chance();
